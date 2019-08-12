@@ -1,0 +1,132 @@
+.TH "zlar2v.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlar2v.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlar2v\fP (\fBN\fP, X, Y, Z, INCX, C, S, INCC)"
+.br
+.RI "\fBZLAR2V\fP applies a vector of plane rotations with real cosines and complex sines from both sides to a sequence of 2-by-2 symmetric/Hermitian matrices\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlar2v (integer N, complex*16, dimension( * ) X, complex*16, dimension( * ) Y, complex*16, dimension( * ) Z, integer INCX, double precision, dimension( * ) C, complex*16, dimension( * ) S, integer INCC)"
+
+.PP
+\fBZLAR2V\fP applies a vector of plane rotations with real cosines and complex sines from both sides to a sequence of 2-by-2 symmetric/Hermitian matrices\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLAR2V applies a vector of complex plane rotations with real cosines
+ from both sides to a sequence of 2-by-2 complex Hermitian matrices,
+ defined by the elements of the vectors x, y and z. For i = 1,2,...,n
+
+    (       x(i)  z(i) ) :=
+    ( conjg(z(i)) y(i) )
+
+      (  c(i) conjg(s(i)) ) (       x(i)  z(i) ) ( c(i) -conjg(s(i)) )
+      ( -s(i)       c(i)  ) ( conjg(z(i)) y(i) ) ( s(i)        c(i)  )
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of plane rotations to be applied.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX*16 array, dimension (1+(N-1)*INCX)
+          The vector x; the elements of x are assumed to be real.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is COMPLEX*16 array, dimension (1+(N-1)*INCX)
+          The vector y; the elements of y are assumed to be real.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is COMPLEX*16 array, dimension (1+(N-1)*INCX)
+          The vector z.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between elements of X, Y and Z. INCX > 0.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION array, dimension (1+(N-1)*INCC)
+          The cosines of the plane rotations.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is COMPLEX*16 array, dimension (1+(N-1)*INCC)
+          The sines of the plane rotations.
+.fi
+.PP
+.br
+\fIINCC\fP 
+.PP
+.nf
+          INCC is INTEGER
+          The increment between elements of C and S. INCC > 0.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 113 of file zlar2v\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

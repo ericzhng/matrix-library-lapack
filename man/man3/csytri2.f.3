@@ -1,0 +1,147 @@
+.TH "csytri2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+csytri2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcsytri2\fP (UPLO, \fBN\fP, A, \fBLDA\fP, IPIV, WORK, LWORK, INFO)"
+.br
+.RI "\fBCSYTRI2\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine csytri2 (character UPLO, integer N, complex, dimension( lda, * ) A, integer LDA, integer, dimension( * ) IPIV, complex, dimension( * ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBCSYTRI2\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CSYTRI2 computes the inverse of a COMPLEX symmetric indefinite matrix
+ A using the factorization A = U*D*U**T or A = L*D*L**T computed by
+ CSYTRF. CSYTRI2 sets the LEADING DIMENSION of the workspace
+ before calling CSYTRI2X that actually computes the inverse.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the details of the factorization are stored
+          as an upper or lower triangular matrix.
+          = 'U':  Upper triangular, form is A = U*D*U**T;
+          = 'L':  Lower triangular, form is A = L*D*L**T.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+          On entry, the NB diagonal matrix D and the multipliers
+          used to obtain the factor U or L as computed by CSYTRF.
+
+          On exit, if INFO = 0, the (symmetric) inverse of the original
+          matrix.  If UPLO = 'U', the upper triangular part of the
+          inverse is formed and the part of A below the diagonal is not
+          referenced; if UPLO = 'L' the lower triangular part of the
+          inverse is formed and the part of A above the diagonal is
+          not referenced.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          Details of the interchanges and the NB structure of D
+          as determined by CSYTRF.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (N+NB+1)*(NB+3)
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.
+          WORK is size >= (N+NB+1)*(NB+3)
+          If LDWORK = -1, then a workspace query is assumed; the routine
+           calculates:
+              - the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array,
+              - and no error message related to LDWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+          > 0: if INFO = i, D(i,i) = 0; the matrix is singular and its
+               inverse could not be computed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file csytri2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,140 @@
+.TH "claesy.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+claesy.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclaesy\fP (A, B, C, RT1, RT2, EVSCAL, CS1, SN1)"
+.br
+.RI "\fBCLAESY\fP computes the eigenvalues and eigenvectors of a 2-by-2 complex symmetric matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine claesy (complex A, complex B, complex C, complex RT1, complex RT2, complex EVSCAL, complex CS1, complex SN1)"
+
+.PP
+\fBCLAESY\fP computes the eigenvalues and eigenvectors of a 2-by-2 complex symmetric matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLAESY computes the eigendecomposition of a 2-by-2 symmetric matrix
+    ( ( A, B );( B, C ) )
+ provided the norm of the matrix of eigenvectors is larger than
+ some threshold value.
+
+ RT1 is the eigenvalue of larger absolute value, and RT2 of
+ smaller absolute value.  If the eigenvectors are computed, then
+ on return ( CS1, SN1 ) is the unit eigenvector for RT1, hence
+
+ [  CS1     SN1   ] . [ A  B ] . [ CS1    -SN1   ] = [ RT1  0  ]
+ [ -SN1     CS1   ]   [ B  C ]   [ SN1     CS1   ]   [  0  RT2 ]
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX
+          The ( 1, 1 ) element of input matrix.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX
+          The ( 1, 2 ) element of input matrix.  The ( 2, 1 ) element
+          is also given by B, since the 2-by-2 matrix is symmetric.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX
+          The ( 2, 2 ) element of input matrix.
+.fi
+.PP
+.br
+\fIRT1\fP 
+.PP
+.nf
+          RT1 is COMPLEX
+          The eigenvalue of larger modulus.
+.fi
+.PP
+.br
+\fIRT2\fP 
+.PP
+.nf
+          RT2 is COMPLEX
+          The eigenvalue of smaller modulus.
+.fi
+.PP
+.br
+\fIEVSCAL\fP 
+.PP
+.nf
+          EVSCAL is COMPLEX
+          The complex value by which the eigenvector matrix was scaled
+          to make it orthonormal.  If EVSCAL is zero, the eigenvectors
+          were not computed.  This means one of two things:  the 2-by-2
+          matrix could not be diagonalized, or the norm of the matrix
+          of eigenvectors before scaling was larger than the threshold
+          value THRESH (set below).
+.fi
+.PP
+.br
+\fICS1\fP 
+.PP
+.nf
+          CS1 is COMPLEX
+.fi
+.PP
+.br
+\fISN1\fP 
+.PP
+.nf
+          SN1 is COMPLEX
+          If EVSCAL .NE. 0,  ( CS1, SN1 ) is the unit right eigenvector
+          for RT1.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file claesy\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

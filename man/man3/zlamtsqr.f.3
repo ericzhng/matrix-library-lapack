@@ -1,0 +1,213 @@
+.TH "zlamtsqr.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlamtsqr.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlamtsqr\fP (SIDE, TRANS, M, \fBN\fP, K, MB, NB, A, \fBLDA\fP, T, LDT, C, LDC, WORK, LWORK, INFO)"
+.br
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlamtsqr (character SIDE, character TRANS, integer M, integer N, integer K, integer MB, integer NB, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( ldt, * ) T, integer LDT, complex*16, dimension(ldc, * ) C, integer LDC, complex*16, dimension( * ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBPurpose:\fP
+.RS 4
+
+.RE
+.PP
+ZLAMTSQR overwrites the general complex M-by-N matrix C with
+.PP
+SIDE = 'L' SIDE = 'R' TRANS = 'N': Q * C C * Q TRANS = 'C': Q**H * C C * Q**H where Q is a real orthogonal matrix defined as the product of blocked elementary reflectors computed by tall skinny QR factorization (ZLATSQR)  
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'L': apply Q or Q**H from the Left;
+          = 'R': apply Q or Q**H from the Right.
+.fi
+.PP
+.br
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+          = 'N':  No transpose, apply Q;
+          = 'C':  Conjugate Transpose, apply Q**H.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >=0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix C. M >= N >= 0.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The number of elementary reflectors whose product defines
+          the matrix Q.
+          N >= K >= 0;
+.fi
+.PP
+.br
+\fIMB\fP 
+.PP
+.nf
+          MB is INTEGER
+          The block size to be used in the blocked QR.
+          MB > N. (must be the same as DLATSQR)
+.fi
+.PP
+.br
+\fINB\fP 
+.PP
+.nf
+          NB is INTEGER
+          The column block size to be used in the blocked QR.
+          N >= NB >= 1.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,K)
+          The i-th column must contain the vector which defines the
+          blockedelementary reflector H(i), for i = 1,2,...,k, as
+          returned by DLATSQR in the first k columns of
+          its array argument A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.
+          If SIDE = 'L', LDA >= max(1,M);
+          if SIDE = 'R', LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is COMPLEX*16 array, dimension
+          ( N * Number of blocks(CEIL(M-K/MB-K)),
+          The blocked upper triangular block reflectors stored in compact form
+          as a sequence of upper triangular blocks.  See below
+          for further details.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T.  LDT >= NB.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX*16 array, dimension (LDC,N)
+          On entry, the M-by-N matrix C.
+          On exit, C is overwritten by Q*C or Q**H*C or C*Q**H or C*Q.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the array C. LDC >= max(1,M).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+         (workspace) COMPLEX*16 array, dimension (MAX(1,LWORK))
+.fi
+.PP
+ 
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.
+
+          If SIDE = 'L', LWORK >= max(1,N)*NB;
+          if SIDE = 'R', LWORK >= max(1,MB)*NB.
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array, and no error
+          message related to LWORK is issued by XERBLA.
+.fi
+.PP
+ 
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBFurther Details:\fP
+.RS 4
+Tall-Skinny QR (TSQR) performs QR by a sequence of orthogonal transformations, representing Q as a product of other orthogonal matrices Q = Q(1) * Q(2) * \&. \&. \&. * Q(k) where each Q(i) zeros out subdiagonal entries of a block of MB rows of A: Q(1) zeros out the subdiagonal entries of rows 1:MB of A Q(2) zeros out the bottom MB-N rows of rows [1:N,MB+1:2*MB-N] of A Q(3) zeros out the bottom MB-N rows of rows [1:N,2*MB-N+1:3*MB-2*N] of A \&. \&. \&.
+.RE
+.PP
+Q(1) is computed by GEQRT, which represents Q(1) by Householder vectors stored under the diagonal of rows 1:MB of A, and by upper triangular block reflectors, stored in array T(1:LDT,1:N)\&. For more information see Further Details in GEQRT\&.
+.PP
+Q(i) for i>1 is computed by TPQRT, which represents Q(i) by Householder vectors stored in rows [(i-1)*(MB-N)+N+1:i*(MB-N)+N] of A, and by upper triangular block reflectors, stored in array T(1:LDT,(i-1)*N+1:i*N)\&. The last Q(k) may use fewer rows\&. For more information see Further Details in TPQRT\&.
+.PP
+For more details of the overall algorithm, see the description of Sequential TSQR in Section 2\&.2 of [1]\&.
+.PP
+[1] “Communication-Optimal Parallel and Sequential QR and LU Factorizations,” J\&. Demmel, L\&. Grigori, M\&. Hoemmen, J\&. Langou, SIAM J\&. Sci\&. Comput, vol\&. 34, no\&. 1, 2012  
+.PP
+Definition at line 197 of file zlamtsqr\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

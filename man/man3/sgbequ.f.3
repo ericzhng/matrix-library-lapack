@@ -1,0 +1,180 @@
+.TH "sgbequ.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sgbequ.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsgbequ\fP (M, \fBN\fP, KL, KU, AB, LDAB, R, C, ROWCND, COLCND, AMAX, INFO)"
+.br
+.RI "\fBSGBEQU\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sgbequ (integer M, integer N, integer KL, integer KU, real, dimension( ldab, * ) AB, integer LDAB, real, dimension( * ) R, real, dimension( * ) C, real ROWCND, real COLCND, real AMAX, integer INFO)"
+
+.PP
+\fBSGBEQU\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SGBEQU computes row and column scalings intended to equilibrate an
+ M-by-N band matrix A and reduce its condition number.  R returns the
+ row scale factors and C the column scale factors, chosen to try to
+ make the largest element in each row and column of the matrix B with
+ elements B(i,j)=R(i)*A(i,j)*C(j) have absolute value 1.
+
+ R(i) and C(j) are restricted to be between SMLNUM = smallest safe
+ number and BIGNUM = largest safe number.  Use of these scaling
+ factors is not guaranteed to reduce the condition number of A but
+ works well in practice.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIKL\fP 
+.PP
+.nf
+          KL is INTEGER
+          The number of subdiagonals within the band of A.  KL >= 0.
+.fi
+.PP
+.br
+\fIKU\fP 
+.PP
+.nf
+          KU is INTEGER
+          The number of superdiagonals within the band of A.  KU >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is REAL array, dimension (LDAB,N)
+          The band matrix A, stored in rows 1 to KL+KU+1.  The j-th
+          column of A is stored in the j-th column of the array AB as
+          follows:
+          AB(ku+1+i-j,j) = A(i,j) for max(1,j-ku)<=i<=min(m,j+kl).
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+          The leading dimension of the array AB.  LDAB >= KL+KU+1.
+.fi
+.PP
+.br
+\fIR\fP 
+.PP
+.nf
+          R is REAL array, dimension (M)
+          If INFO = 0, or INFO > M, R contains the row scale factors
+          for A.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is REAL array, dimension (N)
+          If INFO = 0, C contains the column scale factors for A.
+.fi
+.PP
+.br
+\fIROWCND\fP 
+.PP
+.nf
+          ROWCND is REAL
+          If INFO = 0 or INFO > M, ROWCND contains the ratio of the
+          smallest R(i) to the largest R(i).  If ROWCND >= 0.1 and
+          AMAX is neither too large nor too small, it is not worth
+          scaling by R.
+.fi
+.PP
+.br
+\fICOLCND\fP 
+.PP
+.nf
+          COLCND is REAL
+          If INFO = 0, COLCND contains the ratio of the smallest
+          C(i) to the largest C(i).  If COLCND >= 0.1, it is not
+          worth scaling by C.
+.fi
+.PP
+.br
+\fIAMAX\fP 
+.PP
+.nf
+          AMAX is REAL
+          Absolute value of largest matrix element.  If AMAX is very
+          close to overflow or very close to underflow, the matrix
+          should be scaled.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+          > 0:  if INFO = i, and i is
+                <= M:  the i-th row of A is exactly zero
+                >  M:  the (i-M)-th column of A is exactly zero
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 155 of file sgbequ\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,174 @@
+.TH "dlasq5.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlasq5.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlasq5\fP (I0, N0, Z, PP, TAU, SIGMA, DMIN, DMIN1, DMIN2, DN, DNM1, DNM2, IEEE, EPS)"
+.br
+.RI "\fBDLASQ5\fP computes one dqds transform in ping-pong form\&. Used by sbdsqr and sstegr\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlasq5 (integer I0, integer N0, double precision, dimension( * ) Z, integer PP, double precision TAU, double precision SIGMA, double precision DMIN, double precision DMIN1, double precision DMIN2, double precision DN, double precision DNM1, double precision DNM2, logical IEEE, double precision EPS)"
+
+.PP
+\fBDLASQ5\fP computes one dqds transform in ping-pong form\&. Used by sbdsqr and sstegr\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLASQ5 computes one dqds transform in ping-pong form, one
+ version for IEEE machines another for non IEEE machines.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fII0\fP 
+.PP
+.nf
+          I0 is INTEGER
+        First index.
+.fi
+.PP
+.br
+\fIN0\fP 
+.PP
+.nf
+          N0 is INTEGER
+        Last index.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension ( 4*N )
+        Z holds the qd array. EMIN is stored in Z(4*N0) to avoid
+        an extra argument.
+.fi
+.PP
+.br
+\fIPP\fP 
+.PP
+.nf
+          PP is INTEGER
+        PP=0 for ping, PP=1 for pong.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is DOUBLE PRECISION
+        This is the shift.
+.fi
+.PP
+.br
+\fISIGMA\fP 
+.PP
+.nf
+          SIGMA is DOUBLE PRECISION
+        This is the accumulated shift up to this step.
+.fi
+.PP
+.br
+\fIDMIN\fP 
+.PP
+.nf
+          DMIN is DOUBLE PRECISION
+        Minimum value of d.
+.fi
+.PP
+.br
+\fIDMIN1\fP 
+.PP
+.nf
+          DMIN1 is DOUBLE PRECISION
+        Minimum value of d, excluding D( N0 ).
+.fi
+.PP
+.br
+\fIDMIN2\fP 
+.PP
+.nf
+          DMIN2 is DOUBLE PRECISION
+        Minimum value of d, excluding D( N0 ) and D( N0-1 ).
+.fi
+.PP
+.br
+\fIDN\fP 
+.PP
+.nf
+          DN is DOUBLE PRECISION
+        d(N0), the last value of d.
+.fi
+.PP
+.br
+\fIDNM1\fP 
+.PP
+.nf
+          DNM1 is DOUBLE PRECISION
+        d(N0-1).
+.fi
+.PP
+.br
+\fIDNM2\fP 
+.PP
+.nf
+          DNM2 is DOUBLE PRECISION
+        d(N0-2).
+.fi
+.PP
+.br
+\fIIEEE\fP 
+.PP
+.nf
+          IEEE is LOGICAL
+        Flag for IEEE or non IEEE arithmetic.
+.fi
+.PP
+.br
+\fIEPS\fP 
+.PP
+.nf
+          EPS is DOUBLE PRECISION
+        This is the value of epsilon used.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+
+.PP
+Definition at line 146 of file dlasq5\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

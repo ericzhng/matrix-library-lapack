@@ -1,0 +1,163 @@
+.TH "clahef_aa.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+clahef_aa.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclahef_aa\fP (UPLO, J1, M, NB, A, \fBLDA\fP, IPIV, H, LDH, WORK)"
+.br
+.RI "\fBCLAHEF_AA\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine clahef_aa (character UPLO, integer J1, integer M, integer NB, complex, dimension( lda, * ) A, integer LDA, integer, dimension( * ) IPIV, complex, dimension( ldh, * ) H, integer LDH, complex, dimension( * ) WORK)"
+
+.PP
+\fBCLAHEF_AA\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLAHEF_AA factorizes a panel of a complex hermitian matrix A using
+ the Aasen's algorithm. The panel consists of a set of NB rows of A
+ when UPLO is U, or a set of NB columns when UPLO is L.
+
+ In order to factorize the panel, the Aasen's algorithm requires the
+ last row, or column, of the previous panel. The first row, or column,
+ of A is set to be the first row, or column, of an identity matrix,
+ which is used to factorize the first panel.
+
+ The resulting J-th row of U, or J-th column of L, is stored in the
+ (J-1)-th row, or column, of A (without the unit diagonals), while
+ the diagonal and subdiagonal of A are overwritten by those of T.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangle of A is stored;
+          = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIJ1\fP 
+.PP
+.nf
+          J1 is INTEGER
+          The location of the first row, or column, of the panel
+          within the submatrix of A, passed to this routine, e.g.,
+          when called by CHETRF_AA, for the first panel, J1 is 1,
+          while for the remaining panels, J1 is 2.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The dimension of the submatrix. M >= 0.
+.fi
+.PP
+.br
+\fINB\fP 
+.PP
+.nf
+          NB is INTEGER
+          The dimension of the panel to be facotorized.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,M) for
+          the first panel, while dimension (LDA,M+1) for the
+          remaining panels.
+
+          On entry, A contains the last row, or column, of
+          the previous panel, and the trailing submatrix of A
+          to be factorized, except for the first panel, only
+          the panel is passed.
+
+          On exit, the leading panel is factorized.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          Details of the row and column interchanges,
+          the row and column k were interchanged with the row and
+          column IPIV(k).
+.fi
+.PP
+.br
+\fIH\fP 
+.PP
+.nf
+          H is COMPLEX workspace, dimension (LDH,NB).
+.fi
+.PP
+.br
+\fILDH\fP 
+.PP
+.nf
+          LDH is INTEGER
+          The leading dimension of the workspace H. LDH >= max(1,M).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX workspace, dimension (M).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+
+.PP
+Definition at line 146 of file clahef_aa\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,175 @@
+.TH "dggbak.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dggbak.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdggbak\fP (JOB, SIDE, \fBN\fP, ILO, IHI, LSCALE, RSCALE, M, V, LDV, INFO)"
+.br
+.RI "\fBDGGBAK\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dggbak (character JOB, character SIDE, integer N, integer ILO, integer IHI, double precision, dimension( * ) LSCALE, double precision, dimension( * ) RSCALE, integer M, double precision, dimension( ldv, * ) V, integer LDV, integer INFO)"
+
+.PP
+\fBDGGBAK\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DGGBAK forms the right or left eigenvectors of a real generalized
+ eigenvalue problem A*x = lambda*B*x, by backward transformation on
+ the computed eigenvectors of the balanced pair of matrices output by
+ DGGBAL.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOB\fP 
+.PP
+.nf
+          JOB is CHARACTER*1
+          Specifies the type of backward transformation required:
+          = 'N':  do nothing, return immediately;
+          = 'P':  do backward transformation for permutation only;
+          = 'S':  do backward transformation for scaling only;
+          = 'B':  do backward transformations for both permutation and
+                  scaling.
+          JOB must be the same as the argument JOB supplied to DGGBAL.
+.fi
+.PP
+.br
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'R':  V contains right eigenvectors;
+          = 'L':  V contains left eigenvectors.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of rows of the matrix V.  N >= 0.
+.fi
+.PP
+.br
+\fIILO\fP 
+.PP
+.nf
+          ILO is INTEGER
+.fi
+.PP
+.br
+\fIIHI\fP 
+.PP
+.nf
+          IHI is INTEGER
+          The integers ILO and IHI determined by DGGBAL.
+          1 <= ILO <= IHI <= N, if N > 0; ILO=1 and IHI=0, if N=0.
+.fi
+.PP
+.br
+\fILSCALE\fP 
+.PP
+.nf
+          LSCALE is DOUBLE PRECISION array, dimension (N)
+          Details of the permutations and/or scaling factors applied
+          to the left side of A and B, as returned by DGGBAL.
+.fi
+.PP
+.br
+\fIRSCALE\fP 
+.PP
+.nf
+          RSCALE is DOUBLE PRECISION array, dimension (N)
+          Details of the permutations and/or scaling factors applied
+          to the right side of A and B, as returned by DGGBAL.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of columns of the matrix V.  M >= 0.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is DOUBLE PRECISION array, dimension (LDV,M)
+          On entry, the matrix of right or left eigenvectors to be
+          transformed, as returned by DTGEVC.
+          On exit, V is overwritten by the transformed eigenvectors.
+.fi
+.PP
+.br
+\fILDV\fP 
+.PP
+.nf
+          LDV is INTEGER
+          The leading dimension of the matrix V. LDV >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  See R.C. Ward, Balancing the generalized eigenvalue problem,
+                 SIAM J. Sci. Stat. Comp. 2 (1981), 141-152.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file dggbak\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

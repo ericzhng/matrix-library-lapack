@@ -1,0 +1,207 @@
+.TH "dlasy2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlasy2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlasy2\fP (LTRANL, LTRANR, ISGN, N1, N2, TL, LDTL, TR, LDTR, B, \fBLDB\fP, SCALE, X, LDX, XNORM, INFO)"
+.br
+.RI "\fBDLASY2\fP solves the Sylvester matrix equation where the matrices are of order 1 or 2\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlasy2 (logical LTRANL, logical LTRANR, integer ISGN, integer N1, integer N2, double precision, dimension( ldtl, * ) TL, integer LDTL, double precision, dimension( ldtr, * ) TR, integer LDTR, double precision, dimension( ldb, * ) B, integer LDB, double precision SCALE, double precision, dimension( ldx, * ) X, integer LDX, double precision XNORM, integer INFO)"
+
+.PP
+\fBDLASY2\fP solves the Sylvester matrix equation where the matrices are of order 1 or 2\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLASY2 solves for the N1 by N2 matrix X, 1 <= N1,N2 <= 2, in
+
+        op(TL)*X + ISGN*X*op(TR) = SCALE*B,
+
+ where TL is N1 by N1, TR is N2 by N2, B is N1 by N2, and ISGN = 1 or
+ -1.  op(T) = T or T**T, where T**T denotes the transpose of T.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fILTRANL\fP 
+.PP
+.nf
+          LTRANL is LOGICAL
+          On entry, LTRANL specifies the op(TL):
+             = .FALSE., op(TL) = TL,
+             = .TRUE., op(TL) = TL**T.
+.fi
+.PP
+.br
+\fILTRANR\fP 
+.PP
+.nf
+          LTRANR is LOGICAL
+          On entry, LTRANR specifies the op(TR):
+            = .FALSE., op(TR) = TR,
+            = .TRUE., op(TR) = TR**T.
+.fi
+.PP
+.br
+\fIISGN\fP 
+.PP
+.nf
+          ISGN is INTEGER
+          On entry, ISGN specifies the sign of the equation
+          as described before. ISGN may only be 1 or -1.
+.fi
+.PP
+.br
+\fIN1\fP 
+.PP
+.nf
+          N1 is INTEGER
+          On entry, N1 specifies the order of matrix TL.
+          N1 may only be 0, 1 or 2.
+.fi
+.PP
+.br
+\fIN2\fP 
+.PP
+.nf
+          N2 is INTEGER
+          On entry, N2 specifies the order of matrix TR.
+          N2 may only be 0, 1 or 2.
+.fi
+.PP
+.br
+\fITL\fP 
+.PP
+.nf
+          TL is DOUBLE PRECISION array, dimension (LDTL,2)
+          On entry, TL contains an N1 by N1 matrix.
+.fi
+.PP
+.br
+\fILDTL\fP 
+.PP
+.nf
+          LDTL is INTEGER
+          The leading dimension of the matrix TL. LDTL >= max(1,N1).
+.fi
+.PP
+.br
+\fITR\fP 
+.PP
+.nf
+          TR is DOUBLE PRECISION array, dimension (LDTR,2)
+          On entry, TR contains an N2 by N2 matrix.
+.fi
+.PP
+.br
+\fILDTR\fP 
+.PP
+.nf
+          LDTR is INTEGER
+          The leading dimension of the matrix TR. LDTR >= max(1,N2).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB,2)
+          On entry, the N1 by N2 matrix B contains the right-hand
+          side of the equation.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the matrix B. LDB >= max(1,N1).
+.fi
+.PP
+.br
+\fISCALE\fP 
+.PP
+.nf
+          SCALE is DOUBLE PRECISION
+          On exit, SCALE contains the scale factor. SCALE is chosen
+          less than or equal to 1 to prevent the solution overflowing.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is DOUBLE PRECISION array, dimension (LDX,2)
+          On exit, X contains the N1 by N2 solution.
+.fi
+.PP
+.br
+\fILDX\fP 
+.PP
+.nf
+          LDX is INTEGER
+          The leading dimension of the matrix X. LDX >= max(1,N1).
+.fi
+.PP
+.br
+\fIXNORM\fP 
+.PP
+.nf
+          XNORM is DOUBLE PRECISION
+          On exit, XNORM is the infinity-norm of the solution.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          On exit, INFO is set to
+             0: successful exit.
+             1: TL and TR have too close eigenvalues, so TL or
+                TR is perturbed to get a nonsingular equation.
+          NOTE: In the interests of speed, this routine does not
+                check the inputs for errors.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+
+.PP
+Definition at line 176 of file dlasy2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

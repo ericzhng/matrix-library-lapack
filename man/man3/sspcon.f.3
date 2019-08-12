@@ -1,0 +1,144 @@
+.TH "sspcon.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sspcon.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsspcon\fP (UPLO, \fBN\fP, AP, IPIV, ANORM, RCOND, WORK, IWORK, INFO)"
+.br
+.RI "\fBSSPCON\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sspcon (character UPLO, integer N, real, dimension( * ) AP, integer, dimension( * ) IPIV, real ANORM, real RCOND, real, dimension( * ) WORK, integer, dimension( * ) IWORK, integer INFO)"
+
+.PP
+\fBSSPCON\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SSPCON estimates the reciprocal of the condition number (in the
+ 1-norm) of a real symmetric packed matrix A using the factorization
+ A = U*D*U**T or A = L*D*L**T computed by SSPTRF.
+
+ An estimate is obtained for norm(inv(A)), and the reciprocal of the
+ condition number is computed as RCOND = 1 / (ANORM * norm(inv(A))).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the details of the factorization are stored
+          as an upper or lower triangular matrix.
+          = 'U':  Upper triangular, form is A = U*D*U**T;
+          = 'L':  Lower triangular, form is A = L*D*L**T.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIAP\fP 
+.PP
+.nf
+          AP is REAL array, dimension (N*(N+1)/2)
+          The block diagonal matrix D and the multipliers used to
+          obtain the factor U or L as computed by SSPTRF, stored as a
+          packed triangular matrix.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          Details of the interchanges and the block structure of D
+          as determined by SSPTRF.
+.fi
+.PP
+.br
+\fIANORM\fP 
+.PP
+.nf
+          ANORM is REAL
+          The 1-norm of the original matrix A.
+.fi
+.PP
+.br
+\fIRCOND\fP 
+.PP
+.nf
+          RCOND is REAL
+          The reciprocal of the condition number of the matrix A,
+          computed as RCOND = 1/(ANORM * AINVNM), where AINVNM is an
+          estimate of the 1-norm of inv(A) computed in this routine.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (2*N)
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 127 of file sspcon\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

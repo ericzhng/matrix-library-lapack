@@ -1,0 +1,96 @@
+.TH "izamax.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+izamax.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "integer function \fBizamax\fP (\fBN\fP, ZX, INCX)"
+.br
+.RI "\fBIZAMAX\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "integer function izamax (integer N, complex*16, dimension(*) ZX, integer INCX)"
+
+.PP
+\fBIZAMAX\fP 
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    IZAMAX finds the index of the first element having maximum |Re(.)| + |Im(.)|
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         number of elements in input vector(s)
+.fi
+.PP
+.br
+\fIZX\fP 
+.PP
+.nf
+          ZX is COMPLEX*16 array, dimension ( 1 + ( N - 1 )*abs( INCX ) )
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+         storage spacing between elements of SX
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+     jack dongarra, 1/15/85.
+     modified 3/93 to return if incx .le. 0.
+     modified 12/3/93, array(1) declarations changed to array(*)
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 73 of file izamax\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,183 @@
+.TH "dlaed9.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlaed9.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlaed9\fP (K, KSTART, KSTOP, \fBN\fP, D, Q, LDQ, RHO, DLAMDA, W, S, LDS, INFO)"
+.br
+.RI "\fBDLAED9\fP used by sstedc\&. Finds the roots of the secular equation and updates the eigenvectors\&. Used when the original matrix is dense\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlaed9 (integer K, integer KSTART, integer KSTOP, integer N, double precision, dimension( * ) D, double precision, dimension( ldq, * ) Q, integer LDQ, double precision RHO, double precision, dimension( * ) DLAMDA, double precision, dimension( * ) W, double precision, dimension( lds, * ) S, integer LDS, integer INFO)"
+
+.PP
+\fBDLAED9\fP used by sstedc\&. Finds the roots of the secular equation and updates the eigenvectors\&. Used when the original matrix is dense\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLAED9 finds the roots of the secular equation, as defined by the
+ values in D, Z, and RHO, between KSTART and KSTOP.  It makes the
+ appropriate calls to DLAED4 and then stores the new matrix of
+ eigenvectors for use in calculating the next level of Z vectors.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The number of terms in the rational function to be solved by
+          DLAED4.  K >= 0.
+.fi
+.PP
+.br
+\fIKSTART\fP 
+.PP
+.nf
+          KSTART is INTEGER
+.fi
+.PP
+.br
+\fIKSTOP\fP 
+.PP
+.nf
+          KSTOP is INTEGER
+          The updated eigenvalues Lambda(I), KSTART <= I <= KSTOP
+          are to be computed.  1 <= KSTART <= KSTOP <= K.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of rows and columns in the Q matrix.
+          N >= K (delation may result in N > K).
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          D(I) contains the updated eigenvalues
+          for KSTART <= I <= KSTOP.
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is DOUBLE PRECISION array, dimension (LDQ,N)
+.fi
+.PP
+.br
+\fILDQ\fP 
+.PP
+.nf
+          LDQ is INTEGER
+          The leading dimension of the array Q.  LDQ >= max( 1, N ).
+.fi
+.PP
+.br
+\fIRHO\fP 
+.PP
+.nf
+          RHO is DOUBLE PRECISION
+          The value of the parameter in the rank one update equation.
+          RHO >= 0 required.
+.fi
+.PP
+.br
+\fIDLAMDA\fP 
+.PP
+.nf
+          DLAMDA is DOUBLE PRECISION array, dimension (K)
+          The first K elements of this array contain the old roots
+          of the deflated updating problem.  These are the poles
+          of the secular equation.
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is DOUBLE PRECISION array, dimension (K)
+          The first K elements of this array contain the components
+          of the deflation-adjusted updating vector.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is DOUBLE PRECISION array, dimension (LDS, K)
+          Will contain the eigenvectors of the repaired matrix which
+          will be stored for subsequent Z vector calculation and
+          multiplied by the previously accumulated eigenvectors
+          to update the system.
+.fi
+.PP
+.br
+\fILDS\fP 
+.PP
+.nf
+          LDS is INTEGER
+          The leading dimension of S.  LDS >= max( 1, K ).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+          > 0:  if INFO = 1, an eigenvalue did not converge
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Jeff Rutter, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 158 of file dlaed9\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

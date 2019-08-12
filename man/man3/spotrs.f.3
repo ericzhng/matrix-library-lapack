@@ -1,0 +1,131 @@
+.TH "spotrs.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+spotrs.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBspotrs\fP (UPLO, \fBN\fP, \fBNRHS\fP, A, \fBLDA\fP, B, \fBLDB\fP, INFO)"
+.br
+.RI "\fBSPOTRS\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine spotrs (character UPLO, integer N, integer NRHS, real, dimension( lda, * ) A, integer LDA, real, dimension( ldb, * ) B, integer LDB, integer INFO)"
+
+.PP
+\fBSPOTRS\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SPOTRS solves a system of linear equations A*X = B with a symmetric
+ positive definite matrix A using the Cholesky factorization
+ A = U**T*U or A = L*L**T computed by SPOTRF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangle of A is stored;
+          = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrix B.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA,N)
+          The triangular factor U or L from the Cholesky factorization
+          A = U**T*U or A = L*L**T, as computed by SPOTRF.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is REAL array, dimension (LDB,NRHS)
+          On entry, the right hand side matrix B.
+          On exit, the solution matrix X.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file spotrs\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

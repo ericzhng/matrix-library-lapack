@@ -1,0 +1,195 @@
+.TH "slaeda.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaeda.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslaeda\fP (\fBN\fP, TLVLS, CURLVL, CURPBM, PRMPTR, PERM, GIVPTR, GIVCOL, GIVNUM, Q, QPTR, Z, ZTEMP, INFO)"
+.br
+.RI "\fBSLAEDA\fP used by sstedc\&. Computes the Z vector determining the rank-one modification of the diagonal matrix\&. Used when the original matrix is dense\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slaeda (integer N, integer TLVLS, integer CURLVL, integer CURPBM, integer, dimension( * ) PRMPTR, integer, dimension( * ) PERM, integer, dimension( * ) GIVPTR, integer, dimension( 2, * ) GIVCOL, real, dimension( 2, * ) GIVNUM, real, dimension( * ) Q, integer, dimension( * ) QPTR, real, dimension( * ) Z, real, dimension( * ) ZTEMP, integer INFO)"
+
+.PP
+\fBSLAEDA\fP used by sstedc\&. Computes the Z vector determining the rank-one modification of the diagonal matrix\&. Used when the original matrix is dense\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLAEDA computes the Z vector corresponding to the merge step in the
+ CURLVLth step of the merge process with TLVLS steps for the CURPBMth
+ problem.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         The dimension of the symmetric tridiagonal matrix.  N >= 0.
+.fi
+.PP
+.br
+\fITLVLS\fP 
+.PP
+.nf
+          TLVLS is INTEGER
+         The total number of merging levels in the overall divide and
+         conquer tree.
+.fi
+.PP
+.br
+\fICURLVL\fP 
+.PP
+.nf
+          CURLVL is INTEGER
+         The current level in the overall merge routine,
+         0 <= curlvl <= tlvls.
+.fi
+.PP
+.br
+\fICURPBM\fP 
+.PP
+.nf
+          CURPBM is INTEGER
+         The current problem in the current level in the overall
+         merge routine (counting from upper left to lower right).
+.fi
+.PP
+.br
+\fIPRMPTR\fP 
+.PP
+.nf
+          PRMPTR is INTEGER array, dimension (N lg N)
+         Contains a list of pointers which indicate where in PERM a
+         level's permutation is stored.  PRMPTR(i+1) - PRMPTR(i)
+         indicates the size of the permutation and incidentally the
+         size of the full, non-deflated problem.
+.fi
+.PP
+.br
+\fIPERM\fP 
+.PP
+.nf
+          PERM is INTEGER array, dimension (N lg N)
+         Contains the permutations (from deflation and sorting) to be
+         applied to each eigenblock.
+.fi
+.PP
+.br
+\fIGIVPTR\fP 
+.PP
+.nf
+          GIVPTR is INTEGER array, dimension (N lg N)
+         Contains a list of pointers which indicate where in GIVCOL a
+         level's Givens rotations are stored.  GIVPTR(i+1) - GIVPTR(i)
+         indicates the number of Givens rotations.
+.fi
+.PP
+.br
+\fIGIVCOL\fP 
+.PP
+.nf
+          GIVCOL is INTEGER array, dimension (2, N lg N)
+         Each pair of numbers indicates a pair of columns to take place
+         in a Givens rotation.
+.fi
+.PP
+.br
+\fIGIVNUM\fP 
+.PP
+.nf
+          GIVNUM is REAL array, dimension (2, N lg N)
+         Each number indicates the S value to be used in the
+         corresponding Givens rotation.
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is REAL array, dimension (N**2)
+         Contains the square eigenblocks from previous levels, the
+         starting positions for blocks are given by QPTR.
+.fi
+.PP
+.br
+\fIQPTR\fP 
+.PP
+.nf
+          QPTR is INTEGER array, dimension (N+2)
+         Contains a list of pointers which indicate where in Q an
+         eigenblock is stored.  SQRT( QPTR(i+1) - QPTR(i) ) indicates
+         the size of the block.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array, dimension (N)
+         On output this vector contains the updating vector (the last
+         row of the first sub-eigenvector matrix and the first row of
+         the second sub-eigenvector matrix).
+.fi
+.PP
+.br
+\fIZTEMP\fP 
+.PP
+.nf
+          ZTEMP is REAL array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Jeff Rutter, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 168 of file slaeda\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

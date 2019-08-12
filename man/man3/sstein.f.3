@@ -1,0 +1,206 @@
+.TH "sstein.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sstein.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsstein\fP (\fBN\fP, D, E, M, W, IBLOCK, ISPLIT, Z, LDZ, WORK, IWORK, IFAIL, INFO)"
+.br
+.RI "\fBSSTEIN\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sstein (integer N, real, dimension( * ) D, real, dimension( * ) E, integer M, real, dimension( * ) W, integer, dimension( * ) IBLOCK, integer, dimension( * ) ISPLIT, real, dimension( ldz, * ) Z, integer LDZ, real, dimension( * ) WORK, integer, dimension( * ) IWORK, integer, dimension( * ) IFAIL, integer INFO)"
+
+.PP
+\fBSSTEIN\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SSTEIN computes the eigenvectors of a real symmetric tridiagonal
+ matrix T corresponding to specified eigenvalues, using inverse
+ iteration.
+
+ The maximum number of iterations allowed for each eigenvector is
+ specified by an internal parameter MAXITS (currently set to 5).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix.  N >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+          The n diagonal elements of the tridiagonal matrix T.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is REAL array, dimension (N-1)
+          The (n-1) subdiagonal elements of the tridiagonal matrix
+          T, in elements 1 to N-1.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of eigenvectors to be found.  0 <= M <= N.
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is REAL array, dimension (N)
+          The first M elements of W contain the eigenvalues for
+          which eigenvectors are to be computed.  The eigenvalues
+          should be grouped by split-off block and ordered from
+          smallest to largest within the block.  ( The output array
+          W from SSTEBZ with ORDER = 'B' is expected here. )
+.fi
+.PP
+.br
+\fIIBLOCK\fP 
+.PP
+.nf
+          IBLOCK is INTEGER array, dimension (N)
+          The submatrix indices associated with the corresponding
+          eigenvalues in W; IBLOCK(i)=1 if eigenvalue W(i) belongs to
+          the first submatrix from the top, =2 if W(i) belongs to
+          the second submatrix, etc.  ( The output array IBLOCK
+          from SSTEBZ is expected here. )
+.fi
+.PP
+.br
+\fIISPLIT\fP 
+.PP
+.nf
+          ISPLIT is INTEGER array, dimension (N)
+          The splitting points, at which T breaks up into submatrices.
+          The first submatrix consists of rows/columns 1 to
+          ISPLIT( 1 ), the second of rows/columns ISPLIT( 1 )+1
+          through ISPLIT( 2 ), etc.
+          ( The output array ISPLIT from SSTEBZ is expected here. )
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array, dimension (LDZ, M)
+          The computed eigenvectors.  The eigenvector associated
+          with the eigenvalue W(i) is stored in the i-th column of
+          Z.  Any vector which fails to converge is set to its current
+          iterate after MAXITS iterations.
+.fi
+.PP
+.br
+\fILDZ\fP 
+.PP
+.nf
+          LDZ is INTEGER
+          The leading dimension of the array Z.  LDZ >= max(1,N).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (5*N)
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (N)
+.fi
+.PP
+.br
+\fIIFAIL\fP 
+.PP
+.nf
+          IFAIL is INTEGER array, dimension (M)
+          On normal exit, all elements of IFAIL are zero.
+          If one or more eigenvectors fail to converge after
+          MAXITS iterations, then their indices are stored in
+          array IFAIL.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit.
+          < 0: if INFO = -i, the i-th argument had an illegal value
+          > 0: if INFO = i, then i eigenvectors failed to converge
+               in MAXITS iterations.  Their indices are stored in
+               array IFAIL.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBInternal Parameters: \fP
+.RS 4
+
+.PP
+.nf
+  MAXITS  INTEGER, default = 5
+          The maximum number of iterations performed.
+
+  EXTRA   INTEGER, default = 2
+          The number of iterations performed after norm growth
+          criterion is satisfied, should be at least 1.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 176 of file sstein\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

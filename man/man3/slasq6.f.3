@@ -1,0 +1,142 @@
+.TH "slasq6.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slasq6.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslasq6\fP (I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN, DNM1, DNM2)"
+.br
+.RI "\fBSLASQ6\fP computes one dqd transform in ping-pong form\&. Used by sbdsqr and sstegr\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slasq6 (integer I0, integer N0, real, dimension( * ) Z, integer PP, real DMIN, real DMIN1, real DMIN2, real DN, real DNM1, real DNM2)"
+
+.PP
+\fBSLASQ6\fP computes one dqd transform in ping-pong form\&. Used by sbdsqr and sstegr\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLASQ6 computes one dqd (shift equal to zero) transform in
+ ping-pong form, with protection against underflow and overflow.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fII0\fP 
+.PP
+.nf
+          I0 is INTEGER
+        First index.
+.fi
+.PP
+.br
+\fIN0\fP 
+.PP
+.nf
+          N0 is INTEGER
+        Last index.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array, dimension ( 4*N )
+        Z holds the qd array. EMIN is stored in Z(4*N0) to avoid
+        an extra argument.
+.fi
+.PP
+.br
+\fIPP\fP 
+.PP
+.nf
+          PP is INTEGER
+        PP=0 for ping, PP=1 for pong.
+.fi
+.PP
+.br
+\fIDMIN\fP 
+.PP
+.nf
+          DMIN is REAL
+        Minimum value of d.
+.fi
+.PP
+.br
+\fIDMIN1\fP 
+.PP
+.nf
+          DMIN1 is REAL
+        Minimum value of d, excluding D( N0 ).
+.fi
+.PP
+.br
+\fIDMIN2\fP 
+.PP
+.nf
+          DMIN2 is REAL
+        Minimum value of d, excluding D( N0 ) and D( N0-1 ).
+.fi
+.PP
+.br
+\fIDN\fP 
+.PP
+.nf
+          DN is REAL
+        d(N0), the last value of d.
+.fi
+.PP
+.br
+\fIDNM1\fP 
+.PP
+.nf
+          DNM1 is REAL
+        d(N0-1).
+.fi
+.PP
+.br
+\fIDNM2\fP 
+.PP
+.nf
+          DNM2 is REAL
+        d(N0-2).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 121 of file slasq6\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,185 @@
+.TH "dlasq4.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlasq4.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlasq4\fP (I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMIN2, DN, DN1, DN2, TAU, TTYPE, G)"
+.br
+.RI "\fBDLASQ4\fP computes an approximation to the smallest eigenvalue using values of d from the previous transform\&. Used by sbdsqr\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlasq4 (integer I0, integer N0, double precision, dimension( * ) Z, integer PP, integer N0IN, double precision DMIN, double precision DMIN1, double precision DMIN2, double precision DN, double precision DN1, double precision DN2, double precision TAU, integer TTYPE, double precision G)"
+
+.PP
+\fBDLASQ4\fP computes an approximation to the smallest eigenvalue using values of d from the previous transform\&. Used by sbdsqr\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLASQ4 computes an approximation TAU to the smallest eigenvalue
+ using values of d from the previous transform.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fII0\fP 
+.PP
+.nf
+          I0 is INTEGER
+        First index.
+.fi
+.PP
+.br
+\fIN0\fP 
+.PP
+.nf
+          N0 is INTEGER
+        Last index.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension ( 4*N0 )
+        Z holds the qd array.
+.fi
+.PP
+.br
+\fIPP\fP 
+.PP
+.nf
+          PP is INTEGER
+        PP=0 for ping, PP=1 for pong.
+.fi
+.PP
+.br
+\fIN0IN\fP 
+.PP
+.nf
+          N0IN is INTEGER
+        The value of N0 at start of EIGTEST.
+.fi
+.PP
+.br
+\fIDMIN\fP 
+.PP
+.nf
+          DMIN is DOUBLE PRECISION
+        Minimum value of d.
+.fi
+.PP
+.br
+\fIDMIN1\fP 
+.PP
+.nf
+          DMIN1 is DOUBLE PRECISION
+        Minimum value of d, excluding D( N0 ).
+.fi
+.PP
+.br
+\fIDMIN2\fP 
+.PP
+.nf
+          DMIN2 is DOUBLE PRECISION
+        Minimum value of d, excluding D( N0 ) and D( N0-1 ).
+.fi
+.PP
+.br
+\fIDN\fP 
+.PP
+.nf
+          DN is DOUBLE PRECISION
+        d(N)
+.fi
+.PP
+.br
+\fIDN1\fP 
+.PP
+.nf
+          DN1 is DOUBLE PRECISION
+        d(N-1)
+.fi
+.PP
+.br
+\fIDN2\fP 
+.PP
+.nf
+          DN2 is DOUBLE PRECISION
+        d(N-2)
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is DOUBLE PRECISION
+        This is the shift.
+.fi
+.PP
+.br
+\fITTYPE\fP 
+.PP
+.nf
+          TTYPE is INTEGER
+        Shift type.
+.fi
+.PP
+.br
+\fIG\fP 
+.PP
+.nf
+          G is DOUBLE PRECISION
+        G is passed as an argument in order to save its value between
+        calls to DLASQ4.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  CNST1 = 9/16
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 153 of file dlasq4\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

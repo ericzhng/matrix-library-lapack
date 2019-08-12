@@ -1,0 +1,197 @@
+.TH "dptrfs.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dptrfs.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdptrfs\fP (\fBN\fP, \fBNRHS\fP, D, E, DF, EF, B, \fBLDB\fP, X, LDX, FERR, BERR, WORK, INFO)"
+.br
+.RI "\fBDPTRFS\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dptrfs (integer N, integer NRHS, double precision, dimension( * ) D, double precision, dimension( * ) E, double precision, dimension( * ) DF, double precision, dimension( * ) EF, double precision, dimension( ldb, * ) B, integer LDB, double precision, dimension( ldx, * ) X, integer LDX, double precision, dimension( * ) FERR, double precision, dimension( * ) BERR, double precision, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBDPTRFS\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DPTRFS improves the computed solution to a system of linear
+ equations when the coefficient matrix is symmetric positive definite
+ and tridiagonal, and provides error bounds and backward error
+ estimates for the solution.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrix B.  NRHS >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          The n diagonal elements of the tridiagonal matrix A.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (N-1)
+          The (n-1) subdiagonal elements of the tridiagonal matrix A.
+.fi
+.PP
+.br
+\fIDF\fP 
+.PP
+.nf
+          DF is DOUBLE PRECISION array, dimension (N)
+          The n diagonal elements of the diagonal matrix D from the
+          factorization computed by DPTTRF.
+.fi
+.PP
+.br
+\fIEF\fP 
+.PP
+.nf
+          EF is DOUBLE PRECISION array, dimension (N-1)
+          The (n-1) subdiagonal elements of the unit bidiagonal factor
+          L from the factorization computed by DPTTRF.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB,NRHS)
+          The right hand side matrix B.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is DOUBLE PRECISION array, dimension (LDX,NRHS)
+          On entry, the solution matrix X, as computed by DPTTRS.
+          On exit, the improved solution matrix X.
+.fi
+.PP
+.br
+\fILDX\fP 
+.PP
+.nf
+          LDX is INTEGER
+          The leading dimension of the array X.  LDX >= max(1,N).
+.fi
+.PP
+.br
+\fIFERR\fP 
+.PP
+.nf
+          FERR is DOUBLE PRECISION array, dimension (NRHS)
+          The forward error bound for each solution vector
+          X(j) (the j-th column of the solution matrix X).
+          If XTRUE is the true solution corresponding to X(j), FERR(j)
+          is an estimated upper bound for the magnitude of the largest
+          element in (X(j) - XTRUE) divided by the magnitude of the
+          largest element in X(j).
+.fi
+.PP
+.br
+\fIBERR\fP 
+.PP
+.nf
+          BERR is DOUBLE PRECISION array, dimension (NRHS)
+          The componentwise relative backward error of each solution
+          vector X(j) (i.e., the smallest relative change in
+          any element of A or B that makes X(j) an exact solution).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (2*N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBInternal Parameters: \fP
+.RS 4
+
+.PP
+.nf
+  ITMAX is the maximum number of steps of iterative refinement.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 165 of file dptrfs\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

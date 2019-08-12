@@ -1,0 +1,128 @@
+.TH "dlaset.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlaset.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlaset\fP (UPLO, M, \fBN\fP, ALPHA, BETA, A, \fBLDA\fP)"
+.br
+.RI "\fBDLASET\fP initializes the off-diagonal elements and the diagonal elements of a matrix to given values\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlaset (character UPLO, integer M, integer N, double precision ALPHA, double precision BETA, double precision, dimension( lda, * ) A, integer LDA)"
+
+.PP
+\fBDLASET\fP initializes the off-diagonal elements and the diagonal elements of a matrix to given values\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLASET initializes an m-by-n matrix A to BETA on the diagonal and
+ ALPHA on the offdiagonals.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies the part of the matrix A to be set.
+          = 'U':      Upper triangular part is set; the strictly lower
+                      triangular part of A is not changed.
+          = 'L':      Lower triangular part is set; the strictly upper
+                      triangular part of A is not changed.
+          Otherwise:  All of the matrix A is set.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is DOUBLE PRECISION
+          The constant to which the offdiagonal elements are to be set.
+.fi
+.PP
+.br
+\fIBETA\fP 
+.PP
+.nf
+          BETA is DOUBLE PRECISION
+          The constant to which the diagonal elements are to be set.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On exit, the leading m-by-n submatrix of A is set as follows:
+
+          if UPLO = 'U', A(i,j) = ALPHA, 1<=i<=j-1, 1<=j<=n,
+          if UPLO = 'L', A(i,j) = ALPHA, j+1<=i<=m, 1<=j<=n,
+          otherwise,     A(i,j) = ALPHA, 1<=i<=m, 1<=j<=n, i.ne.j,
+
+          and, for all UPLO, A(i,i) = BETA, 1<=i<=min(m,n).
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file dlaset\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

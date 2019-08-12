@@ -1,0 +1,234 @@
+.TH "cunbdb2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cunbdb2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcunbdb2\fP (M, P, Q, X11, LDX11, X21, LDX21, THETA, PHI, TAUP1, TAUP2, TAUQ1, WORK, LWORK, INFO)"
+.br
+.RI "\fBCUNBDB2\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cunbdb2 (integer M, integer P, integer Q, complex, dimension(ldx11,*) X11, integer LDX11, complex, dimension(ldx21,*) X21, integer LDX21, real, dimension(*) THETA, real, dimension(*) PHI, complex, dimension(*) TAUP1, complex, dimension(*) TAUP2, complex, dimension(*) TAUQ1, complex, dimension(*) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBCUNBDB2\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CUNBDB2 simultaneously bidiagonalizes the blocks of a tall and skinny
+ matrix X with orthonomal columns:
+
+                            [ B11 ]
+      [ X11 ]   [ P1 |    ] [  0  ]
+      [-----] = [---------] [-----] Q1**T .
+      [ X21 ]   [    | P2 ] [ B21 ]
+                            [  0  ]
+
+ X11 is P-by-Q, and X21 is (M-P)-by-Q. P must be no larger than M-P,
+ Q, or M-Q. Routines CUNBDB1, CUNBDB3, and CUNBDB4 handle cases in
+ which P is not the minimum dimension.
+
+ The unitary matrices P1, P2, and Q1 are P-by-P, (M-P)-by-(M-P),
+ and (M-Q)-by-(M-Q), respectively. They are represented implicitly by
+ Householder vectors.
+
+ B11 and B12 are P-by-P bidiagonal matrices represented implicitly by
+ angles THETA, PHI.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+           The number of rows X11 plus the number of rows in X21.
+.fi
+.PP
+.br
+\fIP\fP 
+.PP
+.nf
+          P is INTEGER
+           The number of rows in X11. 0 <= P <= min(M-P,Q,M-Q).
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is INTEGER
+           The number of columns in X11 and X21. 0 <= Q <= M.
+.fi
+.PP
+.br
+\fIX11\fP 
+.PP
+.nf
+          X11 is COMPLEX array, dimension (LDX11,Q)
+           On entry, the top block of the matrix X to be reduced. On
+           exit, the columns of tril(X11) specify reflectors for P1 and
+           the rows of triu(X11,1) specify reflectors for Q1.
+.fi
+.PP
+.br
+\fILDX11\fP 
+.PP
+.nf
+          LDX11 is INTEGER
+           The leading dimension of X11. LDX11 >= P.
+.fi
+.PP
+.br
+\fIX21\fP 
+.PP
+.nf
+          X21 is COMPLEX array, dimension (LDX21,Q)
+           On entry, the bottom block of the matrix X to be reduced. On
+           exit, the columns of tril(X21) specify reflectors for P2.
+.fi
+.PP
+.br
+\fILDX21\fP 
+.PP
+.nf
+          LDX21 is INTEGER
+           The leading dimension of X21. LDX21 >= M-P.
+.fi
+.PP
+.br
+\fITHETA\fP 
+.PP
+.nf
+          THETA is REAL array, dimension (Q)
+           The entries of the bidiagonal blocks B11, B21 are defined by
+           THETA and PHI. See Further Details.
+.fi
+.PP
+.br
+\fIPHI\fP 
+.PP
+.nf
+          PHI is REAL array, dimension (Q-1)
+           The entries of the bidiagonal blocks B11, B21 are defined by
+           THETA and PHI. See Further Details.
+.fi
+.PP
+.br
+\fITAUP1\fP 
+.PP
+.nf
+          TAUP1 is COMPLEX array, dimension (P)
+           The scalar factors of the elementary reflectors that define
+           P1.
+.fi
+.PP
+.br
+\fITAUP2\fP 
+.PP
+.nf
+          TAUP2 is COMPLEX array, dimension (M-P)
+           The scalar factors of the elementary reflectors that define
+           P2.
+.fi
+.PP
+.br
+\fITAUQ1\fP 
+.PP
+.nf
+          TAUQ1 is COMPLEX array, dimension (Q)
+           The scalar factors of the elementary reflectors that define
+           Q1.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (LWORK)
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+           The dimension of the array WORK. LWORK >= M-Q.
+
+           If LWORK = -1, then a workspace query is assumed; the routine
+           only calculates the optimal size of the WORK array, returns
+           this value as the first entry of the WORK array, and no error
+           message related to LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+           = 0:  successful exit.
+           < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+July 2012 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The upper-bidiagonal blocks B11, B21 are represented implicitly by
+  angles THETA(1), ..., THETA(Q) and PHI(1), ..., PHI(Q-1). Every entry
+  in each bidiagonal band is a product of a sine or cosine of a THETA
+  with a sine or cosine of a PHI. See [1] or CUNCSD for details.
+
+  P1, P2, and Q1 are represented as products of elementary reflectors.
+  See CUNCSD2BY1 for details on generating P1, P2, and Q1 using CUNGQR
+  and CUNGLQ.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBReferences: \fP
+.RS 4
+[1] Brian D\&. Sutton\&. Computing the complete CS decomposition\&. Numer\&. Algorithms, 50(1):33-65, 2009\&. 
+.RE
+.PP
+
+.PP
+Definition at line 204 of file cunbdb2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,138 @@
+.TH "slaneg.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaneg.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "integer function \fBslaneg\fP (\fBN\fP, D, LLD, SIGMA, PIVMIN, R)"
+.br
+.RI "\fBSLANEG\fP computes the Sturm count\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "integer function slaneg (integer N, real, dimension( * ) D, real, dimension( * ) LLD, real SIGMA, real PIVMIN, integer R)"
+
+.PP
+\fBSLANEG\fP computes the Sturm count\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLANEG computes the Sturm count, the number of negative pivots
+ encountered while factoring tridiagonal T - sigma I = L D L^T.
+ This implementation works directly on the factors without forming
+ the tridiagonal matrix T.  The Sturm count is also the number of
+ eigenvalues of T less than sigma.
+
+ This routine is called from SLARRB.
+
+ The current routine does not use the PIVMIN parameter but rather
+ requires IEEE-754 propagation of Infinities and NaNs.  This
+ routine also has no input range restrictions but does require
+ default exception handling such that x/0 produces Inf when x is
+ non-zero, and Inf/Inf produces NaN.  For more information, see:
+
+   Marques, Riedy, and Voemel, "Benefits of IEEE-754 Features in
+   Modern Symmetric Tridiagonal Eigensolvers," SIAM Journal on
+   Scientific Computing, v28, n5, 2006.  DOI 10.1137/050641624
+   (Tech report version in LAWN 172 with the same title.)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+          The N diagonal elements of the diagonal matrix D.
+.fi
+.PP
+.br
+\fILLD\fP 
+.PP
+.nf
+          LLD is REAL array, dimension (N-1)
+          The (N-1) elements L(i)*L(i)*D(i).
+.fi
+.PP
+.br
+\fISIGMA\fP 
+.PP
+.nf
+          SIGMA is REAL
+          Shift amount in T - sigma I = L D L^T.
+.fi
+.PP
+.br
+\fIPIVMIN\fP 
+.PP
+.nf
+          PIVMIN is REAL
+          The minimum pivot in the Sturm sequence.  May be used
+          when zero pivots are encountered on non-IEEE-754
+          architectures.
+.fi
+.PP
+.br
+\fIR\fP 
+.PP
+.nf
+          R is INTEGER
+          The twist index for the twisted factorization that is used
+          for the negcount.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Osni Marques, LBNL/NERSC, USA 
+.br
+ Christof Voemel, University of California, Berkeley, USA 
+.br
+ Jason Riedy, University of California, Berkeley, USA 
+.br
+.RE
+.PP
+
+.PP
+Definition at line 120 of file slaneg\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,133 @@
+.TH "slansp.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slansp.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "real function \fBslansp\fP (NORM, UPLO, \fBN\fP, AP, WORK)"
+.br
+.RI "\fBSLANSP\fP returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a symmetric matrix supplied in packed form\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "real function slansp (character NORM, character UPLO, integer N, real, dimension( * ) AP, real, dimension( * ) WORK)"
+
+.PP
+\fBSLANSP\fP returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a symmetric matrix supplied in packed form\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLANSP  returns the value of the one norm,  or the Frobenius norm, or
+ the  infinity norm,  or the  element of  largest absolute value  of a
+ real symmetric matrix A,  supplied in packed form.
+.fi
+.PP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+SLANSP 
+.PP
+.nf
+    SLANSP = ( max(abs(A(i,j))), NORM = 'M' or 'm'
+             (
+             ( norm1(A),         NORM = '1', 'O' or 'o'
+             (
+             ( normI(A),         NORM = 'I' or 'i'
+             (
+             ( normF(A),         NORM = 'F', 'f', 'E' or 'e'
+
+ where  norm1  denotes the  one norm of a matrix (maximum column sum),
+ normI  denotes the  infinity norm  of a matrix  (maximum row sum) and
+ normF  denotes the  Frobenius norm of a matrix (square root of sum of
+ squares).  Note that  max(abs(A(i,j)))  is not a consistent matrix norm.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fINORM\fP 
+.PP
+.nf
+          NORM is CHARACTER*1
+          Specifies the value to be returned in SLANSP as described
+          above.
+.fi
+.PP
+.br
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the upper or lower triangular part of the
+          symmetric matrix A is supplied.
+          = 'U':  Upper triangular part of A is supplied
+          = 'L':  Lower triangular part of A is supplied
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.  When N = 0, SLANSP is
+          set to zero.
+.fi
+.PP
+.br
+\fIAP\fP 
+.PP
+.nf
+          AP is REAL array, dimension (N*(N+1)/2)
+          The upper or lower triangle of the symmetric matrix A, packed
+          columnwise in a linear array.  The j-th column of A is stored
+          in the array AP as follows:
+          if UPLO = 'U', AP(i + (j-1)*j/2) = A(i,j) for 1<=i<=j;
+          if UPLO = 'L', AP(i + (j-1)*(2n-j)/2) = A(i,j) for j<=i<=n.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (MAX(1,LWORK)),
+          where LWORK >= N when NORM = 'I' or '1' or 'O'; otherwise,
+          WORK is not referenced.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file slansp\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

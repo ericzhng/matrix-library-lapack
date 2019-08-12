@@ -1,0 +1,155 @@
+.TH "dgeqrt3.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dgeqrt3.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "recursive subroutine \fBdgeqrt3\fP (M, \fBN\fP, A, \fBLDA\fP, T, LDT, INFO)"
+.br
+.RI "\fBDGEQRT3\fP recursively computes a QR factorization of a general real or complex matrix using the compact WY representation of Q\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "recursive subroutine dgeqrt3 (integer M, integer N, double precision, dimension( lda, * ) A, integer LDA, double precision, dimension( ldt, * ) T, integer LDT, integer INFO)"
+
+.PP
+\fBDGEQRT3\fP recursively computes a QR factorization of a general real or complex matrix using the compact WY representation of Q\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DGEQRT3 recursively computes a QR factorization of a real M-by-N
+ matrix A, using the compact WY representation of Q.
+
+ Based on the algorithm of Elmroth and Gustavson,
+ IBM J. Res. Develop. Vol 44 No. 4 July 2000.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= N.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, the real M-by-N matrix A.  On exit, the elements on and
+          above the diagonal contain the N-by-N upper triangular matrix R; the
+          elements below the diagonal are the columns of V.  See below for
+          further details.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is DOUBLE PRECISION array, dimension (LDT,N)
+          The N-by-N upper triangular factor of the block reflector.
+          The elements on and above the diagonal contain the block
+          reflector T; the elements below the diagonal are not used.
+          See below for further details.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T.  LDT >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The matrix V stores the elementary reflectors H(i) in the i-th column
+  below the diagonal. For example, if M=5 and N=3, the matrix V is
+
+               V = (  1       )
+                   ( v1  1    )
+                   ( v1 v2  1 )
+                   ( v1 v2 v3 )
+                   ( v1 v2 v3 )
+
+  where the vi's represent the vectors which define H(i), which are returned
+  in the matrix A.  The 1's along the diagonal of V are not stored in A.  The
+  block reflector H is then given by
+
+               H = I - V * T * V**T
+
+  where V**T is the transpose of V.
+
+  For details of the algorithm, see Elmroth and Gustavson (cited above).
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 134 of file dgeqrt3\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

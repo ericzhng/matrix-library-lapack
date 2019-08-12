@@ -1,0 +1,111 @@
+.TH "dswap.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dswap.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdswap\fP (\fBN\fP, DX, INCX, DY, INCY)"
+.br
+.RI "\fBDSWAP\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dswap (integer N, double precision, dimension(*) DX, integer INCX, double precision, dimension(*) DY, integer INCY)"
+
+.PP
+\fBDSWAP\fP 
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    DSWAP interchanges two vectors.
+    uses unrolled loops for increments equal to 1.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         number of elements in input vector(s)
+.fi
+.PP
+.br
+\fIDX\fP 
+.PP
+.nf
+          DX is DOUBLE PRECISION array, dimension ( 1 + ( N - 1 )*abs( INCX ) )
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+         storage spacing between elements of DX
+.fi
+.PP
+.br
+\fIDY\fP 
+.PP
+.nf
+          DY is DOUBLE PRECISION array, dimension ( 1 + ( N - 1 )*abs( INCY ) )
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+         storage spacing between elements of DY
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+     jack dongarra, linpack, 3/11/78.
+     modified 12/3/93, array(1) declarations changed to array(*)
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 84 of file dswap\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

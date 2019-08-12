@@ -1,0 +1,124 @@
+.TH "claset.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+claset.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclaset\fP (UPLO, M, \fBN\fP, ALPHA, BETA, A, \fBLDA\fP)"
+.br
+.RI "\fBCLASET\fP initializes the off-diagonal elements and the diagonal elements of a matrix to given values\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine claset (character UPLO, integer M, integer N, complex ALPHA, complex BETA, complex, dimension( lda, * ) A, integer LDA)"
+
+.PP
+\fBCLASET\fP initializes the off-diagonal elements and the diagonal elements of a matrix to given values\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLASET initializes a 2-D array A to BETA on the diagonal and
+ ALPHA on the offdiagonals.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies the part of the matrix A to be set.
+          = 'U':      Upper triangular part is set. The lower triangle
+                      is unchanged.
+          = 'L':      Lower triangular part is set. The upper triangle
+                      is unchanged.
+          Otherwise:  All of the matrix A is set.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          On entry, M specifies the number of rows of A.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          On entry, N specifies the number of columns of A.
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is COMPLEX
+          All the offdiagonal array elements are set to ALPHA.
+.fi
+.PP
+.br
+\fIBETA\fP 
+.PP
+.nf
+          BETA is COMPLEX
+          All the diagonal array elements are set to BETA.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+          On entry, the m by n matrix A.
+          On exit, A(i,j) = ALPHA, 1 <= i <= m, 1 <= j <= n, i.ne.j;
+                   A(i,i) = BETA , 1 <= i <= min(m,n)
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 108 of file claset\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

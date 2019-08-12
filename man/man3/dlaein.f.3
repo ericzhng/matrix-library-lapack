@@ -1,0 +1,205 @@
+.TH "dlaein.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlaein.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlaein\fP (RIGHTV, NOINIT, \fBN\fP, H, LDH, WR, WI, VR, VI, B, \fBLDB\fP, WORK, EPS3, SMLNUM, BIGNUM, INFO)"
+.br
+.RI "\fBDLAEIN\fP computes a specified right or left eigenvector of an upper Hessenberg matrix by inverse iteration\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlaein (logical RIGHTV, logical NOINIT, integer N, double precision, dimension( ldh, * ) H, integer LDH, double precision WR, double precision WI, double precision, dimension( * ) VR, double precision, dimension( * ) VI, double precision, dimension( ldb, * ) B, integer LDB, double precision, dimension( * ) WORK, double precision EPS3, double precision SMLNUM, double precision BIGNUM, integer INFO)"
+
+.PP
+\fBDLAEIN\fP computes a specified right or left eigenvector of an upper Hessenberg matrix by inverse iteration\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLAEIN uses inverse iteration to find a right or left eigenvector
+ corresponding to the eigenvalue (WR,WI) of a real upper Hessenberg
+ matrix H.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIRIGHTV\fP 
+.PP
+.nf
+          RIGHTV is LOGICAL
+          = .TRUE. : compute right eigenvector;
+          = .FALSE.: compute left eigenvector.
+.fi
+.PP
+.br
+\fINOINIT\fP 
+.PP
+.nf
+          NOINIT is LOGICAL
+          = .TRUE. : no initial vector supplied in (VR,VI).
+          = .FALSE.: initial vector supplied in (VR,VI).
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix H.  N >= 0.
+.fi
+.PP
+.br
+\fIH\fP 
+.PP
+.nf
+          H is DOUBLE PRECISION array, dimension (LDH,N)
+          The upper Hessenberg matrix H.
+.fi
+.PP
+.br
+\fILDH\fP 
+.PP
+.nf
+          LDH is INTEGER
+          The leading dimension of the array H.  LDH >= max(1,N).
+.fi
+.PP
+.br
+\fIWR\fP 
+.PP
+.nf
+          WR is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIWI\fP 
+.PP
+.nf
+          WI is DOUBLE PRECISION
+          The real and imaginary parts of the eigenvalue of H whose
+          corresponding right or left eigenvector is to be computed.
+.fi
+.PP
+.br
+\fIVR\fP 
+.PP
+.nf
+          VR is DOUBLE PRECISION array, dimension (N)
+.fi
+.PP
+.br
+\fIVI\fP 
+.PP
+.nf
+          VI is DOUBLE PRECISION array, dimension (N)
+          On entry, if NOINIT = .FALSE. and WI = 0.0, VR must contain
+          a real starting vector for inverse iteration using the real
+          eigenvalue WR; if NOINIT = .FALSE. and WI.ne.0.0, VR and VI
+          must contain the real and imaginary parts of a complex
+          starting vector for inverse iteration using the complex
+          eigenvalue (WR,WI); otherwise VR and VI need not be set.
+          On exit, if WI = 0.0 (real eigenvalue), VR contains the
+          computed real eigenvector; if WI.ne.0.0 (complex eigenvalue),
+          VR and VI contain the real and imaginary parts of the
+          computed complex eigenvector. The eigenvector is normalized
+          so that the component of largest magnitude has magnitude 1;
+          here the magnitude of a complex number (x,y) is taken to be
+          |x| + |y|.
+          VI is not referenced if WI = 0.0.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB,N)
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= N+1.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (N)
+.fi
+.PP
+.br
+\fIEPS3\fP 
+.PP
+.nf
+          EPS3 is DOUBLE PRECISION
+          A small machine-dependent value which is used to perturb
+          close eigenvalues, and to replace zero pivots.
+.fi
+.PP
+.br
+\fISMLNUM\fP 
+.PP
+.nf
+          SMLNUM is DOUBLE PRECISION
+          A machine-dependent value close to the underflow threshold.
+.fi
+.PP
+.br
+\fIBIGNUM\fP 
+.PP
+.nf
+          BIGNUM is DOUBLE PRECISION
+          A machine-dependent value close to the overflow threshold.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          = 1:  inverse iteration did not converge; VR is set to the
+                last iterate, and so is VI if WI.ne.0.0.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 174 of file dlaein\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

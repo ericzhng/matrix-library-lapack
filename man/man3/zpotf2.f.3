@@ -1,0 +1,124 @@
+.TH "zpotf2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zpotf2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzpotf2\fP (UPLO, \fBN\fP, A, \fBLDA\fP, INFO)"
+.br
+.RI "\fBZPOTF2\fP computes the Cholesky factorization of a symmetric/Hermitian positive definite matrix (unblocked algorithm)\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zpotf2 (character UPLO, integer N, complex*16, dimension( lda, * ) A, integer LDA, integer INFO)"
+
+.PP
+\fBZPOTF2\fP computes the Cholesky factorization of a symmetric/Hermitian positive definite matrix (unblocked algorithm)\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZPOTF2 computes the Cholesky factorization of a complex Hermitian
+ positive definite matrix A.
+
+ The factorization has the form
+    A = U**H * U ,  if UPLO = 'U', or
+    A = L  * L**H,  if UPLO = 'L',
+ where U is an upper triangular matrix and L is lower triangular.
+
+ This is the unblocked version of the algorithm, calling Level 2 BLAS.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the upper or lower triangular part of the
+          Hermitian matrix A is stored.
+          = 'U':  Upper triangular
+          = 'L':  Lower triangular
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, the Hermitian matrix A.  If UPLO = 'U', the leading
+          n by n upper triangular part of A contains the upper
+          triangular part of the matrix A, and the strictly lower
+          triangular part of A is not referenced.  If UPLO = 'L', the
+          leading n by n lower triangular part of A contains the lower
+          triangular part of the matrix A, and the strictly upper
+          triangular part of A is not referenced.
+
+          On exit, if INFO = 0, the factor U or L from the Cholesky
+          factorization A = U**H *U  or A = L*L**H.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -k, the k-th argument had an illegal value
+          > 0: if INFO = k, the leading minor of order k is not
+               positive definite, and the factorization could not be
+               completed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file zpotf2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

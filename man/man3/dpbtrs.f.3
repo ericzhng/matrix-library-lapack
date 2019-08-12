@@ -1,0 +1,144 @@
+.TH "dpbtrs.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dpbtrs.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdpbtrs\fP (UPLO, \fBN\fP, KD, \fBNRHS\fP, AB, LDAB, B, \fBLDB\fP, INFO)"
+.br
+.RI "\fBDPBTRS\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dpbtrs (character UPLO, integer N, integer KD, integer NRHS, double precision, dimension( ldab, * ) AB, integer LDAB, double precision, dimension( ldb, * ) B, integer LDB, integer INFO)"
+
+.PP
+\fBDPBTRS\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DPBTRS solves a system of linear equations A*X = B with a symmetric
+ positive definite band matrix A using the Cholesky factorization
+ A = U**T*U or A = L*L**T computed by DPBTRF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangular factor stored in AB;
+          = 'L':  Lower triangular factor stored in AB.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIKD\fP 
+.PP
+.nf
+          KD is INTEGER
+          The number of superdiagonals of the matrix A if UPLO = 'U',
+          or the number of subdiagonals if UPLO = 'L'.  KD >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrix B.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is DOUBLE PRECISION array, dimension (LDAB,N)
+          The triangular factor U or L from the Cholesky factorization
+          A = U**T*U or A = L*L**T of the band matrix A, stored in the
+          first KD+1 rows of the array.  The j-th column of U or L is
+          stored in the j-th column of the array AB as follows:
+          if UPLO ='U', AB(kd+1+i-j,j) = U(i,j) for max(1,j-kd)<=i<=j;
+          if UPLO ='L', AB(1+i-j,j)    = L(i,j) for j<=i<=min(n,j+kd).
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+          The leading dimension of the array AB.  LDAB >= KD+1.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB,NRHS)
+          On entry, the right hand side matrix B.
+          On exit, the solution matrix X.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file dpbtrs\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,246 @@
+.TH "sgbrfs.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sgbrfs.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsgbrfs\fP (TRANS, \fBN\fP, KL, KU, \fBNRHS\fP, AB, LDAB, AFB, LDAFB, IPIV, B, \fBLDB\fP, X, LDX, FERR, BERR, WORK, IWORK, INFO)"
+.br
+.RI "\fBSGBRFS\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sgbrfs (character TRANS, integer N, integer KL, integer KU, integer NRHS, real, dimension( ldab, * ) AB, integer LDAB, real, dimension( ldafb, * ) AFB, integer LDAFB, integer, dimension( * ) IPIV, real, dimension( ldb, * ) B, integer LDB, real, dimension( ldx, * ) X, integer LDX, real, dimension( * ) FERR, real, dimension( * ) BERR, real, dimension( * ) WORK, integer, dimension( * ) IWORK, integer INFO)"
+
+.PP
+\fBSGBRFS\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SGBRFS improves the computed solution to a system of linear
+ equations when the coefficient matrix is banded, and provides
+ error bounds and backward error estimates for the solution.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+          Specifies the form of the system of equations:
+          = 'N':  A * X = B     (No transpose)
+          = 'T':  A**T * X = B  (Transpose)
+          = 'C':  A**H * X = B  (Conjugate transpose = Transpose)
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIKL\fP 
+.PP
+.nf
+          KL is INTEGER
+          The number of subdiagonals within the band of A.  KL >= 0.
+.fi
+.PP
+.br
+\fIKU\fP 
+.PP
+.nf
+          KU is INTEGER
+          The number of superdiagonals within the band of A.  KU >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrices B and X.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is REAL array, dimension (LDAB,N)
+          The original band matrix A, stored in rows 1 to KL+KU+1.
+          The j-th column of A is stored in the j-th column of the
+          array AB as follows:
+          AB(ku+1+i-j,j) = A(i,j) for max(1,j-ku)<=i<=min(n,j+kl).
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+          The leading dimension of the array AB.  LDAB >= KL+KU+1.
+.fi
+.PP
+.br
+\fIAFB\fP 
+.PP
+.nf
+          AFB is REAL array, dimension (LDAFB,N)
+          Details of the LU factorization of the band matrix A, as
+          computed by SGBTRF.  U is stored as an upper triangular band
+          matrix with KL+KU superdiagonals in rows 1 to KL+KU+1, and
+          the multipliers used during the factorization are stored in
+          rows KL+KU+2 to 2*KL+KU+1.
+.fi
+.PP
+.br
+\fILDAFB\fP 
+.PP
+.nf
+          LDAFB is INTEGER
+          The leading dimension of the array AFB.  LDAFB >= 2*KL*KU+1.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          The pivot indices from SGBTRF; for 1<=i<=N, row i of the
+          matrix was interchanged with row IPIV(i).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is REAL array, dimension (LDB,NRHS)
+          The right hand side matrix B.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is REAL array, dimension (LDX,NRHS)
+          On entry, the solution matrix X, as computed by SGBTRS.
+          On exit, the improved solution matrix X.
+.fi
+.PP
+.br
+\fILDX\fP 
+.PP
+.nf
+          LDX is INTEGER
+          The leading dimension of the array X.  LDX >= max(1,N).
+.fi
+.PP
+.br
+\fIFERR\fP 
+.PP
+.nf
+          FERR is REAL array, dimension (NRHS)
+          The estimated forward error bound for each solution vector
+          X(j) (the j-th column of the solution matrix X).
+          If XTRUE is the true solution corresponding to X(j), FERR(j)
+          is an estimated upper bound for the magnitude of the largest
+          element in (X(j) - XTRUE) divided by the magnitude of the
+          largest element in X(j).  The estimate is as reliable as
+          the estimate for RCOND, and is almost always a slight
+          overestimate of the true error.
+.fi
+.PP
+.br
+\fIBERR\fP 
+.PP
+.nf
+          BERR is REAL array, dimension (NRHS)
+          The componentwise relative backward error of each solution
+          vector X(j) (i.e., the smallest relative change in
+          any element of A or B that makes X(j) an exact solution).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (3*N)
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBInternal Parameters: \fP
+.RS 4
+
+.PP
+.nf
+  ITMAX is the maximum number of steps of iterative refinement.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 207 of file sgbrfs\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

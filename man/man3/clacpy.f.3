@@ -1,0 +1,122 @@
+.TH "clacpy.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+clacpy.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclacpy\fP (UPLO, M, \fBN\fP, A, \fBLDA\fP, B, \fBLDB\fP)"
+.br
+.RI "\fBCLACPY\fP copies all or part of one two-dimensional array to another\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine clacpy (character UPLO, integer M, integer N, complex, dimension( lda, * ) A, integer LDA, complex, dimension( ldb, * ) B, integer LDB)"
+
+.PP
+\fBCLACPY\fP copies all or part of one two-dimensional array to another\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLACPY copies all or part of a two-dimensional matrix A to another
+ matrix B.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies the part of the matrix A to be copied to B.
+          = 'U':      Upper triangular part
+          = 'L':      Lower triangular part
+          Otherwise:  All of the matrix A
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+          The m by n matrix A.  If UPLO = 'U', only the upper trapezium
+          is accessed; if UPLO = 'L', only the lower trapezium is
+          accessed.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX array, dimension (LDB,N)
+          On exit, B = A in the locations specified by UPLO.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,M).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file clacpy\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

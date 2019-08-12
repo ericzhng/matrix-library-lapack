@@ -1,0 +1,126 @@
+.TH "dladiv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dladiv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdladiv\fP (A, B, C, D, P, Q)"
+.br
+.RI "\fBDLADIV\fP performs complex division in real arithmetic, avoiding unnecessary overflow\&. "
+.ti -1c
+.RI "subroutine \fBdladiv1\fP (A, B, C, D, P, Q)"
+.br
+.ti -1c
+.RI "double precision function \fBdladiv2\fP (A, B, C, D, R, T)"
+.br
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dladiv (double precision A, double precision B, double precision C, double precision D, double precision P, double precision Q)"
+
+.PP
+\fBDLADIV\fP performs complex division in real arithmetic, avoiding unnecessary overflow\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLADIV performs complex division in  real arithmetic
+
+                       a + i*b
+            p + i*q = ---------
+                       c + i*d
+
+ The algorithm is due to Michael Baudin and Robert L. Smith
+ and can be found in the paper
+ "A Robust Complex Division in Scilab"
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION
+          The scalars a, b, c, and d in the above expression.
+.fi
+.PP
+.br
+\fIP\fP 
+.PP
+.nf
+          P is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is DOUBLE PRECISION
+          The scalars p and q in the above expression.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+January 2013 
+.RE
+.PP
+
+.PP
+Definition at line 93 of file dladiv\&.f\&.
+.SS "subroutine dladiv1 (double precision A, double precision B, double precision C, double precision D, double precision P, double precision Q)"
+
+.PP
+Definition at line 180 of file dladiv\&.f\&.
+.SS "double precision function dladiv2 (double precision A, double precision B, double precision C, double precision D, double precision R, double precision T)"
+
+.PP
+Definition at line 220 of file dladiv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

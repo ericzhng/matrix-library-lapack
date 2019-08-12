@@ -1,0 +1,148 @@
+.TH "ssygs2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ssygs2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBssygs2\fP (ITYPE, UPLO, \fBN\fP, A, \fBLDA\fP, B, \fBLDB\fP, INFO)"
+.br
+.RI "\fBSSYGS2\fP reduces a symmetric definite generalized eigenproblem to standard form, using the factorization results obtained from spotrf (unblocked algorithm)\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine ssygs2 (integer ITYPE, character UPLO, integer N, real, dimension( lda, * ) A, integer LDA, real, dimension( ldb, * ) B, integer LDB, integer INFO)"
+
+.PP
+\fBSSYGS2\fP reduces a symmetric definite generalized eigenproblem to standard form, using the factorization results obtained from spotrf (unblocked algorithm)\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SSYGS2 reduces a real symmetric-definite generalized eigenproblem
+ to standard form.
+
+ If ITYPE = 1, the problem is A*x = lambda*B*x,
+ and A is overwritten by inv(U**T)*A*inv(U) or inv(L)*A*inv(L**T)
+
+ If ITYPE = 2 or 3, the problem is A*B*x = lambda*x or
+ B*A*x = lambda*x, and A is overwritten by U*A*U**T or L**T *A*L.
+
+ B must have been previously factorized as U**T *U or L*L**T by SPOTRF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIITYPE\fP 
+.PP
+.nf
+          ITYPE is INTEGER
+          = 1: compute inv(U**T)*A*inv(U) or inv(L)*A*inv(L**T);
+          = 2 or 3: compute U*A*U**T or L**T *A*L.
+.fi
+.PP
+.br
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the upper or lower triangular part of the
+          symmetric matrix A is stored, and how B has been factorized.
+          = 'U':  Upper triangular
+          = 'L':  Lower triangular
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrices A and B.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA,N)
+          On entry, the symmetric matrix A.  If UPLO = 'U', the leading
+          n by n upper triangular part of A contains the upper
+          triangular part of the matrix A, and the strictly lower
+          triangular part of A is not referenced.  If UPLO = 'L', the
+          leading n by n lower triangular part of A contains the lower
+          triangular part of the matrix A, and the strictly upper
+          triangular part of A is not referenced.
+
+          On exit, if INFO = 0, the transformed matrix, stored in the
+          same format as A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is REAL array, dimension (LDB,N)
+          The triangular factor from the Cholesky factorization of B,
+          as returned by SPOTRF.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file ssygs2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

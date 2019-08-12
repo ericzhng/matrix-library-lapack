@@ -1,0 +1,164 @@
+.TH "zlaqp2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlaqp2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlaqp2\fP (M, \fBN\fP, OFFSET, A, \fBLDA\fP, JPVT, TAU, VN1, VN2, WORK)"
+.br
+.RI "\fBZLAQP2\fP computes a QR factorization with column pivoting of the matrix block\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlaqp2 (integer M, integer N, integer OFFSET, complex*16, dimension( lda, * ) A, integer LDA, integer, dimension( * ) JPVT, complex*16, dimension( * ) TAU, double precision, dimension( * ) VN1, double precision, dimension( * ) VN2, complex*16, dimension( * ) WORK)"
+
+.PP
+\fBZLAQP2\fP computes a QR factorization with column pivoting of the matrix block\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLAQP2 computes a QR factorization with column pivoting of
+ the block A(OFFSET+1:M,1:N).
+ The block A(1:OFFSET,1:N) is accordingly pivoted, but not factorized.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A. M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A. N >= 0.
+.fi
+.PP
+.br
+\fIOFFSET\fP 
+.PP
+.nf
+          OFFSET is INTEGER
+          The number of rows of the matrix A that must be pivoted
+          but no factorized. OFFSET >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, the M-by-N matrix A.
+          On exit, the upper triangle of block A(OFFSET+1:M,1:N) is
+          the triangular factor obtained; the elements in block
+          A(OFFSET+1:M,1:N) below the diagonal, together with the
+          array TAU, represent the orthogonal matrix Q as a product of
+          elementary reflectors. Block A(1:OFFSET,1:N) has been
+          accordingly pivoted, but no factorized.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A. LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIJPVT\fP 
+.PP
+.nf
+          JPVT is INTEGER array, dimension (N)
+          On entry, if JPVT(i) .ne. 0, the i-th column of A is permuted
+          to the front of A*P (a leading column); if JPVT(i) = 0,
+          the i-th column of A is a free column.
+          On exit, if JPVT(i) = k, then the i-th column of A*P
+          was the k-th column of A.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX*16 array, dimension (min(M,N))
+          The scalar factors of the elementary reflectors.
+.fi
+.PP
+.br
+\fIVN1\fP 
+.PP
+.nf
+          VN1 is DOUBLE PRECISION array, dimension (N)
+          The vector with the partial column norms.
+.fi
+.PP
+.br
+\fIVN2\fP 
+.PP
+.nf
+          VN2 is DOUBLE PRECISION array, dimension (N)
+          The vector with the exact column norms.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array, dimension (N)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+G\&. Quintana-Orti, Depto\&. de Informatica, Universidad Jaime I, Spain X\&. Sun, Computer Science Dept\&., Duke University, USA 
+.br
+ Partial column norm updating strategy modified on April 2011 Z\&. Drmac and Z\&. Bujanovic, Dept\&. of Mathematics, University of Zagreb, Croatia\&. 
+.RE
+.PP
+\fBReferences: \fP
+.RS 4
+LAPACK Working Note 176  
+.RE
+.PP
+
+.PP
+Definition at line 151 of file zlaqp2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

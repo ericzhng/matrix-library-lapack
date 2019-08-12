@@ -1,0 +1,337 @@
+.TH "ssyevx_2stage.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ssyevx_2stage.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBssyevx_2stage\fP (JOBZ, RANGE, UPLO, \fBN\fP, A, \fBLDA\fP, VL, VU, IL, IU, ABSTOL, M, W, Z, LDZ, WORK, LWORK, IWORK, IFAIL, INFO)"
+.br
+.RI "\fB SSYEVX_2STAGE computes the eigenvalues and, optionally, the left and/or right eigenvectors for SY matrices\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine ssyevx_2stage (character JOBZ, character RANGE, character UPLO, integer N, real, dimension( lda, * ) A, integer LDA, real VL, real VU, integer IL, integer IU, real ABSTOL, integer M, real, dimension( * ) W, real, dimension( ldz, * ) Z, integer LDZ, real, dimension( * ) WORK, integer LWORK, integer, dimension( * ) IWORK, integer, dimension( * ) IFAIL, integer INFO)"
+
+.PP
+\fB SSYEVX_2STAGE computes the eigenvalues and, optionally, the left and/or right eigenvectors for SY matrices\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SSYEVX_2STAGE computes selected eigenvalues and, optionally, eigenvectors
+ of a real symmetric matrix A using the 2stage technique for
+ the reduction to tridiagonal.  Eigenvalues and eigenvectors can be
+ selected by specifying either a range of values or a range of indices
+ for the desired eigenvalues.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOBZ\fP 
+.PP
+.nf
+          JOBZ is CHARACTER*1
+          = 'N':  Compute eigenvalues only;
+          = 'V':  Compute eigenvalues and eigenvectors.
+                  Not available in this release.
+.fi
+.PP
+.br
+\fIRANGE\fP 
+.PP
+.nf
+          RANGE is CHARACTER*1
+          = 'A': all eigenvalues will be found.
+          = 'V': all eigenvalues in the half-open interval (VL,VU]
+                 will be found.
+          = 'I': the IL-th through IU-th eigenvalues will be found.
+.fi
+.PP
+.br
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangle of A is stored;
+          = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA, N)
+          On entry, the symmetric matrix A.  If UPLO = 'U', the
+          leading N-by-N upper triangular part of A contains the
+          upper triangular part of the matrix A.  If UPLO = 'L',
+          the leading N-by-N lower triangular part of A contains
+          the lower triangular part of the matrix A.
+          On exit, the lower triangle (if UPLO='L') or the upper
+          triangle (if UPLO='U') of A, including the diagonal, is
+          destroyed.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIVL\fP 
+.PP
+.nf
+          VL is REAL
+          If RANGE='V', the lower bound of the interval to
+          be searched for eigenvalues. VL < VU.
+          Not referenced if RANGE = 'A' or 'I'.
+.fi
+.PP
+.br
+\fIVU\fP 
+.PP
+.nf
+          VU is REAL
+          If RANGE='V', the upper bound of the interval to
+          be searched for eigenvalues. VL < VU.
+          Not referenced if RANGE = 'A' or 'I'.
+.fi
+.PP
+.br
+\fIIL\fP 
+.PP
+.nf
+          IL is INTEGER
+          If RANGE='I', the index of the
+          smallest eigenvalue to be returned.
+          1 <= IL <= IU <= N, if N > 0; IL = 1 and IU = 0 if N = 0.
+          Not referenced if RANGE = 'A' or 'V'.
+.fi
+.PP
+.br
+\fIIU\fP 
+.PP
+.nf
+          IU is INTEGER
+          If RANGE='I', the index of the
+          largest eigenvalue to be returned.
+          1 <= IL <= IU <= N, if N > 0; IL = 1 and IU = 0 if N = 0.
+          Not referenced if RANGE = 'A' or 'V'.
+.fi
+.PP
+.br
+\fIABSTOL\fP 
+.PP
+.nf
+          ABSTOL is REAL
+          The absolute error tolerance for the eigenvalues.
+          An approximate eigenvalue is accepted as converged
+          when it is determined to lie in an interval [a,b]
+          of width less than or equal to
+
+                  ABSTOL + EPS *   max( |a|,|b| ) ,
+
+          where EPS is the machine precision.  If ABSTOL is less than
+          or equal to zero, then  EPS*|T|  will be used in its place,
+          where |T| is the 1-norm of the tridiagonal matrix obtained
+          by reducing A to tridiagonal form.
+
+          Eigenvalues will be computed most accurately when ABSTOL is
+          set to twice the underflow threshold 2*SLAMCH('S'), not zero.
+          If this routine returns with INFO>0, indicating that some
+          eigenvectors did not converge, try setting ABSTOL to
+          2*SLAMCH('S').
+
+          See "Computing Small Singular Values of Bidiagonal Matrices
+          with Guaranteed High Relative Accuracy," by Demmel and
+          Kahan, LAPACK Working Note #3.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The total number of eigenvalues found.  0 <= M <= N.
+          If RANGE = 'A', M = N, and if RANGE = 'I', M = IU-IL+1.
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is REAL array, dimension (N)
+          On normal exit, the first M elements contain the selected
+          eigenvalues in ascending order.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array, dimension (LDZ, max(1,M))
+          If JOBZ = 'V', then if INFO = 0, the first M columns of Z
+          contain the orthonormal eigenvectors of the matrix A
+          corresponding to the selected eigenvalues, with the i-th
+          column of Z holding the eigenvector associated with W(i).
+          If an eigenvector fails to converge, then that column of Z
+          contains the latest approximation to the eigenvector, and the
+          index of the eigenvector is returned in IFAIL.
+          If JOBZ = 'N', then Z is not referenced.
+          Note: the user must ensure that at least max(1,M) columns are
+          supplied in the array Z; if RANGE = 'V', the exact value of M
+          is not known in advance and an upper bound must be used.
+.fi
+.PP
+.br
+\fILDZ\fP 
+.PP
+.nf
+          LDZ is INTEGER
+          The leading dimension of the array Z.  LDZ >= 1, and if
+          JOBZ = 'V', LDZ >= max(1,N).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The length of the array WORK. LWORK >= 1, when N <= 1;
+          otherwise  
+          If JOBZ = 'N' and N > 1, LWORK must be queried.
+                                   LWORK = MAX(1, 8*N, dimension) where
+                                   dimension = max(stage1,stage2) + (KD+1)*N + 3*N
+                                             = N*KD + N*max(KD+1,FACTOPTNB) 
+                                               + max(2*KD*KD, KD*NTHREADS) 
+                                               + (KD+1)*N + 3*N
+                                   where KD is the blocking size of the reduction,
+                                   FACTOPTNB is the blocking used by the QR or LQ
+                                   algorithm, usually FACTOPTNB=128 is a good choice
+                                   NTHREADS is the number of threads used when
+                                   openMP compilation is enabled, otherwise =1.
+          If JOBZ = 'V' and N > 1, LWORK must be queried. Not yet available
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array, and no error
+          message related to LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (5*N)
+.fi
+.PP
+.br
+\fIIFAIL\fP 
+.PP
+.nf
+          IFAIL is INTEGER array, dimension (N)
+          If JOBZ = 'V', then if INFO = 0, the first M elements of
+          IFAIL are zero.  If INFO > 0, then IFAIL contains the
+          indices of the eigenvectors that failed to converge.
+          If JOBZ = 'N', then IFAIL is not referenced.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+          > 0:  if INFO = i, then i eigenvectors failed to converge.
+                Their indices are stored in array IFAIL.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  All details about the 2stage techniques are available in:
+
+  Azzam Haidar, Hatem Ltaief, and Jack Dongarra.
+  Parallel reduction to condensed forms for symmetric eigenvalue problems
+  using aggregated fine-grained and memory-aware kernels. In Proceedings
+  of 2011 International Conference for High Performance Computing,
+  Networking, Storage and Analysis (SC '11), New York, NY, USA,
+  Article 8 , 11 pages.
+  http://doi.acm.org/10.1145/2063384.2063394
+
+  A. Haidar, J. Kurzak, P. Luszczek, 2013.
+  An improved parallel singular value algorithm and its implementation 
+  for multicore hardware, In Proceedings of 2013 International Conference
+  for High Performance Computing, Networking, Storage and Analysis (SC '13).
+  Denver, Colorado, USA, 2013.
+  Article 90, 12 pages.
+  http://doi.acm.org/10.1145/2503210.2503292
+
+  A. Haidar, R. Solca, S. Tomov, T. Schulthess and J. Dongarra.
+  A novel hybrid CPU-GPU generalized eigensolver for electronic structure 
+  calculations based on fine-grained memory aware tasks.
+  International Journal of High Performance Computing Applications.
+  Volume 28 Issue 2, Pages 196-209, May 2014.
+  http://hpc.sagepub.com/content/28/2/196 
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 302 of file ssyevx_2stage\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

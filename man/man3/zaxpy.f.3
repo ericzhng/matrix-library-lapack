@@ -1,0 +1,118 @@
+.TH "zaxpy.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zaxpy.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzaxpy\fP (\fBN\fP, ZA, ZX, INCX, ZY, INCY)"
+.br
+.RI "\fBZAXPY\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zaxpy (integer N, complex*16 ZA, complex*16, dimension(*) ZX, integer INCX, complex*16, dimension(*) ZY, integer INCY)"
+
+.PP
+\fBZAXPY\fP 
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    ZAXPY constant times a vector plus a vector.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         number of elements in input vector(s)
+.fi
+.PP
+.br
+\fIZA\fP 
+.PP
+.nf
+          ZA is COMPLEX*16
+           On entry, ZA specifies the scalar alpha.
+.fi
+.PP
+.br
+\fIZX\fP 
+.PP
+.nf
+          ZX is COMPLEX*16 array, dimension ( 1 + ( N - 1 )*abs( INCX ) )
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+         storage spacing between elements of ZX
+.fi
+.PP
+.br
+\fIZY\fP 
+.PP
+.nf
+          ZY is COMPLEX*16 array, dimension ( 1 + ( N - 1 )*abs( INCY ) )
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+         storage spacing between elements of ZY
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+     jack dongarra, 3/11/78.
+     modified 12/3/93, array(1) declarations changed to array(*)
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file zaxpy\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

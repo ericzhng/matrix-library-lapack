@@ -1,0 +1,124 @@
+.TH "zlartg.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlartg.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlartg\fP (F, G, CS, SN, R)"
+.br
+.RI "\fBZLARTG\fP generates a plane rotation with real cosine and complex sine\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlartg (complex*16 F, complex*16 G, double precision CS, complex*16 SN, complex*16 R)"
+
+.PP
+\fBZLARTG\fP generates a plane rotation with real cosine and complex sine\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLARTG generates a plane rotation so that
+
+    [  CS  SN  ]     [ F ]     [ R ]
+    [  __      ]  .  [   ]  =  [   ]   where CS**2 + |SN|**2 = 1.
+    [ -SN  CS  ]     [ G ]     [ 0 ]
+
+ This is a faster version of the BLAS1 routine ZROTG, except for
+ the following differences:
+    F and G are unchanged on return.
+    If G=0, then CS=1 and SN=0.
+    If F=0, then CS=0 and SN is chosen so that R is real.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIF\fP 
+.PP
+.nf
+          F is COMPLEX*16
+          The first component of vector to be rotated.
+.fi
+.PP
+.br
+\fIG\fP 
+.PP
+.nf
+          G is COMPLEX*16
+          The second component of vector to be rotated.
+.fi
+.PP
+.br
+\fICS\fP 
+.PP
+.nf
+          CS is DOUBLE PRECISION
+          The cosine of the rotation.
+.fi
+.PP
+.br
+\fISN\fP 
+.PP
+.nf
+          SN is COMPLEX*16
+          The sine of the rotation.
+.fi
+.PP
+.br
+\fIR\fP 
+.PP
+.nf
+          R is COMPLEX*16
+          The nonzero component of the rotated vector.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  3-5-96 - Modified with a new algorithm by W. Kahan and J. Demmel
+
+  This version has a few statements commented out for thread safety
+  (machine parameters are computed on each entry). 10 feb 03, SJH.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file zlartg\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

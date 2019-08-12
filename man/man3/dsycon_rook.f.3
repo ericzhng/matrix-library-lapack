@@ -1,0 +1,158 @@
+.TH "dsycon_rook.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dsycon_rook.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdsycon_rook\fP (UPLO, \fBN\fP, A, \fBLDA\fP, IPIV, ANORM, RCOND, WORK, IWORK, INFO)"
+.br
+.RI "\fB DSYCON_ROOK \fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dsycon_rook (character UPLO, integer N, double precision, dimension( lda, * ) A, integer LDA, integer, dimension( * ) IPIV, double precision ANORM, double precision RCOND, double precision, dimension( * ) WORK, integer, dimension( * ) IWORK, integer INFO)"
+
+.PP
+\fB DSYCON_ROOK \fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DSYCON_ROOK estimates the reciprocal of the condition number (in the
+ 1-norm) of a real symmetric matrix A using the factorization
+ A = U*D*U**T or A = L*D*L**T computed by DSYTRF_ROOK.
+
+ An estimate is obtained for norm(inv(A)), and the reciprocal of the
+ condition number is computed as RCOND = 1 / (ANORM * norm(inv(A))).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the details of the factorization are stored
+          as an upper or lower triangular matrix.
+          = 'U':  Upper triangular, form is A = U*D*U**T;
+          = 'L':  Lower triangular, form is A = L*D*L**T.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          The block diagonal matrix D and the multipliers used to
+          obtain the factor U or L as computed by DSYTRF_ROOK.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          Details of the interchanges and the block structure of D
+          as determined by DSYTRF_ROOK.
+.fi
+.PP
+.br
+\fIANORM\fP 
+.PP
+.nf
+          ANORM is DOUBLE PRECISION
+          The 1-norm of the original matrix A.
+.fi
+.PP
+.br
+\fIRCOND\fP 
+.PP
+.nf
+          RCOND is DOUBLE PRECISION
+          The reciprocal of the condition number of the matrix A,
+          computed as RCOND = 1/(ANORM * AINVNM), where AINVNM is an
+          estimate of the 1-norm of inv(A) computed in this routine.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (2*N)
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+April 2012 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+
+.RE
+.PP
+April 2012, Igor Kozachenko, Computer Science Division, University of California, Berkeley
+.PP
+September 2007, Sven Hammarling, Nicholas J\&. Higham, Craig Lucas, School of Mathematics, University of Manchester
+.PP
+Definition at line 146 of file dsycon_rook\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

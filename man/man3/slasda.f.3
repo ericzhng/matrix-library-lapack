@@ -1,0 +1,317 @@
+.TH "slasda.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slasda.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslasda\fP (ICOMPQ, SMLSIZ, \fBN\fP, SQRE, D, E, U, LDU, VT, K, DIFL, DIFR, Z, POLES, GIVPTR, GIVCOL, LDGCOL, PERM, GIVNUM, C, S, WORK, IWORK, INFO)"
+.br
+.RI "\fBSLASDA\fP computes the singular value decomposition (SVD) of a real upper bidiagonal matrix with diagonal d and off-diagonal e\&. Used by sbdsdc\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slasda (integer ICOMPQ, integer SMLSIZ, integer N, integer SQRE, real, dimension( * ) D, real, dimension( * ) E, real, dimension( ldu, * ) U, integer LDU, real, dimension( ldu, * ) VT, integer, dimension( * ) K, real, dimension( ldu, * ) DIFL, real, dimension( ldu, * ) DIFR, real, dimension( ldu, * ) Z, real, dimension( ldu, * ) POLES, integer, dimension( * ) GIVPTR, integer, dimension( ldgcol, * ) GIVCOL, integer LDGCOL, integer, dimension( ldgcol, * ) PERM, real, dimension( ldu, * ) GIVNUM, real, dimension( * ) C, real, dimension( * ) S, real, dimension( * ) WORK, integer, dimension( * ) IWORK, integer INFO)"
+
+.PP
+\fBSLASDA\fP computes the singular value decomposition (SVD) of a real upper bidiagonal matrix with diagonal d and off-diagonal e\&. Used by sbdsdc\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Using a divide and conquer approach, SLASDA computes the singular
+ value decomposition (SVD) of a real upper bidiagonal N-by-M matrix
+ B with diagonal D and offdiagonal E, where M = N + SQRE. The
+ algorithm computes the singular values in the SVD B = U * S * VT.
+ The orthogonal matrices U and VT are optionally computed in
+ compact form.
+
+ A related subroutine, SLASD0, computes the singular values and
+ the singular vectors in explicit form.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIICOMPQ\fP 
+.PP
+.nf
+          ICOMPQ is INTEGER
+         Specifies whether singular vectors are to be computed
+         in compact form, as follows
+         = 0: Compute singular values only.
+         = 1: Compute singular vectors of upper bidiagonal
+              matrix in compact form.
+.fi
+.PP
+.br
+\fISMLSIZ\fP 
+.PP
+.nf
+          SMLSIZ is INTEGER
+         The maximum size of the subproblems at the bottom of the
+         computation tree.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         The row dimension of the upper bidiagonal matrix. This is
+         also the dimension of the main diagonal array D.
+.fi
+.PP
+.br
+\fISQRE\fP 
+.PP
+.nf
+          SQRE is INTEGER
+         Specifies the column dimension of the bidiagonal matrix.
+         = 0: The bidiagonal matrix has column dimension M = N;
+         = 1: The bidiagonal matrix has column dimension M = N + 1.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension ( N )
+         On entry D contains the main diagonal of the bidiagonal
+         matrix. On exit D, if INFO = 0, contains its singular values.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is REAL array, dimension ( M-1 )
+         Contains the subdiagonal entries of the bidiagonal matrix.
+         On exit, E has been destroyed.
+.fi
+.PP
+.br
+\fIU\fP 
+.PP
+.nf
+          U is REAL array,
+         dimension ( LDU, SMLSIZ ) if ICOMPQ = 1, and not referenced
+         if ICOMPQ = 0. If ICOMPQ = 1, on exit, U contains the left
+         singular vector matrices of all subproblems at the bottom
+         level.
+.fi
+.PP
+.br
+\fILDU\fP 
+.PP
+.nf
+          LDU is INTEGER, LDU = > N.
+         The leading dimension of arrays U, VT, DIFL, DIFR, POLES,
+         GIVNUM, and Z.
+.fi
+.PP
+.br
+\fIVT\fP 
+.PP
+.nf
+          VT is REAL array,
+         dimension ( LDU, SMLSIZ+1 ) if ICOMPQ = 1, and not referenced
+         if ICOMPQ = 0. If ICOMPQ = 1, on exit, VT**T contains the right
+         singular vector matrices of all subproblems at the bottom
+         level.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER array, dimension ( N )
+         if ICOMPQ = 1 and dimension 1 if ICOMPQ = 0.
+         If ICOMPQ = 1, on exit, K(I) is the dimension of the I-th
+         secular equation on the computation tree.
+.fi
+.PP
+.br
+\fIDIFL\fP 
+.PP
+.nf
+          DIFL is REAL array, dimension ( LDU, NLVL ),
+         where NLVL = floor(log_2 (N/SMLSIZ))).
+.fi
+.PP
+.br
+\fIDIFR\fP 
+.PP
+.nf
+          DIFR is REAL array,
+                  dimension ( LDU, 2 * NLVL ) if ICOMPQ = 1 and
+                  dimension ( N ) if ICOMPQ = 0.
+         If ICOMPQ = 1, on exit, DIFL(1:N, I) and DIFR(1:N, 2 * I - 1)
+         record distances between singular values on the I-th
+         level and singular values on the (I -1)-th level, and
+         DIFR(1:N, 2 * I ) contains the normalizing factors for
+         the right singular vector matrix. See SLASD8 for details.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array,
+                  dimension ( LDU, NLVL ) if ICOMPQ = 1 and
+                  dimension ( N ) if ICOMPQ = 0.
+         The first K elements of Z(1, I) contain the components of
+         the deflation-adjusted updating row vector for subproblems
+         on the I-th level.
+.fi
+.PP
+.br
+\fIPOLES\fP 
+.PP
+.nf
+          POLES is REAL array,
+         dimension ( LDU, 2 * NLVL ) if ICOMPQ = 1, and not referenced
+         if ICOMPQ = 0. If ICOMPQ = 1, on exit, POLES(1, 2*I - 1) and
+         POLES(1, 2*I) contain  the new and old singular values
+         involved in the secular equations on the I-th level.
+.fi
+.PP
+.br
+\fIGIVPTR\fP 
+.PP
+.nf
+          GIVPTR is INTEGER array,
+         dimension ( N ) if ICOMPQ = 1, and not referenced if
+         ICOMPQ = 0. If ICOMPQ = 1, on exit, GIVPTR( I ) records
+         the number of Givens rotations performed on the I-th
+         problem on the computation tree.
+.fi
+.PP
+.br
+\fIGIVCOL\fP 
+.PP
+.nf
+          GIVCOL is INTEGER array,
+         dimension ( LDGCOL, 2 * NLVL ) if ICOMPQ = 1, and not
+         referenced if ICOMPQ = 0. If ICOMPQ = 1, on exit, for each I,
+         GIVCOL(1, 2 *I - 1) and GIVCOL(1, 2 *I) record the locations
+         of Givens rotations performed on the I-th level on the
+         computation tree.
+.fi
+.PP
+.br
+\fILDGCOL\fP 
+.PP
+.nf
+          LDGCOL is INTEGER, LDGCOL = > N.
+         The leading dimension of arrays GIVCOL and PERM.
+.fi
+.PP
+.br
+\fIPERM\fP 
+.PP
+.nf
+          PERM is INTEGER array, dimension ( LDGCOL, NLVL )
+         if ICOMPQ = 1, and not referenced
+         if ICOMPQ = 0. If ICOMPQ = 1, on exit, PERM(1, I) records
+         permutations done on the I-th level of the computation tree.
+.fi
+.PP
+.br
+\fIGIVNUM\fP 
+.PP
+.nf
+          GIVNUM is REAL array,
+         dimension ( LDU,  2 * NLVL ) if ICOMPQ = 1, and not
+         referenced if ICOMPQ = 0. If ICOMPQ = 1, on exit, for each I,
+         GIVNUM(1, 2 *I - 1) and GIVNUM(1, 2 *I) record the C- and S-
+         values of Givens rotations performed on the I-th level on
+         the computation tree.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is REAL array,
+         dimension ( N ) if ICOMPQ = 1, and dimension 1 if ICOMPQ = 0.
+         If ICOMPQ = 1 and the I-th subproblem is not square, on exit,
+         C( I ) contains the C-value of a Givens rotation related to
+         the right null space of the I-th subproblem.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is REAL array, dimension ( N ) if
+         ICOMPQ = 1, and dimension 1 if ICOMPQ = 0. If ICOMPQ = 1
+         and the I-th subproblem is not square, on exit, S( I )
+         contains the S-value of a Givens rotation related to
+         the right null space of the I-th subproblem.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension
+         (6 * N + (SMLSIZ + 1)*(SMLSIZ + 1)).
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (7*N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+          > 0:  if INFO = 1, a singular value did not converge
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ming Gu and Huan Ren, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 275 of file slasda\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,162 @@
+.TH "slaed6.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaed6.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslaed6\fP (KNITER, ORGATI, RHO, D, Z, FINIT, TAU, INFO)"
+.br
+.RI "\fBSLAED6\fP used by sstedc\&. Computes one Newton step in solution of the secular equation\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slaed6 (integer KNITER, logical ORGATI, real RHO, real, dimension( 3 ) D, real, dimension( 3 ) Z, real FINIT, real TAU, integer INFO)"
+
+.PP
+\fBSLAED6\fP used by sstedc\&. Computes one Newton step in solution of the secular equation\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLAED6 computes the positive or negative root (closest to the origin)
+ of
+                  z(1)        z(2)        z(3)
+ f(x) =   rho + --------- + ---------- + ---------
+                 d(1)-x      d(2)-x      d(3)-x
+
+ It is assumed that
+
+       if ORGATI = .true. the root is between d(2) and d(3);
+       otherwise it is between d(1) and d(2)
+
+ This routine will be called by SLAED4 when necessary. In most cases,
+ the root sought is the smallest in magnitude, though it might not be
+ in some extremely rare situations.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIKNITER\fP 
+.PP
+.nf
+          KNITER is INTEGER
+               Refer to SLAED4 for its significance.
+.fi
+.PP
+.br
+\fIORGATI\fP 
+.PP
+.nf
+          ORGATI is LOGICAL
+               If ORGATI is true, the needed root is between d(2) and
+               d(3); otherwise it is between d(1) and d(2).  See
+               SLAED4 for further details.
+.fi
+.PP
+.br
+\fIRHO\fP 
+.PP
+.nf
+          RHO is REAL
+               Refer to the equation f(x) above.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (3)
+               D satisfies d(1) < d(2) < d(3).
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array, dimension (3)
+               Each of the elements in z must be positive.
+.fi
+.PP
+.br
+\fIFINIT\fP 
+.PP
+.nf
+          FINIT is REAL
+               The value of f at 0. It is more accurate than the one
+               evaluated inside this routine (if someone wants to do
+               so).
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is REAL
+               The root of the equation f(x).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+               = 0: successful exit
+               > 0: if INFO = 1, failure to converge
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  10/02/03: This version has a few statements commented out for thread
+  safety (machine parameters are computed on each entry). SJH.
+
+  05/10/06: Modified from a new version of Ren-Cang Li, use
+     Gragg-Thornton-Warner cubic convergent scheme for better stability.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ren-Cang Li, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 142 of file slaed6\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

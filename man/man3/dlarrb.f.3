@@ -1,0 +1,233 @@
+.TH "dlarrb.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlarrb.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlarrb\fP (\fBN\fP, D, LLD, IFIRST, ILAST, RTOL1, RTOL2, OFFSET, W, WGAP, WERR, WORK, IWORK, PIVMIN, SPDIAM, TWIST, INFO)"
+.br
+.RI "\fBDLARRB\fP provides limited bisection to locate eigenvalues for more accuracy\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlarrb (integer N, double precision, dimension( * ) D, double precision, dimension( * ) LLD, integer IFIRST, integer ILAST, double precision RTOL1, double precision RTOL2, integer OFFSET, double precision, dimension( * ) W, double precision, dimension( * ) WGAP, double precision, dimension( * ) WERR, double precision, dimension( * ) WORK, integer, dimension( * ) IWORK, double precision PIVMIN, double precision SPDIAM, integer TWIST, integer INFO)"
+
+.PP
+\fBDLARRB\fP provides limited bisection to locate eigenvalues for more accuracy\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Given the relatively robust representation(RRR) L D L^T, DLARRB
+ does "limited" bisection to refine the eigenvalues of L D L^T,
+ W( IFIRST-OFFSET ) through W( ILAST-OFFSET ), to more accuracy. Initial
+ guesses for these eigenvalues are input in W, the corresponding estimate
+ of the error in these guesses and their gaps are input in WERR
+ and WGAP, respectively. During bisection, intervals
+ [left, right] are maintained by storing their mid-points and
+ semi-widths in the arrays W and WERR respectively.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          The N diagonal elements of the diagonal matrix D.
+.fi
+.PP
+.br
+\fILLD\fP 
+.PP
+.nf
+          LLD is DOUBLE PRECISION array, dimension (N-1)
+          The (N-1) elements L(i)*L(i)*D(i).
+.fi
+.PP
+.br
+\fIIFIRST\fP 
+.PP
+.nf
+          IFIRST is INTEGER
+          The index of the first eigenvalue to be computed.
+.fi
+.PP
+.br
+\fIILAST\fP 
+.PP
+.nf
+          ILAST is INTEGER
+          The index of the last eigenvalue to be computed.
+.fi
+.PP
+.br
+\fIRTOL1\fP 
+.PP
+.nf
+          RTOL1 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIRTOL2\fP 
+.PP
+.nf
+          RTOL2 is DOUBLE PRECISION
+          Tolerance for the convergence of the bisection intervals.
+          An interval [LEFT,RIGHT] has converged if
+          RIGHT-LEFT.LT.MAX( RTOL1*GAP, RTOL2*MAX(|LEFT|,|RIGHT|) )
+          where GAP is the (estimated) distance to the nearest
+          eigenvalue.
+.fi
+.PP
+.br
+\fIOFFSET\fP 
+.PP
+.nf
+          OFFSET is INTEGER
+          Offset for the arrays W, WGAP and WERR, i.e., the IFIRST-OFFSET
+          through ILAST-OFFSET elements of these arrays are to be used.
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is DOUBLE PRECISION array, dimension (N)
+          On input, W( IFIRST-OFFSET ) through W( ILAST-OFFSET ) are
+          estimates of the eigenvalues of L D L^T indexed IFIRST through
+          ILAST.
+          On output, these estimates are refined.
+.fi
+.PP
+.br
+\fIWGAP\fP 
+.PP
+.nf
+          WGAP is DOUBLE PRECISION array, dimension (N-1)
+          On input, the (estimated) gaps between consecutive
+          eigenvalues of L D L^T, i.e., WGAP(I-OFFSET) is the gap between
+          eigenvalues I and I+1. Note that if IFIRST.EQ.ILAST
+          then WGAP(IFIRST-OFFSET) must be set to ZERO.
+          On output, these gaps are refined.
+.fi
+.PP
+.br
+\fIWERR\fP 
+.PP
+.nf
+          WERR is DOUBLE PRECISION array, dimension (N)
+          On input, WERR( IFIRST-OFFSET ) through WERR( ILAST-OFFSET ) are
+          the errors in the estimates of the corresponding elements in W.
+          On output, these errors are refined.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (2*N)
+          Workspace.
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (2*N)
+          Workspace.
+.fi
+.PP
+.br
+\fIPIVMIN\fP 
+.PP
+.nf
+          PIVMIN is DOUBLE PRECISION
+          The minimum pivot in the Sturm sequence.
+.fi
+.PP
+.br
+\fISPDIAM\fP 
+.PP
+.nf
+          SPDIAM is DOUBLE PRECISION
+          The spectral diameter of the matrix.
+.fi
+.PP
+.br
+\fITWIST\fP 
+.PP
+.nf
+          TWIST is INTEGER
+          The twist index for the twisted factorization that is used
+          for the negcount.
+          TWIST = N: Compute negcount from L D L^T - LAMBDA I = L+ D+ L+^T
+          TWIST = 1: Compute negcount from L D L^T - LAMBDA I = U- D- U-^T
+          TWIST = R: Compute negcount from L D L^T - LAMBDA I = N(r) D(r) N(r)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          Error flag.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Beresford Parlett, University of California, Berkeley, USA 
+.br
+ Jim Demmel, University of California, Berkeley, USA 
+.br
+ Inderjit Dhillon, University of Texas, Austin, USA 
+.br
+ Osni Marques, LBNL/NERSC, USA 
+.br
+ Christof Voemel, University of California, Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 198 of file dlarrb\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

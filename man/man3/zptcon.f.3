@@ -1,0 +1,140 @@
+.TH "zptcon.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zptcon.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzptcon\fP (\fBN\fP, D, E, ANORM, RCOND, RWORK, INFO)"
+.br
+.RI "\fBZPTCON\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zptcon (integer N, double precision, dimension( * ) D, complex*16, dimension( * ) E, double precision ANORM, double precision RCOND, double precision, dimension( * ) RWORK, integer INFO)"
+
+.PP
+\fBZPTCON\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZPTCON computes the reciprocal of the condition number (in the
+ 1-norm) of a complex Hermitian positive definite tridiagonal matrix
+ using the factorization A = L*D*L**H or A = U**H*D*U computed by
+ ZPTTRF.
+
+ Norm(inv(A)) is computed by a direct method, and the reciprocal of
+ the condition number is computed as
+                  RCOND = 1 / (ANORM * norm(inv(A))).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          The n diagonal elements of the diagonal matrix D from the
+          factorization of A, as computed by ZPTTRF.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is COMPLEX*16 array, dimension (N-1)
+          The (n-1) off-diagonal elements of the unit bidiagonal factor
+          U or L from the factorization of A, as computed by ZPTTRF.
+.fi
+.PP
+.br
+\fIANORM\fP 
+.PP
+.nf
+          ANORM is DOUBLE PRECISION
+          The 1-norm of the original matrix A.
+.fi
+.PP
+.br
+\fIRCOND\fP 
+.PP
+.nf
+          RCOND is DOUBLE PRECISION
+          The reciprocal of the condition number of the matrix A,
+          computed as RCOND = 1/(ANORM * AINVNM), where AINVNM is the
+          1-norm of inv(A) computed in this routine.
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is DOUBLE PRECISION array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The method used is described in Nicholas J. Higham, "Efficient
+  Algorithms for Computing the Condition Number of a Tridiagonal
+  Matrix", SIAM J. Sci. Stat. Comput., Vol. 7, No. 1, January 1986.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 121 of file zptcon\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

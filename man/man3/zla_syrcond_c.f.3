@@ -1,0 +1,162 @@
+.TH "zla_syrcond_c.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zla_syrcond_c.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "double precision function \fBzla_syrcond_c\fP (UPLO, \fBN\fP, A, \fBLDA\fP, AF, LDAF, IPIV, C, CAPPLY, INFO, WORK, RWORK)"
+.br
+.RI "\fBZLA_SYRCOND_C\fP computes the infinity norm condition number of op(A)*inv(diag(c)) for symmetric indefinite matrices\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "double precision function zla_syrcond_c (character UPLO, integer N, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( ldaf, * ) AF, integer LDAF, integer, dimension( * ) IPIV, double precision, dimension( * ) C, logical CAPPLY, integer INFO, complex*16, dimension( * ) WORK, double precision, dimension( * ) RWORK)"
+
+.PP
+\fBZLA_SYRCOND_C\fP computes the infinity norm condition number of op(A)*inv(diag(c)) for symmetric indefinite matrices\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    ZLA_SYRCOND_C Computes the infinity norm condition number of
+    op(A) * inv(diag(C)) where C is a DOUBLE PRECISION vector.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+       = 'U':  Upper triangle of A is stored;
+       = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+     The number of linear equations, i.e., the order of the
+     matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+     On entry, the N-by-N matrix A
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+     The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIAF\fP 
+.PP
+.nf
+          AF is COMPLEX*16 array, dimension (LDAF,N)
+     The block diagonal matrix D and the multipliers used to
+     obtain the factor U or L as computed by ZSYTRF.
+.fi
+.PP
+.br
+\fILDAF\fP 
+.PP
+.nf
+          LDAF is INTEGER
+     The leading dimension of the array AF.  LDAF >= max(1,N).
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+     Details of the interchanges and the block structure of D
+     as determined by ZSYTRF.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION array, dimension (N)
+     The vector C in the formula op(A) * inv(diag(C)).
+.fi
+.PP
+.br
+\fICAPPLY\fP 
+.PP
+.nf
+          CAPPLY is LOGICAL
+     If .TRUE. then access the vector C in the formula above.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+       = 0:  Successful exit.
+     i > 0:  The ith argument is invalid.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array, dimension (2*N).
+     Workspace.
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is DOUBLE PRECISION array, dimension (N).
+     Workspace.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 142 of file zla_syrcond_c\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

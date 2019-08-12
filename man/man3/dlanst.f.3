@@ -1,0 +1,117 @@
+.TH "dlanst.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlanst.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "double precision function \fBdlanst\fP (NORM, \fBN\fP, D, E)"
+.br
+.RI "\fBDLANST\fP returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a real symmetric tridiagonal matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "double precision function dlanst (character NORM, integer N, double precision, dimension( * ) D, double precision, dimension( * ) E)"
+
+.PP
+\fBDLANST\fP returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a real symmetric tridiagonal matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLANST  returns the value of the one norm,  or the Frobenius norm, or
+ the  infinity norm,  or the  element of  largest absolute value  of a
+ real symmetric tridiagonal matrix A.
+.fi
+.PP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+DLANST 
+.PP
+.nf
+    DLANST = ( max(abs(A(i,j))), NORM = 'M' or 'm'
+             (
+             ( norm1(A),         NORM = '1', 'O' or 'o'
+             (
+             ( normI(A),         NORM = 'I' or 'i'
+             (
+             ( normF(A),         NORM = 'F', 'f', 'E' or 'e'
+
+ where  norm1  denotes the  one norm of a matrix (maximum column sum),
+ normI  denotes the  infinity norm  of a matrix  (maximum row sum) and
+ normF  denotes the  Frobenius norm of a matrix (square root of sum of
+ squares).  Note that  max(abs(A(i,j)))  is not a consistent matrix norm.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fINORM\fP 
+.PP
+.nf
+          NORM is CHARACTER*1
+          Specifies the value to be returned in DLANST as described
+          above.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.  When N = 0, DLANST is
+          set to zero.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          The diagonal elements of A.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (N-1)
+          The (n-1) sub-diagonal or super-diagonal elements of A.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file dlanst\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,162 @@
+.TH "sgttrs.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sgttrs.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsgttrs\fP (TRANS, \fBN\fP, \fBNRHS\fP, DL, D, DU, DU2, IPIV, B, \fBLDB\fP, INFO)"
+.br
+.RI "\fBSGTTRS\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sgttrs (character TRANS, integer N, integer NRHS, real, dimension( * ) DL, real, dimension( * ) D, real, dimension( * ) DU, real, dimension( * ) DU2, integer, dimension( * ) IPIV, real, dimension( ldb, * ) B, integer LDB, integer INFO)"
+
+.PP
+\fBSGTTRS\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SGTTRS solves one of the systems of equations
+    A*X = B  or  A**T*X = B,
+ with a tridiagonal matrix A using the LU factorization computed
+ by SGTTRF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+          Specifies the form of the system of equations.
+          = 'N':  A * X = B  (No transpose)
+          = 'T':  A**T* X = B  (Transpose)
+          = 'C':  A**T* X = B  (Conjugate transpose = Transpose)
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrix B.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIDL\fP 
+.PP
+.nf
+          DL is REAL array, dimension (N-1)
+          The (n-1) multipliers that define the matrix L from the
+          LU factorization of A.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+          The n diagonal elements of the upper triangular matrix U from
+          the LU factorization of A.
+.fi
+.PP
+.br
+\fIDU\fP 
+.PP
+.nf
+          DU is REAL array, dimension (N-1)
+          The (n-1) elements of the first super-diagonal of U.
+.fi
+.PP
+.br
+\fIDU2\fP 
+.PP
+.nf
+          DU2 is REAL array, dimension (N-2)
+          The (n-2) elements of the second super-diagonal of U.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          The pivot indices; for 1 <= i <= n, row i of the matrix was
+          interchanged with row IPIV(i).  IPIV(i) will always be either
+          i or i+1; IPIV(i) = i indicates a row interchange was not
+          required.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is REAL array, dimension (LDB,NRHS)
+          On entry, the matrix of right hand side vectors B.
+          On exit, B is overwritten by the solution vectors X.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 140 of file sgttrs\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

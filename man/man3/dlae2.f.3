@@ -1,0 +1,124 @@
+.TH "dlae2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlae2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlae2\fP (A, B, C, RT1, RT2)"
+.br
+.RI "\fBDLAE2\fP computes the eigenvalues of a 2-by-2 symmetric matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlae2 (double precision A, double precision B, double precision C, double precision RT1, double precision RT2)"
+
+.PP
+\fBDLAE2\fP computes the eigenvalues of a 2-by-2 symmetric matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLAE2  computes the eigenvalues of a 2-by-2 symmetric matrix
+    [  A   B  ]
+    [  B   C  ].
+ On return, RT1 is the eigenvalue of larger absolute value, and RT2
+ is the eigenvalue of smaller absolute value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION
+          The (1,1) element of the 2-by-2 matrix.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION
+          The (1,2) and (2,1) elements of the 2-by-2 matrix.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION
+          The (2,2) element of the 2-by-2 matrix.
+.fi
+.PP
+.br
+\fIRT1\fP 
+.PP
+.nf
+          RT1 is DOUBLE PRECISION
+          The eigenvalue of larger absolute value.
+.fi
+.PP
+.br
+\fIRT2\fP 
+.PP
+.nf
+          RT2 is DOUBLE PRECISION
+          The eigenvalue of smaller absolute value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  RT1 is accurate to a few ulps barring over/underflow.
+
+  RT2 may be inaccurate if there is massive cancellation in the
+  determinant A*C-B*B; higher precision or correctly rounded or
+  correctly truncated arithmetic would be needed to compute RT2
+  accurately in all cases.
+
+  Overflow is possible only if RT1 is within a factor of 5 of overflow.
+  Underflow is harmless if the input data is 0 or exceeds
+     underflow_threshold / macheps.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 104 of file dlae2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,233 @@
+.TH "dbdsdc.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dbdsdc.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdbdsdc\fP (UPLO, COMPQ, \fBN\fP, D, E, U, LDU, VT, LDVT, Q, IQ, WORK, IWORK, INFO)"
+.br
+.RI "\fBDBDSDC\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dbdsdc (character UPLO, character COMPQ, integer N, double precision, dimension( * ) D, double precision, dimension( * ) E, double precision, dimension( ldu, * ) U, integer LDU, double precision, dimension( ldvt, * ) VT, integer LDVT, double precision, dimension( * ) Q, integer, dimension( * ) IQ, double precision, dimension( * ) WORK, integer, dimension( * ) IWORK, integer INFO)"
+
+.PP
+\fBDBDSDC\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DBDSDC computes the singular value decomposition (SVD) of a real
+ N-by-N (upper or lower) bidiagonal matrix B:  B = U * S * VT,
+ using a divide and conquer method, where S is a diagonal matrix
+ with non-negative diagonal elements (the singular values of B), and
+ U and VT are orthogonal matrices of left and right singular vectors,
+ respectively. DBDSDC can be used to compute all singular values,
+ and optionally, singular vectors or singular vectors in compact form.
+
+ This code makes very mild assumptions about floating point
+ arithmetic. It will work on machines with a guard digit in
+ add/subtract, or on those binary machines without guard digits
+ which subtract like the Cray X-MP, Cray Y-MP, Cray C-90, or Cray-2.
+ It could conceivably fail on hexadecimal or decimal machines
+ without guard digits, but we know of none.  See DLASD3 for details.
+
+ The code currently calls DLASDQ if singular values only are desired.
+ However, it can be slightly modified to compute singular values
+ using the divide and conquer method.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  B is upper bidiagonal.
+          = 'L':  B is lower bidiagonal.
+.fi
+.PP
+.br
+\fICOMPQ\fP 
+.PP
+.nf
+          COMPQ is CHARACTER*1
+          Specifies whether singular vectors are to be computed
+          as follows:
+          = 'N':  Compute singular values only;
+          = 'P':  Compute singular values and compute singular
+                  vectors in compact form;
+          = 'I':  Compute singular values and singular vectors.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix B.  N >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          On entry, the n diagonal elements of the bidiagonal matrix B.
+          On exit, if INFO=0, the singular values of B.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (N-1)
+          On entry, the elements of E contain the offdiagonal
+          elements of the bidiagonal matrix whose SVD is desired.
+          On exit, E has been destroyed.
+.fi
+.PP
+.br
+\fIU\fP 
+.PP
+.nf
+          U is DOUBLE PRECISION array, dimension (LDU,N)
+          If  COMPQ = 'I', then:
+             On exit, if INFO = 0, U contains the left singular vectors
+             of the bidiagonal matrix.
+          For other values of COMPQ, U is not referenced.
+.fi
+.PP
+.br
+\fILDU\fP 
+.PP
+.nf
+          LDU is INTEGER
+          The leading dimension of the array U.  LDU >= 1.
+          If singular vectors are desired, then LDU >= max( 1, N ).
+.fi
+.PP
+.br
+\fIVT\fP 
+.PP
+.nf
+          VT is DOUBLE PRECISION array, dimension (LDVT,N)
+          If  COMPQ = 'I', then:
+             On exit, if INFO = 0, VT**T contains the right singular
+             vectors of the bidiagonal matrix.
+          For other values of COMPQ, VT is not referenced.
+.fi
+.PP
+.br
+\fILDVT\fP 
+.PP
+.nf
+          LDVT is INTEGER
+          The leading dimension of the array VT.  LDVT >= 1.
+          If singular vectors are desired, then LDVT >= max( 1, N ).
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is DOUBLE PRECISION array, dimension (LDQ)
+          If  COMPQ = 'P', then:
+             On exit, if INFO = 0, Q and IQ contain the left
+             and right singular vectors in a compact form,
+             requiring O(N log N) space instead of 2*N**2.
+             In particular, Q contains all the DOUBLE PRECISION data in
+             LDQ >= N*(11 + 2*SMLSIZ + 8*INT(LOG_2(N/(SMLSIZ+1))))
+             words of memory, where SMLSIZ is returned by ILAENV and
+             is equal to the maximum size of the subproblems at the
+             bottom of the computation tree (usually about 25).
+          For other values of COMPQ, Q is not referenced.
+.fi
+.PP
+.br
+\fIIQ\fP 
+.PP
+.nf
+          IQ is INTEGER array, dimension (LDIQ)
+          If  COMPQ = 'P', then:
+             On exit, if INFO = 0, Q and IQ contain the left
+             and right singular vectors in a compact form,
+             requiring O(N log N) space instead of 2*N**2.
+             In particular, IQ contains all INTEGER data in
+             LDIQ >= N*(3 + 3*INT(LOG_2(N/(SMLSIZ+1))))
+             words of memory, where SMLSIZ is returned by ILAENV and
+             is equal to the maximum size of the subproblems at the
+             bottom of the computation tree (usually about 25).
+          For other values of COMPQ, IQ is not referenced.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (MAX(1,LWORK))
+          If COMPQ = 'N' then LWORK >= (4 * N).
+          If COMPQ = 'P' then LWORK >= (6 * N).
+          If COMPQ = 'I' then LWORK >= (3 * N**2 + 4 * N).
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (8*N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+          > 0:  The algorithm failed to compute a singular value.
+                The update process of divide and conquer failed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ming Gu and Huan Ren, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 207 of file dbdsdc\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

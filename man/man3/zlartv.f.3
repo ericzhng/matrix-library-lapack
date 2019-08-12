@@ -1,0 +1,128 @@
+.TH "zlartv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlartv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlartv\fP (\fBN\fP, X, INCX, Y, INCY, C, S, INCC)"
+.br
+.RI "\fBZLARTV\fP applies a vector of plane rotations with real cosines and complex sines to the elements of a pair of vectors\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlartv (integer N, complex*16, dimension( * ) X, integer INCX, complex*16, dimension( * ) Y, integer INCY, double precision, dimension( * ) C, complex*16, dimension( * ) S, integer INCC)"
+
+.PP
+\fBZLARTV\fP applies a vector of plane rotations with real cosines and complex sines to the elements of a pair of vectors\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLARTV applies a vector of complex plane rotations with real cosines
+ to elements of the complex vectors x and y. For i = 1,2,...,n
+
+    ( x(i) ) := (        c(i)   s(i) ) ( x(i) )
+    ( y(i) )    ( -conjg(s(i))  c(i) ) ( y(i) )
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of plane rotations to be applied.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX*16 array, dimension (1+(N-1)*INCX)
+          The vector x.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between elements of X. INCX > 0.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is COMPLEX*16 array, dimension (1+(N-1)*INCY)
+          The vector y.
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+          The increment between elements of Y. INCY > 0.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION array, dimension (1+(N-1)*INCC)
+          The cosines of the plane rotations.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is COMPLEX*16 array, dimension (1+(N-1)*INCC)
+          The sines of the plane rotations.
+.fi
+.PP
+.br
+\fIINCC\fP 
+.PP
+.nf
+          INCC is INTEGER
+          The increment between elements of C and S. INCC > 0.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file zlartv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

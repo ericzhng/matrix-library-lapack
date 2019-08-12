@@ -1,0 +1,100 @@
+.TH "scnrm2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+scnrm2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "real function \fBscnrm2\fP (\fBN\fP, X, INCX)"
+.br
+.RI "\fBSCNRM2\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "real function scnrm2 (integer N, complex, dimension(*) X, integer INCX)"
+
+.PP
+\fBSCNRM2\fP 
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SCNRM2 returns the euclidean norm of a vector via the function
+ name, so that
+
+    SCNRM2 := sqrt( x**H*x )
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         number of elements in input vector(s)
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX array, dimension (N)
+         complex vector with N elements
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+         storage spacing between elements of X
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  -- This version written on 25-October-1982.
+     Modified on 14-October-1993 to inline the call to CLASSQ.
+     Sven Hammarling, Nag Ltd.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 77 of file scnrm2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

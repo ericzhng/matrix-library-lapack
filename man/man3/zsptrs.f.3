@@ -1,0 +1,135 @@
+.TH "zsptrs.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zsptrs.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzsptrs\fP (UPLO, \fBN\fP, \fBNRHS\fP, AP, IPIV, B, \fBLDB\fP, INFO)"
+.br
+.RI "\fBZSPTRS\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zsptrs (character UPLO, integer N, integer NRHS, complex*16, dimension( * ) AP, integer, dimension( * ) IPIV, complex*16, dimension( ldb, * ) B, integer LDB, integer INFO)"
+
+.PP
+\fBZSPTRS\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZSPTRS solves a system of linear equations A*X = B with a complex
+ symmetric matrix A stored in packed format using the factorization
+ A = U*D*U**T or A = L*D*L**T computed by ZSPTRF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the details of the factorization are stored
+          as an upper or lower triangular matrix.
+          = 'U':  Upper triangular, form is A = U*D*U**T;
+          = 'L':  Lower triangular, form is A = L*D*L**T.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrix B.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIAP\fP 
+.PP
+.nf
+          AP is COMPLEX*16 array, dimension (N*(N+1)/2)
+          The block diagonal matrix D and the multipliers used to
+          obtain the factor U or L as computed by ZSPTRF, stored as a
+          packed triangular matrix.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          Details of the interchanges and the block structure of D
+          as determined by ZSPTRF.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX*16 array, dimension (LDB,NRHS)
+          On entry, the right hand side matrix B.
+          On exit, the solution matrix X.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file zsptrs\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,115 @@
+.TH "zlarnv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlarnv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlarnv\fP (IDIST, ISEED, \fBN\fP, X)"
+.br
+.RI "\fBZLARNV\fP returns a vector of random numbers from a uniform or normal distribution\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlarnv (integer IDIST, integer, dimension( 4 ) ISEED, integer N, complex*16, dimension( * ) X)"
+
+.PP
+\fBZLARNV\fP returns a vector of random numbers from a uniform or normal distribution\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLARNV returns a vector of n random complex numbers from a uniform or
+ normal distribution.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIIDIST\fP 
+.PP
+.nf
+          IDIST is INTEGER
+          Specifies the distribution of the random numbers:
+          = 1:  real and imaginary parts each uniform (0,1)
+          = 2:  real and imaginary parts each uniform (-1,1)
+          = 3:  real and imaginary parts each normal (0,1)
+          = 4:  uniformly distributed on the disc abs(z) < 1
+          = 5:  uniformly distributed on the circle abs(z) = 1
+.fi
+.PP
+.br
+\fIISEED\fP 
+.PP
+.nf
+          ISEED is INTEGER array, dimension (4)
+          On entry, the seed of the random number generator; the array
+          elements must be between 0 and 4095, and ISEED(4) must be
+          odd.
+          On exit, the seed is updated.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of random numbers to be generated.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX*16 array, dimension (N)
+          The generated random numbers.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  This routine calls the auxiliary routine DLARUV to generate random
+  real numbers from a uniform (0,1) distribution, in batches of up to
+  128 using vectorisable code. The Box-Muller method is used to
+  transform numbers from a uniform to a normal distribution.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file zlarnv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

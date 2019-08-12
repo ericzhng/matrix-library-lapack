@@ -1,0 +1,79 @@
+.TH "example_user.c" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+example_user.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'lapacke\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBN\fP   5"
+.br
+.ti -1c
+.RI "#define \fBNRHS\fP   3"
+.br
+.ti -1c
+.RI "#define \fBLDA\fP   \fBN\fP"
+.br
+.ti -1c
+.RI "#define \fBLDB\fP   \fBNRHS\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBprint_matrix\fP (char *desc, \fBlapack_int\fP m, \fBlapack_int\fP n, double *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "void \fBprint_int_vector\fP (char *desc, \fBlapack_int\fP n, \fBlapack_int\fP *a)"
+.br
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define LDA   \fBN\fP"
+
+.PP
+Definition at line 12 of file example_user\&.c\&.
+.SS "#define LDB   \fBNRHS\fP"
+
+.PP
+Definition at line 13 of file example_user\&.c\&.
+.SS "#define N   5"
+
+.PP
+Definition at line 10 of file example_user\&.c\&.
+.SS "#define NRHS   3"
+
+.PP
+Definition at line 11 of file example_user\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "int main ()"
+
+.PP
+Definition at line 16 of file example_user\&.c\&.
+.SS "void print_int_vector (char * desc, \fBlapack_int\fP n, \fBlapack_int\fP * a)"
+
+.PP
+Definition at line 90 of file example_user\&.c\&.
+.SS "void print_matrix (char * desc, \fBlapack_int\fP m, \fBlapack_int\fP n, double * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 80 of file example_user\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

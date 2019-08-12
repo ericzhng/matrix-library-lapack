@@ -1,0 +1,115 @@
+.TH "drotmg.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+drotmg.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdrotmg\fP (DD1, DD2, DX1, DY1, DPARAM)"
+.br
+.RI "\fBDROTMG\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine drotmg (double precision DD1, double precision DD2, double precision DX1, double precision DY1, double precision, dimension(5) DPARAM)"
+
+.PP
+\fBDROTMG\fP 
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    CONSTRUCT THE MODIFIED GIVENS TRANSFORMATION MATRIX H WHICH ZEROS
+    THE SECOND COMPONENT OF THE 2-VECTOR  (DSQRT(DD1)*DX1,DSQRT(DD2)*>    DY2)**T.
+    WITH DPARAM(1)=DFLAG, H HAS ONE OF THE FOLLOWING FORMS..
+
+    DFLAG=-1.D0     DFLAG=0.D0        DFLAG=1.D0     DFLAG=-2.D0
+
+      (DH11  DH12)    (1.D0  DH12)    (DH11  1.D0)    (1.D0  0.D0)
+    H=(          )    (          )    (          )    (          )
+      (DH21  DH22),   (DH21  1.D0),   (-1.D0 DH22),   (0.D0  1.D0).
+    LOCATIONS 2-4 OF DPARAM CONTAIN DH11, DH21, DH12, AND DH22
+    RESPECTIVELY. (VALUES OF 1.D0, -1.D0, OR 0.D0 IMPLIED BY THE
+    VALUE OF DPARAM(1) ARE NOT STORED IN DPARAM.)
+
+    THE VALUES OF GAMSQ AND RGAMSQ SET IN THE DATA STATEMENT MAY BE
+    INEXACT.  THIS IS OK AS THEY ARE ONLY USED FOR TESTING THE SIZE
+    OF DD1 AND DD2.  ALL ACTUAL SCALING OF DATA IS DONE USING GAM.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIDD1\fP 
+.PP
+.nf
+          DD1 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIDD2\fP 
+.PP
+.nf
+          DD2 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIDX1\fP 
+.PP
+.nf
+          DX1 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIDY1\fP 
+.PP
+.nf
+          DY1 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIDPARAM\fP 
+.PP
+.nf
+          DPARAM is DOUBLE PRECISION array, dimension (5)
+     DPARAM(1)=DFLAG
+     DPARAM(2)=DH11
+     DPARAM(3)=DH21
+     DPARAM(4)=DH12
+     DPARAM(5)=DH22
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+
+.PP
+Definition at line 92 of file drotmg\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

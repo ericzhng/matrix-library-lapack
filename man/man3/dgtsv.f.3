@@ -1,0 +1,149 @@
+.TH "dgtsv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dgtsv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdgtsv\fP (\fBN\fP, \fBNRHS\fP, DL, D, DU, B, \fBLDB\fP, INFO)"
+.br
+.RI "\fB DGTSV computes the solution to system of linear equations A * X = B for GT matrices \fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dgtsv (integer N, integer NRHS, double precision, dimension( * ) DL, double precision, dimension( * ) D, double precision, dimension( * ) DU, double precision, dimension( ldb, * ) B, integer LDB, integer INFO)"
+
+.PP
+\fB DGTSV computes the solution to system of linear equations A * X = B for GT matrices \fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DGTSV  solves the equation
+
+    A*X = B,
+
+ where A is an n by n tridiagonal matrix, by Gaussian elimination with
+ partial pivoting.
+
+ Note that the equation  A**T*X = B  may be solved by interchanging the
+ order of the arguments DU and DL.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrix B.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIDL\fP 
+.PP
+.nf
+          DL is DOUBLE PRECISION array, dimension (N-1)
+          On entry, DL must contain the (n-1) sub-diagonal elements of
+          A.
+
+          On exit, DL is overwritten by the (n-2) elements of the
+          second super-diagonal of the upper triangular matrix U from
+          the LU factorization of A, in DL(1), ..., DL(n-2).
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          On entry, D must contain the diagonal elements of A.
+
+          On exit, D is overwritten by the n diagonal elements of U.
+.fi
+.PP
+.br
+\fIDU\fP 
+.PP
+.nf
+          DU is DOUBLE PRECISION array, dimension (N-1)
+          On entry, DU must contain the (n-1) super-diagonal elements
+          of A.
+
+          On exit, DU is overwritten by the (n-1) elements of the first
+          super-diagonal of U.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB,NRHS)
+          On entry, the N by NRHS matrix of right hand side matrix B.
+          On exit, if INFO = 0, the N by NRHS solution matrix X.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+          > 0: if INFO = i, U(i,i) is exactly zero, and the solution
+               has not been computed.  The factorization has not been
+               completed unless i = N.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file dgtsv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

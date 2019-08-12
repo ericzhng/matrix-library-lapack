@@ -1,0 +1,118 @@
+.TH "dlassq.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlassq.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlassq\fP (\fBN\fP, X, INCX, SCALE, SUMSQ)"
+.br
+.RI "\fBDLASSQ\fP updates a sum of squares represented in scaled form\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlassq (integer N, double precision, dimension( * ) X, integer INCX, double precision SCALE, double precision SUMSQ)"
+
+.PP
+\fBDLASSQ\fP updates a sum of squares represented in scaled form\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLASSQ  returns the values  scl  and  smsq  such that
+
+    ( scl**2 )*smsq = x( 1 )**2 +...+ x( n )**2 + ( scale**2 )*sumsq,
+
+ where  x( i ) = X( 1 + ( i - 1 )*INCX ). The value of  sumsq  is
+ assumed to be non-negative and  scl  returns the value
+
+    scl = max( scale, abs( x( i ) ) ).
+
+ scale and sumsq must be supplied in SCALE and SUMSQ and
+ scl and smsq are overwritten on SCALE and SUMSQ respectively.
+
+ The routine makes only one pass through the vector x.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of elements to be used from the vector X.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is DOUBLE PRECISION array, dimension (N)
+          The vector for which a scaled sum of squares is computed.
+             x( i )  = X( 1 + ( i - 1 )*INCX ), 1 <= i <= n.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between successive values of the vector X.
+          INCX > 0.
+.fi
+.PP
+.br
+\fISCALE\fP 
+.PP
+.nf
+          SCALE is DOUBLE PRECISION
+          On entry, the value  scale  in the equation above.
+          On exit, SCALE is overwritten with  scl , the scaling factor
+          for the sum of squares.
+.fi
+.PP
+.br
+\fISUMSQ\fP 
+.PP
+.nf
+          SUMSQ is DOUBLE PRECISION
+          On entry, the value  sumsq  in the equation above.
+          On exit, SUMSQ is overwritten with  smsq , the basic sum of
+          squares from which  scl  has been factored out.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file dlassq\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

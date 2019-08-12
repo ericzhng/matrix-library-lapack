@@ -1,0 +1,127 @@
+.TH "dtrti2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dtrti2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdtrti2\fP (UPLO, DIAG, \fBN\fP, A, \fBLDA\fP, INFO)"
+.br
+.RI "\fBDTRTI2\fP computes the inverse of a triangular matrix (unblocked algorithm)\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dtrti2 (character UPLO, character DIAG, integer N, double precision, dimension( lda, * ) A, integer LDA, integer INFO)"
+
+.PP
+\fBDTRTI2\fP computes the inverse of a triangular matrix (unblocked algorithm)\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DTRTI2 computes the inverse of a real upper or lower triangular
+ matrix.
+
+ This is the Level 2 BLAS version of the algorithm.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the matrix A is upper or lower triangular.
+          = 'U':  Upper triangular
+          = 'L':  Lower triangular
+.fi
+.PP
+.br
+\fIDIAG\fP 
+.PP
+.nf
+          DIAG is CHARACTER*1
+          Specifies whether or not the matrix A is unit triangular.
+          = 'N':  Non-unit triangular
+          = 'U':  Unit triangular
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, the triangular matrix A.  If UPLO = 'U', the
+          leading n by n upper triangular part of the array A contains
+          the upper triangular matrix, and the strictly lower
+          triangular part of A is not referenced.  If UPLO = 'L', the
+          leading n by n lower triangular part of the array A contains
+          the lower triangular matrix, and the strictly upper
+          triangular part of A is not referenced.  If DIAG = 'U', the
+          diagonal elements of A are also not referenced and are
+          assumed to be 1.
+
+          On exit, the (triangular) inverse of the original matrix, in
+          the same storage format.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -k, the k-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file dtrti2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

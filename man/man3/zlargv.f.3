@@ -1,0 +1,144 @@
+.TH "zlargv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlargv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlargv\fP (\fBN\fP, X, INCX, Y, INCY, C, INCC)"
+.br
+.RI "\fBZLARGV\fP generates a vector of plane rotations with real cosines and complex sines\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlargv (integer N, complex*16, dimension( * ) X, integer INCX, complex*16, dimension( * ) Y, integer INCY, double precision, dimension( * ) C, integer INCC)"
+
+.PP
+\fBZLARGV\fP generates a vector of plane rotations with real cosines and complex sines\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLARGV generates a vector of complex plane rotations with real
+ cosines, determined by elements of the complex vectors x and y.
+ For i = 1,2,...,n
+
+    (        c(i)   s(i) ) ( x(i) ) = ( r(i) )
+    ( -conjg(s(i))  c(i) ) ( y(i) ) = (   0  )
+
+    where c(i)**2 + ABS(s(i))**2 = 1
+
+ The following conventions are used (these are the same as in ZLARTG,
+ but differ from the BLAS1 routine ZROTG):
+    If y(i)=0, then c(i)=1 and s(i)=0.
+    If x(i)=0, then c(i)=0 and s(i) is chosen so that r(i) is real.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of plane rotations to be generated.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX*16 array, dimension (1+(N-1)*INCX)
+          On entry, the vector x.
+          On exit, x(i) is overwritten by r(i), for i = 1,...,n.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between elements of X. INCX > 0.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is COMPLEX*16 array, dimension (1+(N-1)*INCY)
+          On entry, the vector y.
+          On exit, the sines of the plane rotations.
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+          The increment between elements of Y. INCY > 0.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION array, dimension (1+(N-1)*INCC)
+          The cosines of the plane rotations.
+.fi
+.PP
+.br
+\fIINCC\fP 
+.PP
+.nf
+          INCC is INTEGER
+          The increment between elements of C. INCC > 0.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  6-6-96 - Modified with a new algorithm by W. Kahan and J. Demmel
+
+  This version has a few statements commented out for thread safety
+  (machine parameters are computed on each entry). 10 feb 03, SJH.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 124 of file zlargv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,154 @@
+.TH "cla_syrcond_x.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cla_syrcond_x.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "real function \fBcla_syrcond_x\fP (UPLO, \fBN\fP, A, \fBLDA\fP, AF, LDAF, IPIV, X, INFO, WORK, RWORK)"
+.br
+.RI "\fBCLA_SYRCOND_X\fP computes the infinity norm condition number of op(A)*diag(x) for symmetric indefinite matrices\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "real function cla_syrcond_x (character UPLO, integer N, complex, dimension( lda, * ) A, integer LDA, complex, dimension( ldaf, * ) AF, integer LDAF, integer, dimension( * ) IPIV, complex, dimension( * ) X, integer INFO, complex, dimension( * ) WORK, real, dimension( * ) RWORK)"
+
+.PP
+\fBCLA_SYRCOND_X\fP computes the infinity norm condition number of op(A)*diag(x) for symmetric indefinite matrices\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    CLA_SYRCOND_X Computes the infinity norm condition number of
+    op(A) * diag(X) where X is a COMPLEX vector.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+       = 'U':  Upper triangle of A is stored;
+       = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+     The number of linear equations, i.e., the order of the
+     matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+     On entry, the N-by-N matrix A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+     The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIAF\fP 
+.PP
+.nf
+          AF is COMPLEX array, dimension (LDAF,N)
+     The block diagonal matrix D and the multipliers used to
+     obtain the factor U or L as computed by CSYTRF.
+.fi
+.PP
+.br
+\fILDAF\fP 
+.PP
+.nf
+          LDAF is INTEGER
+     The leading dimension of the array AF.  LDAF >= max(1,N).
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+     Details of the interchanges and the block structure of D
+     as determined by CSYTRF.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX array, dimension (N)
+     The vector X in the formula op(A) * diag(X).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+       = 0:  Successful exit.
+     i > 0:  The ith argument is invalid.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (2*N).
+     Workspace.
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is REAL array, dimension (N).
+     Workspace.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 133 of file cla_syrcond_x\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

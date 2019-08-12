@@ -1,0 +1,109 @@
+.TH "dlartgs.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlartgs.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlartgs\fP (X, Y, SIGMA, CS, SN)"
+.br
+.RI "\fBDLARTGS\fP generates a plane rotation designed to introduce a bulge in implicit QR iteration for the bidiagonal SVD problem\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlartgs (double precision X, double precision Y, double precision SIGMA, double precision CS, double precision SN)"
+
+.PP
+\fBDLARTGS\fP generates a plane rotation designed to introduce a bulge in implicit QR iteration for the bidiagonal SVD problem\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLARTGS generates a plane rotation designed to introduce a bulge in
+ Golub-Reinsch-style implicit QR iteration for the bidiagonal SVD
+ problem. X and Y are the top-row entries, and SIGMA is the shift.
+ The computed CS and SN define a plane rotation satisfying
+
+    [  CS  SN  ]  .  [ X^2 - SIGMA ]  =  [ R ],
+    [ -SN  CS  ]     [    X * Y    ]     [ 0 ]
+
+ with R nonnegative.  If X^2 - SIGMA and X * Y are 0, then the
+ rotation is by PI/2.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIX\fP 
+.PP
+.nf
+          X is DOUBLE PRECISION
+          The (1,1) entry of an upper bidiagonal matrix.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is DOUBLE PRECISION
+          The (1,2) entry of an upper bidiagonal matrix.
+.fi
+.PP
+.br
+\fISIGMA\fP 
+.PP
+.nf
+          SIGMA is DOUBLE PRECISION
+          The shift.
+.fi
+.PP
+.br
+\fICS\fP 
+.PP
+.nf
+          CS is DOUBLE PRECISION
+          The cosine of the rotation.
+.fi
+.PP
+.br
+\fISN\fP 
+.PP
+.nf
+          SN is DOUBLE PRECISION
+          The sine of the rotation.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+
+.PP
+Definition at line 92 of file dlartgs\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,255 @@
+.TH "ctpmqrt.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ctpmqrt.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBctpmqrt\fP (SIDE, TRANS, M, \fBN\fP, K, L, NB, V, LDV, T, LDT, A, \fBLDA\fP, B, \fBLDB\fP, WORK, INFO)"
+.br
+.RI "\fBCTPMQRT\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine ctpmqrt (character SIDE, character TRANS, integer M, integer N, integer K, integer L, integer NB, complex, dimension( ldv, * ) V, integer LDV, complex, dimension( ldt, * ) T, integer LDT, complex, dimension( lda, * ) A, integer LDA, complex, dimension( ldb, * ) B, integer LDB, complex, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBCTPMQRT\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CTPMQRT applies a complex orthogonal matrix Q obtained from a
+ "triangular-pentagonal" complex block reflector H to a general
+ complex matrix C, which consists of two blocks A and B.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'L': apply Q or Q**H from the Left;
+          = 'R': apply Q or Q**H from the Right.
+.fi
+.PP
+.br
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+          = 'N':  No transpose, apply Q;
+          = 'C':  Transpose, apply Q**H.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix B. M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix B. N >= 0.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The number of elementary reflectors whose product defines
+          the matrix Q.
+.fi
+.PP
+.br
+\fIL\fP 
+.PP
+.nf
+          L is INTEGER
+          The order of the trapezoidal part of V.
+          K >= L >= 0.  See Further Details.
+.fi
+.PP
+.br
+\fINB\fP 
+.PP
+.nf
+          NB is INTEGER
+          The block size used for the storage of T.  K >= NB >= 1.
+          This must be the same value of NB used to generate T
+          in CTPQRT.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX array, dimension (LDA,K)
+          The i-th column must contain the vector which defines the
+          elementary reflector H(i), for i = 1,2,...,k, as returned by
+          CTPQRT in B.  See Further Details.
+.fi
+.PP
+.br
+\fILDV\fP 
+.PP
+.nf
+          LDV is INTEGER
+          The leading dimension of the array V.
+          If SIDE = 'L', LDV >= max(1,M);
+          if SIDE = 'R', LDV >= max(1,N).
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is COMPLEX array, dimension (LDT,K)
+          The upper triangular factors of the block reflectors
+          as returned by CTPQRT, stored as a NB-by-K matrix.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T.  LDT >= NB.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension
+          (LDA,N) if SIDE = 'L' or
+          (LDA,K) if SIDE = 'R'
+          On entry, the K-by-N or M-by-K matrix A.
+          On exit, A is overwritten by the corresponding block of
+          Q*C or Q**H*C or C*Q or C*Q**H.  See Further Details.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.
+          If SIDE = 'L', LDC >= max(1,K);
+          If SIDE = 'R', LDC >= max(1,M).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX array, dimension (LDB,N)
+          On entry, the M-by-N matrix B.
+          On exit, B is overwritten by the corresponding block of
+          Q*C or Q**H*C or C*Q or C*Q**H.  See Further Details.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.
+          LDB >= max(1,M).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array. The dimension of WORK is
+           N*NB if SIDE = 'L', or  M*NB if SIDE = 'R'.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The columns of the pentagonal matrix V contain the elementary reflectors
+  H(1), H(2), ..., H(K); V is composed of a rectangular block V1 and a
+  trapezoidal block V2:
+
+        V = [V1]
+            [V2].
+
+  The size of the trapezoidal block V2 is determined by the parameter L,
+  where 0 <= L <= K; V2 is upper trapezoidal, consisting of the first L
+  rows of a K-by-K upper triangular matrix.  If L=K, V2 is upper triangular;
+  if L=0, there is no trapezoidal block, hence V = V1 is rectangular.
+
+  If SIDE = 'L':  C = [A]  where A is K-by-N,  B is M-by-N and V is M-by-K.
+                      [B]
+
+  If SIDE = 'R':  C = [A B]  where A is M-by-K, B is M-by-N and V is N-by-K.
+
+  The complex orthogonal matrix Q is formed from V and T.
+
+  If TRANS='N' and SIDE='L', C is on exit replaced with Q * C.
+
+  If TRANS='C' and SIDE='L', C is on exit replaced with Q**H * C.
+
+  If TRANS='N' and SIDE='R', C is on exit replaced with C * Q.
+
+  If TRANS='C' and SIDE='R', C is on exit replaced with C * Q**H.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 218 of file ctpmqrt\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

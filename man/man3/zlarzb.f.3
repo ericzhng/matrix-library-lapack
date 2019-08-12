@@ -1,0 +1,222 @@
+.TH "zlarzb.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlarzb.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlarzb\fP (SIDE, TRANS, DIRECT, STOREV, M, \fBN\fP, K, L, V, LDV, T, LDT, C, LDC, WORK, LDWORK)"
+.br
+.RI "\fBZLARZB\fP applies a block reflector or its conjugate-transpose to a general matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlarzb (character SIDE, character TRANS, character DIRECT, character STOREV, integer M, integer N, integer K, integer L, complex*16, dimension( ldv, * ) V, integer LDV, complex*16, dimension( ldt, * ) T, integer LDT, complex*16, dimension( ldc, * ) C, integer LDC, complex*16, dimension( ldwork, * ) WORK, integer LDWORK)"
+
+.PP
+\fBZLARZB\fP applies a block reflector or its conjugate-transpose to a general matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLARZB applies a complex block reflector H or its transpose H**H
+ to a complex distributed M-by-N  C from the left or the right.
+
+ Currently, only STOREV = 'R' and DIRECT = 'B' are supported.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'L': apply H or H**H from the Left
+          = 'R': apply H or H**H from the Right
+.fi
+.PP
+.br
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+          = 'N': apply H (No transpose)
+          = 'C': apply H**H (Conjugate transpose)
+.fi
+.PP
+.br
+\fIDIRECT\fP 
+.PP
+.nf
+          DIRECT is CHARACTER*1
+          Indicates how H is formed from a product of elementary
+          reflectors
+          = 'F': H = H(1) H(2) . . . H(k) (Forward, not supported yet)
+          = 'B': H = H(k) . . . H(2) H(1) (Backward)
+.fi
+.PP
+.br
+\fISTOREV\fP 
+.PP
+.nf
+          STOREV is CHARACTER*1
+          Indicates how the vectors which define the elementary
+          reflectors are stored:
+          = 'C': Columnwise                        (not supported yet)
+          = 'R': Rowwise
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix C.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix C.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The order of the matrix T (= the number of elementary
+          reflectors whose product defines the block reflector).
+.fi
+.PP
+.br
+\fIL\fP 
+.PP
+.nf
+          L is INTEGER
+          The number of columns of the matrix V containing the
+          meaningful part of the Householder reflectors.
+          If SIDE = 'L', M >= L >= 0, if SIDE = 'R', N >= L >= 0.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX*16 array, dimension (LDV,NV).
+          If STOREV = 'C', NV = K; if STOREV = 'R', NV = L.
+.fi
+.PP
+.br
+\fILDV\fP 
+.PP
+.nf
+          LDV is INTEGER
+          The leading dimension of the array V.
+          If STOREV = 'C', LDV >= L; if STOREV = 'R', LDV >= K.
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is COMPLEX*16 array, dimension (LDT,K)
+          The triangular K-by-K matrix T in the representation of the
+          block reflector.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T. LDT >= K.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX*16 array, dimension (LDC,N)
+          On entry, the M-by-N matrix C.
+          On exit, C is overwritten by H*C or H**H*C or C*H or C*H**H.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the array C. LDC >= max(1,M).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array, dimension (LDWORK,K)
+.fi
+.PP
+.br
+\fILDWORK\fP 
+.PP
+.nf
+          LDWORK is INTEGER
+          The leading dimension of the array WORK.
+          If SIDE = 'L', LDWORK >= max(1,N);
+          if SIDE = 'R', LDWORK >= max(1,M).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+A\&. Petitet, Computer Science Dept\&., Univ\&. of Tenn\&., Knoxville, USA 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+ 
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file zlarzb\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

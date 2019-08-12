@@ -1,0 +1,129 @@
+.TH "slas2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slas2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslas2\fP (F, G, H, SSMIN, SSMAX)"
+.br
+.RI "\fBSLAS2\fP computes singular values of a 2-by-2 triangular matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slas2 (real F, real G, real H, real SSMIN, real SSMAX)"
+
+.PP
+\fBSLAS2\fP computes singular values of a 2-by-2 triangular matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLAS2  computes the singular values of the 2-by-2 matrix
+    [  F   G  ]
+    [  0   H  ].
+ On return, SSMIN is the smaller singular value and SSMAX is the
+ larger singular value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIF\fP 
+.PP
+.nf
+          F is REAL
+          The (1,1) element of the 2-by-2 matrix.
+.fi
+.PP
+.br
+\fIG\fP 
+.PP
+.nf
+          G is REAL
+          The (1,2) element of the 2-by-2 matrix.
+.fi
+.PP
+.br
+\fIH\fP 
+.PP
+.nf
+          H is REAL
+          The (2,2) element of the 2-by-2 matrix.
+.fi
+.PP
+.br
+\fISSMIN\fP 
+.PP
+.nf
+          SSMIN is REAL
+          The smaller singular value.
+.fi
+.PP
+.br
+\fISSMAX\fP 
+.PP
+.nf
+          SSMAX is REAL
+          The larger singular value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  Barring over/underflow, all output quantities are correct to within
+  a few units in the last place (ulps), even in the absence of a guard
+  digit in addition/subtraction.
+
+  In IEEE arithmetic, the code works correctly if one matrix element is
+  infinite.
+
+  Overflow will not occur unless the largest singular value itself
+  overflows, or is within a few ulps of overflow. (On machines with
+  partial overflow, like the Cray, overflow may occur if the largest
+  singular value is within a factor of 2 of overflow.)
+
+  Underflow is harmless if underflow is gradual. Otherwise, results
+  may correspond to a matrix modified by perturbations of size near
+  the underflow threshold.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file slas2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

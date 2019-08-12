@@ -1,0 +1,121 @@
+.TH "clarfg.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+clarfg.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclarfg\fP (\fBN\fP, ALPHA, X, INCX, TAU)"
+.br
+.RI "\fBCLARFG\fP generates an elementary reflector (Householder matrix)\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine clarfg (integer N, complex ALPHA, complex, dimension( * ) X, integer INCX, complex TAU)"
+
+.PP
+\fBCLARFG\fP generates an elementary reflector (Householder matrix)\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLARFG generates a complex elementary reflector H of order n, such
+ that
+
+       H**H * ( alpha ) = ( beta ),   H**H * H = I.
+              (   x   )   (   0  )
+
+ where alpha and beta are scalars, with beta real, and x is an
+ (n-1)-element complex vector. H is represented in the form
+
+       H = I - tau * ( 1 ) * ( 1 v**H ) ,
+                     ( v )
+
+ where tau is a complex scalar and v is a complex (n-1)-element
+ vector. Note that H is not hermitian.
+
+ If the elements of x are all zero and alpha is real, then tau = 0
+ and H is taken to be the unit matrix.
+
+ Otherwise  1 <= real(tau) <= 2  and  abs(tau-1) <= 1 .
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the elementary reflector.
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is COMPLEX
+          On entry, the value alpha.
+          On exit, it is overwritten with the value beta.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX array, dimension
+                         (1+(N-2)*abs(INCX))
+          On entry, the vector x.
+          On exit, it is overwritten with the vector v.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between elements of X. INCX > 0.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX
+          The value tau.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+
+.PP
+Definition at line 108 of file clarfg\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

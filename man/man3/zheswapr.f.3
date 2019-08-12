@@ -1,0 +1,120 @@
+.TH "zheswapr.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zheswapr.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzheswapr\fP (UPLO, \fBN\fP, A, \fBLDA\fP, I1, I2)"
+.br
+.RI "\fBZHESWAPR\fP applies an elementary permutation on the rows and columns of a Hermitian matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zheswapr (character UPLO, integer N, complex*16, dimension( lda, n ) A, integer LDA, integer I1, integer I2)"
+
+.PP
+\fBZHESWAPR\fP applies an elementary permutation on the rows and columns of a Hermitian matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZHESWAPR applies an elementary permutation on the rows and the columns of
+ a hermitian matrix.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the details of the factorization are stored
+          as an upper or lower triangular matrix.
+          = 'U':  Upper triangular, form is A = U*D*U**T;
+          = 'L':  Lower triangular, form is A = L*D*L**T.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, the NB diagonal matrix D and the multipliers
+          used to obtain the factor U or L as computed by CSYTRF.
+
+          On exit, if INFO = 0, the (symmetric) inverse of the original
+          matrix.  If UPLO = 'U', the upper triangular part of the
+          inverse is formed and the part of A below the diagonal is not
+          referenced; if UPLO = 'L' the lower triangular part of the
+          inverse is formed and the part of A above the diagonal is
+          not referenced.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fII1\fP 
+.PP
+.nf
+          I1 is INTEGER
+          Index of the first row to swap
+.fi
+.PP
+.br
+\fII2\fP 
+.PP
+.nf
+          I2 is INTEGER
+          Index of the second row to swap
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 104 of file zheswapr\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

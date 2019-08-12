@@ -1,0 +1,182 @@
+.TH "dlags2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlags2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlags2\fP (UPPER, A1, A2, A3, B1, B2, B3, CSU, SNU, CSV, SNV, CSQ, SNQ)"
+.br
+.RI "\fBDLAGS2\fP computes 2-by-2 orthogonal matrices U, V, and Q, and applies them to matrices A and B such that the rows of the transformed A and B are parallel\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlags2 (logical UPPER, double precision A1, double precision A2, double precision A3, double precision B1, double precision B2, double precision B3, double precision CSU, double precision SNU, double precision CSV, double precision SNV, double precision CSQ, double precision SNQ)"
+
+.PP
+\fBDLAGS2\fP computes 2-by-2 orthogonal matrices U, V, and Q, and applies them to matrices A and B such that the rows of the transformed A and B are parallel\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLAGS2 computes 2-by-2 orthogonal matrices U, V and Q, such
+ that if ( UPPER ) then
+
+           U**T *A*Q = U**T *( A1 A2 )*Q = ( x  0  )
+                             ( 0  A3 )     ( x  x  )
+ and
+           V**T*B*Q = V**T *( B1 B2 )*Q = ( x  0  )
+                            ( 0  B3 )     ( x  x  )
+
+ or if ( .NOT.UPPER ) then
+
+           U**T *A*Q = U**T *( A1 0  )*Q = ( x  x  )
+                             ( A2 A3 )     ( 0  x  )
+ and
+           V**T*B*Q = V**T*( B1 0  )*Q = ( x  x  )
+                           ( B2 B3 )     ( 0  x  )
+
+ The rows of the transformed A and B are parallel, where
+
+   U = (  CSU  SNU ), V = (  CSV SNV ), Q = (  CSQ   SNQ )
+       ( -SNU  CSU )      ( -SNV CSV )      ( -SNQ   CSQ )
+
+ Z**T denotes the transpose of Z.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPPER\fP 
+.PP
+.nf
+          UPPER is LOGICAL
+          = .TRUE.: the input matrices A and B are upper triangular.
+          = .FALSE.: the input matrices A and B are lower triangular.
+.fi
+.PP
+.br
+\fIA1\fP 
+.PP
+.nf
+          A1 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIA2\fP 
+.PP
+.nf
+          A2 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIA3\fP 
+.PP
+.nf
+          A3 is DOUBLE PRECISION
+          On entry, A1, A2 and A3 are elements of the input 2-by-2
+          upper (lower) triangular matrix A.
+.fi
+.PP
+.br
+\fIB1\fP 
+.PP
+.nf
+          B1 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIB2\fP 
+.PP
+.nf
+          B2 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIB3\fP 
+.PP
+.nf
+          B3 is DOUBLE PRECISION
+          On entry, B1, B2 and B3 are elements of the input 2-by-2
+          upper (lower) triangular matrix B.
+.fi
+.PP
+.br
+\fICSU\fP 
+.PP
+.nf
+          CSU is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fISNU\fP 
+.PP
+.nf
+          SNU is DOUBLE PRECISION
+          The desired orthogonal matrix U.
+.fi
+.PP
+.br
+\fICSV\fP 
+.PP
+.nf
+          CSV is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fISNV\fP 
+.PP
+.nf
+          SNV is DOUBLE PRECISION
+          The desired orthogonal matrix V.
+.fi
+.PP
+.br
+\fICSQ\fP 
+.PP
+.nf
+          CSQ is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fISNQ\fP 
+.PP
+.nf
+          SNQ is DOUBLE PRECISION
+          The desired orthogonal matrix Q.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file dlags2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

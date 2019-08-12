@@ -1,0 +1,251 @@
+.TH "zggev.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zggev.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzggev\fP (JOBVL, JOBVR, \fBN\fP, A, \fBLDA\fP, B, \fBLDB\fP, ALPHA, BETA, VL, LDVL, VR, LDVR, WORK, LWORK, RWORK, INFO)"
+.br
+.RI "\fB ZGGEV computes the eigenvalues and, optionally, the left and/or right eigenvectors for GE matrices\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zggev (character JOBVL, character JOBVR, integer N, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( ldb, * ) B, integer LDB, complex*16, dimension( * ) ALPHA, complex*16, dimension( * ) BETA, complex*16, dimension( ldvl, * ) VL, integer LDVL, complex*16, dimension( ldvr, * ) VR, integer LDVR, complex*16, dimension( * ) WORK, integer LWORK, double precision, dimension( * ) RWORK, integer INFO)"
+
+.PP
+\fB ZGGEV computes the eigenvalues and, optionally, the left and/or right eigenvectors for GE matrices\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZGGEV computes for a pair of N-by-N complex nonsymmetric matrices
+ (A,B), the generalized eigenvalues, and optionally, the left and/or
+ right generalized eigenvectors.
+
+ A generalized eigenvalue for a pair of matrices (A,B) is a scalar
+ lambda or a ratio alpha/beta = lambda, such that A - lambda*B is
+ singular. It is usually represented as the pair (alpha,beta), as
+ there is a reasonable interpretation for beta=0, and even for both
+ being zero.
+
+ The right generalized eigenvector v(j) corresponding to the
+ generalized eigenvalue lambda(j) of (A,B) satisfies
+
+              A * v(j) = lambda(j) * B * v(j).
+
+ The left generalized eigenvector u(j) corresponding to the
+ generalized eigenvalues lambda(j) of (A,B) satisfies
+
+              u(j)**H * A = lambda(j) * u(j)**H * B
+
+ where u(j)**H is the conjugate-transpose of u(j).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOBVL\fP 
+.PP
+.nf
+          JOBVL is CHARACTER*1
+          = 'N':  do not compute the left generalized eigenvectors;
+          = 'V':  compute the left generalized eigenvectors.
+.fi
+.PP
+.br
+\fIJOBVR\fP 
+.PP
+.nf
+          JOBVR is CHARACTER*1
+          = 'N':  do not compute the right generalized eigenvectors;
+          = 'V':  compute the right generalized eigenvectors.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrices A, B, VL, and VR.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA, N)
+          On entry, the matrix A in the pair (A,B).
+          On exit, A has been overwritten.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX*16 array, dimension (LDB, N)
+          On entry, the matrix B in the pair (A,B).
+          On exit, B has been overwritten.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is COMPLEX*16 array, dimension (N)
+.fi
+.PP
+.br
+\fIBETA\fP 
+.PP
+.nf
+          BETA is COMPLEX*16 array, dimension (N)
+          On exit, ALPHA(j)/BETA(j), j=1,...,N, will be the
+          generalized eigenvalues.
+
+          Note: the quotients ALPHA(j)/BETA(j) may easily over- or
+          underflow, and BETA(j) may even be zero.  Thus, the user
+          should avoid naively computing the ratio alpha/beta.
+          However, ALPHA will be always less than and usually
+          comparable with norm(A) in magnitude, and BETA always less
+          than and usually comparable with norm(B).
+.fi
+.PP
+.br
+\fIVL\fP 
+.PP
+.nf
+          VL is COMPLEX*16 array, dimension (LDVL,N)
+          If JOBVL = 'V', the left generalized eigenvectors u(j) are
+          stored one after another in the columns of VL, in the same
+          order as their eigenvalues.
+          Each eigenvector is scaled so the largest component has
+          abs(real part) + abs(imag. part) = 1.
+          Not referenced if JOBVL = 'N'.
+.fi
+.PP
+.br
+\fILDVL\fP 
+.PP
+.nf
+          LDVL is INTEGER
+          The leading dimension of the matrix VL. LDVL >= 1, and
+          if JOBVL = 'V', LDVL >= N.
+.fi
+.PP
+.br
+\fIVR\fP 
+.PP
+.nf
+          VR is COMPLEX*16 array, dimension (LDVR,N)
+          If JOBVR = 'V', the right generalized eigenvectors v(j) are
+          stored one after another in the columns of VR, in the same
+          order as their eigenvalues.
+          Each eigenvector is scaled so the largest component has
+          abs(real part) + abs(imag. part) = 1.
+          Not referenced if JOBVR = 'N'.
+.fi
+.PP
+.br
+\fILDVR\fP 
+.PP
+.nf
+          LDVR is INTEGER
+          The leading dimension of the matrix VR. LDVR >= 1, and
+          if JOBVR = 'V', LDVR >= N.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.  LWORK >= max(1,2*N).
+          For good performance, LWORK must generally be larger.
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array, and no error
+          message related to LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is DOUBLE PRECISION array, dimension (8*N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+          =1,...,N:
+                The QZ iteration failed.  No eigenvectors have been
+                calculated, but ALPHA(j) and BETA(j) should be
+                correct for j=INFO+1,...,N.
+          > N:  =N+1: other then QZ iteration failed in DHGEQZ,
+                =N+2: error return from DTGEVC.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+April 2012 
+.RE
+.PP
+
+.PP
+Definition at line 219 of file zggev\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

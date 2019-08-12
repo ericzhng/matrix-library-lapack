@@ -1,0 +1,324 @@
+.TH "slaqr3.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaqr3.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslaqr3\fP (WANTT, WANTZ, \fBN\fP, KTOP, KBOT, NW, H, LDH, ILOZ, IHIZ, Z, LDZ, NS, ND, SR, SI, V, LDV, NH, T, LDT, NV, WV, LDWV, WORK, LWORK)"
+.br
+.RI "\fBSLAQR3\fP performs the orthogonal similarity transformation of a Hessenberg matrix to detect and deflate fully converged eigenvalues from a trailing principal submatrix (aggressive early deflation)\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slaqr3 (logical WANTT, logical WANTZ, integer N, integer KTOP, integer KBOT, integer NW, real, dimension( ldh, * ) H, integer LDH, integer ILOZ, integer IHIZ, real, dimension( ldz, * ) Z, integer LDZ, integer NS, integer ND, real, dimension( * ) SR, real, dimension( * ) SI, real, dimension( ldv, * ) V, integer LDV, integer NH, real, dimension( ldt, * ) T, integer LDT, integer NV, real, dimension( ldwv, * ) WV, integer LDWV, real, dimension( * ) WORK, integer LWORK)"
+
+.PP
+\fBSLAQR3\fP performs the orthogonal similarity transformation of a Hessenberg matrix to detect and deflate fully converged eigenvalues from a trailing principal submatrix (aggressive early deflation)\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    Aggressive early deflation:
+
+    SLAQR3 accepts as input an upper Hessenberg matrix
+    H and performs an orthogonal similarity transformation
+    designed to detect and deflate fully converged eigenvalues from
+    a trailing principal submatrix.  On output H has been over-
+    written by a new Hessenberg matrix that is a perturbation of
+    an orthogonal similarity transformation of H.  It is to be
+    hoped that the final version of H has many zero subdiagonal
+    entries.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIWANTT\fP 
+.PP
+.nf
+          WANTT is LOGICAL
+          If .TRUE., then the Hessenberg matrix H is fully updated
+          so that the quasi-triangular Schur factor may be
+          computed (in cooperation with the calling subroutine).
+          If .FALSE., then only enough of H is updated to preserve
+          the eigenvalues.
+.fi
+.PP
+.br
+\fIWANTZ\fP 
+.PP
+.nf
+          WANTZ is LOGICAL
+          If .TRUE., then the orthogonal matrix Z is updated so
+          so that the orthogonal Schur factor may be computed
+          (in cooperation with the calling subroutine).
+          If .FALSE., then Z is not referenced.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix H and (if WANTZ is .TRUE.) the
+          order of the orthogonal matrix Z.
+.fi
+.PP
+.br
+\fIKTOP\fP 
+.PP
+.nf
+          KTOP is INTEGER
+          It is assumed that either KTOP = 1 or H(KTOP,KTOP-1)=0.
+          KBOT and KTOP together determine an isolated block
+          along the diagonal of the Hessenberg matrix.
+.fi
+.PP
+.br
+\fIKBOT\fP 
+.PP
+.nf
+          KBOT is INTEGER
+          It is assumed without a check that either
+          KBOT = N or H(KBOT+1,KBOT)=0.  KBOT and KTOP together
+          determine an isolated block along the diagonal of the
+          Hessenberg matrix.
+.fi
+.PP
+.br
+\fINW\fP 
+.PP
+.nf
+          NW is INTEGER
+          Deflation window size.  1 .LE. NW .LE. (KBOT-KTOP+1).
+.fi
+.PP
+.br
+\fIH\fP 
+.PP
+.nf
+          H is REAL array, dimension (LDH,N)
+          On input the initial N-by-N section of H stores the
+          Hessenberg matrix undergoing aggressive early deflation.
+          On output H has been transformed by an orthogonal
+          similarity transformation, perturbed, and the returned
+          to Hessenberg form that (it is to be hoped) has some
+          zero subdiagonal entries.
+.fi
+.PP
+.br
+\fILDH\fP 
+.PP
+.nf
+          LDH is INTEGER
+          Leading dimension of H just as declared in the calling
+          subroutine.  N .LE. LDH
+.fi
+.PP
+.br
+\fIILOZ\fP 
+.PP
+.nf
+          ILOZ is INTEGER
+.fi
+.PP
+.br
+\fIIHIZ\fP 
+.PP
+.nf
+          IHIZ is INTEGER
+          Specify the rows of Z to which transformations must be
+          applied if WANTZ is .TRUE.. 1 .LE. ILOZ .LE. IHIZ .LE. N.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array, dimension (LDZ,N)
+          IF WANTZ is .TRUE., then on output, the orthogonal
+          similarity transformation mentioned above has been
+          accumulated into Z(ILOZ:IHIZ,ILOZ:IHIZ) from the right.
+          If WANTZ is .FALSE., then Z is unreferenced.
+.fi
+.PP
+.br
+\fILDZ\fP 
+.PP
+.nf
+          LDZ is INTEGER
+          The leading dimension of Z just as declared in the
+          calling subroutine.  1 .LE. LDZ.
+.fi
+.PP
+.br
+\fINS\fP 
+.PP
+.nf
+          NS is INTEGER
+          The number of unconverged (ie approximate) eigenvalues
+          returned in SR and SI that may be used as shifts by the
+          calling subroutine.
+.fi
+.PP
+.br
+\fIND\fP 
+.PP
+.nf
+          ND is INTEGER
+          The number of converged eigenvalues uncovered by this
+          subroutine.
+.fi
+.PP
+.br
+\fISR\fP 
+.PP
+.nf
+          SR is REAL array, dimension (KBOT)
+.fi
+.PP
+.br
+\fISI\fP 
+.PP
+.nf
+          SI is REAL array, dimension (KBOT)
+          On output, the real and imaginary parts of approximate
+          eigenvalues that may be used for shifts are stored in
+          SR(KBOT-ND-NS+1) through SR(KBOT-ND) and
+          SI(KBOT-ND-NS+1) through SI(KBOT-ND), respectively.
+          The real and imaginary parts of converged eigenvalues
+          are stored in SR(KBOT-ND+1) through SR(KBOT) and
+          SI(KBOT-ND+1) through SI(KBOT), respectively.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is REAL array, dimension (LDV,NW)
+          An NW-by-NW work array.
+.fi
+.PP
+.br
+\fILDV\fP 
+.PP
+.nf
+          LDV is INTEGER
+          The leading dimension of V just as declared in the
+          calling subroutine.  NW .LE. LDV
+.fi
+.PP
+.br
+\fINH\fP 
+.PP
+.nf
+          NH is INTEGER
+          The number of columns of T.  NH.GE.NW.
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is REAL array, dimension (LDT,NW)
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of T just as declared in the
+          calling subroutine.  NW .LE. LDT
+.fi
+.PP
+.br
+\fINV\fP 
+.PP
+.nf
+          NV is INTEGER
+          The number of rows of work array WV available for
+          workspace.  NV.GE.NW.
+.fi
+.PP
+.br
+\fIWV\fP 
+.PP
+.nf
+          WV is REAL array, dimension (LDWV,NW)
+.fi
+.PP
+.br
+\fILDWV\fP 
+.PP
+.nf
+          LDWV is INTEGER
+          The leading dimension of W just as declared in the
+          calling subroutine.  NW .LE. LDV
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (LWORK)
+          On exit, WORK(1) is set to an estimate of the optimal value
+          of LWORK for the given values of N, NW, KTOP and KBOT.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the work array WORK.  LWORK = 2*NW
+          suffices, but greater efficiency may result from larger
+          values of LWORK.
+
+          If LWORK = -1, then a workspace query is assumed; SLAQR3
+          only estimates the optimal workspace size for the given
+          values of N, NW, KTOP and KBOT.  The estimate is returned
+          in WORK(1).  No error message related to LWORK is issued
+          by XERBLA.  Neither H nor Z are accessed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Karen Braman and Ralph Byers, Department of Mathematics, University of Kansas, USA 
+.RE
+.PP
+
+.PP
+Definition at line 277 of file slaqr3\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

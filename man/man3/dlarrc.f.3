@@ -1,0 +1,165 @@
+.TH "dlarrc.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlarrc.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlarrc\fP (JOBT, \fBN\fP, VL, VU, D, E, PIVMIN, EIGCNT, LCNT, RCNT, INFO)"
+.br
+.RI "\fBDLARRC\fP computes the number of eigenvalues of the symmetric tridiagonal matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlarrc (character JOBT, integer N, double precision VL, double precision VU, double precision, dimension( * ) D, double precision, dimension( * ) E, double precision PIVMIN, integer EIGCNT, integer LCNT, integer RCNT, integer INFO)"
+
+.PP
+\fBDLARRC\fP computes the number of eigenvalues of the symmetric tridiagonal matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Find the number of eigenvalues of the symmetric tridiagonal matrix T
+ that are in the interval (VL,VU] if JOBT = 'T', and of L D L^T
+ if JOBT = 'L'.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOBT\fP 
+.PP
+.nf
+          JOBT is CHARACTER*1
+          = 'T':  Compute Sturm count for matrix T.
+          = 'L':  Compute Sturm count for matrix L D L^T.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix. N > 0.
+.fi
+.PP
+.br
+\fIVL\fP 
+.PP
+.nf
+          VL is DOUBLE PRECISION
+          The lower bound for the eigenvalues.
+.fi
+.PP
+.br
+\fIVU\fP 
+.PP
+.nf
+          VU is DOUBLE PRECISION
+          The upper bound for the eigenvalues.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          JOBT = 'T': The N diagonal elements of the tridiagonal matrix T.
+          JOBT = 'L': The N diagonal elements of the diagonal matrix D.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (N)
+          JOBT = 'T': The N-1 offdiagonal elements of the matrix T.
+          JOBT = 'L': The N-1 offdiagonal elements of the matrix L.
+.fi
+.PP
+.br
+\fIPIVMIN\fP 
+.PP
+.nf
+          PIVMIN is DOUBLE PRECISION
+          The minimum pivot in the Sturm sequence for T.
+.fi
+.PP
+.br
+\fIEIGCNT\fP 
+.PP
+.nf
+          EIGCNT is INTEGER
+          The number of eigenvalues of the symmetric tridiagonal matrix T
+          that are in the interval (VL,VU]
+.fi
+.PP
+.br
+\fILCNT\fP 
+.PP
+.nf
+          LCNT is INTEGER
+.fi
+.PP
+.br
+\fIRCNT\fP 
+.PP
+.nf
+          RCNT is INTEGER
+          The left and right negcounts of the interval.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Beresford Parlett, University of California, Berkeley, USA 
+.br
+ Jim Demmel, University of California, Berkeley, USA 
+.br
+ Inderjit Dhillon, University of Texas, Austin, USA 
+.br
+ Osni Marques, LBNL/NERSC, USA 
+.br
+ Christof Voemel, University of California, Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 139 of file dlarrc\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

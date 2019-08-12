@@ -1,0 +1,93 @@
+.TH "icmax1.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+icmax1.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "integer function \fBicmax1\fP (\fBN\fP, CX, INCX)"
+.br
+.RI "\fBICMAX1\fP finds the index of the first vector element of maximum absolute value\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "integer function icmax1 (integer N, complex, dimension(*) CX, integer INCX)"
+
+.PP
+\fBICMAX1\fP finds the index of the first vector element of maximum absolute value\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ICMAX1 finds the index of the first vector element of maximum absolute value.
+
+ Based on ICAMAX from Level 1 BLAS.
+ The change is to use the 'genuine' absolute value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of elements in the vector CX.
+.fi
+.PP
+.br
+\fICX\fP 
+.PP
+.nf
+          CX is COMPLEX array, dimension (N)
+          The vector CX. The ICMAX1 function returns the index of its first
+          element of maximum absolute value.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The spacing between successive values of CX.  INCX >= 1.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+February 2014 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Nick Higham for use with CLACON\&. 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file icmax1\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

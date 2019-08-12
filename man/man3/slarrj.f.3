@@ -1,0 +1,199 @@
+.TH "slarrj.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slarrj.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslarrj\fP (\fBN\fP, D, E2, IFIRST, ILAST, RTOL, OFFSET, W, WERR, WORK, IWORK, PIVMIN, SPDIAM, INFO)"
+.br
+.RI "\fBSLARRJ\fP performs refinement of the initial estimates of the eigenvalues of the matrix T\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slarrj (integer N, real, dimension( * ) D, real, dimension( * ) E2, integer IFIRST, integer ILAST, real RTOL, integer OFFSET, real, dimension( * ) W, real, dimension( * ) WERR, real, dimension( * ) WORK, integer, dimension( * ) IWORK, real PIVMIN, real SPDIAM, integer INFO)"
+
+.PP
+\fBSLARRJ\fP performs refinement of the initial estimates of the eigenvalues of the matrix T\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Given the initial eigenvalue approximations of T, SLARRJ
+ does  bisection to refine the eigenvalues of T,
+ W( IFIRST-OFFSET ) through W( ILAST-OFFSET ), to more accuracy. Initial
+ guesses for these eigenvalues are input in W, the corresponding estimate
+ of the error in these guesses in WERR. During bisection, intervals
+ [left, right] are maintained by storing their mid-points and
+ semi-widths in the arrays W and WERR respectively.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+          The N diagonal elements of T.
+.fi
+.PP
+.br
+\fIE2\fP 
+.PP
+.nf
+          E2 is REAL array, dimension (N-1)
+          The Squares of the (N-1) subdiagonal elements of T.
+.fi
+.PP
+.br
+\fIIFIRST\fP 
+.PP
+.nf
+          IFIRST is INTEGER
+          The index of the first eigenvalue to be computed.
+.fi
+.PP
+.br
+\fIILAST\fP 
+.PP
+.nf
+          ILAST is INTEGER
+          The index of the last eigenvalue to be computed.
+.fi
+.PP
+.br
+\fIRTOL\fP 
+.PP
+.nf
+          RTOL is REAL
+          Tolerance for the convergence of the bisection intervals.
+          An interval [LEFT,RIGHT] has converged if
+          RIGHT-LEFT.LT.RTOL*MAX(|LEFT|,|RIGHT|).
+.fi
+.PP
+.br
+\fIOFFSET\fP 
+.PP
+.nf
+          OFFSET is INTEGER
+          Offset for the arrays W and WERR, i.e., the IFIRST-OFFSET
+          through ILAST-OFFSET elements of these arrays are to be used.
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is REAL array, dimension (N)
+          On input, W( IFIRST-OFFSET ) through W( ILAST-OFFSET ) are
+          estimates of the eigenvalues of L D L^T indexed IFIRST through
+          ILAST.
+          On output, these estimates are refined.
+.fi
+.PP
+.br
+\fIWERR\fP 
+.PP
+.nf
+          WERR is REAL array, dimension (N)
+          On input, WERR( IFIRST-OFFSET ) through WERR( ILAST-OFFSET ) are
+          the errors in the estimates of the corresponding elements in W.
+          On output, these errors are refined.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (2*N)
+          Workspace.
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (2*N)
+          Workspace.
+.fi
+.PP
+.br
+\fIPIVMIN\fP 
+.PP
+.nf
+          PIVMIN is REAL
+          The minimum pivot in the Sturm sequence for T.
+.fi
+.PP
+.br
+\fISPDIAM\fP 
+.PP
+.nf
+          SPDIAM is REAL
+          The spectral diameter of T.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          Error flag.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Beresford Parlett, University of California, Berkeley, USA 
+.br
+ Jim Demmel, University of California, Berkeley, USA 
+.br
+ Inderjit Dhillon, University of Texas, Austin, USA 
+.br
+ Osni Marques, LBNL/NERSC, USA 
+.br
+ Christof Voemel, University of California, Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 170 of file slarrj\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

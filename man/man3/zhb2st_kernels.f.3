@@ -1,0 +1,192 @@
+.TH "zhb2st_kernels.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zhb2st_kernels.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzhb2st_kernels\fP (UPLO, WANTZ, TTYPE, ST, ED, SWEEP, \fBN\fP, NB, IB, A, \fBLDA\fP, V, TAU, LDVT, WORK)"
+.br
+.RI "\fBZHB2ST_KERNELS\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zhb2st_kernels (character UPLO, logical WANTZ, integer TTYPE, integer ST, integer ED, integer SWEEP, integer N, integer NB, integer IB, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( * ) V, complex*16, dimension( * ) TAU, integer LDVT, complex*16, dimension( * ) WORK)"
+
+.PP
+\fBZHB2ST_KERNELS\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZHB2ST_KERNELS is an internal routine used by the ZHETRD_HB2ST
+ subroutine.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+.fi
+.PP
+.br
+\fIWANTZ\fP 
+.PP
+.nf
+          WANTZ is LOGICAL which indicate if Eigenvalue are requested or both
+          Eigenvalue/Eigenvectors.
+.fi
+.PP
+.br
+\fITTYPE\fP 
+.PP
+.nf
+          TTYPE is INTEGER
+.fi
+.PP
+.br
+\fIST\fP 
+.PP
+.nf
+          ST is INTEGER
+          internal parameter for indices.
+.fi
+.PP
+.br
+\fIED\fP 
+.PP
+.nf
+          ED is INTEGER
+          internal parameter for indices.
+.fi
+.PP
+.br
+\fISWEEP\fP 
+.PP
+.nf
+          SWEEP is INTEGER
+          internal parameter for indices.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER. The order of the matrix A.
+.fi
+.PP
+.br
+\fINB\fP 
+.PP
+.nf
+          NB is INTEGER. The size of the band.
+.fi
+.PP
+.br
+\fIIB\fP 
+.PP
+.nf
+          IB is INTEGER.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array. A pointer to the matrix A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER. The leading dimension of the matrix A.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX*16 array, dimension 2*n if eigenvalues only are
+          requested or to be queried for vectors.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX*16 array, dimension (2*n).
+          The scalar factors of the Householder reflectors are stored
+          in this array.
+.fi
+.PP
+.br
+\fILDVT\fP 
+.PP
+.nf
+          LDVT is INTEGER.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array. Workspace of size nb.
+.fi
+.PP
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  Implemented by Azzam Haidar.
+
+  All details are available on technical report, SC11, SC13 papers.
+
+  Azzam Haidar, Hatem Ltaief, and Jack Dongarra.
+  Parallel reduction to condensed forms for symmetric eigenvalue problems
+  using aggregated fine-grained and memory-aware kernels. In Proceedings
+  of 2011 International Conference for High Performance Computing,
+  Networking, Storage and Analysis (SC '11), New York, NY, USA,
+  Article 8 , 11 pages.
+  http://doi.acm.org/10.1145/2063384.2063394
+
+  A. Haidar, J. Kurzak, P. Luszczek, 2013.
+  An improved parallel singular value algorithm and its implementation 
+  for multicore hardware, In Proceedings of 2013 International Conference
+  for High Performance Computing, Networking, Storage and Analysis (SC '13).
+  Denver, Colorado, USA, 2013.
+  Article 90, 12 pages.
+  http://doi.acm.org/10.1145/2503210.2503292
+
+  A. Haidar, R. Solca, S. Tomov, T. Schulthess and J. Dongarra.
+  A novel hybrid CPU-GPU generalized eigensolver for electronic structure 
+  calculations based on fine-grained memory aware tasks.
+  International Journal of High Performance Computing Applications.
+  Volume 28 Issue 2, Pages 196-209, May 2014.
+  http://hpc.sagepub.com/content/28/2/196 
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 170 of file zhb2st_kernels\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

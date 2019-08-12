@@ -1,0 +1,175 @@
+.TH "dlasd0.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlasd0.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlasd0\fP (\fBN\fP, SQRE, D, E, U, LDU, VT, LDVT, SMLSIZ, IWORK, WORK, INFO)"
+.br
+.RI "\fBDLASD0\fP computes the singular values of a real upper bidiagonal n-by-m matrix B with diagonal d and off-diagonal e\&. Used by sbdsdc\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlasd0 (integer N, integer SQRE, double precision, dimension( * ) D, double precision, dimension( * ) E, double precision, dimension( ldu, * ) U, integer LDU, double precision, dimension( ldvt, * ) VT, integer LDVT, integer SMLSIZ, integer, dimension( * ) IWORK, double precision, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBDLASD0\fP computes the singular values of a real upper bidiagonal n-by-m matrix B with diagonal d and off-diagonal e\&. Used by sbdsdc\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Using a divide and conquer approach, DLASD0 computes the singular
+ value decomposition (SVD) of a real upper bidiagonal N-by-M
+ matrix B with diagonal D and offdiagonal E, where M = N + SQRE.
+ The algorithm computes orthogonal matrices U and VT such that
+ B = U * S * VT. The singular values S are overwritten on D.
+
+ A related subroutine, DLASDA, computes only the singular values,
+ and optionally, the singular vectors in compact form.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         On entry, the row dimension of the upper bidiagonal matrix.
+         This is also the dimension of the main diagonal array D.
+.fi
+.PP
+.br
+\fISQRE\fP 
+.PP
+.nf
+          SQRE is INTEGER
+         Specifies the column dimension of the bidiagonal matrix.
+         = 0: The bidiagonal matrix has column dimension M = N;
+         = 1: The bidiagonal matrix has column dimension M = N+1;
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+         On entry D contains the main diagonal of the bidiagonal
+         matrix.
+         On exit D, if INFO = 0, contains its singular values.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (M-1)
+         Contains the subdiagonal entries of the bidiagonal matrix.
+         On exit, E has been destroyed.
+.fi
+.PP
+.br
+\fIU\fP 
+.PP
+.nf
+          U is DOUBLE PRECISION array, dimension (LDU, N)
+         On exit, U contains the left singular vectors.
+.fi
+.PP
+.br
+\fILDU\fP 
+.PP
+.nf
+          LDU is INTEGER
+         On entry, leading dimension of U.
+.fi
+.PP
+.br
+\fIVT\fP 
+.PP
+.nf
+          VT is DOUBLE PRECISION array, dimension (LDVT, M)
+         On exit, VT**T contains the right singular vectors.
+.fi
+.PP
+.br
+\fILDVT\fP 
+.PP
+.nf
+          LDVT is INTEGER
+         On entry, leading dimension of VT.
+.fi
+.PP
+.br
+\fISMLSIZ\fP 
+.PP
+.nf
+          SMLSIZ is INTEGER
+         On entry, maximum size of the subproblems at the
+         bottom of the computation tree.
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (8*N)
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (3*M**2+2*M)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+          > 0:  if INFO = 1, a singular value did not converge
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ming Gu and Huan Ren, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 152 of file dlasd0\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

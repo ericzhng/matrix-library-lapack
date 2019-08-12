@@ -1,0 +1,164 @@
+.TH "zlantr.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlantr.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "double precision function \fBzlantr\fP (NORM, UPLO, DIAG, M, \fBN\fP, A, \fBLDA\fP, WORK)"
+.br
+.RI "\fBZLANTR\fP returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a trapezoidal or triangular matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "double precision function zlantr (character NORM, character UPLO, character DIAG, integer M, integer N, complex*16, dimension( lda, * ) A, integer LDA, double precision, dimension( * ) WORK)"
+
+.PP
+\fBZLANTR\fP returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a trapezoidal or triangular matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLANTR  returns the value of the one norm,  or the Frobenius norm, or
+ the  infinity norm,  or the  element of  largest absolute value  of a
+ trapezoidal or triangular matrix A.
+.fi
+.PP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+ZLANTR 
+.PP
+.nf
+    ZLANTR = ( max(abs(A(i,j))), NORM = 'M' or 'm'
+             (
+             ( norm1(A),         NORM = '1', 'O' or 'o'
+             (
+             ( normI(A),         NORM = 'I' or 'i'
+             (
+             ( normF(A),         NORM = 'F', 'f', 'E' or 'e'
+
+ where  norm1  denotes the  one norm of a matrix (maximum column sum),
+ normI  denotes the  infinity norm  of a matrix  (maximum row sum) and
+ normF  denotes the  Frobenius norm of a matrix (square root of sum of
+ squares).  Note that  max(abs(A(i,j)))  is not a consistent matrix norm.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fINORM\fP 
+.PP
+.nf
+          NORM is CHARACTER*1
+          Specifies the value to be returned in ZLANTR as described
+          above.
+.fi
+.PP
+.br
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the matrix A is upper or lower trapezoidal.
+          = 'U':  Upper trapezoidal
+          = 'L':  Lower trapezoidal
+          Note that A is triangular instead of trapezoidal if M = N.
+.fi
+.PP
+.br
+\fIDIAG\fP 
+.PP
+.nf
+          DIAG is CHARACTER*1
+          Specifies whether or not the matrix A has unit diagonal.
+          = 'N':  Non-unit diagonal
+          = 'U':  Unit diagonal
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0, and if
+          UPLO = 'U', M <= N.  When M = 0, ZLANTR is set to zero.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0, and if
+          UPLO = 'L', N <= M.  When N = 0, ZLANTR is set to zero.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          The trapezoidal matrix A (A is triangular if M = N).
+          If UPLO = 'U', the leading m by n upper trapezoidal part of
+          the array A contains the upper trapezoidal matrix, and the
+          strictly lower triangular part of A is not referenced.
+          If UPLO = 'L', the leading m by n lower trapezoidal part of
+          the array A contains the lower trapezoidal matrix, and the
+          strictly upper triangular part of A is not referenced.  Note
+          that when DIAG = 'U', the diagonal elements of A are not
+          referenced and are assumed to be one.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(M,1).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (MAX(1,LWORK)),
+          where LWORK >= M when NORM = 'I'; otherwise, WORK is not
+          referenced.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file zlantr\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

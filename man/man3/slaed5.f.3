@@ -1,0 +1,124 @@
+.TH "slaed5.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaed5.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslaed5\fP (I, D, Z, DELTA, RHO, DLAM)"
+.br
+.RI "\fBSLAED5\fP used by sstedc\&. Solves the 2-by-2 secular equation\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slaed5 (integer I, real, dimension( 2 ) D, real, dimension( 2 ) Z, real, dimension( 2 ) DELTA, real RHO, real DLAM)"
+
+.PP
+\fBSLAED5\fP used by sstedc\&. Solves the 2-by-2 secular equation\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ This subroutine computes the I-th eigenvalue of a symmetric rank-one
+ modification of a 2-by-2 diagonal matrix
+
+            diag( D )  +  RHO * Z * transpose(Z) .
+
+ The diagonal elements in the array D are assumed to satisfy
+
+            D(i) < D(j)  for  i < j .
+
+ We also assume RHO > 0 and that the Euclidean norm of the vector
+ Z is one.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fII\fP 
+.PP
+.nf
+          I is INTEGER
+         The index of the eigenvalue to be computed.  I = 1 or I = 2.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (2)
+         The original eigenvalues.  We assume D(1) < D(2).
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array, dimension (2)
+         The components of the updating vector.
+.fi
+.PP
+.br
+\fIDELTA\fP 
+.PP
+.nf
+          DELTA is REAL array, dimension (2)
+         The vector DELTA contains the information necessary
+         to construct the eigenvectors.
+.fi
+.PP
+.br
+\fIRHO\fP 
+.PP
+.nf
+          RHO is REAL
+         The scalar in the symmetric updating formula.
+.fi
+.PP
+.br
+\fIDLAM\fP 
+.PP
+.nf
+          DLAM is REAL
+         The computed lambda_I, the I-th updated eigenvalue.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ren-Cang Li, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 110 of file slaed5\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

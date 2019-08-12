@@ -1,0 +1,70 @@
+.TH "sisnan.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sisnan.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "logical function \fBsisnan\fP (SIN)"
+.br
+.RI "\fBSISNAN\fP tests input for NaN\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "logical function sisnan (real, intent(in) SIN)"
+
+.PP
+\fBSISNAN\fP tests input for NaN\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SISNAN returns .TRUE. if its argument is NaN, and .FALSE.
+ otherwise.  To be replaced by the Fortran 2003 intrinsic in the
+ future.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIN\fP 
+.PP
+.nf
+          SIN is REAL
+          Input to test for NaN.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+
+.PP
+Definition at line 61 of file sisnan\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

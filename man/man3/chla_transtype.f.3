@@ -1,0 +1,62 @@
+.TH "chla_transtype.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+chla_transtype.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "character *1 function \fBchla_transtype\fP (TRANS)"
+.br
+.RI "\fBCHLA_TRANSTYPE\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "character*1 function chla_transtype (integer TRANS)"
+
+.PP
+\fBCHLA_TRANSTYPE\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ This subroutine translates from a BLAST-specified integer constant to
+ the character string specifying a transposition operation.
+
+ CHLA_TRANSTYPE returns an CHARACTER*1.  If CHLA_TRANSTYPE is 'X',
+ then input is not an integer indicating a transposition operator.
+ Otherwise CHLA_TRANSTYPE returns the constant value corresponding to
+ TRANS.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 60 of file chla_transtype\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

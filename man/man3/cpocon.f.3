@@ -1,0 +1,140 @@
+.TH "cpocon.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cpocon.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcpocon\fP (UPLO, \fBN\fP, A, \fBLDA\fP, ANORM, RCOND, WORK, RWORK, INFO)"
+.br
+.RI "\fBCPOCON\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cpocon (character UPLO, integer N, complex, dimension( lda, * ) A, integer LDA, real ANORM, real RCOND, complex, dimension( * ) WORK, real, dimension( * ) RWORK, integer INFO)"
+
+.PP
+\fBCPOCON\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CPOCON estimates the reciprocal of the condition number (in the
+ 1-norm) of a complex Hermitian positive definite matrix using the
+ Cholesky factorization A = U**H*U or A = L*L**H computed by CPOTRF.
+
+ An estimate is obtained for norm(inv(A)), and the reciprocal of the
+ condition number is computed as RCOND = 1 / (ANORM * norm(inv(A))).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangle of A is stored;
+          = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+          The triangular factor U or L from the Cholesky factorization
+          A = U**H*U or A = L*L**H, as computed by CPOTRF.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIANORM\fP 
+.PP
+.nf
+          ANORM is REAL
+          The 1-norm (or infinity-norm) of the Hermitian matrix A.
+.fi
+.PP
+.br
+\fIRCOND\fP 
+.PP
+.nf
+          RCOND is REAL
+          The reciprocal of the condition number of the matrix A,
+          computed as RCOND = 1/(ANORM * AINVNM), where AINVNM is an
+          estimate of the 1-norm of inv(A) computed in this routine.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (2*N)
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is REAL array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file cpocon\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

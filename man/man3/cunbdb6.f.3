@@ -1,0 +1,184 @@
+.TH "cunbdb6.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cunbdb6.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcunbdb6\fP (M1, M2, \fBN\fP, X1, INCX1, X2, INCX2, Q1, LDQ1, Q2, LDQ2, WORK, LWORK, INFO)"
+.br
+.RI "\fBCUNBDB6\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cunbdb6 (integer M1, integer M2, integer N, complex, dimension(*) X1, integer INCX1, complex, dimension(*) X2, integer INCX2, complex, dimension(ldq1,*) Q1, integer LDQ1, complex, dimension(ldq2,*) Q2, integer LDQ2, complex, dimension(*) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBCUNBDB6\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CUNBDB6 orthogonalizes the column vector
+      X = [ X1 ]
+          [ X2 ]
+ with respect to the columns of
+      Q = [ Q1 ] .
+          [ Q2 ]
+ The columns of Q must be orthonormal.
+
+ If the projection is zero according to Kahan's "twice is enough"
+ criterion, then the zero vector is returned.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM1\fP 
+.PP
+.nf
+          M1 is INTEGER
+           The dimension of X1 and the number of rows in Q1. 0 <= M1.
+.fi
+.PP
+.br
+\fIM2\fP 
+.PP
+.nf
+          M2 is INTEGER
+           The dimension of X2 and the number of rows in Q2. 0 <= M2.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+           The number of columns in Q1 and Q2. 0 <= N.
+.fi
+.PP
+.br
+\fIX1\fP 
+.PP
+.nf
+          X1 is COMPLEX array, dimension (M1)
+           On entry, the top part of the vector to be orthogonalized.
+           On exit, the top part of the projected vector.
+.fi
+.PP
+.br
+\fIINCX1\fP 
+.PP
+.nf
+          INCX1 is INTEGER
+           Increment for entries of X1.
+.fi
+.PP
+.br
+\fIX2\fP 
+.PP
+.nf
+          X2 is COMPLEX array, dimension (M2)
+           On entry, the bottom part of the vector to be
+           orthogonalized. On exit, the bottom part of the projected
+           vector.
+.fi
+.PP
+.br
+\fIINCX2\fP 
+.PP
+.nf
+          INCX2 is INTEGER
+           Increment for entries of X2.
+.fi
+.PP
+.br
+\fIQ1\fP 
+.PP
+.nf
+          Q1 is COMPLEX array, dimension (LDQ1, N)
+           The top part of the orthonormal basis matrix.
+.fi
+.PP
+.br
+\fILDQ1\fP 
+.PP
+.nf
+          LDQ1 is INTEGER
+           The leading dimension of Q1. LDQ1 >= M1.
+.fi
+.PP
+.br
+\fIQ2\fP 
+.PP
+.nf
+          Q2 is COMPLEX array, dimension (LDQ2, N)
+           The bottom part of the orthonormal basis matrix.
+.fi
+.PP
+.br
+\fILDQ2\fP 
+.PP
+.nf
+          LDQ2 is INTEGER
+           The leading dimension of Q2. LDQ2 >= M2.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (LWORK)
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+           The dimension of the array WORK. LWORK >= N.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+           = 0:  successful exit.
+           < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+July 2012 
+.RE
+.PP
+
+.PP
+Definition at line 156 of file cunbdb6\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

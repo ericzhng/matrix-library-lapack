@@ -1,0 +1,136 @@
+.TH "cungr2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cungr2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcungr2\fP (M, \fBN\fP, K, A, \fBLDA\fP, TAU, WORK, INFO)"
+.br
+.RI "\fBCUNGR2\fP generates all or part of the unitary matrix Q from an RQ factorization determined by cgerqf (unblocked algorithm)\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cungr2 (integer M, integer N, integer K, complex, dimension( lda, * ) A, integer LDA, complex, dimension( * ) TAU, complex, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBCUNGR2\fP generates all or part of the unitary matrix Q from an RQ factorization determined by cgerqf (unblocked algorithm)\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CUNGR2 generates an m by n complex matrix Q with orthonormal rows,
+ which is defined as the last m rows of a product of k elementary
+ reflectors of order n
+
+       Q  =  H(1)**H H(2)**H . . . H(k)**H
+
+ as returned by CGERQF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix Q. M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix Q. N >= M.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The number of elementary reflectors whose product defines the
+          matrix Q. M >= K >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+          On entry, the (m-k+i)-th row must contain the vector which
+          defines the elementary reflector H(i), for i = 1,2,...,k, as
+          returned by CGERQF in the last k rows of its array argument
+          A.
+          On exit, the m-by-n matrix Q.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The first dimension of the array A. LDA >= max(1,M).
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX array, dimension (K)
+          TAU(i) must contain the scalar factor of the elementary
+          reflector H(i), as returned by CGERQF.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (M)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument has an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file cungr2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

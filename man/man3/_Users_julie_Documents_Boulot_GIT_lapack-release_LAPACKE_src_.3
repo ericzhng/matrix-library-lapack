@@ -1,0 +1,7386 @@
+.TH "src Directory Reference" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src Directory Reference
+.SH SYNOPSIS
+.br
+.PP
+.SS "Files"
+
+.in +1c
+.ti -1c
+.RI "file \fBlapacke_cbbcsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cbbcsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cbdsqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cbdsqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbbrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbbrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbrfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbrfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbsvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbsvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbtrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbtrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgebak\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgebak_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgebal\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgebal_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgebrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgebrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgecon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgecon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgees\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgees_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeesx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeesx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgehrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgehrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgejsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgejsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelq2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelq2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgels\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgels_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelss\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelss_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelsy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgelsy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgemlq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgemlq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgemqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgemqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgemqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgemqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqlf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqlf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqp3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqp3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqpf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqpf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqr2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqr2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrfp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrfp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrt2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrt2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrt3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrt3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgeqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgerfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgerfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgerfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgerfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgerqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgerqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesdd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesdd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvdx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvdx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvj\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvj_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgesvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetrf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetrf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetsls\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgetsls_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggbak\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggbak_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggbal\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggbal_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgges\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgges3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgges3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgges_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggesx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggesx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggev3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggev3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggglm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggglm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgghd3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgghd3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgghrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgghrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgglse\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgglse_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggqrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggqrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggrqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggrqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggsvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggsvd3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggsvd3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggsvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggsvp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggsvp3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggsvp3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cggsvp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgtcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgtcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgtrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgtrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgtsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgtsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgtsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgtsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgttrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgttrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgttrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgttrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbev_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbev_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbevd_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbevd_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbevx_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbevx_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbgst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbgst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbgvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbgvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbgvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbgvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbtrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chbtrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_checon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_checon_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_checon_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_checon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheev_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheev_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevd_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevd_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevr_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevr_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevx_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevx_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegv_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegv_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chegvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cherfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cherfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cherfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cherfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesv_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesv_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesv_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesv_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesv_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesv_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chesvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheswapr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cheswapr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetri2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetri2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetri2x\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetri2x_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetri_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetri_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chetrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chfrk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chfrk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chgeqz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chgeqz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpgst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpgst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpgvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpgvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpgvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpgvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chpsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chptrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chptrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chsein\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chsein_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chseqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chseqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacn2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacn2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacp2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacp2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacpy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacpy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacrm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clacrm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clag2z\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clag2z_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clagge\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clagge_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_claghe\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_claghe_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clagsy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clagsy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clange\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clange_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clanhe\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clanhe_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clansy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clansy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clantr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clantr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clapmr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clapmr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clapmt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clapmt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarcm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarcm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarfb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarfb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarfg\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarfg_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarft\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarft_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarfx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarfx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarnv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clarnv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clascl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clascl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_claset\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_claset_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_classq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_classq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_claswp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_claswp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clatms\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clatms_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clauum\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_clauum_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbstf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbstf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbtrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbtrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpftrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpftrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpftri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpftri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpftrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpftrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpocon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpocon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpoequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpoequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpoequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpoequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cporfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cporfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cporfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cporfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cposv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cposv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cposvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cposvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cposvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cposvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpotrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpotrf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpotrf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpotrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpotri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpotri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpotrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpotrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cppcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cppcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cppequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cppequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cppsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cppsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cppsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cppsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpstrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpstrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cptcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cptcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpteqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpteqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cptrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cptrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cptsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cptsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cptsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cptsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpttrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpttrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpttrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpttrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cspcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cspcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cspsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cspsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cspsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cspsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cstedc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cstedc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cstegr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cstegr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cstein\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cstein_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cstemr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cstemr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csteqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csteqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csycon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csycon_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csycon_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csycon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyconv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyconv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyrfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyrfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csysvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyswapr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csyswapr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytri2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytri2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytri2x\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytri2x_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytri_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytri_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csytrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctfsm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctfsm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctftri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctftri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctfttp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctfttp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctfttr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctfttr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgevc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgevc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgexc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgexc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgsen\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgsen_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgsja\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgsja_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgsna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgsna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgsyl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctgsyl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpmqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpmqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpqrt2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpqrt2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctprfb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctprfb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpttf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpttf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpttr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctpttr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrevc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrevc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrexc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrexc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrsen\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrsen_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrsna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrsna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrsyl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrsyl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrtri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrtri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrttf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrttf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrttp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctrttp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctzrzf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctzrzf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunbdb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunbdb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cuncsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cuncsd2by1\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cuncsd2by1_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cuncsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungbr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungbr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunghr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunghr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunglq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunglq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungql\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungql_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungrq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungrq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cungtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmbr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmbr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmhr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmhr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmlq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmlq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmql\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmql_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmrq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmrq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmrz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmrz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cunmtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cupgtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cupgtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cupmtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cupmtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dbbcsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dbbcsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dbdsdc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dbdsdc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dbdsqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dbdsqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dbdsvdx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dbdsvdx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ddisna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ddisna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbbrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbbrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbrfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbrfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbsvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbsvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbtrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbtrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgebak\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgebak_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgebal\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgebal_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgebrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgebrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgecon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgecon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgees\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgees_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeesx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeesx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgehrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgehrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgejsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgejsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelq2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelq2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgels\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgels_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelss\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelss_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelsy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgelsy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgemlq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgemlq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgemqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgemqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgemqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgemqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqlf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqlf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqp3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqp3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqpf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqpf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqr2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqr2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrfp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrfp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrt2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrt2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrt3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrt3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgeqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgerfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgerfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgerfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgerfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgerqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgerqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesdd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesdd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvdx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvdx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvj\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvj_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgesvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetrf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetrf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetsls\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgetsls_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggbak\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggbak_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggbal\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggbal_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgges\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgges3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgges3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgges_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggesx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggesx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggev3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggev3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggglm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggglm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgghd3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgghd3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgghrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgghrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgglse\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgglse_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggqrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggqrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggrqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggrqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggsvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggsvd3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggsvd3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggsvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggsvp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggsvp3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggsvp3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dggsvp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgtcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgtcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgtrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgtrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgtsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgtsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgtsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgtsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgttrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgttrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgttrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgttrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dhgeqz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dhgeqz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dhsein\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dhsein_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dhseqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dhseqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlacn2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlacn2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlacpy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlacpy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlag2s\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlag2s_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlagge\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlagge_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlagsy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlagsy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlamch\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlamch_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlange\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlange_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlansy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlansy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlantr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlantr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlapmr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlapmr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlapmt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlapmt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlapy2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlapy2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlapy3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlapy3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarfb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarfb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarfg\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarfg_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarft\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarft_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarfx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarfx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarnv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlarnv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlartgp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlartgp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlartgs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlartgs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlascl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlascl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlaset\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlaset_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlasrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlasrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlassq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlassq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlaswp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlaswp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlatms\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlatms_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlauum\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dlauum_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dopgtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dopgtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dopmtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dopmtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorbdb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorbdb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorcsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorcsd2by1\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorcsd2by1_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorcsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgbr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgbr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorghr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorghr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorglq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorglq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgql\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgql_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgrq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgrq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dorgtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormbr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormbr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormhr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormhr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormlq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormlq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormql\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormql_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormrq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormrq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormrz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormrz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dormtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbstf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbstf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbtrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbtrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpftrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpftrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpftri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpftri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpftrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpftrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpocon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpocon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpoequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpoequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpoequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpoequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dporfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dporfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dporfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dporfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dposv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dposv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dposvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dposvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dposvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dposvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpotrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpotrf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpotrf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpotrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpotri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpotri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpotrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpotrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dppcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dppcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dppequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dppequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dppsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dppsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dppsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dppsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpstrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpstrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dptcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dptcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpteqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpteqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dptrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dptrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dptsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dptsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dptsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dptsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpttrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpttrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpttrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpttrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbev_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbev_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbevd_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbevd_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbevx_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbevx_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbgst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbgst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbgvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbgvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbgvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbgvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbtrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsbtrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsfrk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsfrk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsgesv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsgesv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspgst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspgst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspgvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspgvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspgvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspgvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsposv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsposv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dspsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsptrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsptrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstebz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstebz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstedc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstedc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstegr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstegr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstein\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstein_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstemr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstemr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsteqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsteqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsterf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsterf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstevr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstevr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dstevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsycon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsycon_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsycon_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsycon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyconv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyconv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyev_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyev_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevd_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevd_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevr_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevr_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevx_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevx_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygv_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygv_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsygvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyrfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyrfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsysvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyswapr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsyswapr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytri2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytri2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytri2x\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytri2x_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytri_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytri_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsytrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtfsm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtfsm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtftri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtftri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtfttp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtfttp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtfttr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtfttr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgevc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgevc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgexc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgexc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgsen\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgsen_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgsja\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgsja_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgsna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgsna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgsyl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtgsyl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpmqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpmqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpqrt2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpqrt2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtprfb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtprfb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpttf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpttf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpttr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtpttr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrevc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrevc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrexc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrexc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrsen\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrsen_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrsna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrsna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrsyl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrsyl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrtri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrtri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrttf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrttf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrttp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtrttp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtzrzf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtzrzf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ilaver\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sbbcsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sbbcsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sbdsdc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sbdsdc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sbdsqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sbdsqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sbdsvdx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sbdsvdx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sdisna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sdisna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbbrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbbrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbrfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbrfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbsvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbsvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbtrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbtrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgebak\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgebak_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgebal\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgebal_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgebrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgebrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgecon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgecon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgees\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgees_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeesx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeesx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgehrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgehrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgejsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgejsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelq2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelq2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgels\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgels_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelss\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelss_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelsy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgelsy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgemlq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgemlq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgemqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgemqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgemqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgemqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqlf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqlf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqp3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqp3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqpf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqpf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqr2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqr2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrfp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrfp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrt2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrt2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrt3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrt3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgeqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgerfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgerfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgerfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgerfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgerqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgerqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesdd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesdd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvdx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvdx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvj\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvj_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgesvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetrf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetrf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetsls\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgetsls_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggbak\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggbak_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggbal\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggbal_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgges\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgges3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgges3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgges_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggesx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggesx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggev3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggev3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggglm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggglm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgghd3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgghd3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgghrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgghrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgglse\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgglse_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggqrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggqrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggrqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggrqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggsvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggsvd3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggsvd3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggsvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggsvp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggsvp3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggsvp3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sggsvp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgtcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgtcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgtrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgtrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgtsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgtsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgtsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgtsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgttrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgttrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgttrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgttrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_shgeqz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_shgeqz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_shsein\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_shsein_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_shseqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_shseqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slacn2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slacn2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slacpy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slacpy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slag2d\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slag2d_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slagge\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slagge_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slagsy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slagsy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slamch\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slamch_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slange\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slange_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slansy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slansy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slantr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slantr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slapmr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slapmr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slapmt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slapmt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slapy2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slapy2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slapy3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slapy3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarfb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarfb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarfg\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarfg_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarft\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarft_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarfx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarfx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarnv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slarnv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slartgp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slartgp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slartgs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slartgs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slascl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slascl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slaset\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slaset_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slasrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slasrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slassq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slassq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slaswp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slaswp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slatms\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slatms_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slauum\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_slauum_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sopgtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sopgtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sopmtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sopmtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorbdb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorbdb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorcsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorcsd2by1\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorcsd2by1_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorcsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgbr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgbr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorghr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorghr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorglq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorglq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgql\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgql_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgrq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgrq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sorgtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormbr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormbr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormhr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormhr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormlq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormlq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormql\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormql_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormrq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormrq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormrz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormrz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sormtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbstf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbstf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbtrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbtrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spftrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spftrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spftri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spftri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spftrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spftrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spocon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spocon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spoequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spoequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spoequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spoequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sporfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sporfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sporfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sporfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sposv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sposv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sposvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sposvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sposvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sposvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spotrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spotrf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spotrf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spotrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spotri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spotri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spotrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spotrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sppcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sppcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sppequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sppequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sppsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sppsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sppsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sppsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spstrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spstrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sptcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sptcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spteqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spteqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sptrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sptrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sptsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sptsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sptsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sptsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spttrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spttrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spttrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spttrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbev_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbev_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbevd_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbevd_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbevx_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbevx_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbgst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbgst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbgvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbgvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbgvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbgvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbtrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssbtrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssfrk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssfrk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspgst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspgst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspgvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspgvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspgvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspgvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sspsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssptrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssptrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstebz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstebz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstedc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstedc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstegr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstegr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstein\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstein_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstemr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstemr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssteqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssteqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssterf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssterf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstevr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstevr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sstevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssycon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssycon_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssycon_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssycon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyconv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyconv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyev_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyev_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevd_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevd_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevr_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevr_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevx_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevx_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygv_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygv_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssygvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyrfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyrfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssysvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyswapr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssyswapr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytri2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytri2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytri2x\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytri2x_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytri_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytri_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssytrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stfsm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stfsm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stftri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stftri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stfttp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stfttp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stfttr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stfttr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgevc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgevc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgexc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgexc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgsen\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgsen_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgsja\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgsja_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgsna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgsna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgsyl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stgsyl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpmqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpmqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpqrt2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpqrt2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stprfb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stprfb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpttf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpttf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpttr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stpttr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strevc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strevc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strexc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strexc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strsen\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strsen_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strsna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strsna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strsyl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strsyl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strtri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strtri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strttf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strttf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strttp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_strttp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stzrzf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stzrzf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zbbcsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zbbcsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zbdsqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zbdsqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zcgesv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zcgesv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zcposv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zcposv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbbrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbbrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbrfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbrfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbsvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbsvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbtrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbtrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgebak\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgebak_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgebal\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgebal_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgebrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgebrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgecon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgecon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgees\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgees_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeesx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeesx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgehrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgehrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgejsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgejsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelq2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelq2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgels\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgels_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelss\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelss_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelsy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgelsy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgemlq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgemlq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgemqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgemqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgemqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgemqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqlf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqlf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqp3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqp3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqpf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqpf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqr2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqr2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrfp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrfp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrt2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrt2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrt3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrt3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgeqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgerfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgerfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgerfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgerfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgerqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgerqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesdd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesdd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvdx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvdx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvj\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvj_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgesvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetrf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetrf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetsls\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgetsls_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggbak\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggbak_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggbal\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggbal_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgges\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgges3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgges3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgges_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggesx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggesx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggev3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggev3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggglm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggglm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgghd3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgghd3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgghrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgghrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgglse\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgglse_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggqrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggqrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggrqf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggrqf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggsvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggsvd3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggsvd3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggsvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggsvp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggsvp3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggsvp3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zggsvp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgtcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgtcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgtrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgtrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgtsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgtsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgtsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgtsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgttrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgttrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgttrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgttrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbev_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbev_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbevd_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbevd_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbevx_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbevx_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbgst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbgst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbgvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbgvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbgvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbgvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbtrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhbtrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhecon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhecon_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhecon_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhecon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheev_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheev_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevd_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevd_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevr_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevr_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevx_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevx_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegv_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegv_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhegvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zherfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zherfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zherfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zherfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesv_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesv_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesv_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesv_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesv_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesv_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhesvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheswapr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zheswapr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetri2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetri2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetri2x\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetri2x_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetri_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetri_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhetrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhfrk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhfrk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhgeqz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhgeqz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpev\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpev_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpevd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpevd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpevx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpevx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpgst\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpgst_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpgvd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpgvd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpgvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpgvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhpsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhptrd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhptrd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhsein\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhsein_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhseqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhseqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacgv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacgv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacn2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacn2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacp2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacp2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacpy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacpy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacrm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlacrm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlag2c\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlag2c_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlagge\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlagge_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlaghe\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlaghe_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlagsy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlagsy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlange\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlange_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlanhe\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlanhe_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlansy\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlansy_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlantr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlantr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlapmr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlapmr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlapmt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlapmt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarcm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarcm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarfb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarfb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarfg\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarfg_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarft\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarft_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarfx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarfx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarnv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlarnv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlascl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlascl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlaset\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlaset_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlassq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlassq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlaswp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlaswp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlatms\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlatms_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlauum\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zlauum_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbstf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbstf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbtrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbtrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpftrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpftrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpftri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpftri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpftrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpftrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpocon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpocon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpoequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpoequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpoequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpoequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zporfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zporfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zporfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zporfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zposv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zposv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zposvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zposvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zposvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zposvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpotrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpotrf2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpotrf2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpotrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpotri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpotri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpotrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpotrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zppcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zppcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zppequ\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zppequ_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zppsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zppsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zppsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zppsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpstrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpstrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zptcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zptcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpteqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpteqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zptrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zptrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zptsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zptsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zptsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zptsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpttrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpttrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpttrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpttrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zspcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zspcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zspsv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zspsv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zspsvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zspsvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsptrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsptrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zstedc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zstedc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zstegr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zstegr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zstein\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zstein_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zstemr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zstemr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsteqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsteqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsycon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsycon_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsycon_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsycon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyconv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyconv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyequb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyequb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyrfsx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyrfsx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysv_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysvx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysvx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysvxx\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsysvxx_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyswapr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsyswapr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf_rk\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf_rk_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytri2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytri2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytri2x\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytri2x_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytri_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytri_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs_3\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs_3_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs_aa\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs_aa_2stage\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs_aa_2stage_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs_aa_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs_rook\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs_rook_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsytrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztbcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztbcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztbrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztbrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztbtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztbtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztfsm\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztfsm_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztftri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztftri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztfttp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztfttp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztfttr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztfttr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgevc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgevc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgexc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgexc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgsen\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgsen_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgsja\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgsja_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgsna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgsna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgsyl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztgsyl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpmqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpmqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpqrt\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpqrt2\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpqrt2_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpqrt_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztprfb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztprfb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztprfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztprfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztptri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztptri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztptrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztptrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpttf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpttf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpttr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztpttr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrcon\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrcon_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrevc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrevc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrexc\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrexc_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrrfs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrrfs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrsen\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrsen_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrsna\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrsna_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrsyl\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrsyl_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrtri\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrtri_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrtrs\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrtrs_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrttf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrttf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrttp\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztrttp_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztzrzf\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztzrzf_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunbdb\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunbdb_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zuncsd\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zuncsd2by1\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zuncsd2by1_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zuncsd_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungbr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungbr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunghr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunghr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunglq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunglq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungql\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungql_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungrq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungrq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zungtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmbr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmbr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmhr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmhr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmlq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmlq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmql\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmql_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmqr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmqr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmrq\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmrq_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmrz\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmrz_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zunmtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zupgtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zupgtr_work\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zupmtr\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zupmtr_work\&.c\fP"
+.br
+.in -1c

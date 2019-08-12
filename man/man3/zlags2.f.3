@@ -1,0 +1,189 @@
+.TH "zlags2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlags2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlags2\fP (UPPER, A1, A2, A3, B1, B2, B3, CSU, SNU, CSV, SNV, CSQ, SNQ)"
+.br
+.RI "\fBZLAGS2\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlags2 (logical UPPER, double precision A1, complex*16 A2, double precision A3, double precision B1, complex*16 B2, double precision B3, double precision CSU, complex*16 SNU, double precision CSV, complex*16 SNV, double precision CSQ, complex*16 SNQ)"
+
+.PP
+\fBZLAGS2\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLAGS2 computes 2-by-2 unitary matrices U, V and Q, such
+ that if ( UPPER ) then
+
+           U**H *A*Q = U**H *( A1 A2 )*Q = ( x  0  )
+                             ( 0  A3 )     ( x  x  )
+ and
+           V**H*B*Q = V**H *( B1 B2 )*Q = ( x  0  )
+                            ( 0  B3 )     ( x  x  )
+
+ or if ( .NOT.UPPER ) then
+
+           U**H *A*Q = U**H *( A1 0  )*Q = ( x  x  )
+                             ( A2 A3 )     ( 0  x  )
+ and
+           V**H *B*Q = V**H *( B1 0  )*Q = ( x  x  )
+                             ( B2 B3 )     ( 0  x  )
+ where
+
+   U = (   CSU    SNU ), V = (  CSV    SNV ),
+       ( -SNU**H  CSU )      ( -SNV**H CSV )
+
+   Q = (   CSQ    SNQ )
+       ( -SNQ**H  CSQ )
+
+ The rows of the transformed A and B are parallel. Moreover, if the
+ input 2-by-2 matrix A is not zero, then the transformed (1,1) entry
+ of A is not zero. If the input matrices A and B are both not zero,
+ then the transformed (2,2) element of B is not zero, except when the
+ first rows of input A and B are parallel and the second rows are
+ zero.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPPER\fP 
+.PP
+.nf
+          UPPER is LOGICAL
+          = .TRUE.: the input matrices A and B are upper triangular.
+          = .FALSE.: the input matrices A and B are lower triangular.
+.fi
+.PP
+.br
+\fIA1\fP 
+.PP
+.nf
+          A1 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIA2\fP 
+.PP
+.nf
+          A2 is COMPLEX*16
+.fi
+.PP
+.br
+\fIA3\fP 
+.PP
+.nf
+          A3 is DOUBLE PRECISION
+          On entry, A1, A2 and A3 are elements of the input 2-by-2
+          upper (lower) triangular matrix A.
+.fi
+.PP
+.br
+\fIB1\fP 
+.PP
+.nf
+          B1 is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIB2\fP 
+.PP
+.nf
+          B2 is COMPLEX*16
+.fi
+.PP
+.br
+\fIB3\fP 
+.PP
+.nf
+          B3 is DOUBLE PRECISION
+          On entry, B1, B2 and B3 are elements of the input 2-by-2
+          upper (lower) triangular matrix B.
+.fi
+.PP
+.br
+\fICSU\fP 
+.PP
+.nf
+          CSU is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fISNU\fP 
+.PP
+.nf
+          SNU is COMPLEX*16
+          The desired unitary matrix U.
+.fi
+.PP
+.br
+\fICSV\fP 
+.PP
+.nf
+          CSV is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fISNV\fP 
+.PP
+.nf
+          SNV is COMPLEX*16
+          The desired unitary matrix V.
+.fi
+.PP
+.br
+\fICSQ\fP 
+.PP
+.nf
+          CSQ is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fISNQ\fP 
+.PP
+.nf
+          SNQ is COMPLEX*16
+          The desired unitary matrix Q.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 160 of file zlags2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

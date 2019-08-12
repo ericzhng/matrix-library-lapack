@@ -1,0 +1,174 @@
+.TH "ctplqt2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ctplqt2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBctplqt2\fP (M, \fBN\fP, L, A, \fBLDA\fP, B, \fBLDB\fP, T, LDT, INFO)"
+.br
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine ctplqt2 (integer M, integer N, integer L, complex, dimension( lda, * ) A, integer LDA, complex, dimension( ldb, * ) B, integer LDB, complex, dimension( ldt, * ) T, integer LDT, integer INFO)"
+
+.PP
+\fBPurpose:\fP
+.RS 4
+
+.RE
+.PP
+CTPLQT2 computes a LQ a factorization of a complex 'triangular-pentagonal' matrix C, which is composed of a triangular block A and pentagonal block B, using the compact WY representation for Q\&.  
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The total number of rows of the matrix B.
+          M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix B, and the order of
+          the triangular matrix A.
+          N >= 0.
+.fi
+.PP
+.br
+\fIL\fP 
+.PP
+.nf
+          L is INTEGER
+          The number of rows of the lower trapezoidal part of B.
+          MIN(M,N) >= L >= 0.  See Further Details.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,M)
+          On entry, the lower triangular M-by-M matrix A.
+          On exit, the elements on and below the diagonal of the array
+          contain the lower triangular matrix L.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX array, dimension (LDB,N)
+          On entry, the pentagonal M-by-N matrix B.  The first N-L columns
+          are rectangular, and the last L columns are lower trapezoidal.
+          On exit, B contains the pentagonal matrix V.  See Further Details.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,M).
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is COMPLEX array, dimension (LDT,M)
+          The N-by-N upper triangular factor T of the block reflector.
+          See Further Details.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T.  LDT >= max(1,M)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBFurther Details:\fP
+.RS 4
+
+.RE
+.PP
+The input matrix C is a M-by-(M+N) matrix
+.PP
+C = [ A ][ B ]
+.PP
+where A is an lower triangular M-by-M matrix, and B is M-by-N pentagonal matrix consisting of a M-by-(N-L) rectangular matrix B1 left of a M-by-L upper trapezoidal matrix B2:
+.PP
+B = [ B1 ][ B2 ] [ B1 ] <- M-by-(N-L) rectangular [ B2 ] <- M-by-L lower trapezoidal\&.
+.PP
+The lower trapezoidal matrix B2 consists of the first L columns of a N-by-N lower triangular matrix, where 0 <= L <= \fBMIN(M,N)\fP\&. If L=0, B is rectangular M-by-N; if M=L=N, B is lower triangular\&.
+.PP
+The matrix W stores the elementary reflectors H(i) in the i-th row above the diagonal (of A) in the M-by-(M+N) input matrix C
+.PP
+C = [ A ][ B ] [ A ] <- lower triangular M-by-M [ B ] <- M-by-N pentagonal
+.PP
+so that W can be represented as
+.PP
+W = [ I ][ V ] [ I ] <- identity, M-by-M [ V ] <- M-by-N, same form as B\&.
+.PP
+Thus, all of information needed for W is contained on exit in B, which we call V above\&. Note that V has the same form as B; that is,
+.PP
+W = [ V1 ][ V2 ] [ V1 ] <- M-by-(N-L) rectangular [ V2 ] <- M-by-L lower trapezoidal\&.
+.PP
+The rows of V represent the vectors which define the H(i)'s\&. The (M+N)-by-(M+N) block reflector H is then given by
+.PP
+H = I - W**T * T * W
+.PP
+where W^H is the conjugate transpose of W and T is the upper triangular factor of the block reflector\&.  
+.PP
+Definition at line 162 of file ctplqt2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

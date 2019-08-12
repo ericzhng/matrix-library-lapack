@@ -1,0 +1,137 @@
+.TH "sla_gbrpvgrw.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sla_gbrpvgrw.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "real function \fBsla_gbrpvgrw\fP (\fBN\fP, KL, KU, NCOLS, AB, LDAB, AFB, LDAFB)"
+.br
+.RI "\fBSLA_GBRPVGRW\fP computes the reciprocal pivot growth factor norm(A)/norm(U) for a general banded matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "real function sla_gbrpvgrw (integer N, integer KL, integer KU, integer NCOLS, real, dimension( ldab, * ) AB, integer LDAB, real, dimension( ldafb, * ) AFB, integer LDAFB)"
+
+.PP
+\fBSLA_GBRPVGRW\fP computes the reciprocal pivot growth factor norm(A)/norm(U) for a general banded matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLA_GBRPVGRW computes the reciprocal pivot growth factor
+ norm(A)/norm(U). The "max absolute element" norm is used. If this is
+ much less than 1, the stability of the LU factorization of the
+ (equilibrated) matrix A could be poor. This also means that the
+ solution X, estimated condition numbers, and error bounds could be
+ unreliable.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+     The number of linear equations, i.e., the order of the
+     matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIKL\fP 
+.PP
+.nf
+          KL is INTEGER
+     The number of subdiagonals within the band of A.  KL >= 0.
+.fi
+.PP
+.br
+\fIKU\fP 
+.PP
+.nf
+          KU is INTEGER
+     The number of superdiagonals within the band of A.  KU >= 0.
+.fi
+.PP
+.br
+\fINCOLS\fP 
+.PP
+.nf
+          NCOLS is INTEGER
+     The number of columns of the matrix A.  NCOLS >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is REAL array, dimension (LDAB,N)
+     On entry, the matrix A in band storage, in rows 1 to KL+KU+1.
+     The j-th column of A is stored in the j-th column of the
+     array AB as follows:
+     AB(KU+1+i-j,j) = A(i,j) for max(1,j-KU)<=i<=min(N,j+kl)
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+     The leading dimension of the array AB.  LDAB >= KL+KU+1.
+.fi
+.PP
+.br
+\fIAFB\fP 
+.PP
+.nf
+          AFB is REAL array, dimension (LDAFB,N)
+     Details of the LU factorization of the band matrix A, as
+     computed by SGBTRF.  U is stored as an upper triangular
+     band matrix with KL+KU superdiagonals in rows 1 to KL+KU+1,
+     and the multipliers used during the factorization are stored
+     in rows KL+KU+2 to 2*KL+KU+1.
+.fi
+.PP
+.br
+\fILDAFB\fP 
+.PP
+.nf
+          LDAFB is INTEGER
+     The leading dimension of the array AFB.  LDAFB >= 2*KL+KU+1.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 119 of file sla_gbrpvgrw\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

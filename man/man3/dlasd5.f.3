@@ -1,0 +1,134 @@
+.TH "dlasd5.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlasd5.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlasd5\fP (I, D, Z, DELTA, RHO, DSIGMA, WORK)"
+.br
+.RI "\fBDLASD5\fP computes the square root of the i-th eigenvalue of a positive symmetric rank-one modification of a 2-by-2 diagonal matrix\&. Used by sbdsdc\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlasd5 (integer I, double precision, dimension( 2 ) D, double precision, dimension( 2 ) Z, double precision, dimension( 2 ) DELTA, double precision RHO, double precision DSIGMA, double precision, dimension( 2 ) WORK)"
+
+.PP
+\fBDLASD5\fP computes the square root of the i-th eigenvalue of a positive symmetric rank-one modification of a 2-by-2 diagonal matrix\&. Used by sbdsdc\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ This subroutine computes the square root of the I-th eigenvalue
+ of a positive symmetric rank-one modification of a 2-by-2 diagonal
+ matrix
+
+            diag( D ) * diag( D ) +  RHO * Z * transpose(Z) .
+
+ The diagonal entries in the array D are assumed to satisfy
+
+            0 <= D(i) < D(j)  for  i < j .
+
+ We also assume RHO > 0 and that the Euclidean norm of the vector
+ Z is one.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fII\fP 
+.PP
+.nf
+          I is INTEGER
+         The index of the eigenvalue to be computed.  I = 1 or I = 2.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension ( 2 )
+         The original eigenvalues.  We assume 0 <= D(1) < D(2).
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension ( 2 )
+         The components of the updating vector.
+.fi
+.PP
+.br
+\fIDELTA\fP 
+.PP
+.nf
+          DELTA is DOUBLE PRECISION array, dimension ( 2 )
+         Contains (D(j) - sigma_I) in its  j-th component.
+         The vector DELTA contains the information necessary
+         to construct the eigenvectors.
+.fi
+.PP
+.br
+\fIRHO\fP 
+.PP
+.nf
+          RHO is DOUBLE PRECISION
+         The scalar in the symmetric updating formula.
+.fi
+.PP
+.br
+\fIDSIGMA\fP 
+.PP
+.nf
+          DSIGMA is DOUBLE PRECISION
+         The computed sigma_I, the I-th updated eigenvalue.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension ( 2 )
+         WORK contains (D(j) + sigma_I) in its  j-th component.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ren-Cang Li, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file dlasd5\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,150 @@
+.TH "cunghr.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cunghr.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcunghr\fP (\fBN\fP, ILO, IHI, A, \fBLDA\fP, TAU, WORK, LWORK, INFO)"
+.br
+.RI "\fBCUNGHR\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cunghr (integer N, integer ILO, integer IHI, complex, dimension( lda, * ) A, integer LDA, complex, dimension( * ) TAU, complex, dimension( * ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBCUNGHR\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CUNGHR generates a complex unitary matrix Q which is defined as the
+ product of IHI-ILO elementary reflectors of order N, as returned by
+ CGEHRD:
+
+ Q = H(ilo) H(ilo+1) . . . H(ihi-1).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix Q. N >= 0.
+.fi
+.PP
+.br
+\fIILO\fP 
+.PP
+.nf
+          ILO is INTEGER
+.fi
+.PP
+.br
+\fIIHI\fP 
+.PP
+.nf
+          IHI is INTEGER
+
+          ILO and IHI must have the same values as in the previous call
+          of CGEHRD. Q is equal to the unit matrix except in the
+          submatrix Q(ilo+1:ihi,ilo+1:ihi).
+          1 <= ILO <= IHI <= N, if N > 0; ILO=1 and IHI=0, if N=0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+          On entry, the vectors which define the elementary reflectors,
+          as returned by CGEHRD.
+          On exit, the N-by-N unitary matrix Q.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A. LDA >= max(1,N).
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX array, dimension (N-1)
+          TAU(i) must contain the scalar factor of the elementary
+          reflector H(i), as returned by CGEHRD.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK. LWORK >= IHI-ILO.
+          For optimum performance LWORK >= (IHI-ILO)*NB, where NB is
+          the optimal blocksize.
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array, and no error
+          message related to LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 128 of file cunghr\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,129 @@
+.TH "zlacon.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlacon.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlacon\fP (\fBN\fP, V, X, EST, KASE)"
+.br
+.RI "\fBZLACON\fP estimates the 1-norm of a square matrix, using reverse communication for evaluating matrix-vector products\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlacon (integer N, complex*16, dimension( n ) V, complex*16, dimension( n ) X, double precision EST, integer KASE)"
+
+.PP
+\fBZLACON\fP estimates the 1-norm of a square matrix, using reverse communication for evaluating matrix-vector products\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLACON estimates the 1-norm of a square, complex matrix A.
+ Reverse communication is used for evaluating matrix-vector products.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         The order of the matrix.  N >= 1.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX*16 array, dimension (N)
+         On the final return, V = A*W,  where  EST = norm(V)/norm(W)
+         (W is not returned).
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX*16 array, dimension (N)
+         On an intermediate return, X should be overwritten by
+               A * X,   if KASE=1,
+               A**H * X,  if KASE=2,
+         where A**H is the conjugate transpose of A, and ZLACON must be
+         re-called with all the other parameters unchanged.
+.fi
+.PP
+.br
+\fIEST\fP 
+.PP
+.nf
+          EST is DOUBLE PRECISION
+         On entry with KASE = 1 or 2 and JUMP = 3, EST should be
+         unchanged from the previous call to ZLACON.
+         On exit, EST is an estimate (a lower bound) for norm(A).
+.fi
+.PP
+.br
+\fIKASE\fP 
+.PP
+.nf
+          KASE is INTEGER
+         On the initial call to ZLACON, KASE should be 0.
+         On an intermediate return, KASE will be 1 or 2, indicating
+         whether X should be overwritten by A * X  or A**H * X.
+         On the final return from ZLACON, KASE will again be 0.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+Originally named CONEST, dated March 16, 1988\&. 
+.br
+ Last modified: April, 1999 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Nick Higham, University of Manchester 
+.RE
+.PP
+\fBReferences: \fP
+.RS 4
+N\&.J\&. Higham, 'FORTRAN codes for estimating the one-norm of
+  a real or complex matrix, with applications to condition estimation', ACM Trans\&. Math\&. Soft\&., vol\&. 14, no\&. 4, pp\&. 381-396, December 1988\&. 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file zlacon\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,149 @@
+.TH "ctrexc.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ctrexc.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBctrexc\fP (COMPQ, \fBN\fP, T, LDT, Q, LDQ, IFST, ILST, INFO)"
+.br
+.RI "\fBCTREXC\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine ctrexc (character COMPQ, integer N, complex, dimension( ldt, * ) T, integer LDT, complex, dimension( ldq, * ) Q, integer LDQ, integer IFST, integer ILST, integer INFO)"
+
+.PP
+\fBCTREXC\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CTREXC reorders the Schur factorization of a complex matrix
+ A = Q*T*Q**H, so that the diagonal element of T with row index IFST
+ is moved to row ILST.
+
+ The Schur form T is reordered by a unitary similarity transformation
+ Z**H*T*Z, and optionally the matrix Q of Schur vectors is updated by
+ postmultplying it with Z.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fICOMPQ\fP 
+.PP
+.nf
+          COMPQ is CHARACTER*1
+          = 'V':  update the matrix Q of Schur vectors;
+          = 'N':  do not update Q.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix T. N >= 0.
+          If N == 0 arguments ILST and IFST may be any value.
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is COMPLEX array, dimension (LDT,N)
+          On entry, the upper triangular matrix T.
+          On exit, the reordered upper triangular matrix.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T. LDT >= max(1,N).
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is COMPLEX array, dimension (LDQ,N)
+          On entry, if COMPQ = 'V', the matrix Q of Schur vectors.
+          On exit, if COMPQ = 'V', Q has been postmultiplied by the
+          unitary transformation matrix Z which reorders T.
+          If COMPQ = 'N', Q is not referenced.
+.fi
+.PP
+.br
+\fILDQ\fP 
+.PP
+.nf
+          LDQ is INTEGER
+          The leading dimension of the array Q.  LDQ >= 1, and if
+          COMPQ = 'V', LDQ >= max(1,N).
+.fi
+.PP
+.br
+\fIIFST\fP 
+.PP
+.nf
+          IFST is INTEGER
+.fi
+.PP
+.br
+\fIILST\fP 
+.PP
+.nf
+          ILST is INTEGER
+
+          Specify the reordering of the diagonal elements of T:
+          The element with row index IFST is moved to row ILST by a
+          sequence of transpositions between adjacent elements.
+          1 <= IFST <= N; 1 <= ILST <= N.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 128 of file ctrexc\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

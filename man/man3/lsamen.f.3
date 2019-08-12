@@ -1,0 +1,88 @@
+.TH "lsamen.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+lsamen.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "logical function \fBlsamen\fP (\fBN\fP, CA, CB)"
+.br
+.RI "\fBLSAMEN\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "logical function lsamen (integer N, character*( * ) CA, character*( * ) CB)"
+
+.PP
+\fBLSAMEN\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ LSAMEN  tests if the first N letters of CA are the same as the
+ first N letters of CB, regardless of case.
+ LSAMEN returns .TRUE. if CA and CB are equivalent except for case
+ and .FALSE. otherwise.  LSAMEN also returns .FALSE. if LEN( CA )
+ or LEN( CB ) is less than N.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of characters in CA and CB to be compared.
+.fi
+.PP
+.br
+\fICA\fP 
+.PP
+.nf
+          CA is CHARACTER*(*)
+.fi
+.PP
+.br
+\fICB\fP 
+.PP
+.nf
+          CB is CHARACTER*(*)
+          CA and CB specify two character strings of length at least N.
+          Only the first N characters of each string will be accessed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file lsamen\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

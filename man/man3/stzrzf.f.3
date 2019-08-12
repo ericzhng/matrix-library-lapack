@@ -1,0 +1,175 @@
+.TH "stzrzf.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+stzrzf.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBstzrzf\fP (M, \fBN\fP, A, \fBLDA\fP, TAU, WORK, LWORK, INFO)"
+.br
+.RI "\fBSTZRZF\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine stzrzf (integer M, integer N, real, dimension( lda, * ) A, integer LDA, real, dimension( * ) TAU, real, dimension( * ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBSTZRZF\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ STZRZF reduces the M-by-N ( M<=N ) real upper trapezoidal matrix A
+ to upper triangular form by means of orthogonal transformations.
+
+ The upper trapezoidal matrix A is factored as
+
+    A = ( R  0 ) * Z,
+
+ where Z is an N-by-N orthogonal matrix and R is an M-by-M upper
+ triangular matrix.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= M.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA,N)
+          On entry, the leading M-by-N upper trapezoidal part of the
+          array A must contain the matrix to be factorized.
+          On exit, the leading M-by-M upper triangular part of A
+          contains the upper triangular matrix R, and elements M+1 to
+          N of the first M rows of A, with the array TAU, represent the
+          orthogonal matrix Z as a product of M elementary reflectors.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is REAL array, dimension (M)
+          The scalar factors of the elementary reflectors.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.  LWORK >= max(1,M).
+          For optimum performance LWORK >= M*NB, where NB is
+          the optimal blocksize.
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array, and no error
+          message related to LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+April 2012 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+A\&. Petitet, Computer Science Dept\&., Univ\&. of Tenn\&., Knoxville, USA 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The N-by-N matrix Z can be computed by
+
+     Z =  Z(1)*Z(2)* ... *Z(M)
+
+  where each N-by-N Z(k) is given by
+
+     Z(k) = I - tau(k)*v(k)*v(k)**T
+
+  with v(k) is the kth row vector of the M-by-N matrix
+
+     V = ( I   A(:,M+1:N) )
+
+  I is the M-by-M identity matrix, A(:,M+1:N)
+  is the output stored in A on exit from DTZRZF,
+  and tau(k) is the kth element of the array TAU.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 153 of file stzrzf\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,126 @@
+.TH "sladiv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sladiv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsladiv\fP (A, B, C, D, P, Q)"
+.br
+.RI "\fBSLADIV\fP performs complex division in real arithmetic, avoiding unnecessary overflow\&. "
+.ti -1c
+.RI "subroutine \fBsladiv1\fP (A, B, C, D, P, Q)"
+.br
+.ti -1c
+.RI "real function \fBsladiv2\fP (A, B, C, D, R, T)"
+.br
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sladiv (real A, real B, real C, real D, real P, real Q)"
+
+.PP
+\fBSLADIV\fP performs complex division in real arithmetic, avoiding unnecessary overflow\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLADIV performs complex division in  real arithmetic
+
+                       a + i*b
+            p + i*q = ---------
+                       c + i*d
+
+ The algorithm is due to Michael Baudin and Robert L. Smith
+ and can be found in the paper
+ "A Robust Complex Division in Scilab"
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP 
+.PP
+.nf
+          A is REAL
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is REAL
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is REAL
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL
+          The scalars a, b, c, and d in the above expression.
+.fi
+.PP
+.br
+\fIP\fP 
+.PP
+.nf
+          P is REAL
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is REAL
+          The scalars p and q in the above expression.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+January 2013 
+.RE
+.PP
+
+.PP
+Definition at line 93 of file sladiv\&.f\&.
+.SS "subroutine sladiv1 (real A, real B, real C, real D, real P, real Q)"
+
+.PP
+Definition at line 180 of file sladiv\&.f\&.
+.SS "real function sladiv2 (real A, real B, real C, real D, real R, real T)"
+
+.PP
+Definition at line 220 of file sladiv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

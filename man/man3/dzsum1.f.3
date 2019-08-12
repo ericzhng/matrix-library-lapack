@@ -1,0 +1,93 @@
+.TH "dzsum1.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dzsum1.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "double precision function \fBdzsum1\fP (\fBN\fP, CX, INCX)"
+.br
+.RI "\fBDZSUM1\fP forms the 1-norm of the complex vector using the true absolute value\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "double precision function dzsum1 (integer N, complex*16, dimension( * ) CX, integer INCX)"
+
+.PP
+\fBDZSUM1\fP forms the 1-norm of the complex vector using the true absolute value\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DZSUM1 takes the sum of the absolute values of a complex
+ vector and returns a double precision result.
+
+ Based on DZASUM from the Level 1 BLAS.
+ The change is to use the 'genuine' absolute value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of elements in the vector CX.
+.fi
+.PP
+.br
+\fICX\fP 
+.PP
+.nf
+          CX is COMPLEX*16 array, dimension (N)
+          The vector whose elements will be summed.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The spacing between successive values of CX.  INCX > 0.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Nick Higham for use with ZLACON\&. 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file dzsum1\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

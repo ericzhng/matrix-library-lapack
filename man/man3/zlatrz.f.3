@@ -1,0 +1,163 @@
+.TH "zlatrz.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlatrz.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlatrz\fP (M, \fBN\fP, L, A, \fBLDA\fP, TAU, WORK)"
+.br
+.RI "\fBZLATRZ\fP factors an upper trapezoidal matrix by means of unitary transformations\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlatrz (integer M, integer N, integer L, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( * ) TAU, complex*16, dimension( * ) WORK)"
+
+.PP
+\fBZLATRZ\fP factors an upper trapezoidal matrix by means of unitary transformations\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLATRZ factors the M-by-(M+L) complex upper trapezoidal matrix
+ [ A1 A2 ] = [ A(1:M,1:M) A(1:M,N-L+1:N) ] as ( R  0 ) * Z by means
+ of unitary transformations, where  Z is an (M+L)-by-(M+L) unitary
+ matrix and, R and A1 are M-by-M upper triangular matrices.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIL\fP 
+.PP
+.nf
+          L is INTEGER
+          The number of columns of the matrix A containing the
+          meaningful part of the Householder vectors. N-M >= L >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, the leading M-by-N upper trapezoidal part of the
+          array A must contain the matrix to be factorized.
+          On exit, the leading M-by-M upper triangular part of A
+          contains the upper triangular matrix R, and elements N-L+1 to
+          N of the first M rows of A, with the array TAU, represent the
+          unitary matrix Z as a product of M elementary reflectors.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX*16 array, dimension (M)
+          The scalar factors of the elementary reflectors.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array, dimension (M)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+A\&. Petitet, Computer Science Dept\&., Univ\&. of Tenn\&., Knoxville, USA 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The factorization is obtained by Householder's method.  The kth
+  transformation matrix, Z( k ), which is used to introduce zeros into
+  the ( m - k + 1 )th row of A, is given in the form
+
+     Z( k ) = ( I     0   ),
+              ( 0  T( k ) )
+
+  where
+
+     T( k ) = I - tau*u( k )*u( k )**H,   u( k ) = (   1    ),
+                                                 (   0    )
+                                                 ( z( k ) )
+
+  tau is a scalar and z( k ) is an l element vector. tau and z( k )
+  are chosen to annihilate the elements of the kth row of A2.
+
+  The scalar tau is returned in the kth element of TAU and the vector
+  u( k ) in the kth row of A2, such that the elements of z( k ) are
+  in  a( k, l + 1 ), ..., a( k, n ). The elements of R are returned in
+  the upper triangular part of A1.
+
+  Z is given by
+
+     Z =  Z( 1 ) * Z( 2 ) * ... * Z( m ).
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 142 of file zlatrz\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

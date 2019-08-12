@@ -1,0 +1,185 @@
+.TH "ztrsyl.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ztrsyl.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBztrsyl\fP (TRANA, TRANB, ISGN, M, \fBN\fP, A, \fBLDA\fP, B, \fBLDB\fP, C, LDC, SCALE, INFO)"
+.br
+.RI "\fBZTRSYL\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine ztrsyl (character TRANA, character TRANB, integer ISGN, integer M, integer N, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( ldb, * ) B, integer LDB, complex*16, dimension( ldc, * ) C, integer LDC, double precision SCALE, integer INFO)"
+
+.PP
+\fBZTRSYL\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZTRSYL solves the complex Sylvester matrix equation:
+
+    op(A)*X + X*op(B) = scale*C or
+    op(A)*X - X*op(B) = scale*C,
+
+ where op(A) = A or A**H, and A and B are both upper triangular. A is
+ M-by-M and B is N-by-N; the right hand side C and the solution X are
+ M-by-N; and scale is an output scale factor, set <= 1 to avoid
+ overflow in X.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fITRANA\fP 
+.PP
+.nf
+          TRANA is CHARACTER*1
+          Specifies the option op(A):
+          = 'N': op(A) = A    (No transpose)
+          = 'C': op(A) = A**H (Conjugate transpose)
+.fi
+.PP
+.br
+\fITRANB\fP 
+.PP
+.nf
+          TRANB is CHARACTER*1
+          Specifies the option op(B):
+          = 'N': op(B) = B    (No transpose)
+          = 'C': op(B) = B**H (Conjugate transpose)
+.fi
+.PP
+.br
+\fIISGN\fP 
+.PP
+.nf
+          ISGN is INTEGER
+          Specifies the sign in the equation:
+          = +1: solve op(A)*X + X*op(B) = scale*C
+          = -1: solve op(A)*X - X*op(B) = scale*C
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The order of the matrix A, and the number of rows in the
+          matrices X and C. M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix B, and the number of columns in the
+          matrices X and C. N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,M)
+          The upper triangular matrix A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A. LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX*16 array, dimension (LDB,N)
+          The upper triangular matrix B.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B. LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX*16 array, dimension (LDC,N)
+          On entry, the M-by-N right hand side matrix C.
+          On exit, C is overwritten by the solution matrix X.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the array C. LDC >= max(1,M)
+.fi
+.PP
+.br
+\fISCALE\fP 
+.PP
+.nf
+          SCALE is DOUBLE PRECISION
+          The scale factor, scale, set <= 1 to avoid overflow in X.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+          = 1: A and B have common or very close eigenvalues; perturbed
+               values were used to solve the equation (but the matrices
+               A and B are unchanged).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 159 of file ztrsyl\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

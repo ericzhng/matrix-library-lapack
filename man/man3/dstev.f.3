@@ -1,0 +1,137 @@
+.TH "dstev.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dstev.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdstev\fP (JOBZ, \fBN\fP, D, E, Z, LDZ, WORK, INFO)"
+.br
+.RI "\fB DSTEV computes the eigenvalues and, optionally, the left and/or right eigenvectors for OTHER matrices\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dstev (character JOBZ, integer N, double precision, dimension( * ) D, double precision, dimension( * ) E, double precision, dimension( ldz, * ) Z, integer LDZ, double precision, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fB DSTEV computes the eigenvalues and, optionally, the left and/or right eigenvectors for OTHER matrices\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DSTEV computes all eigenvalues and, optionally, eigenvectors of a
+ real symmetric tridiagonal matrix A.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOBZ\fP 
+.PP
+.nf
+          JOBZ is CHARACTER*1
+          = 'N':  Compute eigenvalues only;
+          = 'V':  Compute eigenvalues and eigenvectors.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix.  N >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          On entry, the n diagonal elements of the tridiagonal matrix
+          A.
+          On exit, if INFO = 0, the eigenvalues in ascending order.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (N-1)
+          On entry, the (n-1) subdiagonal elements of the tridiagonal
+          matrix A, stored in elements 1 to N-1 of E.
+          On exit, the contents of E are destroyed.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension (LDZ, N)
+          If JOBZ = 'V', then if INFO = 0, Z contains the orthonormal
+          eigenvectors of the matrix A, with the i-th column of Z
+          holding the eigenvector associated with D(i).
+          If JOBZ = 'N', then Z is not referenced.
+.fi
+.PP
+.br
+\fILDZ\fP 
+.PP
+.nf
+          LDZ is INTEGER
+          The leading dimension of the array Z.  LDZ >= 1, and if
+          JOBZ = 'V', LDZ >= max(1,N).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (max(1,2*N-2))
+          If JOBZ = 'N', WORK is not referenced.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+          > 0:  if INFO = i, the algorithm failed to converge; i
+                off-diagonal elements of E did not converge to zero.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file dstev\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,117 @@
+.TH "dlauum.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlauum.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlauum\fP (UPLO, \fBN\fP, A, \fBLDA\fP, INFO)"
+.br
+.RI "\fBDLAUUM\fP computes the product UUH or LHL, where U and L are upper or lower triangular matrices (blocked algorithm)\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlauum (character UPLO, integer N, double precision, dimension( lda, * ) A, integer LDA, integer INFO)"
+
+.PP
+\fBDLAUUM\fP computes the product UUH or LHL, where U and L are upper or lower triangular matrices (blocked algorithm)\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLAUUM computes the product U * U**T or L**T * L, where the triangular
+ factor U or L is stored in the upper or lower triangular part of
+ the array A.
+
+ If UPLO = 'U' or 'u' then the upper triangle of the result is stored,
+ overwriting the factor U in A.
+ If UPLO = 'L' or 'l' then the lower triangle of the result is stored,
+ overwriting the factor L in A.
+
+ This is the blocked form of the algorithm, calling Level 3 BLAS.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the triangular factor stored in the array A
+          is upper or lower triangular:
+          = 'U':  Upper triangular
+          = 'L':  Lower triangular
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the triangular factor U or L.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, the triangular factor U or L.
+          On exit, if UPLO = 'U', the upper triangle of A is
+          overwritten with the upper triangle of the product U * U**T;
+          if UPLO = 'L', the lower triangle of A is overwritten with
+          the lower triangle of the product L**T * L.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -k, the k-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 104 of file dlauum\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

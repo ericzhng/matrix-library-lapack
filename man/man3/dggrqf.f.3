@@ -1,0 +1,244 @@
+.TH "dggrqf.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dggrqf.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdggrqf\fP (M, P, \fBN\fP, A, \fBLDA\fP, TAUA, B, \fBLDB\fP, TAUB, WORK, LWORK, INFO)"
+.br
+.RI "\fBDGGRQF\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dggrqf (integer M, integer P, integer N, double precision, dimension( lda, * ) A, integer LDA, double precision, dimension( * ) TAUA, double precision, dimension( ldb, * ) B, integer LDB, double precision, dimension( * ) TAUB, double precision, dimension( * ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBDGGRQF\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DGGRQF computes a generalized RQ factorization of an M-by-N matrix A
+ and a P-by-N matrix B:
+
+             A = R*Q,        B = Z*T*Q,
+
+ where Q is an N-by-N orthogonal matrix, Z is a P-by-P orthogonal
+ matrix, and R and T assume one of the forms:
+
+ if M <= N,  R = ( 0  R12 ) M,   or if M > N,  R = ( R11 ) M-N,
+                  N-M  M                           ( R21 ) N
+                                                      N
+
+ where R12 or R21 is upper triangular, and
+
+ if P >= N,  T = ( T11 ) N  ,   or if P < N,  T = ( T11  T12 ) P,
+                 (  0  ) P-N                         P   N-P
+                    N
+
+ where T11 is upper triangular.
+
+ In particular, if B is square and nonsingular, the GRQ factorization
+ of A and B implicitly gives the RQ factorization of A*inv(B):
+
+              A*inv(B) = (R*inv(T))*Z**T
+
+ where inv(B) denotes the inverse of the matrix B, and Z**T denotes the
+ transpose of the matrix Z.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIP\fP 
+.PP
+.nf
+          P is INTEGER
+          The number of rows of the matrix B.  P >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrices A and B. N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, the M-by-N matrix A.
+          On exit, if M <= N, the upper triangle of the subarray
+          A(1:M,N-M+1:N) contains the M-by-M upper triangular matrix R;
+          if M > N, the elements on and above the (M-N)-th subdiagonal
+          contain the M-by-N upper trapezoidal matrix R; the remaining
+          elements, with the array TAUA, represent the orthogonal
+          matrix Q as a product of elementary reflectors (see Further
+          Details).
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A. LDA >= max(1,M).
+.fi
+.PP
+.br
+\fITAUA\fP 
+.PP
+.nf
+          TAUA is DOUBLE PRECISION array, dimension (min(M,N))
+          The scalar factors of the elementary reflectors which
+          represent the orthogonal matrix Q (see Further Details).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB,N)
+          On entry, the P-by-N matrix B.
+          On exit, the elements on and above the diagonal of the array
+          contain the min(P,N)-by-N upper trapezoidal matrix T (T is
+          upper triangular if P >= N); the elements below the diagonal,
+          with the array TAUB, represent the orthogonal matrix Z as a
+          product of elementary reflectors (see Further Details).
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B. LDB >= max(1,P).
+.fi
+.PP
+.br
+\fITAUB\fP 
+.PP
+.nf
+          TAUB is DOUBLE PRECISION array, dimension (min(P,N))
+          The scalar factors of the elementary reflectors which
+          represent the orthogonal matrix Z (see Further Details).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK. LWORK >= max(1,N,M,P).
+          For optimum performance LWORK >= max(N,M,P)*max(NB1,NB2,NB3),
+          where NB1 is the optimal blocksize for the RQ factorization
+          of an M-by-N matrix, NB2 is the optimal blocksize for the
+          QR factorization of a P-by-N matrix, and NB3 is the optimal
+          blocksize for a call of DORMRQ.
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array, and no error
+          message related to LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INF0= -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The matrix Q is represented as a product of elementary reflectors
+
+     Q = H(1) H(2) . . . H(k), where k = min(m,n).
+
+  Each H(i) has the form
+
+     H(i) = I - taua * v * v**T
+
+  where taua is a real scalar, and v is a real vector with
+  v(n-k+i+1:n) = 0 and v(n-k+i) = 1; v(1:n-k+i-1) is stored on exit in
+  A(m-k+i,1:n-k+i-1), and taua in TAUA(i).
+  To form Q explicitly, use LAPACK subroutine DORGRQ.
+  To use Q to update another matrix, use LAPACK subroutine DORMRQ.
+
+  The matrix Z is represented as a product of elementary reflectors
+
+     Z = H(1) H(2) . . . H(k), where k = min(p,n).
+
+  Each H(i) has the form
+
+     H(i) = I - taub * v * v**T
+
+  where taub is a real scalar, and v is a real vector with
+  v(1:i-1) = 0 and v(i) = 1; v(i+1:p) is stored on exit in B(i+1:p,i),
+  and taub in TAUB(i).
+  To form Z explicitly, use LAPACK subroutine DORGQR.
+  To use Z to update another matrix, use LAPACK subroutine DORMQR.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 216 of file dggrqf\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

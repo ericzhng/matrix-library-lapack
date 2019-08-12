@@ -1,0 +1,141 @@
+.TH "slaqr1.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaqr1.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslaqr1\fP (\fBN\fP, H, LDH, SR1, SI1, SR2, SI2, V)"
+.br
+.RI "\fBSLAQR1\fP sets a scalar multiple of the first column of the product of 2-by-2 or 3-by-3 matrix H and specified shifts\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slaqr1 (integer N, real, dimension( ldh, * ) H, integer LDH, real SR1, real SI1, real SR2, real SI2, real, dimension( * ) V)"
+
+.PP
+\fBSLAQR1\fP sets a scalar multiple of the first column of the product of 2-by-2 or 3-by-3 matrix H and specified shifts\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+      Given a 2-by-2 or 3-by-3 matrix H, SLAQR1 sets v to a
+      scalar multiple of the first column of the product
+
+      (*)  K = (H - (sr1 + i*si1)*I)*(H - (sr2 + i*si2)*I)
+
+      scaling to avoid overflows and most underflows. It
+      is assumed that either
+
+              1) sr1 = sr2 and si1 = -si2
+          or
+              2) si1 = si2 = 0.
+
+      This is useful for starting double implicit shift bulges
+      in the QR algorithm.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+              Order of the matrix H. N must be either 2 or 3.
+.fi
+.PP
+.br
+\fIH\fP 
+.PP
+.nf
+          H is REAL array, dimension (LDH,N)
+              The 2-by-2 or 3-by-3 matrix H in (*).
+.fi
+.PP
+.br
+\fILDH\fP 
+.PP
+.nf
+          LDH is INTEGER
+              The leading dimension of H as declared in
+              the calling procedure.  LDH.GE.N
+.fi
+.PP
+.br
+\fISR1\fP 
+.PP
+.nf
+          SR1 is REAL
+.fi
+.PP
+.br
+\fISI1\fP 
+.PP
+.nf
+          SI1 is REAL
+.fi
+.PP
+.br
+\fISR2\fP 
+.PP
+.nf
+          SR2 is REAL
+.fi
+.PP
+.br
+\fISI2\fP 
+.PP
+.nf
+          SI2 is REAL
+              The shifts in (*).
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is REAL array, dimension (N)
+              A scalar multiple of the first column of the
+              matrix K in (*).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Karen Braman and Ralph Byers, Department of Mathematics, University of Kansas, USA 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file slaqr1\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

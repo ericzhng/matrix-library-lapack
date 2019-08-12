@@ -1,0 +1,185 @@
+.TH "zgebal.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zgebal.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzgebal\fP (JOB, \fBN\fP, A, \fBLDA\fP, ILO, IHI, SCALE, INFO)"
+.br
+.RI "\fBZGEBAL\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zgebal (character JOB, integer N, complex*16, dimension( lda, * ) A, integer LDA, integer ILO, integer IHI, double precision, dimension( * ) SCALE, integer INFO)"
+
+.PP
+\fBZGEBAL\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZGEBAL balances a general complex matrix A.  This involves, first,
+ permuting A by a similarity transformation to isolate eigenvalues
+ in the first 1 to ILO-1 and last IHI+1 to N elements on the
+ diagonal; and second, applying a diagonal similarity transformation
+ to rows and columns ILO to IHI to make the rows and columns as
+ close in norm as possible.  Both steps are optional.
+
+ Balancing may reduce the 1-norm of the matrix, and improve the
+ accuracy of the computed eigenvalues and/or eigenvectors.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOB\fP 
+.PP
+.nf
+          JOB is CHARACTER*1
+          Specifies the operations to be performed on A:
+          = 'N':  none:  simply set ILO = 1, IHI = N, SCALE(I) = 1.0
+                  for i = 1,...,N;
+          = 'P':  permute only;
+          = 'S':  scale only;
+          = 'B':  both permute and scale.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, the input matrix A.
+          On exit,  A is overwritten by the balanced matrix.
+          If JOB = 'N', A is not referenced.
+          See Further Details.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIILO\fP 
+.PP
+.nf
+          ILO is INTEGER
+.fi
+.PP
+.br
+\fIIHI\fP 
+.PP
+.nf
+          IHI is INTEGER
+          ILO and IHI are set to INTEGER such that on exit
+          A(i,j) = 0 if i > j and j = 1,...,ILO-1 or I = IHI+1,...,N.
+          If JOB = 'N' or 'S', ILO = 1 and IHI = N.
+.fi
+.PP
+.br
+\fISCALE\fP 
+.PP
+.nf
+          SCALE is DOUBLE PRECISION array, dimension (N)
+          Details of the permutations and scaling factors applied to
+          A.  If P(j) is the index of the row and column interchanged
+          with row and column j and D(j) is the scaling factor
+          applied to row and column j, then
+          SCALE(j) = P(j)    for j = 1,...,ILO-1
+                   = D(j)    for j = ILO,...,IHI
+                   = P(j)    for j = IHI+1,...,N.
+          The order in which the interchanges are made is N to IHI+1,
+          then 1 to ILO-1.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The permutations consist of row and column interchanges which put
+  the matrix in the form
+
+             ( T1   X   Y  )
+     P A P = (  0   B   Z  )
+             (  0   0   T2 )
+
+  where T1 and T2 are upper triangular matrices whose eigenvalues lie
+  along the diagonal.  The column indices ILO and IHI mark the starting
+  and ending columns of the submatrix B. Balancing consists of applying
+  a diagonal similarity transformation inv(D) * B * D to make the
+  1-norms of each row of B and its corresponding column nearly equal.
+  The output matrix is
+
+     ( T1     X*D          Y    )
+     (  0  inv(D)*B*D  inv(D)*Z ).
+     (  0      0           T2   )
+
+  Information about the permutations P and the diagonal matrix D is
+  returned in the vector SCALE.
+
+  This subroutine is based on the EISPACK routine CBAL.
+
+  Modified by Tzu-Yi Chen, Computer Science Division, University of
+    California at Berkeley, USA
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file zgebal\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

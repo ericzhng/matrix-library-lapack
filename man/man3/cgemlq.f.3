@@ -1,0 +1,185 @@
+.TH "cgemlq.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cgemlq.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcgemlq\fP (SIDE, TRANS, M, \fBN\fP, K, A, \fBLDA\fP, T, TSIZE, C, LDC, WORK, LWORK, INFO)"
+.br
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cgemlq (character SIDE, character TRANS, integer M, integer N, integer K, complex, dimension( lda, * ) A, integer LDA, complex, dimension( * ) T, integer TSIZE, complex, dimension( ldc, * ) C, integer LDC, complex, dimension( * ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBPurpose:\fP
+.RS 4
+
+.RE
+.PP
+CGEMLQ overwrites the general real M-by-N matrix C with
+.PP
+SIDE = 'L' SIDE = 'R' TRANS = 'N': Q * C C * Q TRANS = 'C': Q**H * C C * Q**H where Q is a complex unitary matrix defined as the product of blocked elementary reflectors computed by short wide LQ factorization (CGELQ)
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'L': apply Q or Q**T from the Left;
+          = 'R': apply Q or Q**T from the Right.
+.fi
+.PP
+.br
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+          = 'N':  No transpose, apply Q;
+          = 'T':  Transpose, apply Q**T.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >=0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix C. N >= 0.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The number of elementary reflectors whose product defines
+          the matrix Q.
+          If SIDE = 'L', M >= K >= 0;
+          if SIDE = 'R', N >= K >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension
+                               (LDA,M) if SIDE = 'L',
+                               (LDA,N) if SIDE = 'R'
+          Part of the data structure to represent Q as returned by CGELQ.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A. LDA >= max(1,K).
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is COMPLEX array, dimension (MAX(5,TSIZE)).
+          Part of the data structure to represent Q as returned by CGELQ.
+.fi
+.PP
+.br
+\fITSIZE\fP 
+.PP
+.nf
+          TSIZE is INTEGER
+          The dimension of the array T. TSIZE >= 5.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX array, dimension (LDC,N)
+          On entry, the M-by-N matrix C.
+          On exit, C is overwritten by Q*C or Q**T*C or C*Q**T or C*Q.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the array C. LDC >= max(1,M).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+         (workspace) COMPLEX array, dimension (MAX(1,LWORK))
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.
+          If LWORK = -1, then a workspace query is assumed. The routine
+          only calculates the size of the WORK array, returns this
+          value as WORK(1), and no error message related to WORK 
+          is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBFurther Details\fP
+.RS 4
+
+.RE
+.PP
+These details are particular for this LAPACK implementation\&. Users should not take them for granted\&. These details may change in the future, and are unlikely not true for another LAPACK implementation\&. These details are relevant if one wants to try to understand the code\&. They are not part of the interface\&.
+.PP
+In this version,
+.PP
+T(2): row block size (MB) T(3): column block size (NB) T(6:TSIZE): data structure needed for Q, computed by CLASWQR or CGELQT
+.PP
+Depending on the matrix dimensions M and N, and row and column block sizes MB and NB returned by ILAENV, CGELQ will use either CLASWLQ (if the matrix is wide-and-short) or CGELQT to compute the LQ factorization\&. This version of CGEMLQ will use either CLAMSWLQ or CGEMLQT to multiply matrix Q by another matrix\&. Further Details in CLAMSWLQ or CGEMLQT\&.  
+.PP
+Definition at line 169 of file cgemlq\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

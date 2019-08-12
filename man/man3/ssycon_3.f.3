@@ -1,0 +1,188 @@
+.TH "ssycon_3.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ssycon_3.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBssycon_3\fP (UPLO, \fBN\fP, A, \fBLDA\fP, E, IPIV, ANORM, RCOND, WORK, IWORK, INFO)"
+.br
+.RI "\fBSSYCON_3\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine ssycon_3 (character UPLO, integer N, real, dimension( lda, * ) A, integer LDA, real, dimension( * ) E, integer, dimension( * ) IPIV, real ANORM, real RCOND, real, dimension( * ) WORK, integer, dimension( * ) IWORK, integer INFO)"
+
+.PP
+\fBSSYCON_3\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SSYCON_3 estimates the reciprocal of the condition number (in the
+ 1-norm) of a real symmetric matrix A using the factorization
+ computed by DSYTRF_RK or DSYTRF_BK:
+
+    A = P*U*D*(U**T)*(P**T) or A = P*L*D*(L**T)*(P**T),
+
+ where U (or L) is unit upper (or lower) triangular matrix,
+ U**T (or L**T) is the transpose of U (or L), P is a permutation
+ matrix, P**T is the transpose of P, and D is symmetric and block
+ diagonal with 1-by-1 and 2-by-2 diagonal blocks.
+
+ An estimate is obtained for norm(inv(A)), and the reciprocal of the
+ condition number is computed as RCOND = 1 / (ANORM * norm(inv(A))).
+ This routine uses BLAS3 solver SSYTRS_3.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the details of the factorization are
+          stored as an upper or lower triangular matrix:
+          = 'U':  Upper triangular, form is A = P*U*D*(U**T)*(P**T);
+          = 'L':  Lower triangular, form is A = P*L*D*(L**T)*(P**T).
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA,N)
+          Diagonal of the block diagonal matrix D and factors U or L
+          as computed by SSYTRF_RK and SSYTRF_BK:
+            a) ONLY diagonal elements of the symmetric block diagonal
+               matrix D on the diagonal of A, i.e. D(k,k) = A(k,k);
+               (superdiagonal (or subdiagonal) elements of D
+                should be provided on entry in array E), and
+            b) If UPLO = 'U': factor U in the superdiagonal part of A.
+               If UPLO = 'L': factor L in the subdiagonal part of A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is REAL array, dimension (N)
+          On entry, contains the superdiagonal (or subdiagonal)
+          elements of the symmetric block diagonal matrix D
+          with 1-by-1 or 2-by-2 diagonal blocks, where
+          If UPLO = 'U': E(i) = D(i-1,i),i=2:N, E(1) not referenced;
+          If UPLO = 'L': E(i) = D(i+1,i),i=1:N-1, E(N) not referenced.
+
+          NOTE: For 1-by-1 diagonal block D(k), where
+          1 <= k <= N, the element E(k) is not referenced in both
+          UPLO = 'U' or UPLO = 'L' cases.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          Details of the interchanges and the block structure of D
+          as determined by SSYTRF_RK or SSYTRF_BK.
+.fi
+.PP
+.br
+\fIANORM\fP 
+.PP
+.nf
+          ANORM is REAL
+          The 1-norm of the original matrix A.
+.fi
+.PP
+.br
+\fIRCOND\fP 
+.PP
+.nf
+          RCOND is REAL
+          The reciprocal of the condition number of the matrix A,
+          computed as RCOND = 1/(ANORM * AINVNM), where AINVNM is an
+          estimate of the 1-norm of inv(A) computed in this routine.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (2*N)
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+
+.RE
+.PP
+June 2017, Igor Kozachenko, Computer Science Division, University of California, Berkeley
+.PP
+September 2007, Sven Hammarling, Nicholas J\&. Higham, Craig Lucas, School of Mathematics, University of Manchester
+.PP
+Definition at line 173 of file ssycon_3\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

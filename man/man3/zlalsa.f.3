@@ -1,0 +1,315 @@
+.TH "zlalsa.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlalsa.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlalsa\fP (ICOMPQ, SMLSIZ, \fBN\fP, \fBNRHS\fP, B, \fBLDB\fP, BX, LDBX, U, LDU, VT, K, DIFL, DIFR, Z, POLES, GIVPTR, GIVCOL, LDGCOL, PERM, GIVNUM, C, S, RWORK, IWORK, INFO)"
+.br
+.RI "\fBZLALSA\fP computes the SVD of the coefficient matrix in compact form\&. Used by sgelsd\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlalsa (integer ICOMPQ, integer SMLSIZ, integer N, integer NRHS, complex*16, dimension( ldb, * ) B, integer LDB, complex*16, dimension( ldbx, * ) BX, integer LDBX, double precision, dimension( ldu, * ) U, integer LDU, double precision, dimension( ldu, * ) VT, integer, dimension( * ) K, double precision, dimension( ldu, * ) DIFL, double precision, dimension( ldu, * ) DIFR, double precision, dimension( ldu, * ) Z, double precision, dimension( ldu, * ) POLES, integer, dimension( * ) GIVPTR, integer, dimension( ldgcol, * ) GIVCOL, integer LDGCOL, integer, dimension( ldgcol, * ) PERM, double precision, dimension( ldu, * ) GIVNUM, double precision, dimension( * ) C, double precision, dimension( * ) S, double precision, dimension( * ) RWORK, integer, dimension( * ) IWORK, integer INFO)"
+
+.PP
+\fBZLALSA\fP computes the SVD of the coefficient matrix in compact form\&. Used by sgelsd\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLALSA is an itermediate step in solving the least squares problem
+ by computing the SVD of the coefficient matrix in compact form (The
+ singular vectors are computed as products of simple orthorgonal
+ matrices.).
+
+ If ICOMPQ = 0, ZLALSA applies the inverse of the left singular vector
+ matrix of an upper bidiagonal matrix to the right hand side; and if
+ ICOMPQ = 1, ZLALSA applies the right singular vector matrix to the
+ right hand side. The singular vector matrices were generated in
+ compact form by ZLALSA.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIICOMPQ\fP 
+.PP
+.nf
+          ICOMPQ is INTEGER
+         Specifies whether the left or the right singular vector
+         matrix is involved.
+         = 0: Left singular vector matrix
+         = 1: Right singular vector matrix
+.fi
+.PP
+.br
+\fISMLSIZ\fP 
+.PP
+.nf
+          SMLSIZ is INTEGER
+         The maximum size of the subproblems at the bottom of the
+         computation tree.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         The row and column dimensions of the upper bidiagonal matrix.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+         The number of columns of B and BX. NRHS must be at least 1.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX*16 array, dimension ( LDB, NRHS )
+         On input, B contains the right hand sides of the least
+         squares problem in rows 1 through M.
+         On output, B contains the solution X in rows 1 through N.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+         The leading dimension of B in the calling subprogram.
+         LDB must be at least max(1,MAX( M, N ) ).
+.fi
+.PP
+.br
+\fIBX\fP 
+.PP
+.nf
+          BX is COMPLEX*16 array, dimension ( LDBX, NRHS )
+         On exit, the result of applying the left or right singular
+         vector matrix to B.
+.fi
+.PP
+.br
+\fILDBX\fP 
+.PP
+.nf
+          LDBX is INTEGER
+         The leading dimension of BX.
+.fi
+.PP
+.br
+\fIU\fP 
+.PP
+.nf
+          U is DOUBLE PRECISION array, dimension ( LDU, SMLSIZ ).
+         On entry, U contains the left singular vector matrices of all
+         subproblems at the bottom level.
+.fi
+.PP
+.br
+\fILDU\fP 
+.PP
+.nf
+          LDU is INTEGER, LDU = > N.
+         The leading dimension of arrays U, VT, DIFL, DIFR,
+         POLES, GIVNUM, and Z.
+.fi
+.PP
+.br
+\fIVT\fP 
+.PP
+.nf
+          VT is DOUBLE PRECISION array, dimension ( LDU, SMLSIZ+1 ).
+         On entry, VT**H contains the right singular vector matrices of
+         all subproblems at the bottom level.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER array, dimension ( N ).
+.fi
+.PP
+.br
+\fIDIFL\fP 
+.PP
+.nf
+          DIFL is DOUBLE PRECISION array, dimension ( LDU, NLVL ).
+         where NLVL = INT(log_2 (N/(SMLSIZ+1))) + 1.
+.fi
+.PP
+.br
+\fIDIFR\fP 
+.PP
+.nf
+          DIFR is DOUBLE PRECISION array, dimension ( LDU, 2 * NLVL ).
+         On entry, DIFL(*, I) and DIFR(*, 2 * I -1) record
+         distances between singular values on the I-th level and
+         singular values on the (I -1)-th level, and DIFR(*, 2 * I)
+         record the normalizing factors of the right singular vectors
+         matrices of subproblems on I-th level.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension ( LDU, NLVL ).
+         On entry, Z(1, I) contains the components of the deflation-
+         adjusted updating row vector for subproblems on the I-th
+         level.
+.fi
+.PP
+.br
+\fIPOLES\fP 
+.PP
+.nf
+          POLES is DOUBLE PRECISION array, dimension ( LDU, 2 * NLVL ).
+         On entry, POLES(*, 2 * I -1: 2 * I) contains the new and old
+         singular values involved in the secular equations on the I-th
+         level.
+.fi
+.PP
+.br
+\fIGIVPTR\fP 
+.PP
+.nf
+          GIVPTR is INTEGER array, dimension ( N ).
+         On entry, GIVPTR( I ) records the number of Givens
+         rotations performed on the I-th problem on the computation
+         tree.
+.fi
+.PP
+.br
+\fIGIVCOL\fP 
+.PP
+.nf
+          GIVCOL is INTEGER array, dimension ( LDGCOL, 2 * NLVL ).
+         On entry, for each I, GIVCOL(*, 2 * I - 1: 2 * I) records the
+         locations of Givens rotations performed on the I-th level on
+         the computation tree.
+.fi
+.PP
+.br
+\fILDGCOL\fP 
+.PP
+.nf
+          LDGCOL is INTEGER, LDGCOL = > N.
+         The leading dimension of arrays GIVCOL and PERM.
+.fi
+.PP
+.br
+\fIPERM\fP 
+.PP
+.nf
+          PERM is INTEGER array, dimension ( LDGCOL, NLVL ).
+         On entry, PERM(*, I) records permutations done on the I-th
+         level of the computation tree.
+.fi
+.PP
+.br
+\fIGIVNUM\fP 
+.PP
+.nf
+          GIVNUM is DOUBLE PRECISION array, dimension ( LDU, 2 * NLVL ).
+         On entry, GIVNUM(*, 2 *I -1 : 2 * I) records the C- and S-
+         values of Givens rotations performed on the I-th level on the
+         computation tree.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION array, dimension ( N ).
+         On entry, if the I-th subproblem is not square,
+         C( I ) contains the C-value of a Givens rotation related to
+         the right null space of the I-th subproblem.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is DOUBLE PRECISION array, dimension ( N ).
+         On entry, if the I-th subproblem is not square,
+         S( I ) contains the S-value of a Givens rotation related to
+         the right null space of the I-th subproblem.
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is DOUBLE PRECISION array, dimension at least
+         MAX( (SMLSZ+1)*NRHS*3, N*(1+NRHS) + 2*NRHS ).
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (3*N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ming Gu and Ren-Cang Li, Computer Science Division, University of California at Berkeley, USA 
+.br
+ Osni Marques, LBNL/NERSC, USA 
+.br
+ 
+.RE
+.PP
+
+.PP
+Definition at line 269 of file zlalsa\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,140 @@
+.TH "sptcon.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sptcon.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsptcon\fP (\fBN\fP, D, E, ANORM, RCOND, WORK, INFO)"
+.br
+.RI "\fBSPTCON\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sptcon (integer N, real, dimension( * ) D, real, dimension( * ) E, real ANORM, real RCOND, real, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBSPTCON\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SPTCON computes the reciprocal of the condition number (in the
+ 1-norm) of a real symmetric positive definite tridiagonal matrix
+ using the factorization A = L*D*L**T or A = U**T*D*U computed by
+ SPTTRF.
+
+ Norm(inv(A)) is computed by a direct method, and the reciprocal of
+ the condition number is computed as
+              RCOND = 1 / (ANORM * norm(inv(A))).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+          The n diagonal elements of the diagonal matrix D from the
+          factorization of A, as computed by SPTTRF.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is REAL array, dimension (N-1)
+          The (n-1) off-diagonal elements of the unit bidiagonal factor
+          U or L from the factorization of A,  as computed by SPTTRF.
+.fi
+.PP
+.br
+\fIANORM\fP 
+.PP
+.nf
+          ANORM is REAL
+          The 1-norm of the original matrix A.
+.fi
+.PP
+.br
+\fIRCOND\fP 
+.PP
+.nf
+          RCOND is REAL
+          The reciprocal of the condition number of the matrix A,
+          computed as RCOND = 1/(ANORM * AINVNM), where AINVNM is the
+          1-norm of inv(A) computed in this routine.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The method used is described in Nicholas J. Higham, "Efficient
+  Algorithms for Computing the Condition Number of a Tridiagonal
+  Matrix", SIAM J. Sci. Stat. Comput., Vol. 7, No. 1, January 1986.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 120 of file sptcon\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,160 @@
+.TH "slarra.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slarra.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslarra\fP (\fBN\fP, D, E, E2, SPLTOL, TNRM, NSPLIT, ISPLIT, INFO)"
+.br
+.RI "\fBSLARRA\fP computes the splitting points with the specified threshold\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slarra (integer N, real, dimension( * ) D, real, dimension( * ) E, real, dimension( * ) E2, real SPLTOL, real TNRM, integer NSPLIT, integer, dimension( * ) ISPLIT, integer INFO)"
+
+.PP
+\fBSLARRA\fP computes the splitting points with the specified threshold\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Compute the splitting points with threshold SPLTOL.
+ SLARRA sets any "small" off-diagonal elements to zero.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix. N > 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+          On entry, the N diagonal elements of the tridiagonal
+          matrix T.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is REAL array, dimension (N)
+          On entry, the first (N-1) entries contain the subdiagonal
+          elements of the tridiagonal matrix T; E(N) need not be set.
+          On exit, the entries E( ISPLIT( I ) ), 1 <= I <= NSPLIT,
+          are set to zero, the other entries of E are untouched.
+.fi
+.PP
+.br
+\fIE2\fP 
+.PP
+.nf
+          E2 is REAL array, dimension (N)
+          On entry, the first (N-1) entries contain the SQUARES of the
+          subdiagonal elements of the tridiagonal matrix T;
+          E2(N) need not be set.
+          On exit, the entries E2( ISPLIT( I ) ),
+          1 <= I <= NSPLIT, have been set to zero
+.fi
+.PP
+.br
+\fISPLTOL\fP 
+.PP
+.nf
+          SPLTOL is REAL
+          The threshold for splitting. Two criteria can be used:
+          SPLTOL<0 : criterion based on absolute off-diagonal value
+          SPLTOL>0 : criterion that preserves relative accuracy
+.fi
+.PP
+.br
+\fITNRM\fP 
+.PP
+.nf
+          TNRM is REAL
+          The norm of the matrix.
+.fi
+.PP
+.br
+\fINSPLIT\fP 
+.PP
+.nf
+          NSPLIT is INTEGER
+          The number of blocks T splits into. 1 <= NSPLIT <= N.
+.fi
+.PP
+.br
+\fIISPLIT\fP 
+.PP
+.nf
+          ISPLIT is INTEGER array, dimension (N)
+          The splitting points, at which T breaks up into blocks.
+          The first block consists of rows/columns 1 to ISPLIT(1),
+          the second of rows/columns ISPLIT(1)+1 through ISPLIT(2),
+          etc., and the NSPLIT-th consists of rows/columns
+          ISPLIT(NSPLIT-1)+1 through ISPLIT(NSPLIT)=N.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Beresford Parlett, University of California, Berkeley, USA 
+.br
+ Jim Demmel, University of California, Berkeley, USA 
+.br
+ Inderjit Dhillon, University of Texas, Austin, USA 
+.br
+ Osni Marques, LBNL/NERSC, USA 
+.br
+ Christof Voemel, University of California, Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 138 of file slarra\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

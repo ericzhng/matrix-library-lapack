@@ -1,0 +1,149 @@
+.TH "dsytri_rook.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dsytri_rook.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdsytri_rook\fP (UPLO, \fBN\fP, A, \fBLDA\fP, IPIV, WORK, INFO)"
+.br
+.RI "\fBDSYTRI_ROOK\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dsytri_rook (character UPLO, integer N, double precision, dimension( lda, * ) A, integer LDA, integer, dimension( * ) IPIV, double precision, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBDSYTRI_ROOK\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DSYTRI_ROOK computes the inverse of a real symmetric
+ matrix A using the factorization A = U*D*U**T or A = L*D*L**T
+ computed by DSYTRF_ROOK.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the details of the factorization are stored
+          as an upper or lower triangular matrix.
+          = 'U':  Upper triangular, form is A = U*D*U**T;
+          = 'L':  Lower triangular, form is A = L*D*L**T.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, the block diagonal matrix D and the multipliers
+          used to obtain the factor U or L as computed by DSYTRF_ROOK.
+
+          On exit, if INFO = 0, the (symmetric) inverse of the original
+          matrix.  If UPLO = 'U', the upper triangular part of the
+          inverse is formed and the part of A below the diagonal is not
+          referenced; if UPLO = 'L' the lower triangular part of the
+          inverse is formed and the part of A above the diagonal is
+          not referenced.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          Details of the interchanges and the block structure of D
+          as determined by DSYTRF_ROOK.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+          > 0: if INFO = i, D(i,i) = 0; the matrix is singular and its
+               inverse could not be computed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+April 2012 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+
+.PP
+.nf
+   April 2012, Igor Kozachenko,
+                  Computer Science Division,
+                  University of California, Berkeley
+
+  September 2007, Sven Hammarling, Nicholas J. Higham, Craig Lucas,
+                  School of Mathematics,
+                  University of Manchester
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 131 of file dsytri_rook\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

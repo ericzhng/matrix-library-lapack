@@ -1,0 +1,122 @@
+.TH "cla_porpvgrw.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cla_porpvgrw.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "real function \fBcla_porpvgrw\fP (UPLO, NCOLS, A, \fBLDA\fP, AF, LDAF, WORK)"
+.br
+.RI "\fBCLA_PORPVGRW\fP computes the reciprocal pivot growth factor norm(A)/norm(U) for a symmetric or Hermitian positive-definite matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "real function cla_porpvgrw (character*1 UPLO, integer NCOLS, complex, dimension( lda, * ) A, integer LDA, complex, dimension( ldaf, * ) AF, integer LDAF, real, dimension( * ) WORK)"
+
+.PP
+\fBCLA_PORPVGRW\fP computes the reciprocal pivot growth factor norm(A)/norm(U) for a symmetric or Hermitian positive-definite matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLA_PORPVGRW computes the reciprocal pivot growth factor
+ norm(A)/norm(U). The "max absolute element" norm is used. If this is
+ much less than 1, the stability of the LU factorization of the
+ (equilibrated) matrix A could be poor. This also means that the
+ solution X, estimated condition numbers, and error bounds could be
+ unreliable.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+       = 'U':  Upper triangle of A is stored;
+       = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fINCOLS\fP 
+.PP
+.nf
+          NCOLS is INTEGER
+     The number of columns of the matrix A. NCOLS >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+     On entry, the N-by-N matrix A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+     The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIAF\fP 
+.PP
+.nf
+          AF is COMPLEX array, dimension (LDAF,N)
+     The triangular factor U or L from the Cholesky factorization
+     A = U**T*U or A = L*L**T, as computed by CPOTRF.
+.fi
+.PP
+.br
+\fILDAF\fP 
+.PP
+.nf
+          LDAF is INTEGER
+     The leading dimension of the array AF.  LDAF >= max(1,N).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (2*N)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+
+.PP
+Definition at line 107 of file cla_porpvgrw\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,118 @@
+.TH "sla_lin_berr.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sla_lin_berr.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsla_lin_berr\fP (\fBN\fP, NZ, \fBNRHS\fP, RES, AYB, BERR)"
+.br
+.RI "\fBSLA_LIN_BERR\fP computes a component-wise relative backward error\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sla_lin_berr (integer N, integer NZ, integer NRHS, real, dimension( n, nrhs ) RES, real, dimension( n, nrhs ) AYB, real, dimension( nrhs ) BERR)"
+
+.PP
+\fBSLA_LIN_BERR\fP computes a component-wise relative backward error\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    SLA_LIN_BERR computes componentwise relative backward error from
+    the formula
+        max(i) ( abs(R(i)) / ( abs(op(A_s))*abs(Y) + abs(B_s) )(i) )
+    where abs(Z) is the componentwise absolute value of the matrix
+    or vector Z.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+     The number of linear equations, i.e., the order of the
+     matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fINZ\fP 
+.PP
+.nf
+          NZ is INTEGER
+     We add (NZ+1)*SLAMCH( 'Safe minimum' ) to R(i) in the numerator to
+     guard against spuriously zero residuals. Default value is N.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+     The number of right hand sides, i.e., the number of columns
+     of the matrices AYB, RES, and BERR.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIRES\fP 
+.PP
+.nf
+          RES is REAL array, dimension (N,NRHS)
+     The residual matrix, i.e., the matrix R in the relative backward
+     error formula above.
+.fi
+.PP
+.br
+\fIAYB\fP 
+.PP
+.nf
+          AYB is REAL array, dimension (N, NRHS)
+     The denominator in the relative backward error formula above, i.e.,
+     the matrix abs(op(A_s))*abs(Y) + abs(B_s). The matrices A, Y, and B
+     are from iterative refinement (see sla_gerfsx_extended.f).
+.fi
+.PP
+.br
+\fIBERR\fP 
+.PP
+.nf
+          BERR is REAL array, dimension (NRHS)
+     The componentwise relative backward error from the formula above.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 103 of file sla_lin_berr\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

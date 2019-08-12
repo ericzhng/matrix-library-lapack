@@ -1,0 +1,166 @@
+.TH "zgerc.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zgerc.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzgerc\fP (M, \fBN\fP, ALPHA, X, INCX, Y, INCY, A, \fBLDA\fP)"
+.br
+.RI "\fBZGERC\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zgerc (integer M, integer N, complex*16 ALPHA, complex*16, dimension(*) X, integer INCX, complex*16, dimension(*) Y, integer INCY, complex*16, dimension(lda,*) A, integer LDA)"
+
+.PP
+\fBZGERC\fP 
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZGERC  performs the rank 1 operation
+
+    A := alpha*x*y**H + A,
+
+ where alpha is a scalar, x is an m element vector, y is an n element
+ vector and A is an m by n matrix.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+           On entry, M specifies the number of rows of the matrix A.
+           M must be at least zero.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+           On entry, N specifies the number of columns of the matrix A.
+           N must be at least zero.
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is COMPLEX*16
+           On entry, ALPHA specifies the scalar alpha.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX*16 array, dimension at least
+           ( 1 + ( m - 1 )*abs( INCX ) ).
+           Before entry, the incremented array X must contain the m
+           element vector x.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+           On entry, INCX specifies the increment for the elements of
+           X. INCX must not be zero.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is COMPLEX*16 array, dimension at least
+           ( 1 + ( n - 1 )*abs( INCY ) ).
+           Before entry, the incremented array Y must contain the n
+           element vector y.
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+           On entry, INCY specifies the increment for the elements of
+           Y. INCY must not be zero.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension ( LDA, N )
+           Before entry, the leading m by n part of the array A must
+           contain the matrix of coefficients. On exit, A is
+           overwritten by the updated matrix.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+           On entry, LDA specifies the first dimension of A as declared
+           in the calling (sub) program. LDA must be at least
+           max( 1, m ).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  Level 2 Blas routine.
+
+  -- Written on 22-October-1986.
+     Jack Dongarra, Argonne National Lab.
+     Jeremy Du Croz, Nag Central Office.
+     Sven Hammarling, Nag Central Office.
+     Richard Hanson, Sandia National Labs.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 132 of file zgerc\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,175 @@
+.TH "zlaein.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlaein.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlaein\fP (RIGHTV, NOINIT, \fBN\fP, H, LDH, W, V, B, \fBLDB\fP, RWORK, EPS3, SMLNUM, INFO)"
+.br
+.RI "\fBZLAEIN\fP computes a specified right or left eigenvector of an upper Hessenberg matrix by inverse iteration\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlaein (logical RIGHTV, logical NOINIT, integer N, complex*16, dimension( ldh, * ) H, integer LDH, complex*16 W, complex*16, dimension( * ) V, complex*16, dimension( ldb, * ) B, integer LDB, double precision, dimension( * ) RWORK, double precision EPS3, double precision SMLNUM, integer INFO)"
+
+.PP
+\fBZLAEIN\fP computes a specified right or left eigenvector of an upper Hessenberg matrix by inverse iteration\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLAEIN uses inverse iteration to find a right or left eigenvector
+ corresponding to the eigenvalue W of a complex upper Hessenberg
+ matrix H.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIRIGHTV\fP 
+.PP
+.nf
+          RIGHTV is LOGICAL
+          = .TRUE. : compute right eigenvector;
+          = .FALSE.: compute left eigenvector.
+.fi
+.PP
+.br
+\fINOINIT\fP 
+.PP
+.nf
+          NOINIT is LOGICAL
+          = .TRUE. : no initial vector supplied in V
+          = .FALSE.: initial vector supplied in V.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix H.  N >= 0.
+.fi
+.PP
+.br
+\fIH\fP 
+.PP
+.nf
+          H is COMPLEX*16 array, dimension (LDH,N)
+          The upper Hessenberg matrix H.
+.fi
+.PP
+.br
+\fILDH\fP 
+.PP
+.nf
+          LDH is INTEGER
+          The leading dimension of the array H.  LDH >= max(1,N).
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is COMPLEX*16
+          The eigenvalue of H whose corresponding right or left
+          eigenvector is to be computed.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX*16 array, dimension (N)
+          On entry, if NOINIT = .FALSE., V must contain a starting
+          vector for inverse iteration; otherwise V need not be set.
+          On exit, V contains the computed eigenvector, normalized so
+          that the component of largest magnitude has magnitude 1; here
+          the magnitude of a complex number (x,y) is taken to be
+          |x| + |y|.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX*16 array, dimension (LDB,N)
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is DOUBLE PRECISION array, dimension (N)
+.fi
+.PP
+.br
+\fIEPS3\fP 
+.PP
+.nf
+          EPS3 is DOUBLE PRECISION
+          A small machine-dependent value which is used to perturb
+          close eigenvalues, and to replace zero pivots.
+.fi
+.PP
+.br
+\fISMLNUM\fP 
+.PP
+.nf
+          SMLNUM is DOUBLE PRECISION
+          A machine-dependent value close to the underflow threshold.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          = 1:  inverse iteration did not converge; V is set to the
+                last iterate.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 151 of file zlaein\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

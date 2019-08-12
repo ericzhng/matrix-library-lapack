@@ -1,0 +1,156 @@
+.TH "zheequb.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zheequb.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzheequb\fP (UPLO, \fBN\fP, A, \fBLDA\fP, S, SCOND, AMAX, WORK, INFO)"
+.br
+.RI "\fBZHEEQUB\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zheequb (character UPLO, integer N, complex*16, dimension( lda, * ) A, integer LDA, double precision, dimension( * ) S, double precision SCOND, double precision AMAX, complex*16, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBZHEEQUB\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZHEEQUB computes row and column scalings intended to equilibrate a
+ Hermitian matrix A (with respect to the Euclidean norm) and reduce
+ its condition number. The scale factors S are computed by the BIN
+ algorithm (see references) so that the scaled matrix B with elements
+ B(i,j) = S(i)*A(i,j)*S(j) has a condition number within a factor N of
+ the smallest possible condition number over all possible diagonal
+ scalings.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangle of A is stored;
+          = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A. N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          The N-by-N Hermitian matrix whose scaling factors are to be
+          computed.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A. LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is DOUBLE PRECISION array, dimension (N)
+          If INFO = 0, S contains the scale factors for A.
+.fi
+.PP
+.br
+\fISCOND\fP 
+.PP
+.nf
+          SCOND is DOUBLE PRECISION
+          If INFO = 0, S contains the ratio of the smallest S(i) to
+          the largest S(i). If SCOND >= 0.1 and AMAX is neither too
+          large nor too small, it is not worth scaling by S.
+.fi
+.PP
+.br
+\fIAMAX\fP 
+.PP
+.nf
+          AMAX is DOUBLE PRECISION
+          Largest absolute value of any matrix element. If AMAX is
+          very close to overflow or very close to underflow, the
+          matrix should be scaled.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array, dimension (2*N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+          > 0:  if INFO = i, the i-th diagonal element is nonpositive.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+April 2012 
+.RE
+.PP
+\fBReferences: \fP
+.RS 4
+Livne, O\&.E\&. and Golub, G\&.H\&., 'Scaling by Binormalization', 
+.br
+ Numerical Algorithms, vol\&. 35, no\&. 1, pp\&. 97-120, January 2004\&. 
+.br
+ DOI 10\&.1023/B:NUMA\&.0000016606\&.32820\&.69 
+.br
+ Tech report version: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.3.1679 
+.RE
+.PP
+
+.PP
+Definition at line 134 of file zheequb\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,147 @@
+.TH "zgeqr2p.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zgeqr2p.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzgeqr2p\fP (M, \fBN\fP, A, \fBLDA\fP, TAU, WORK, INFO)"
+.br
+.RI "\fBZGEQR2P\fP computes the QR factorization of a general rectangular matrix with non-negative diagonal elements using an unblocked algorithm\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zgeqr2p (integer M, integer N, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( * ) TAU, complex*16, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBZGEQR2P\fP computes the QR factorization of a general rectangular matrix with non-negative diagonal elements using an unblocked algorithm\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZGEQR2P computes a QR factorization of a complex m by n matrix A:
+ A = Q * R. The diagonal entries of R are real and nonnegative.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, the m by n matrix A.
+          On exit, the elements on and above the diagonal of the array
+          contain the min(m,n) by n upper trapezoidal matrix R (R is
+          upper triangular if m >= n). The diagonal entries of R
+          are real and nonnegative; the elements below the diagonal,
+          with the array TAU, represent the unitary matrix Q as a
+          product of elementary reflectors (see Further Details).
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX*16 array, dimension (min(M,N))
+          The scalar factors of the elementary reflectors (see Further
+          Details).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The matrix Q is represented as a product of elementary reflectors
+
+     Q = H(1) H(2) . . . H(k), where k = min(m,n).
+
+  Each H(i) has the form
+
+     H(i) = I - tau * v * v**H
+
+  where tau is a complex scalar, and v is a complex vector with
+  v(1:i-1) = 0 and v(i) = 1; v(i+1:m) is stored on exit in A(i+1:m,i),
+  and tau in TAU(i).
+
+ See Lapack Working Note 203 for details
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 126 of file zgeqr2p\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

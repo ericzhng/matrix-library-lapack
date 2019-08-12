@@ -1,0 +1,132 @@
+.TH "slar2v.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slar2v.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslar2v\fP (\fBN\fP, X, Y, Z, INCX, C, S, INCC)"
+.br
+.RI "\fBSLAR2V\fP applies a vector of plane rotations with real cosines and real sines from both sides to a sequence of 2-by-2 symmetric/Hermitian matrices\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slar2v (integer N, real, dimension( * ) X, real, dimension( * ) Y, real, dimension( * ) Z, integer INCX, real, dimension( * ) C, real, dimension( * ) S, integer INCC)"
+
+.PP
+\fBSLAR2V\fP applies a vector of plane rotations with real cosines and real sines from both sides to a sequence of 2-by-2 symmetric/Hermitian matrices\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLAR2V applies a vector of real plane rotations from both sides to
+ a sequence of 2-by-2 real symmetric matrices, defined by the elements
+ of the vectors x, y and z. For i = 1,2,...,n
+
+    ( x(i)  z(i) ) := (  c(i)  s(i) ) ( x(i)  z(i) ) ( c(i) -s(i) )
+    ( z(i)  y(i) )    ( -s(i)  c(i) ) ( z(i)  y(i) ) ( s(i)  c(i) )
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of plane rotations to be applied.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is REAL array,
+                         dimension (1+(N-1)*INCX)
+          The vector x.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is REAL array,
+                         dimension (1+(N-1)*INCX)
+          The vector y.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array,
+                         dimension (1+(N-1)*INCX)
+          The vector z.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between elements of X, Y and Z. INCX > 0.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is REAL array, dimension (1+(N-1)*INCC)
+          The cosines of the plane rotations.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is REAL array, dimension (1+(N-1)*INCC)
+          The sines of the plane rotations.
+.fi
+.PP
+.br
+\fIINCC\fP 
+.PP
+.nf
+          INCC is INTEGER
+          The increment between elements of C and S. INCC > 0.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file slar2v\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,121 @@
+.TH "dpotrf.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dpotrf.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdpotrf\fP (UPLO, \fBN\fP, A, \fBLDA\fP, INFO)"
+.br
+.RI "\fBDPOTRF\fP VARIANT: top-looking block version of the algorithm, calling Level 3 BLAS\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dpotrf (character UPLO, integer N, double precision, dimension( lda, * ) A, integer LDA, integer INFO)"
+
+.PP
+\fBDPOTRF\fP VARIANT: top-looking block version of the algorithm, calling Level 3 BLAS\&. \fBPurpose:\fP 
+.PP
+.nf
+ DPOTRF computes the Cholesky factorization of a real symmetric
+ positive definite matrix A.
+
+ The factorization has the form
+    A = U**T * U,  if UPLO = 'U', or
+    A = L  * L**T,  if UPLO = 'L',
+ where U is an upper triangular matrix and L is lower triangular.
+
+ This is the top-looking block version of the algorithm, calling Level 3 BLAS.
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangle of A is stored;
+          = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, the symmetric matrix A.  If UPLO = 'U', the leading
+          N-by-N upper triangular part of A contains the upper
+          triangular part of the matrix A, and the strictly lower
+          triangular part of A is not referenced.  If UPLO = 'L', the
+          leading N-by-N lower triangular part of A contains the lower
+          triangular part of the matrix A, and the strictly upper
+          triangular part of A is not referenced.
+.fi
+.PP
+ 
+.PP
+.nf
+          On exit, if INFO = 0, the factor U or L from the Cholesky
+          factorization A = U**T*U or A = L*L**T.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+          > 0:  if INFO = i, the leading minor of order i is not
+                positive definite, and the factorization could not be
+                completed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file VARIANTS/cholesky/TOP/dpotrf\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

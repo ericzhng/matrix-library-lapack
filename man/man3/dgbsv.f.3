@@ -1,0 +1,190 @@
+.TH "dgbsv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dgbsv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdgbsv\fP (\fBN\fP, KL, KU, \fBNRHS\fP, AB, LDAB, IPIV, B, \fBLDB\fP, INFO)"
+.br
+.RI "\fB DGBSV computes the solution to system of linear equations A * X = B for GB matrices\fP (simple driver) "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dgbsv (integer N, integer KL, integer KU, integer NRHS, double precision, dimension( ldab, * ) AB, integer LDAB, integer, dimension( * ) IPIV, double precision, dimension( ldb, * ) B, integer LDB, integer INFO)"
+
+.PP
+\fB DGBSV computes the solution to system of linear equations A * X = B for GB matrices\fP (simple driver)  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DGBSV computes the solution to a real system of linear equations
+ A * X = B, where A is a band matrix of order N with KL subdiagonals
+ and KU superdiagonals, and X and B are N-by-NRHS matrices.
+
+ The LU decomposition with partial pivoting and row interchanges is
+ used to factor A as A = L * U, where L is a product of permutation
+ and unit lower triangular matrices with KL subdiagonals, and U is
+ upper triangular with KL+KU superdiagonals.  The factored form of A
+ is then used to solve the system of equations A * X = B.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of linear equations, i.e., the order of the
+          matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIKL\fP 
+.PP
+.nf
+          KL is INTEGER
+          The number of subdiagonals within the band of A.  KL >= 0.
+.fi
+.PP
+.br
+\fIKU\fP 
+.PP
+.nf
+          KU is INTEGER
+          The number of superdiagonals within the band of A.  KU >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrix B.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is DOUBLE PRECISION array, dimension (LDAB,N)
+          On entry, the matrix A in band storage, in rows KL+1 to
+          2*KL+KU+1; rows 1 to KL of the array need not be set.
+          The j-th column of A is stored in the j-th column of the
+          array AB as follows:
+          AB(KL+KU+1+i-j,j) = A(i,j) for max(1,j-KU)<=i<=min(N,j+KL)
+          On exit, details of the factorization: U is stored as an
+          upper triangular band matrix with KL+KU superdiagonals in
+          rows 1 to KL+KU+1, and the multipliers used during the
+          factorization are stored in rows KL+KU+2 to 2*KL+KU+1.
+          See below for further details.
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+          The leading dimension of the array AB.  LDAB >= 2*KL+KU+1.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          The pivot indices that define the permutation matrix P;
+          row i of the matrix was interchanged with row IPIV(i).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB,NRHS)
+          On entry, the N-by-NRHS right hand side matrix B.
+          On exit, if INFO = 0, the N-by-NRHS solution matrix X.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+          > 0:  if INFO = i, U(i,i) is exactly zero.  The factorization
+                has been completed, but the factor U is exactly
+                singular, and the solution has not been computed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The band storage scheme is illustrated by the following example, when
+  M = N = 6, KL = 2, KU = 1:
+
+  On entry:                       On exit:
+
+      *    *    *    +    +    +       *    *    *   u14  u25  u36
+      *    *    +    +    +    +       *    *   u13  u24  u35  u46
+      *   a12  a23  a34  a45  a56      *   u12  u23  u34  u45  u56
+     a11  a22  a33  a44  a55  a66     u11  u22  u33  u44  u55  u66
+     a21  a32  a43  a54  a65   *      m21  m32  m43  m54  m65   *
+     a31  a42  a53  a64   *    *      m31  m42  m53  m64   *    *
+
+  Array elements marked * are not used by the routine; elements marked
+  + need not be set on entry, but are required by the routine to store
+  elements of U because of fill-in resulting from the row interchanges.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file dgbsv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

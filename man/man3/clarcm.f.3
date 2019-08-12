@@ -1,0 +1,137 @@
+.TH "clarcm.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+clarcm.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclarcm\fP (M, \fBN\fP, A, \fBLDA\fP, B, \fBLDB\fP, C, LDC, RWORK)"
+.br
+.RI "\fBCLARCM\fP copies all or part of a real two-dimensional array to a complex array\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine clarcm (integer M, integer N, real, dimension( lda, * ) A, integer LDA, complex, dimension( ldb, * ) B, integer LDB, complex, dimension( ldc, * ) C, integer LDC, real, dimension( * ) RWORK)"
+
+.PP
+\fBCLARCM\fP copies all or part of a real two-dimensional array to a complex array\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLARCM performs a very simple matrix-matrix multiplication:
+          C := A * B,
+ where A is M by M and real; B is M by N and complex;
+ C is M by N and complex.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A and of the matrix C.
+          M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns and rows of the matrix B and
+          the number of columns of the matrix C.
+          N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA, M)
+          On entry, A contains the M by M matrix A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A. LDA >=max(1,M).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX array, dimension (LDB, N)
+          On entry, B contains the M by N matrix B.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B. LDB >=max(1,M).
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX array, dimension (LDC, N)
+          On exit, C contains the M by N matrix C.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the array C. LDC >=max(1,M).
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is REAL array, dimension (2*M*N)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file clarcm\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

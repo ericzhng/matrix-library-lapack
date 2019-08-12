@@ -1,0 +1,159 @@
+.TH "dlanv2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlanv2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlanv2\fP (A, B, C, D, RT1R, RT1I, RT2R, RT2I, CS, SN)"
+.br
+.RI "\fBDLANV2\fP computes the Schur factorization of a real 2-by-2 nonsymmetric matrix in standard form\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlanv2 (double precision A, double precision B, double precision C, double precision D, double precision RT1R, double precision RT1I, double precision RT2R, double precision RT2I, double precision CS, double precision SN)"
+
+.PP
+\fBDLANV2\fP computes the Schur factorization of a real 2-by-2 nonsymmetric matrix in standard form\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLANV2 computes the Schur factorization of a real 2-by-2 nonsymmetric
+ matrix in standard form:
+
+      [ A  B ] = [ CS -SN ] [ AA  BB ] [ CS  SN ]
+      [ C  D ]   [ SN  CS ] [ CC  DD ] [-SN  CS ]
+
+ where either
+ 1) CC = 0 so that AA and DD are real eigenvalues of the matrix, or
+ 2) AA = DD and BB*CC < 0, so that AA + or - sqrt(BB*CC) are complex
+ conjugate eigenvalues.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION
+          On entry, the elements of the input matrix.
+          On exit, they are overwritten by the elements of the
+          standardised Schur form.
+.fi
+.PP
+.br
+\fIRT1R\fP 
+.PP
+.nf
+          RT1R is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIRT1I\fP 
+.PP
+.nf
+          RT1I is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIRT2R\fP 
+.PP
+.nf
+          RT2R is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fIRT2I\fP 
+.PP
+.nf
+          RT2I is DOUBLE PRECISION
+          The real and imaginary parts of the eigenvalues. If the
+          eigenvalues are a complex conjugate pair, RT1I > 0.
+.fi
+.PP
+.br
+\fICS\fP 
+.PP
+.nf
+          CS is DOUBLE PRECISION
+.fi
+.PP
+.br
+\fISN\fP 
+.PP
+.nf
+          SN is DOUBLE PRECISION
+          Parameters of the rotation matrix.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  Modified by V. Sima, Research Institute for Informatics, Bucharest,
+  Romania, to reduce the risk of cancellation errors,
+  when computing real eigenvalues, and to ensure, if possible, that
+  abs(RT1R) >= abs(RT2R).
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file dlanv2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

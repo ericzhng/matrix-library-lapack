@@ -1,0 +1,230 @@
+.TH "zgemm.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zgemm.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzgemm\fP (TRANSA, TRANSB, M, \fBN\fP, K, ALPHA, A, \fBLDA\fP, B, \fBLDB\fP, BETA, C, LDC)"
+.br
+.RI "\fBZGEMM\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zgemm (character TRANSA, character TRANSB, integer M, integer N, integer K, complex*16 ALPHA, complex*16, dimension(lda,*) A, integer LDA, complex*16, dimension(ldb,*) B, integer LDB, complex*16 BETA, complex*16, dimension(ldc,*) C, integer LDC)"
+
+.PP
+\fBZGEMM\fP 
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZGEMM  performs one of the matrix-matrix operations
+
+    C := alpha*op( A )*op( B ) + beta*C,
+
+ where  op( X ) is one of
+
+    op( X ) = X   or   op( X ) = X**T   or   op( X ) = X**H,
+
+ alpha and beta are scalars, and A, B and C are matrices, with op( A )
+ an m by k matrix,  op( B )  a  k by n matrix and  C an m by n matrix.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fITRANSA\fP 
+.PP
+.nf
+          TRANSA is CHARACTER*1
+           On entry, TRANSA specifies the form of op( A ) to be used in
+           the matrix multiplication as follows:
+
+              TRANSA = 'N' or 'n',  op( A ) = A.
+
+              TRANSA = 'T' or 't',  op( A ) = A**T.
+
+              TRANSA = 'C' or 'c',  op( A ) = A**H.
+.fi
+.PP
+.br
+\fITRANSB\fP 
+.PP
+.nf
+          TRANSB is CHARACTER*1
+           On entry, TRANSB specifies the form of op( B ) to be used in
+           the matrix multiplication as follows:
+
+              TRANSB = 'N' or 'n',  op( B ) = B.
+
+              TRANSB = 'T' or 't',  op( B ) = B**T.
+
+              TRANSB = 'C' or 'c',  op( B ) = B**H.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+           On entry,  M  specifies  the number  of rows  of the  matrix
+           op( A )  and of the  matrix  C.  M  must  be at least  zero.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+           On entry,  N  specifies the number  of columns of the matrix
+           op( B ) and the number of columns of the matrix C. N must be
+           at least zero.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+           On entry,  K  specifies  the number of columns of the matrix
+           op( A ) and the number of rows of the matrix op( B ). K must
+           be at least  zero.
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is COMPLEX*16
+           On entry, ALPHA specifies the scalar alpha.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension ( LDA, ka ), where ka is
+           k  when  TRANSA = 'N' or 'n',  and is  m  otherwise.
+           Before entry with  TRANSA = 'N' or 'n',  the leading  m by k
+           part of the array  A  must contain the matrix  A,  otherwise
+           the leading  k by m  part of the array  A  must contain  the
+           matrix A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+           On entry, LDA specifies the first dimension of A as declared
+           in the calling (sub) program. When  TRANSA = 'N' or 'n' then
+           LDA must be at least  max( 1, m ), otherwise  LDA must be at
+           least  max( 1, k ).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX*16 array, dimension ( LDB, kb ), where kb is
+           n  when  TRANSB = 'N' or 'n',  and is  k  otherwise.
+           Before entry with  TRANSB = 'N' or 'n',  the leading  k by n
+           part of the array  B  must contain the matrix  B,  otherwise
+           the leading  n by k  part of the array  B  must contain  the
+           matrix B.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+           On entry, LDB specifies the first dimension of B as declared
+           in the calling (sub) program. When  TRANSB = 'N' or 'n' then
+           LDB must be at least  max( 1, k ), otherwise  LDB must be at
+           least  max( 1, n ).
+.fi
+.PP
+.br
+\fIBETA\fP 
+.PP
+.nf
+          BETA is COMPLEX*16
+           On entry,  BETA  specifies the scalar  beta.  When  BETA  is
+           supplied as zero then C need not be set on input.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX*16 array, dimension ( LDC, N )
+           Before entry, the leading  m by n  part of the array  C must
+           contain the matrix  C,  except when  beta  is zero, in which
+           case C need not be set on entry.
+           On exit, the array  C  is overwritten by the  m by n  matrix
+           ( alpha*op( A )*op( B ) + beta*C ).
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+           On entry, LDC specifies the first dimension of C as declared
+           in  the  calling  (sub)  program.   LDC  must  be  at  least
+           max( 1, m ).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  Level 3 Blas routine.
+
+  -- Written on 8-February-1989.
+     Jack Dongarra, Argonne National Laboratory.
+     Iain Duff, AERE Harwell.
+     Jeremy Du Croz, Numerical Algorithms Group Ltd.
+     Sven Hammarling, Numerical Algorithms Group Ltd.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 189 of file zgemm\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

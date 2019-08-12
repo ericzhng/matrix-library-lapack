@@ -1,0 +1,169 @@
+.TH "cgbtf2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cgbtf2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcgbtf2\fP (M, \fBN\fP, KL, KU, AB, LDAB, IPIV, INFO)"
+.br
+.RI "\fBCGBTF2\fP computes the LU factorization of a general band matrix using the unblocked version of the algorithm\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cgbtf2 (integer M, integer N, integer KL, integer KU, complex, dimension( ldab, * ) AB, integer LDAB, integer, dimension( * ) IPIV, integer INFO)"
+
+.PP
+\fBCGBTF2\fP computes the LU factorization of a general band matrix using the unblocked version of the algorithm\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CGBTF2 computes an LU factorization of a complex m-by-n band matrix
+ A using partial pivoting with row interchanges.
+
+ This is the unblocked version of the algorithm, calling Level 2 BLAS.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIKL\fP 
+.PP
+.nf
+          KL is INTEGER
+          The number of subdiagonals within the band of A.  KL >= 0.
+.fi
+.PP
+.br
+\fIKU\fP 
+.PP
+.nf
+          KU is INTEGER
+          The number of superdiagonals within the band of A.  KU >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is COMPLEX array, dimension (LDAB,N)
+          On entry, the matrix A in band storage, in rows KL+1 to
+          2*KL+KU+1; rows 1 to KL of the array need not be set.
+          The j-th column of A is stored in the j-th column of the
+          array AB as follows:
+          AB(kl+ku+1+i-j,j) = A(i,j) for max(1,j-ku)<=i<=min(m,j+kl)
+
+          On exit, details of the factorization: U is stored as an
+          upper triangular band matrix with KL+KU superdiagonals in
+          rows 1 to KL+KU+1, and the multipliers used during the
+          factorization are stored in rows KL+KU+2 to 2*KL+KU+1.
+          See below for further details.
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+          The leading dimension of the array AB.  LDAB >= 2*KL+KU+1.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (min(M,N))
+          The pivot indices; for 1 <= i <= min(M,N), row i of the
+          matrix was interchanged with row IPIV(i).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+          > 0: if INFO = +i, U(i,i) is exactly zero. The factorization
+               has been completed, but the factor U is exactly
+               singular, and division by zero will occur if it is used
+               to solve a system of equations.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The band storage scheme is illustrated by the following example, when
+  M = N = 6, KL = 2, KU = 1:
+
+  On entry:                       On exit:
+
+      *    *    *    +    +    +       *    *    *   u14  u25  u36
+      *    *    +    +    +    +       *    *   u13  u24  u35  u46
+      *   a12  a23  a34  a45  a56      *   u12  u23  u34  u45  u56
+     a11  a22  a33  a44  a55  a66     u11  u22  u33  u44  u55  u66
+     a21  a32  a43  a54  a65   *      m21  m32  m43  m54  m65   *
+     a31  a42  a53  a64   *    *      m31  m42  m53  m64   *    *
+
+  Array elements marked * are not used by the routine; elements marked
+  + need not be set on entry, but are required by the routine to store
+  elements of U, because of fill-in resulting from the row
+  interchanges.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 147 of file cgbtf2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

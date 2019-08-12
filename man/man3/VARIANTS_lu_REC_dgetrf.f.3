@@ -1,0 +1,154 @@
+.TH "dgetrf.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dgetrf.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdgetrf\fP (M, \fBN\fP, A, \fBLDA\fP, IPIV, INFO)"
+.br
+.RI "\fBDGETRF\fP VARIANT: iterative version of Sivan Toledo's recursive LU algorithm "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dgetrf (integer M, integer N, double precision, dimension( lda, * ) A, integer LDA, integer, dimension( * ) IPIV, integer INFO)"
+
+.PP
+\fBDGETRF\fP VARIANT: iterative version of Sivan Toledo's recursive LU algorithm \fBPurpose:\fP 
+.PP
+.nf
+ DGETRF computes an LU factorization of a general M-by-N matrix A
+ using partial pivoting with row interchanges.
+
+ The factorization has the form
+    A = P * L * U
+ where P is a permutation matrix, L is lower triangular with unit
+ diagonal elements (lower trapezoidal if m > n), and U is upper
+ triangular (upper trapezoidal if m < n).
+
+ This code implements an iterative version of Sivan Toledo's recursive
+ LU algorithm[1].  For square matrices, this iterative versions should
+ be within a factor of two of the optimum number of memory transfers.
+
+ The pattern is as follows, with the large blocks of U being updated
+ in one call to DTRSM, and the dotted lines denoting sections that
+ have had all pending permutations applied:
+
+  1 2 3 4 5 6 7 8
+ +-+-+---+-------+------
+ | |1|   |       |
+ |.+-+ 2 |       |
+ | | |   |       |
+ |.|.+-+-+   4   |
+ | | | |1|       |
+ | | |.+-+       |
+ | | | | |       |
+ |.|.|.|.+-+-+---+  8
+ | | | | | |1|   |
+ | | | | |.+-+ 2 |
+ | | | | | | |   |
+ | | | | |.|.+-+-+
+ | | | | | | | |1|
+ | | | | | | |.+-+
+ | | | | | | | | |
+ |.|.|.|.|.|.|.|.+-----
+ | | | | | | | | |
+
+ The 1-2-1-4-1-2-1-8-... pattern is the position of the last 1 bit in
+ the binary expansion of the current column.  Each Schur update is
+ applied as soon as the necessary portion of U is available.
+
+ [1] Toledo, S. 1997. Locality of Reference in LU Decomposition with
+ Partial Pivoting. SIAM J. Matrix Anal. Appl. 18, 4 (Oct. 1997),
+ 1065-1081. http://dx.doi.org/10.1137/S0895479896297744
+.fi
+.PP
+ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, the M-by-N matrix to be factored.
+          On exit, the factors L and U from the factorization
+          A = P*L*U; the unit diagonal elements of L are not stored.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (min(M,N))
+          The pivot indices; for 1 <= i <= min(M,N), row i of the
+          matrix was interchanged with row IPIV(i).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+          > 0:  if INFO = i, U(i,i) is exactly zero. The factorization
+                has been completed, but the factor U is exactly
+                singular, and division by zero will occur if it is used
+                to solve a system of equations.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 136 of file VARIANTS/lu/REC/dgetrf\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

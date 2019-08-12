@@ -1,0 +1,311 @@
+.TH "dlasd2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlasd2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlasd2\fP (NL, NR, SQRE, K, D, Z, ALPHA, BETA, U, LDU, VT, LDVT, DSIGMA, U2, LDU2, VT2, LDVT2, IDXP, IDX, IDXC, IDXQ, COLTYP, INFO)"
+.br
+.RI "\fBDLASD2\fP merges the two sets of singular values together into a single sorted set\&. Used by sbdsdc\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlasd2 (integer NL, integer NR, integer SQRE, integer K, double precision, dimension( * ) D, double precision, dimension( * ) Z, double precision ALPHA, double precision BETA, double precision, dimension( ldu, * ) U, integer LDU, double precision, dimension( ldvt, * ) VT, integer LDVT, double precision, dimension( * ) DSIGMA, double precision, dimension( ldu2, * ) U2, integer LDU2, double precision, dimension( ldvt2, * ) VT2, integer LDVT2, integer, dimension( * ) IDXP, integer, dimension( * ) IDX, integer, dimension( * ) IDXC, integer, dimension( * ) IDXQ, integer, dimension( * ) COLTYP, integer INFO)"
+
+.PP
+\fBDLASD2\fP merges the two sets of singular values together into a single sorted set\&. Used by sbdsdc\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLASD2 merges the two sets of singular values together into a single
+ sorted set.  Then it tries to deflate the size of the problem.
+ There are two ways in which deflation can occur:  when two or more
+ singular values are close together or if there is a tiny entry in the
+ Z vector.  For each such occurrence the order of the related secular
+ equation problem is reduced by one.
+
+ DLASD2 is called from DLASD1.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fINL\fP 
+.PP
+.nf
+          NL is INTEGER
+         The row dimension of the upper block.  NL >= 1.
+.fi
+.PP
+.br
+\fINR\fP 
+.PP
+.nf
+          NR is INTEGER
+         The row dimension of the lower block.  NR >= 1.
+.fi
+.PP
+.br
+\fISQRE\fP 
+.PP
+.nf
+          SQRE is INTEGER
+         = 0: the lower block is an NR-by-NR square matrix.
+         = 1: the lower block is an NR-by-(NR+1) rectangular matrix.
+
+         The bidiagonal matrix has N = NL + NR + 1 rows and
+         M = N + SQRE >= N columns.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+         Contains the dimension of the non-deflated matrix,
+         This is the order of the related secular equation. 1 <= K <=N.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension(N)
+         On entry D contains the singular values of the two submatrices
+         to be combined.  On exit D contains the trailing (N-K) updated
+         singular values (those which were deflated) sorted into
+         increasing order.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension(N)
+         On exit Z contains the updating row vector in the secular
+         equation.
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is DOUBLE PRECISION
+         Contains the diagonal element associated with the added row.
+.fi
+.PP
+.br
+\fIBETA\fP 
+.PP
+.nf
+          BETA is DOUBLE PRECISION
+         Contains the off-diagonal element associated with the added
+         row.
+.fi
+.PP
+.br
+\fIU\fP 
+.PP
+.nf
+          U is DOUBLE PRECISION array, dimension(LDU,N)
+         On entry U contains the left singular vectors of two
+         submatrices in the two square blocks with corners at (1,1),
+         (NL, NL), and (NL+2, NL+2), (N,N).
+         On exit U contains the trailing (N-K) updated left singular
+         vectors (those which were deflated) in its last N-K columns.
+.fi
+.PP
+.br
+\fILDU\fP 
+.PP
+.nf
+          LDU is INTEGER
+         The leading dimension of the array U.  LDU >= N.
+.fi
+.PP
+.br
+\fIVT\fP 
+.PP
+.nf
+          VT is DOUBLE PRECISION array, dimension(LDVT,M)
+         On entry VT**T contains the right singular vectors of two
+         submatrices in the two square blocks with corners at (1,1),
+         (NL+1, NL+1), and (NL+2, NL+2), (M,M).
+         On exit VT**T contains the trailing (N-K) updated right singular
+         vectors (those which were deflated) in its last N-K columns.
+         In case SQRE =1, the last row of VT spans the right null
+         space.
+.fi
+.PP
+.br
+\fILDVT\fP 
+.PP
+.nf
+          LDVT is INTEGER
+         The leading dimension of the array VT.  LDVT >= M.
+.fi
+.PP
+.br
+\fIDSIGMA\fP 
+.PP
+.nf
+          DSIGMA is DOUBLE PRECISION array, dimension (N)
+         Contains a copy of the diagonal elements (K-1 singular values
+         and one zero) in the secular equation.
+.fi
+.PP
+.br
+\fIU2\fP 
+.PP
+.nf
+          U2 is DOUBLE PRECISION array, dimension(LDU2,N)
+         Contains a copy of the first K-1 left singular vectors which
+         will be used by DLASD3 in a matrix multiply (DGEMM) to solve
+         for the new left singular vectors. U2 is arranged into four
+         blocks. The first block contains a column with 1 at NL+1 and
+         zero everywhere else; the second block contains non-zero
+         entries only at and above NL; the third contains non-zero
+         entries only below NL+1; and the fourth is dense.
+.fi
+.PP
+.br
+\fILDU2\fP 
+.PP
+.nf
+          LDU2 is INTEGER
+         The leading dimension of the array U2.  LDU2 >= N.
+.fi
+.PP
+.br
+\fIVT2\fP 
+.PP
+.nf
+          VT2 is DOUBLE PRECISION array, dimension(LDVT2,N)
+         VT2**T contains a copy of the first K right singular vectors
+         which will be used by DLASD3 in a matrix multiply (DGEMM) to
+         solve for the new right singular vectors. VT2 is arranged into
+         three blocks. The first block contains a row that corresponds
+         to the special 0 diagonal element in SIGMA; the second block
+         contains non-zeros only at and before NL +1; the third block
+         contains non-zeros only at and after  NL +2.
+.fi
+.PP
+.br
+\fILDVT2\fP 
+.PP
+.nf
+          LDVT2 is INTEGER
+         The leading dimension of the array VT2.  LDVT2 >= M.
+.fi
+.PP
+.br
+\fIIDXP\fP 
+.PP
+.nf
+          IDXP is INTEGER array, dimension(N)
+         This will contain the permutation used to place deflated
+         values of D at the end of the array. On output IDXP(2:K)
+         points to the nondeflated D-values and IDXP(K+1:N)
+         points to the deflated singular values.
+.fi
+.PP
+.br
+\fIIDX\fP 
+.PP
+.nf
+          IDX is INTEGER array, dimension(N)
+         This will contain the permutation used to sort the contents of
+         D into ascending order.
+.fi
+.PP
+.br
+\fIIDXC\fP 
+.PP
+.nf
+          IDXC is INTEGER array, dimension(N)
+         This will contain the permutation used to arrange the columns
+         of the deflated U matrix into three groups:  the first group
+         contains non-zero entries only at and above NL, the second
+         contains non-zero entries only below NL+2, and the third is
+         dense.
+.fi
+.PP
+.br
+\fIIDXQ\fP 
+.PP
+.nf
+          IDXQ is INTEGER array, dimension(N)
+         This contains the permutation which separately sorts the two
+         sub-problems in D into ascending order.  Note that entries in
+         the first hlaf of this permutation must first be moved one
+         position backward; and entries in the second half
+         must first have NL+1 added to their values.
+.fi
+.PP
+.br
+\fICOLTYP\fP 
+.PP
+.nf
+          COLTYP is INTEGER array, dimension(N)
+         As workspace, this will contain a label which will indicate
+         which of the following types a column in the U2 matrix or a
+         row in the VT2 matrix is:
+         1 : non-zero in the upper half only
+         2 : non-zero in the lower half only
+         3 : dense
+         4 : deflated
+
+         On exit, it is an array of dimension 4, with COLTYP(I) being
+         the dimension of the I-th type columns.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ming Gu and Huan Ren, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 271 of file dlasd2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

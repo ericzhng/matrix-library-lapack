@@ -1,0 +1,124 @@
+.TH "slasdt.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slasdt.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslasdt\fP (\fBN\fP, LVL, ND, INODE, NDIML, NDIMR, MSUB)"
+.br
+.RI "\fBSLASDT\fP creates a tree of subproblems for bidiagonal divide and conquer\&. Used by sbdsdc\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slasdt (integer N, integer LVL, integer ND, integer, dimension( * ) INODE, integer, dimension( * ) NDIML, integer, dimension( * ) NDIMR, integer MSUB)"
+
+.PP
+\fBSLASDT\fP creates a tree of subproblems for bidiagonal divide and conquer\&. Used by sbdsdc\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLASDT creates a tree of subproblems for bidiagonal divide and
+ conquer.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          On entry, the number of diagonal elements of the
+          bidiagonal matrix.
+.fi
+.PP
+.br
+\fILVL\fP 
+.PP
+.nf
+          LVL is INTEGER
+          On exit, the number of levels on the computation tree.
+.fi
+.PP
+.br
+\fIND\fP 
+.PP
+.nf
+          ND is INTEGER
+          On exit, the number of nodes on the tree.
+.fi
+.PP
+.br
+\fIINODE\fP 
+.PP
+.nf
+          INODE is INTEGER array, dimension ( N )
+          On exit, centers of subproblems.
+.fi
+.PP
+.br
+\fINDIML\fP 
+.PP
+.nf
+          NDIML is INTEGER array, dimension ( N )
+          On exit, row dimensions of left children.
+.fi
+.PP
+.br
+\fINDIMR\fP 
+.PP
+.nf
+          NDIMR is INTEGER array, dimension ( N )
+          On exit, row dimensions of right children.
+.fi
+.PP
+.br
+\fIMSUB\fP 
+.PP
+.nf
+          MSUB is INTEGER
+          On entry, the maximum row dimension each subproblem at the
+          bottom of the tree can be of.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ming Gu and Huan Ren, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 107 of file slasdt\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

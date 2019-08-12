@@ -1,0 +1,119 @@
+.TH "slarfgp.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slarfgp.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslarfgp\fP (\fBN\fP, ALPHA, X, INCX, TAU)"
+.br
+.RI "\fBSLARFGP\fP generates an elementary reflector (Householder matrix) with non-negative beta\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slarfgp (integer N, real ALPHA, real, dimension( * ) X, integer INCX, real TAU)"
+
+.PP
+\fBSLARFGP\fP generates an elementary reflector (Householder matrix) with non-negative beta\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLARFGP generates a real elementary reflector H of order n, such
+ that
+
+       H * ( alpha ) = ( beta ),   H**T * H = I.
+           (   x   )   (   0  )
+
+ where alpha and beta are scalars, beta is non-negative, and x is
+ an (n-1)-element real vector.  H is represented in the form
+
+       H = I - tau * ( 1 ) * ( 1 v**T ) ,
+                     ( v )
+
+ where tau is a real scalar and v is a real (n-1)-element
+ vector.
+
+ If the elements of x are all zero, then tau = 0 and H is taken to be
+ the unit matrix.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the elementary reflector.
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is REAL
+          On entry, the value alpha.
+          On exit, it is overwritten with the value beta.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is REAL array, dimension
+                         (1+(N-2)*abs(INCX))
+          On entry, the vector x.
+          On exit, it is overwritten with the vector v.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between elements of X. INCX > 0.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is REAL
+          The value tau.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file slarfgp\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

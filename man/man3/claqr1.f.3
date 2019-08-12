@@ -1,0 +1,123 @@
+.TH "claqr1.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+claqr1.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclaqr1\fP (\fBN\fP, H, LDH, S1, S2, V)"
+.br
+.RI "\fBCLAQR1\fP sets a scalar multiple of the first column of the product of 2-by-2 or 3-by-3 matrix H and specified shifts\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine claqr1 (integer N, complex, dimension( ldh, * ) H, integer LDH, complex S1, complex S2, complex, dimension( * ) V)"
+
+.PP
+\fBCLAQR1\fP sets a scalar multiple of the first column of the product of 2-by-2 or 3-by-3 matrix H and specified shifts\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+      Given a 2-by-2 or 3-by-3 matrix H, CLAQR1 sets v to a
+      scalar multiple of the first column of the product
+
+      (*)  K = (H - s1*I)*(H - s2*I)
+
+      scaling to avoid overflows and most underflows.
+
+      This is useful for starting double implicit shift bulges
+      in the QR algorithm.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+              Order of the matrix H. N must be either 2 or 3.
+.fi
+.PP
+.br
+\fIH\fP 
+.PP
+.nf
+          H is COMPLEX array, dimension (LDH,N)
+              The 2-by-2 or 3-by-3 matrix H in (*).
+.fi
+.PP
+.br
+\fILDH\fP 
+.PP
+.nf
+          LDH is INTEGER
+              The leading dimension of H as declared in
+              the calling procedure.  LDH.GE.N
+.fi
+.PP
+.br
+\fIS1\fP 
+.PP
+.nf
+          S1 is COMPLEX
+.fi
+.PP
+.br
+\fIS2\fP 
+.PP
+.nf
+          S2 is COMPLEX
+
+          S1 and S2 are the shifts defining K in (*) above.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX array, dimension (N)
+              A scalar multiple of the first column of the
+              matrix K in (*).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Karen Braman and Ralph Byers, Department of Mathematics, University of Kansas, USA 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file claqr1\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

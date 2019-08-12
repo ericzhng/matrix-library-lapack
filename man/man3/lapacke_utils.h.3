@@ -1,0 +1,1159 @@
+.TH "lapacke_utils.h" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+lapacke_utils.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'lapacke\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBABS\fP(x)   (((x) < 0) ? \-(x) : (x))"
+.br
+.ti -1c
+.RI "#define \fBMAX\fP(x,  y)   (((x) > (y)) ? (x) : (y))"
+.br
+.ti -1c
+.RI "#define \fBMIN\fP(x,  y)   (((x) < (y)) ? (x) : (y))"
+.br
+.ti -1c
+.RI "#define \fBMAX3\fP(x,  y,  z)   (((x) > \fBMAX\fP(y,z)) ? (x) : \fBMAX\fP(y,z))"
+.br
+.ti -1c
+.RI "#define \fBMIN3\fP(x,  y,  z)   (((x) < \fBMIN\fP(y,z)) ? (x) : \fBMIN\fP(y,z))"
+.br
+.ti -1c
+.RI "#define \fBIS_S_NONZERO\fP(x)   ( (x) < 0 || (x) > 0 )"
+.br
+.ti -1c
+.RI "#define \fBIS_D_NONZERO\fP(x)   ( (x) < 0 || (x) > 0 )"
+.br
+.ti -1c
+.RI "#define \fBIS_C_NONZERO\fP(x)"
+.br
+.ti -1c
+.RI "#define \fBIS_Z_NONZERO\fP(x)"
+.br
+.ti -1c
+.RI "#define \fBLAPACK_SISNAN\fP(x)   ( x != x )"
+.br
+.ti -1c
+.RI "#define \fBLAPACK_DISNAN\fP(x)   ( x != x )"
+.br
+.ti -1c
+.RI "#define \fBLAPACK_CISNAN\fP(x)"
+.br
+.ti -1c
+.RI "#define \fBLAPACK_ZISNAN\fP(x)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBLAPACKE_xerbla\fP (const char *name, \fBlapack_int\fP info)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_lsame\fP (char ca, char cb)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_cgb_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_cge_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_cgg_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_chb_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_che_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_chp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_complex_float\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_chs_trans\fP (int matrix_layout, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_cpb_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_cpf_trans\fP (int matrix_layout, char transr, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_complex_float\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_cpo_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_cpp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_complex_float\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_csp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_complex_float\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_csy_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ctb_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ctf_trans\fP (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_complex_float\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ctp_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_complex_float\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ctr_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dgb_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dge_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dgg_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dhs_trans\fP (int matrix_layout, \fBlapack_int\fP n, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dpb_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dpf_trans\fP (int matrix_layout, char transr, char uplo, \fBlapack_int\fP n, const double *in, double *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dpo_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dpp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const double *in, double *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dsb_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dsp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const double *in, double *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dsy_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dtb_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dtf_trans\fP (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const double *in, double *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dtp_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const double *in, double *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_dtr_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const double *in, \fBlapack_int\fP ldin, double *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_sgb_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_sge_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_sgg_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_shs_trans\fP (int matrix_layout, \fBlapack_int\fP n, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_spb_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_spf_trans\fP (int matrix_layout, char transr, char uplo, \fBlapack_int\fP n, const float *in, float *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_spo_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_spp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const float *in, float *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ssb_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ssp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const float *in, float *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ssy_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_stb_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_stf_trans\fP (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const float *in, float *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_stp_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const float *in, float *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_str_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const float *in, \fBlapack_int\fP ldin, float *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zgb_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zge_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zgg_trans\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zhb_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zhe_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zhp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_complex_double\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zhs_trans\fP (int matrix_layout, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zpb_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zpf_trans\fP (int matrix_layout, char transr, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_complex_double\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zpo_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zpp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_complex_double\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zsp_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_complex_double\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_zsy_trans\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ztb_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ztf_trans\fP (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_complex_double\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ztp_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_complex_double\fP *out)"
+.br
+.ti -1c
+.RI "void \fBLAPACKE_ztr_trans\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP *out, \fBlapack_int\fP ldout)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_c_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_float\fP *x, \fBlapack_int\fP incx)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_d_nancheck\fP (\fBlapack_int\fP n, const double *x, \fBlapack_int\fP incx)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_s_nancheck\fP (\fBlapack_int\fP n, const float *x, \fBlapack_int\fP incx)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_z_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_double\fP *x, \fBlapack_int\fP incx)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cgb_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const \fBlapack_complex_float\fP *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cge_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cgg_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cgt_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_float\fP *dl, const \fBlapack_complex_float\fP *d, const \fBlapack_complex_float\fP *du)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_chb_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_che_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_chp_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_float\fP *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_chs_nancheck\fP (int matrix_layout, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cpb_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cpf_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_float\fP *a)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cpo_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cpp_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_float\fP *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cpt_nancheck\fP (\fBlapack_int\fP n, const float *d, const \fBlapack_complex_float\fP *e)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_csp_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_float\fP *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_cst_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_float\fP *d, const \fBlapack_complex_float\fP *e)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_csy_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ctb_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ctf_nancheck\fP (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *a)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ctp_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ctr_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dgb_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const double *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dge_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const double *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dgg_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const double *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dgt_nancheck\fP (\fBlapack_int\fP n, const double *dl, const double *d, const double *du)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dhs_nancheck\fP (int matrix_layout, \fBlapack_int\fP n, const double *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dpb_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dpf_nancheck\fP (\fBlapack_int\fP n, const double *a)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dpo_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const double *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dpp_nancheck\fP (\fBlapack_int\fP n, const double *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dpt_nancheck\fP (\fBlapack_int\fP n, const double *d, const double *e)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dsb_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dsp_nancheck\fP (\fBlapack_int\fP n, const double *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dst_nancheck\fP (\fBlapack_int\fP n, const double *d, const double *e)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dsy_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const double *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dtb_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dtf_nancheck\fP (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const double *a)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dtp_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const double *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_dtr_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const double *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_sgb_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const float *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_sge_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const float *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_sgg_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const float *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_sgt_nancheck\fP (\fBlapack_int\fP n, const float *dl, const float *d, const float *du)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_shs_nancheck\fP (int matrix_layout, \fBlapack_int\fP n, const float *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_spb_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_spf_nancheck\fP (\fBlapack_int\fP n, const float *a)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_spo_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const float *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_spp_nancheck\fP (\fBlapack_int\fP n, const float *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_spt_nancheck\fP (\fBlapack_int\fP n, const float *d, const float *e)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ssb_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ssp_nancheck\fP (\fBlapack_int\fP n, const float *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_sst_nancheck\fP (\fBlapack_int\fP n, const float *d, const float *e)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ssy_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const float *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_stb_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_stf_nancheck\fP (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const float *a)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_stp_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const float *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_str_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const float *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zgb_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const \fBlapack_complex_double\fP *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zge_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zgg_nancheck\fP (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zgt_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_double\fP *dl, const \fBlapack_complex_double\fP *d, const \fBlapack_complex_double\fP *du)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zhb_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zhe_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zhp_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_double\fP *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zhs_nancheck\fP (int matrix_layout, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zpb_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zpf_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_double\fP *a)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zpo_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zpp_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_double\fP *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zpt_nancheck\fP (\fBlapack_int\fP n, const double *d, const \fBlapack_complex_double\fP *e)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zsp_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_double\fP *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zst_nancheck\fP (\fBlapack_int\fP n, const \fBlapack_complex_double\fP *d, const \fBlapack_complex_double\fP *e)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_zsy_nancheck\fP (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *a, \fBlapack_int\fP lda)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ztb_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP *ab, \fBlapack_int\fP ldab)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ztf_nancheck\fP (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *a)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ztp_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *ap)"
+.br
+.ti -1c
+.RI "\fBlapack_logical\fP \fBLAPACKE_ztr_nancheck\fP (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP *a, \fBlapack_int\fP lda)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ABS(x)   (((x) < 0) ? \-(x) : (x))"
+
+.PP
+Definition at line 44 of file lapacke_utils\&.h\&.
+.SS "#define IS_C_NONZERO(x)"
+\fBValue:\fP
+.PP
+.nf
+( IS_S_NONZERO(*((float*)&x)) ||  \
+                          IS_S_NONZERO(*(((float*)&x)+1)) )
+.fi
+.PP
+Definition at line 61 of file lapacke_utils\&.h\&.
+.SS "#define IS_D_NONZERO(x)   ( (x) < 0 || (x) > 0 )"
+
+.PP
+Definition at line 60 of file lapacke_utils\&.h\&.
+.SS "#define IS_S_NONZERO(x)   ( (x) < 0 || (x) > 0 )"
+
+.PP
+Definition at line 59 of file lapacke_utils\&.h\&.
+.SS "#define IS_Z_NONZERO(x)"
+\fBValue:\fP
+.PP
+.nf
+( IS_D_NONZERO(*((double*)&x)) || \
+                          IS_D_NONZERO(*(((double*)&x)+1)) )
+.fi
+.PP
+Definition at line 63 of file lapacke_utils\&.h\&.
+.SS "#define LAPACK_CISNAN(x)"
+\fBValue:\fP
+.PP
+.nf
+( LAPACK_SISNAN(*((float*) &x)) || \
+                              LAPACK_SISNAN(*(((float*) &x)+1)) )
+.fi
+.PP
+Definition at line 288 of file lapacke_utils\&.h\&.
+.SS "#define LAPACK_DISNAN(x)   ( x != x )"
+
+.PP
+Definition at line 287 of file lapacke_utils\&.h\&.
+.SS "#define LAPACK_SISNAN(x)   ( x != x )"
+
+.PP
+Definition at line 286 of file lapacke_utils\&.h\&.
+.SS "#define LAPACK_ZISNAN(x)"
+\fBValue:\fP
+.PP
+.nf
+( LAPACK_DISNAN(*((double*)&x)) || \
+                              LAPACK_DISNAN(*(((double*)&x)+1)) )
+.fi
+.PP
+Definition at line 290 of file lapacke_utils\&.h\&.
+.SS "#define MAX(x, y)   (((x) > (y)) ? (x) : (y))"
+
+.PP
+Definition at line 47 of file lapacke_utils\&.h\&.
+.SS "#define MAX3(x, y, z)   (((x) > \fBMAX\fP(y,z)) ? (x) : \fBMAX\fP(y,z))"
+
+.PP
+Definition at line 53 of file lapacke_utils\&.h\&.
+.SS "#define MIN(x, y)   (((x) < (y)) ? (x) : (y))"
+
+.PP
+Definition at line 50 of file lapacke_utils\&.h\&.
+.SS "#define MIN3(x, y, z)   (((x) < \fBMIN\fP(y,z)) ? (x) : \fBMIN\fP(y,z))"
+
+.PP
+Definition at line 56 of file lapacke_utils\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBlapack_logical\fP LAPACKE_c_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_float\fP * x, \fBlapack_int\fP incx)"
+
+.PP
+Definition at line 37 of file lapacke_c_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cgb_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const \fBlapack_complex_float\fP * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_cgb_nancheck\&.c\&.
+.SS "void LAPACKE_cgb_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_cgb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cge_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_cge_nancheck\&.c\&.
+.SS "void LAPACKE_cge_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_cge_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cgg_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_cgg_nancheck\&.c\&.
+.SS "void LAPACKE_cgg_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_cgg_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cgt_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_float\fP * dl, const \fBlapack_complex_float\fP * d, const \fBlapack_complex_float\fP * du)"
+
+.PP
+Definition at line 37 of file lapacke_cgt_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_chb_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_chb_nancheck\&.c\&.
+.SS "void LAPACKE_chb_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_chb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_che_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_che_nancheck\&.c\&.
+.SS "void LAPACKE_che_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_che_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_chp_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_float\fP * ap)"
+
+.PP
+Definition at line 40 of file lapacke_chp_nancheck\&.c\&.
+.SS "void LAPACKE_chp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_complex_float\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_chp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_chs_nancheck (int matrix_layout, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_chs_nancheck\&.c\&.
+.SS "void LAPACKE_chs_trans (int matrix_layout, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_chs_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cpb_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_cpb_nancheck\&.c\&.
+.SS "void LAPACKE_cpb_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_cpb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cpf_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_float\fP * a)"
+
+.PP
+Definition at line 41 of file lapacke_cpf_nancheck\&.c\&.
+.SS "void LAPACKE_cpf_trans (int matrix_layout, char transr, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_complex_float\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_cpf_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cpo_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_cpo_nancheck\&.c\&.
+.SS "void LAPACKE_cpo_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_cpo_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cpp_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_float\fP * ap)"
+
+.PP
+Definition at line 40 of file lapacke_cpp_nancheck\&.c\&.
+.SS "void LAPACKE_cpp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_complex_float\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_cpp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cpt_nancheck (\fBlapack_int\fP n, const float * d, const \fBlapack_complex_float\fP * e)"
+
+.PP
+Definition at line 37 of file lapacke_cpt_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_csp_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_float\fP * ap)"
+
+.PP
+Definition at line 40 of file lapacke_csp_nancheck\&.c\&.
+.SS "void LAPACKE_csp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_complex_float\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_csp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_cst_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_float\fP * d, const \fBlapack_complex_float\fP * e)"
+
+.PP
+Definition at line 37 of file lapacke_cst_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_csy_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_csy_nancheck\&.c\&.
+.SS "void LAPACKE_csy_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_csy_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ctb_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_ctb_nancheck\&.c\&.
+.SS "void LAPACKE_ctb_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_ctb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ctf_nancheck (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * a)"
+
+.PP
+Definition at line 37 of file lapacke_ctf_nancheck\&.c\&.
+.SS "void LAPACKE_ctf_trans (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_complex_float\fP * out)"
+
+.PP
+Definition at line 41 of file lapacke_ctf_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ctp_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * ap)"
+
+.PP
+Definition at line 40 of file lapacke_ctp_nancheck\&.c\&.
+.SS "void LAPACKE_ctp_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_complex_float\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_ctp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ctr_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_ctr_nancheck\&.c\&.
+.SS "void LAPACKE_ctr_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_float\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_float\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_ctr_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_d_nancheck (\fBlapack_int\fP n, const double * x, \fBlapack_int\fP incx)"
+
+.PP
+Definition at line 37 of file lapacke_d_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dgb_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const double * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_dgb_nancheck\&.c\&.
+.SS "void LAPACKE_dgb_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dgb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dge_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const double * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_dge_nancheck\&.c\&.
+.SS "void LAPACKE_dge_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dge_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dgg_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const double * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_dgg_nancheck\&.c\&.
+.SS "void LAPACKE_dgg_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dgg_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dgt_nancheck (\fBlapack_int\fP n, const double * dl, const double * d, const double * du)"
+
+.PP
+Definition at line 37 of file lapacke_dgt_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dhs_nancheck (int matrix_layout, \fBlapack_int\fP n, const double * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_dhs_nancheck\&.c\&.
+.SS "void LAPACKE_dhs_trans (int matrix_layout, \fBlapack_int\fP n, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dhs_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dpb_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_dpb_nancheck\&.c\&.
+.SS "void LAPACKE_dpb_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dpb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dpf_nancheck (\fBlapack_int\fP n, const double * a)"
+
+.PP
+Definition at line 41 of file lapacke_dpf_nancheck\&.c\&.
+.SS "void LAPACKE_dpf_trans (int matrix_layout, char transr, char uplo, \fBlapack_int\fP n, const double * in, double * out)"
+
+.PP
+Definition at line 40 of file lapacke_dpf_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dpo_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const double * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_dpo_nancheck\&.c\&.
+.SS "void LAPACKE_dpo_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dpo_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dpp_nancheck (\fBlapack_int\fP n, const double * ap)"
+
+.PP
+Definition at line 40 of file lapacke_dpp_nancheck\&.c\&.
+.SS "void LAPACKE_dpp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const double * in, double * out)"
+
+.PP
+Definition at line 40 of file lapacke_dpp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dpt_nancheck (\fBlapack_int\fP n, const double * d, const double * e)"
+
+.PP
+Definition at line 37 of file lapacke_dpt_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dsb_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_dsb_nancheck\&.c\&.
+.SS "void LAPACKE_dsb_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dsb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dsp_nancheck (\fBlapack_int\fP n, const double * ap)"
+
+.PP
+Definition at line 40 of file lapacke_dsp_nancheck\&.c\&.
+.SS "void LAPACKE_dsp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const double * in, double * out)"
+
+.PP
+Definition at line 40 of file lapacke_dsp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dst_nancheck (\fBlapack_int\fP n, const double * d, const double * e)"
+
+.PP
+Definition at line 37 of file lapacke_dst_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dsy_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const double * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_dsy_nancheck\&.c\&.
+.SS "void LAPACKE_dsy_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dsy_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dtb_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_dtb_nancheck\&.c\&.
+.SS "void LAPACKE_dtb_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dtb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dtf_nancheck (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const double * a)"
+
+.PP
+Definition at line 37 of file lapacke_dtf_nancheck\&.c\&.
+.SS "void LAPACKE_dtf_trans (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const double * in, double * out)"
+
+.PP
+Definition at line 41 of file lapacke_dtf_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dtp_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const double * ap)"
+
+.PP
+Definition at line 40 of file lapacke_dtp_nancheck\&.c\&.
+.SS "void LAPACKE_dtp_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const double * in, double * out)"
+
+.PP
+Definition at line 40 of file lapacke_dtp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_dtr_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const double * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_dtr_nancheck\&.c\&.
+.SS "void LAPACKE_dtr_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const double * in, \fBlapack_int\fP ldin, double * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_dtr_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_lsame (char ca, char cb)"
+
+.PP
+Definition at line 36 of file lapacke_lsame\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_s_nancheck (\fBlapack_int\fP n, const float * x, \fBlapack_int\fP incx)"
+
+.PP
+Definition at line 37 of file lapacke_s_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_sgb_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const float * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_sgb_nancheck\&.c\&.
+.SS "void LAPACKE_sgb_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_sgb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_sge_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const float * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_sge_nancheck\&.c\&.
+.SS "void LAPACKE_sge_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_sge_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_sgg_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const float * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_sgg_nancheck\&.c\&.
+.SS "void LAPACKE_sgg_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_sgg_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_sgt_nancheck (\fBlapack_int\fP n, const float * dl, const float * d, const float * du)"
+
+.PP
+Definition at line 37 of file lapacke_sgt_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_shs_nancheck (int matrix_layout, \fBlapack_int\fP n, const float * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_shs_nancheck\&.c\&.
+.SS "void LAPACKE_shs_trans (int matrix_layout, \fBlapack_int\fP n, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_shs_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_spb_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_spb_nancheck\&.c\&.
+.SS "void LAPACKE_spb_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_spb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_spf_nancheck (\fBlapack_int\fP n, const float * a)"
+
+.PP
+Definition at line 41 of file lapacke_spf_nancheck\&.c\&.
+.SS "void LAPACKE_spf_trans (int matrix_layout, char transr, char uplo, \fBlapack_int\fP n, const float * in, float * out)"
+
+.PP
+Definition at line 40 of file lapacke_spf_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_spo_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const float * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_spo_nancheck\&.c\&.
+.SS "void LAPACKE_spo_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_spo_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_spp_nancheck (\fBlapack_int\fP n, const float * ap)"
+
+.PP
+Definition at line 40 of file lapacke_spp_nancheck\&.c\&.
+.SS "void LAPACKE_spp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const float * in, float * out)"
+
+.PP
+Definition at line 40 of file lapacke_spp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_spt_nancheck (\fBlapack_int\fP n, const float * d, const float * e)"
+
+.PP
+Definition at line 37 of file lapacke_spt_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ssb_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_ssb_nancheck\&.c\&.
+.SS "void LAPACKE_ssb_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_ssb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ssp_nancheck (\fBlapack_int\fP n, const float * ap)"
+
+.PP
+Definition at line 40 of file lapacke_ssp_nancheck\&.c\&.
+.SS "void LAPACKE_ssp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const float * in, float * out)"
+
+.PP
+Definition at line 40 of file lapacke_ssp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_sst_nancheck (\fBlapack_int\fP n, const float * d, const float * e)"
+
+.PP
+Definition at line 37 of file lapacke_sst_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ssy_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const float * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_ssy_nancheck\&.c\&.
+.SS "void LAPACKE_ssy_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_ssy_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_stb_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_stb_nancheck\&.c\&.
+.SS "void LAPACKE_stb_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_stb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_stf_nancheck (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const float * a)"
+
+.PP
+Definition at line 37 of file lapacke_stf_nancheck\&.c\&.
+.SS "void LAPACKE_stf_trans (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const float * in, float * out)"
+
+.PP
+Definition at line 41 of file lapacke_stf_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_stp_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const float * ap)"
+
+.PP
+Definition at line 40 of file lapacke_stp_nancheck\&.c\&.
+.SS "void LAPACKE_stp_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const float * in, float * out)"
+
+.PP
+Definition at line 40 of file lapacke_stp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_str_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const float * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_str_nancheck\&.c\&.
+.SS "void LAPACKE_str_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const float * in, \fBlapack_int\fP ldin, float * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_str_trans\&.c\&.
+.SS "void LAPACKE_xerbla (const char * name, \fBlapack_int\fP info)"
+
+.PP
+Definition at line 37 of file lapacke_xerbla\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_z_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_double\fP * x, \fBlapack_int\fP incx)"
+
+.PP
+Definition at line 37 of file lapacke_z_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zgb_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const \fBlapack_complex_double\fP * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_zgb_nancheck\&.c\&.
+.SS "void LAPACKE_zgb_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, \fBlapack_int\fP kl, \fBlapack_int\fP ku, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_zgb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zge_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_zge_nancheck\&.c\&.
+.SS "void LAPACKE_zge_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_zge_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zgg_nancheck (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_zgg_nancheck\&.c\&.
+.SS "void LAPACKE_zgg_trans (int matrix_layout, \fBlapack_int\fP m, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_zgg_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zgt_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_double\fP * dl, const \fBlapack_complex_double\fP * d, const \fBlapack_complex_double\fP * du)"
+
+.PP
+Definition at line 37 of file lapacke_zgt_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zhb_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_zhb_nancheck\&.c\&.
+.SS "void LAPACKE_zhb_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_zhb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zhe_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_zhe_nancheck\&.c\&.
+.SS "void LAPACKE_zhe_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_zhe_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zhp_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_double\fP * ap)"
+
+.PP
+Definition at line 40 of file lapacke_zhp_nancheck\&.c\&.
+.SS "void LAPACKE_zhp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_complex_double\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_zhp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zhs_nancheck (int matrix_layout, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_zhs_nancheck\&.c\&.
+.SS "void LAPACKE_zhs_trans (int matrix_layout, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_zhs_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zpb_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_zpb_nancheck\&.c\&.
+.SS "void LAPACKE_zpb_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_zpb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zpf_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_double\fP * a)"
+
+.PP
+Definition at line 41 of file lapacke_zpf_nancheck\&.c\&.
+.SS "void LAPACKE_zpf_trans (int matrix_layout, char transr, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_complex_double\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_zpf_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zpo_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_zpo_nancheck\&.c\&.
+.SS "void LAPACKE_zpo_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_zpo_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zpp_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_double\fP * ap)"
+
+.PP
+Definition at line 40 of file lapacke_zpp_nancheck\&.c\&.
+.SS "void LAPACKE_zpp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_complex_double\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_zpp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zpt_nancheck (\fBlapack_int\fP n, const double * d, const \fBlapack_complex_double\fP * e)"
+
+.PP
+Definition at line 37 of file lapacke_zpt_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zsp_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_double\fP * ap)"
+
+.PP
+Definition at line 40 of file lapacke_zsp_nancheck\&.c\&.
+.SS "void LAPACKE_zsp_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_complex_double\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_zsp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zst_nancheck (\fBlapack_int\fP n, const \fBlapack_complex_double\fP * d, const \fBlapack_complex_double\fP * e)"
+
+.PP
+Definition at line 37 of file lapacke_zst_nancheck\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_zsy_nancheck (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_zsy_nancheck\&.c\&.
+.SS "void LAPACKE_zsy_trans (int matrix_layout, char uplo, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_zsy_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ztb_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP * ab, \fBlapack_int\fP ldab)"
+
+.PP
+Definition at line 37 of file lapacke_ztb_nancheck\&.c\&.
+.SS "void LAPACKE_ztb_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, \fBlapack_int\fP kd, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_ztb_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ztf_nancheck (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * a)"
+
+.PP
+Definition at line 37 of file lapacke_ztf_nancheck\&.c\&.
+.SS "void LAPACKE_ztf_trans (int matrix_layout, char transr, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_complex_double\fP * out)"
+
+.PP
+Definition at line 41 of file lapacke_ztf_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ztp_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * ap)"
+
+.PP
+Definition at line 40 of file lapacke_ztp_nancheck\&.c\&.
+.SS "void LAPACKE_ztp_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_complex_double\fP * out)"
+
+.PP
+Definition at line 40 of file lapacke_ztp_trans\&.c\&.
+.SS "\fBlapack_logical\fP LAPACKE_ztr_nancheck (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * a, \fBlapack_int\fP lda)"
+
+.PP
+Definition at line 37 of file lapacke_ztr_nancheck\&.c\&.
+.SS "void LAPACKE_ztr_trans (int matrix_layout, char uplo, char diag, \fBlapack_int\fP n, const \fBlapack_complex_double\fP * in, \fBlapack_int\fP ldin, \fBlapack_complex_double\fP * out, \fBlapack_int\fP ldout)"
+
+.PP
+Definition at line 40 of file lapacke_ztr_trans\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,116 @@
+.TH "slamrg.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slamrg.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslamrg\fP (N1, N2, A, STRD1, STRD2, INDEX)"
+.br
+.RI "\fBSLAMRG\fP creates a permutation list to merge the entries of two independently sorted sets into a single set sorted in ascending order\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slamrg (integer N1, integer N2, real, dimension( * ) A, integer STRD1, integer STRD2, integer, dimension( * ) INDEX)"
+
+.PP
+\fBSLAMRG\fP creates a permutation list to merge the entries of two independently sorted sets into a single set sorted in ascending order\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLAMRG will create a permutation list which will merge the elements
+ of A (which is composed of two independently sorted sets) into a
+ single set which is sorted in ascending order.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN1\fP 
+.PP
+.nf
+          N1 is INTEGER
+.fi
+.PP
+.br
+\fIN2\fP 
+.PP
+.nf
+          N2 is INTEGER
+         These arguments contain the respective lengths of the two
+         sorted lists to be merged.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (N1+N2)
+         The first N1 elements of A contain a list of numbers which
+         are sorted in either ascending or descending order.  Likewise
+         for the final N2 elements.
+.fi
+.PP
+.br
+\fISTRD1\fP 
+.PP
+.nf
+          STRD1 is INTEGER
+.fi
+.PP
+.br
+\fISTRD2\fP 
+.PP
+.nf
+          STRD2 is INTEGER
+         These are the strides to be taken through the array A.
+         Allowable strides are 1 and -1.  They indicate whether a
+         subset of A is sorted in ascending (STRDx = 1) or descending
+         (STRDx = -1) order.
+.fi
+.PP
+.br
+\fIINDEX\fP 
+.PP
+.nf
+          INDEX is INTEGER array, dimension (N1+N2)
+         On exit this array will contain a permutation such that
+         if B( I ) = A( INDEX( I ) ) for I=1,N1+N2, then B will be
+         sorted in ascending order.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file slamrg\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

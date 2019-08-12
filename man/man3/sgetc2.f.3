@@ -1,0 +1,127 @@
+.TH "sgetc2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sgetc2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsgetc2\fP (\fBN\fP, A, \fBLDA\fP, IPIV, JPIV, INFO)"
+.br
+.RI "\fBSGETC2\fP computes the LU factorization with complete pivoting of the general n-by-n matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sgetc2 (integer N, real, dimension( lda, * ) A, integer LDA, integer, dimension( * ) IPIV, integer, dimension( * ) JPIV, integer INFO)"
+
+.PP
+\fBSGETC2\fP computes the LU factorization with complete pivoting of the general n-by-n matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SGETC2 computes an LU factorization with complete pivoting of the
+ n-by-n matrix A. The factorization has the form A = P * L * U * Q,
+ where P and Q are permutation matrices, L is lower triangular with
+ unit diagonal elements and U is upper triangular.
+
+ This is the Level 2 BLAS algorithm.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A. N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA, N)
+          On entry, the n-by-n matrix A to be factored.
+          On exit, the factors L and U from the factorization
+          A = P*L*U*Q; the unit diagonal elements of L are not stored.
+          If U(k, k) appears to be less than SMIN, U(k, k) is given the
+          value of SMIN, i.e., giving a nonsingular perturbed system.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension(N).
+          The pivot indices; for 1 <= i <= N, row i of the
+          matrix has been interchanged with row IPIV(i).
+.fi
+.PP
+.br
+\fIJPIV\fP 
+.PP
+.nf
+          JPIV is INTEGER array, dimension(N).
+          The pivot indices; for 1 <= j <= N, column j of the
+          matrix has been interchanged with column JPIV(j).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+           = 0: successful exit
+           > 0: if INFO = k, U(k, k) is likely to produce owerflow if
+                we try to solve for x in Ax = b. So U is perturbed to
+                avoid the overflow.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Bo Kagstrom and Peter Poromaa, Department of Computing Science, Umea University, S-901 87 Umea, Sweden\&. 
+.RE
+.PP
+
+.PP
+Definition at line 113 of file sgetc2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,124 @@
+.TH "slasq1.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slasq1.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslasq1\fP (\fBN\fP, D, E, WORK, INFO)"
+.br
+.RI "\fBSLASQ1\fP computes the singular values of a real square bidiagonal matrix\&. Used by sbdsqr\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slasq1 (integer N, real, dimension( * ) D, real, dimension( * ) E, real, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBSLASQ1\fP computes the singular values of a real square bidiagonal matrix\&. Used by sbdsqr\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLASQ1 computes the singular values of a real N-by-N bidiagonal
+ matrix with diagonal D and off-diagonal E. The singular values
+ are computed to high relative accuracy, in the absence of
+ denormalization, underflow and overflow. The algorithm was first
+ presented in
+
+ "Accurate singular values and differential qd algorithms" by K. V.
+ Fernando and B. N. Parlett, Numer. Math., Vol-67, No. 2, pp. 191-230,
+ 1994,
+
+ and the present implementation is described in "An implementation of
+ the dqds Algorithm (Positive Case)", LAPACK Working Note.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+        The number of rows and columns in the matrix. N >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+        On entry, D contains the diagonal elements of the
+        bidiagonal matrix whose SVD is desired. On normal exit,
+        D contains the singular values in decreasing order.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is REAL array, dimension (N)
+        On entry, elements E(1:N-1) contain the off-diagonal elements
+        of the bidiagonal matrix whose SVD is desired.
+        On exit, E is overwritten.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (4*N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+        = 0: successful exit
+        < 0: if INFO = -i, the i-th argument had an illegal value
+        > 0: the algorithm failed
+             = 1, a split was marked by a positive value in E
+             = 2, current block of Z not diagonalized after 100*N
+                  iterations (in inner while loop)  On exit D and E
+                  represent a matrix with the same singular values
+                  which the calling subroutine could use to finish the
+                  computation, or even feed back into SLASQ1
+             = 3, termination criterion of outer while loop not met
+                  (program created more than N unreduced blocks)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 110 of file slasq1\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

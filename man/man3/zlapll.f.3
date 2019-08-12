@@ -1,0 +1,117 @@
+.TH "zlapll.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlapll.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlapll\fP (\fBN\fP, X, INCX, Y, INCY, SSMIN)"
+.br
+.RI "\fBZLAPLL\fP measures the linear dependence of two vectors\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlapll (integer N, complex*16, dimension( * ) X, integer INCX, complex*16, dimension( * ) Y, integer INCY, double precision SSMIN)"
+
+.PP
+\fBZLAPLL\fP measures the linear dependence of two vectors\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Given two column vectors X and Y, let
+
+                      A = ( X Y ).
+
+ The subroutine first computes the QR factorization of A = Q*R,
+ and then computes the SVD of the 2-by-2 upper triangular matrix R.
+ The smaller singular value of R is returned in SSMIN, which is used
+ as the measurement of the linear dependency of the vectors X and Y.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The length of the vectors X and Y.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX*16 array, dimension (1+(N-1)*INCX)
+          On entry, X contains the N-vector X.
+          On exit, X is overwritten.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between successive elements of X. INCX > 0.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is COMPLEX*16 array, dimension (1+(N-1)*INCY)
+          On entry, Y contains the N-vector Y.
+          On exit, Y is overwritten.
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+          The increment between successive elements of Y. INCY > 0.
+.fi
+.PP
+.br
+\fISSMIN\fP 
+.PP
+.nf
+          SSMIN is DOUBLE PRECISION
+          The smallest singular value of the N-by-2 matrix A = ( X Y ).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file zlapll\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

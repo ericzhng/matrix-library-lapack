@@ -1,0 +1,153 @@
+.TH "cgtts2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cgtts2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcgtts2\fP (ITRANS, \fBN\fP, \fBNRHS\fP, DL, D, DU, DU2, IPIV, B, \fBLDB\fP)"
+.br
+.RI "\fBCGTTS2\fP solves a system of linear equations with a tridiagonal matrix using the LU factorization computed by sgttrf\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cgtts2 (integer ITRANS, integer N, integer NRHS, complex, dimension( * ) DL, complex, dimension( * ) D, complex, dimension( * ) DU, complex, dimension( * ) DU2, integer, dimension( * ) IPIV, complex, dimension( ldb, * ) B, integer LDB)"
+
+.PP
+\fBCGTTS2\fP solves a system of linear equations with a tridiagonal matrix using the LU factorization computed by sgttrf\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CGTTS2 solves one of the systems of equations
+    A * X = B,  A**T * X = B,  or  A**H * X = B,
+ with a tridiagonal matrix A using the LU factorization computed
+ by CGTTRF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIITRANS\fP 
+.PP
+.nf
+          ITRANS is INTEGER
+          Specifies the form of the system of equations.
+          = 0:  A * X = B     (No transpose)
+          = 1:  A**T * X = B  (Transpose)
+          = 2:  A**H * X = B  (Conjugate transpose)
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrix B.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIDL\fP 
+.PP
+.nf
+          DL is COMPLEX array, dimension (N-1)
+          The (n-1) multipliers that define the matrix L from the
+          LU factorization of A.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is COMPLEX array, dimension (N)
+          The n diagonal elements of the upper triangular matrix U from
+          the LU factorization of A.
+.fi
+.PP
+.br
+\fIDU\fP 
+.PP
+.nf
+          DU is COMPLEX array, dimension (N-1)
+          The (n-1) elements of the first super-diagonal of U.
+.fi
+.PP
+.br
+\fIDU2\fP 
+.PP
+.nf
+          DU2 is COMPLEX array, dimension (N-2)
+          The (n-2) elements of the second super-diagonal of U.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          The pivot indices; for 1 <= i <= n, row i of the matrix was
+          interchanged with row IPIV(i).  IPIV(i) will always be either
+          i or i+1; IPIV(i) = i indicates a row interchange was not
+          required.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX array, dimension (LDB,NRHS)
+          On entry, the matrix of right hand side vectors B.
+          On exit, B is overwritten by the solution vectors X.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file cgtts2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

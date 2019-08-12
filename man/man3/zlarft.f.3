@@ -1,0 +1,189 @@
+.TH "zlarft.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlarft.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlarft\fP (DIRECT, STOREV, \fBN\fP, K, V, LDV, TAU, T, LDT)"
+.br
+.RI "\fBZLARFT\fP forms the triangular factor T of a block reflector H = I - vtvH "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlarft (character DIRECT, character STOREV, integer N, integer K, complex*16, dimension( ldv, * ) V, integer LDV, complex*16, dimension( * ) TAU, complex*16, dimension( ldt, * ) T, integer LDT)"
+
+.PP
+\fBZLARFT\fP forms the triangular factor T of a block reflector H = I - vtvH  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLARFT forms the triangular factor T of a complex block reflector H
+ of order n, which is defined as a product of k elementary reflectors.
+
+ If DIRECT = 'F', H = H(1) H(2) . . . H(k) and T is upper triangular;
+
+ If DIRECT = 'B', H = H(k) . . . H(2) H(1) and T is lower triangular.
+
+ If STOREV = 'C', the vector which defines the elementary reflector
+ H(i) is stored in the i-th column of the array V, and
+
+    H  =  I - V * T * V**H
+
+ If STOREV = 'R', the vector which defines the elementary reflector
+ H(i) is stored in the i-th row of the array V, and
+
+    H  =  I - V**H * T * V
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIDIRECT\fP 
+.PP
+.nf
+          DIRECT is CHARACTER*1
+          Specifies the order in which the elementary reflectors are
+          multiplied to form the block reflector:
+          = 'F': H = H(1) H(2) . . . H(k) (Forward)
+          = 'B': H = H(k) . . . H(2) H(1) (Backward)
+.fi
+.PP
+.br
+\fISTOREV\fP 
+.PP
+.nf
+          STOREV is CHARACTER*1
+          Specifies how the vectors which define the elementary
+          reflectors are stored (see also Further Details):
+          = 'C': columnwise
+          = 'R': rowwise
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the block reflector H. N >= 0.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The order of the triangular factor T (= the number of
+          elementary reflectors). K >= 1.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX*16 array, dimension
+                               (LDV,K) if STOREV = 'C'
+                               (LDV,N) if STOREV = 'R'
+          The matrix V. See further details.
+.fi
+.PP
+.br
+\fILDV\fP 
+.PP
+.nf
+          LDV is INTEGER
+          The leading dimension of the array V.
+          If STOREV = 'C', LDV >= max(1,N); if STOREV = 'R', LDV >= K.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX*16 array, dimension (K)
+          TAU(i) must contain the scalar factor of the elementary
+          reflector H(i).
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is COMPLEX*16 array, dimension (LDT,K)
+          The k by k triangular factor T of the block reflector.
+          If DIRECT = 'F', T is upper triangular; if DIRECT = 'B', T is
+          lower triangular. The rest of the array is not used.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T. LDT >= K.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The shape of the matrix V and the storage of the vectors which define
+  the H(i) is best illustrated by the following example with n = 5 and
+  k = 3. The elements equal to 1 are not stored.
+
+  DIRECT = 'F' and STOREV = 'C':         DIRECT = 'F' and STOREV = 'R':
+
+               V = (  1       )                 V = (  1 v1 v1 v1 v1 )
+                   ( v1  1    )                     (     1 v2 v2 v2 )
+                   ( v1 v2  1 )                     (        1 v3 v3 )
+                   ( v1 v2 v3 )
+                   ( v1 v2 v3 )
+
+  DIRECT = 'B' and STOREV = 'C':         DIRECT = 'B' and STOREV = 'R':
+
+               V = ( v1 v2 v3 )                 V = ( v1 v1  1       )
+                   ( v1 v2 v3 )                     ( v2 v2 v2  1    )
+                   (  1 v2 v3 )                     ( v3 v3 v3 v3  1 )
+                   (     1 v3 )
+                   (        1 )
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 165 of file zlarft\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

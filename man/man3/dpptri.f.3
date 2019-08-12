@@ -1,0 +1,106 @@
+.TH "dpptri.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dpptri.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdpptri\fP (UPLO, \fBN\fP, AP, INFO)"
+.br
+.RI "\fBDPPTRI\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dpptri (character UPLO, integer N, double precision, dimension( * ) AP, integer INFO)"
+
+.PP
+\fBDPPTRI\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DPPTRI computes the inverse of a real symmetric positive definite
+ matrix A using the Cholesky factorization A = U**T*U or A = L*L**T
+ computed by DPPTRF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangular factor is stored in AP;
+          = 'L':  Lower triangular factor is stored in AP.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIAP\fP 
+.PP
+.nf
+          AP is DOUBLE PRECISION array, dimension (N*(N+1)/2)
+          On entry, the triangular factor U or L from the Cholesky
+          factorization A = U**T*U or A = L*L**T, packed columnwise as
+          a linear array.  The j-th column of U or L is stored in the
+          array AP as follows:
+          if UPLO = 'U', AP(i + (j-1)*j/2) = U(i,j) for 1<=i<=j;
+          if UPLO = 'L', AP(i + (j-1)*(2n-j)/2) = L(i,j) for j<=i<=n.
+
+          On exit, the upper or lower triangle of the (symmetric)
+          inverse of A, overwriting the input factor U or L.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+          > 0:  if INFO = i, the (i,i) element of the factor U or L is
+                zero, and the inverse could not be computed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 95 of file dpptri\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

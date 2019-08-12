@@ -1,0 +1,186 @@
+.TH "dsytri_3.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dsytri_3.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdsytri_3\fP (UPLO, \fBN\fP, A, \fBLDA\fP, E, IPIV, WORK, LWORK, INFO)"
+.br
+.RI "\fBDSYTRI_3\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dsytri_3 (character UPLO, integer N, double precision, dimension( lda, * ) A, integer LDA, double precision, dimension( * ) E, integer, dimension( * ) IPIV, double precision, dimension( * ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBDSYTRI_3\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DSYTRI_3 computes the inverse of a real symmetric indefinite
+ matrix A using the factorization computed by DSYTRF_RK or DSYTRF_BK:
+
+     A = P*U*D*(U**T)*(P**T) or A = P*L*D*(L**T)*(P**T),
+
+ where U (or L) is unit upper (or lower) triangular matrix,
+ U**T (or L**T) is the transpose of U (or L), P is a permutation
+ matrix, P**T is the transpose of P, and D is symmetric and block
+ diagonal with 1-by-1 and 2-by-2 diagonal blocks.
+
+ DSYTRI_3 sets the leading dimension of the workspace  before calling
+ DSYTRI_3X that actually computes the inverse.  This is the blocked
+ version of the algorithm, calling Level 3 BLAS.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the details of the factorization are
+          stored as an upper or lower triangular matrix.
+          = 'U':  Upper triangle of A is stored;
+          = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, diagonal of the block diagonal matrix D and
+          factors U or L as computed by DSYTRF_RK and DSYTRF_BK:
+            a) ONLY diagonal elements of the symmetric block diagonal
+               matrix D on the diagonal of A, i.e. D(k,k) = A(k,k);
+               (superdiagonal (or subdiagonal) elements of D
+                should be provided on entry in array E), and
+            b) If UPLO = 'U': factor U in the superdiagonal part of A.
+               If UPLO = 'L': factor L in the subdiagonal part of A.
+
+          On exit, if INFO = 0, the symmetric inverse of the original
+          matrix.
+             If UPLO = 'U': the upper triangular part of the inverse
+             is formed and the part of A below the diagonal is not
+             referenced;
+             If UPLO = 'L': the lower triangular part of the inverse
+             is formed and the part of A above the diagonal is not
+             referenced.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (N)
+          On entry, contains the superdiagonal (or subdiagonal)
+          elements of the symmetric block diagonal matrix D
+          with 1-by-1 or 2-by-2 diagonal blocks, where
+          If UPLO = 'U': E(i) = D(i-1,i),i=2:N, E(1) not referenced;
+          If UPLO = 'L': E(i) = D(i+1,i),i=1:N-1, E(N) not referenced.
+
+          NOTE: For 1-by-1 diagonal block D(k), where
+          1 <= k <= N, the element E(k) is not referenced in both
+          UPLO = 'U' or UPLO = 'L' cases.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          Details of the interchanges and the block structure of D
+          as determined by DSYTRF_RK or DSYTRF_BK.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (N+NB+1)*(NB+3).
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The length of WORK. LWORK >= (N+NB+1)*(NB+3).
+
+          If LDWORK = -1, then a workspace query is assumed;
+          the routine only calculates the optimal size of the optimal
+          size of the WORK array, returns this value as the first
+          entry of the WORK array, and no error message related to
+          LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+          > 0: if INFO = i, D(i,i) = 0; the matrix is singular and its
+               inverse could not be computed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+
+.RE
+.PP
+November 2017, Igor Kozachenko, Computer Science Division, University of California, Berkeley
+.PP
+Definition at line 172 of file dsytri_3\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

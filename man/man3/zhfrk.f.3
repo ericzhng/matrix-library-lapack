@@ -1,0 +1,190 @@
+.TH "zhfrk.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zhfrk.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzhfrk\fP (TRANSR, UPLO, TRANS, \fBN\fP, K, ALPHA, A, \fBLDA\fP, BETA, C)"
+.br
+.RI "\fBZHFRK\fP performs a Hermitian rank-k operation for matrix in RFP format\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zhfrk (character TRANSR, character UPLO, character TRANS, integer N, integer K, double precision ALPHA, complex*16, dimension( lda, * ) A, integer LDA, double precision BETA, complex*16, dimension( * ) C)"
+
+.PP
+\fBZHFRK\fP performs a Hermitian rank-k operation for matrix in RFP format\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Level 3 BLAS like routine for C in RFP Format.
+
+ ZHFRK performs one of the Hermitian rank--k operations
+
+    C := alpha*A*A**H + beta*C,
+
+ or
+
+    C := alpha*A**H*A + beta*C,
+
+ where alpha and beta are real scalars, C is an n--by--n Hermitian
+ matrix and A is an n--by--k matrix in the first case and a k--by--n
+ matrix in the second case.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fITRANSR\fP 
+.PP
+.nf
+          TRANSR is CHARACTER*1
+          = 'N':  The Normal Form of RFP A is stored;
+          = 'C':  The Conjugate-transpose Form of RFP A is stored.
+.fi
+.PP
+.br
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+           On  entry,   UPLO  specifies  whether  the  upper  or  lower
+           triangular  part  of the  array  C  is to be  referenced  as
+           follows:
+
+              UPLO = 'U' or 'u'   Only the  upper triangular part of  C
+                                  is to be referenced.
+
+              UPLO = 'L' or 'l'   Only the  lower triangular part of  C
+                                  is to be referenced.
+
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+           On entry,  TRANS  specifies the operation to be performed as
+           follows:
+
+              TRANS = 'N' or 'n'   C := alpha*A*A**H + beta*C.
+
+              TRANS = 'C' or 'c'   C := alpha*A**H*A + beta*C.
+
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+           On entry,  N specifies the order of the matrix C.  N must be
+           at least zero.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+           On entry with  TRANS = 'N' or 'n',  K  specifies  the number
+           of  columns   of  the   matrix   A,   and  on   entry   with
+           TRANS = 'C' or 'c',  K  specifies  the number of rows of the
+           matrix A.  K must be at least zero.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is DOUBLE PRECISION
+           On entry, ALPHA specifies the scalar alpha.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,ka)
+           where KA
+           is K  when TRANS = 'N' or 'n', and is N otherwise. Before
+           entry with TRANS = 'N' or 'n', the leading N--by--K part of
+           the array A must contain the matrix A, otherwise the leading
+           K--by--N part of the array A must contain the matrix A.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+           On entry, LDA specifies the first dimension of A as declared
+           in  the  calling  (sub)  program.   When  TRANS = 'N' or 'n'
+           then  LDA must be at least  max( 1, n ), otherwise  LDA must
+           be at least  max( 1, k ).
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIBETA\fP 
+.PP
+.nf
+          BETA is DOUBLE PRECISION
+           On entry, BETA specifies the scalar beta.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX*16 array, dimension (N*(N+1)/2)
+           On entry, the matrix A in RFP Format. RFP Format is
+           described by TRANSR, UPLO and N. Note that the imaginary
+           parts of the diagonal elements need not be set, they are
+           assumed to be zero, and on exit they are set to zero.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+
+.PP
+Definition at line 170 of file zhfrk\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

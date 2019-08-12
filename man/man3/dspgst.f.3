@@ -1,0 +1,130 @@
+.TH "dspgst.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dspgst.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdspgst\fP (ITYPE, UPLO, \fBN\fP, AP, BP, INFO)"
+.br
+.RI "\fBDSPGST\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dspgst (integer ITYPE, character UPLO, integer N, double precision, dimension( * ) AP, double precision, dimension( * ) BP, integer INFO)"
+
+.PP
+\fBDSPGST\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DSPGST reduces a real symmetric-definite generalized eigenproblem
+ to standard form, using packed storage.
+
+ If ITYPE = 1, the problem is A*x = lambda*B*x,
+ and A is overwritten by inv(U**T)*A*inv(U) or inv(L)*A*inv(L**T)
+
+ If ITYPE = 2 or 3, the problem is A*B*x = lambda*x or
+ B*A*x = lambda*x, and A is overwritten by U*A*U**T or L**T*A*L.
+
+ B must have been previously factorized as U**T*U or L*L**T by DPPTRF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIITYPE\fP 
+.PP
+.nf
+          ITYPE is INTEGER
+          = 1: compute inv(U**T)*A*inv(U) or inv(L)*A*inv(L**T);
+          = 2 or 3: compute U*A*U**T or L**T*A*L.
+.fi
+.PP
+.br
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangle of A is stored and B is factored as
+                  U**T*U;
+          = 'L':  Lower triangle of A is stored and B is factored as
+                  L*L**T.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrices A and B.  N >= 0.
+.fi
+.PP
+.br
+\fIAP\fP 
+.PP
+.nf
+          AP is DOUBLE PRECISION array, dimension (N*(N+1)/2)
+          On entry, the upper or lower triangle of the symmetric matrix
+          A, packed columnwise in a linear array.  The j-th column of A
+          is stored in the array AP as follows:
+          if UPLO = 'U', AP(i + (j-1)*j/2) = A(i,j) for 1<=i<=j;
+          if UPLO = 'L', AP(i + (j-1)*(2n-j)/2) = A(i,j) for j<=i<=n.
+
+          On exit, if INFO = 0, the transformed matrix, stored in the
+          same format as A.
+.fi
+.PP
+.br
+\fIBP\fP 
+.PP
+.nf
+          BP is DOUBLE PRECISION array, dimension (N*(N+1)/2)
+          The triangular factor from the Cholesky factorization of B,
+          stored in the same format as A, as returned by DPPTRF.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 115 of file dspgst\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

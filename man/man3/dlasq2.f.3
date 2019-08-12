@@ -1,0 +1,127 @@
+.TH "dlasq2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlasq2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlasq2\fP (\fBN\fP, Z, INFO)"
+.br
+.RI "\fBDLASQ2\fP computes all the eigenvalues of the symmetric positive definite tridiagonal matrix associated with the qd Array Z to high relative accuracy\&. Used by sbdsqr and sstegr\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlasq2 (integer N, double precision, dimension( * ) Z, integer INFO)"
+
+.PP
+\fBDLASQ2\fP computes all the eigenvalues of the symmetric positive definite tridiagonal matrix associated with the qd Array Z to high relative accuracy\&. Used by sbdsqr and sstegr\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLASQ2 computes all the eigenvalues of the symmetric positive
+ definite tridiagonal matrix associated with the qd array Z to high
+ relative accuracy are computed to high relative accuracy, in the
+ absence of denormalization, underflow and overflow.
+
+ To see the relation of Z to the tridiagonal matrix, let L be a
+ unit lower bidiagonal matrix with subdiagonals Z(2,4,6,,..) and
+ let U be an upper bidiagonal matrix with 1's above and diagonal
+ Z(1,3,5,,..). The tridiagonal is L*U or, if you prefer, the
+ symmetric tridiagonal to which it is similar.
+
+ Note : DLASQ2 defines a logical variable, IEEE, which is true
+ on machines which follow ieee-754 floating-point standard in their
+ handling of infinities and NaNs, and false otherwise. This variable
+ is passed to DLASQ3.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+        The number of rows and columns in the matrix. N >= 0.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension ( 4*N )
+        On entry Z holds the qd array. On exit, entries 1 to N hold
+        the eigenvalues in decreasing order, Z( 2*N+1 ) holds the
+        trace, and Z( 2*N+2 ) holds the sum of the eigenvalues. If
+        N > 2, then Z( 2*N+3 ) holds the iteration count, Z( 2*N+4 )
+        holds NDIVS/NIN^2, and Z( 2*N+5 ) holds the percentage of
+        shifts that failed.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+        = 0: successful exit
+        < 0: if the i-th argument is a scalar and had an illegal
+             value, then INFO = -i, if the i-th argument is an
+             array and the j-entry had an illegal value, then
+             INFO = -(i*100+j)
+        > 0: the algorithm failed
+              = 1, a split was marked by a positive value in E
+              = 2, current block of Z not diagonalized after 100*N
+                   iterations (in inner while loop).  On exit Z holds
+                   a qd array with the same eigenvalues as the given Z.
+              = 3, termination criterion of outer while loop not met
+                   (program created more than N unreduced blocks)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  Local Variables: I0:N0 defines a current unreduced segment of Z.
+  The shifts are accumulated in SIGMA. Iteration count is in ITER.
+  Ping-pong is controlled by PP (alternates between 0 and 1).
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 114 of file dlasq2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

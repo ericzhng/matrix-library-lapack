@@ -1,0 +1,139 @@
+.TH "clarfx.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+clarfx.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclarfx\fP (SIDE, M, \fBN\fP, V, TAU, C, LDC, WORK)"
+.br
+.RI "\fBCLARFX\fP applies an elementary reflector to a general rectangular matrix, with loop unrolling when the reflector has order ≤ 10\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine clarfx (character SIDE, integer M, integer N, complex, dimension( * ) V, complex TAU, complex, dimension( ldc, * ) C, integer LDC, complex, dimension( * ) WORK)"
+
+.PP
+\fBCLARFX\fP applies an elementary reflector to a general rectangular matrix, with loop unrolling when the reflector has order ≤ 10\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLARFX applies a complex elementary reflector H to a complex m by n
+ matrix C, from either the left or the right. H is represented in the
+ form
+
+       H = I - tau * v * v**H
+
+ where tau is a complex scalar and v is a complex vector.
+
+ If tau = 0, then H is taken to be the unit matrix
+
+ This version uses inline code if H has order < 11.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'L': form  H * C
+          = 'R': form  C * H
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix C.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix C.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX array, dimension (M) if SIDE = 'L'
+                                        or (N) if SIDE = 'R'
+          The vector v in the representation of H.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX
+          The value tau in the representation of H.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX array, dimension (LDC,N)
+          On entry, the m by n matrix C.
+          On exit, C is overwritten by the matrix H * C if SIDE = 'L',
+          or C * H if SIDE = 'R'.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the array C. LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (N) if SIDE = 'L'
+                                            or (M) if SIDE = 'R'
+          WORK is not referenced if H has order < 11.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 121 of file clarfx\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

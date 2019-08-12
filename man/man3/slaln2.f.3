@@ -1,0 +1,256 @@
+.TH "slaln2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaln2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslaln2\fP (LTRANS, NA, NW, SMIN, CA, A, \fBLDA\fP, D1, D2, B, \fBLDB\fP, WR, WI, X, LDX, SCALE, XNORM, INFO)"
+.br
+.RI "\fBSLALN2\fP solves a 1-by-1 or 2-by-2 linear system of equations of the specified form\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slaln2 (logical LTRANS, integer NA, integer NW, real SMIN, real CA, real, dimension( lda, * ) A, integer LDA, real D1, real D2, real, dimension( ldb, * ) B, integer LDB, real WR, real WI, real, dimension( ldx, * ) X, integer LDX, real SCALE, real XNORM, integer INFO)"
+
+.PP
+\fBSLALN2\fP solves a 1-by-1 or 2-by-2 linear system of equations of the specified form\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLALN2 solves a system of the form  (ca A - w D ) X = s B
+ or (ca A**T - w D) X = s B   with possible scaling ("s") and
+ perturbation of A.  (A**T means A-transpose.)
+
+ A is an NA x NA real matrix, ca is a real scalar, D is an NA x NA
+ real diagonal matrix, w is a real or complex value, and X and B are
+ NA x 1 matrices -- real if w is real, complex if w is complex.  NA
+ may be 1 or 2.
+
+ If w is complex, X and B are represented as NA x 2 matrices,
+ the first column of each being the real part and the second
+ being the imaginary part.
+
+ "s" is a scaling factor (.LE. 1), computed by SLALN2, which is
+ so chosen that X can be computed without overflow.  X is further
+ scaled if necessary to assure that norm(ca A - w D)*norm(X) is less
+ than overflow.
+
+ If both singular values of (ca A - w D) are less than SMIN,
+ SMIN*identity will be used instead of (ca A - w D).  If only one
+ singular value is less than SMIN, one element of (ca A - w D) will be
+ perturbed enough to make the smallest singular value roughly SMIN.
+ If both singular values are at least SMIN, (ca A - w D) will not be
+ perturbed.  In any case, the perturbation will be at most some small
+ multiple of max( SMIN, ulp*norm(ca A - w D) ).  The singular values
+ are computed by infinity-norm approximations, and thus will only be
+ correct to a factor of 2 or so.
+
+ Note: all input quantities are assumed to be smaller than overflow
+ by a reasonable factor.  (See BIGNUM.)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fILTRANS\fP 
+.PP
+.nf
+          LTRANS is LOGICAL
+          =.TRUE.:  A-transpose will be used.
+          =.FALSE.: A will be used (not transposed.)
+.fi
+.PP
+.br
+\fINA\fP 
+.PP
+.nf
+          NA is INTEGER
+          The size of the matrix A.  It may (only) be 1 or 2.
+.fi
+.PP
+.br
+\fINW\fP 
+.PP
+.nf
+          NW is INTEGER
+          1 if "w" is real, 2 if "w" is complex.  It may only be 1
+          or 2.
+.fi
+.PP
+.br
+\fISMIN\fP 
+.PP
+.nf
+          SMIN is REAL
+          The desired lower bound on the singular values of A.  This
+          should be a safe distance away from underflow or overflow,
+          say, between (underflow/machine precision) and  (machine
+          precision * overflow ).  (See BIGNUM and ULP.)
+.fi
+.PP
+.br
+\fICA\fP 
+.PP
+.nf
+          CA is REAL
+          The coefficient c, which A is multiplied by.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA,NA)
+          The NA x NA matrix A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of A.  It must be at least NA.
+.fi
+.PP
+.br
+\fID1\fP 
+.PP
+.nf
+          D1 is REAL
+          The 1,1 element in the diagonal matrix D.
+.fi
+.PP
+.br
+\fID2\fP 
+.PP
+.nf
+          D2 is REAL
+          The 2,2 element in the diagonal matrix D.  Not used if NA=1.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is REAL array, dimension (LDB,NW)
+          The NA x NW matrix B (right-hand side).  If NW=2 ("w" is
+          complex), column 1 contains the real part of B and column 2
+          contains the imaginary part.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of B.  It must be at least NA.
+.fi
+.PP
+.br
+\fIWR\fP 
+.PP
+.nf
+          WR is REAL
+          The real part of the scalar "w".
+.fi
+.PP
+.br
+\fIWI\fP 
+.PP
+.nf
+          WI is REAL
+          The imaginary part of the scalar "w".  Not used if NW=1.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is REAL array, dimension (LDX,NW)
+          The NA x NW matrix X (unknowns), as computed by SLALN2.
+          If NW=2 ("w" is complex), on exit, column 1 will contain
+          the real part of X and column 2 will contain the imaginary
+          part.
+.fi
+.PP
+.br
+\fILDX\fP 
+.PP
+.nf
+          LDX is INTEGER
+          The leading dimension of X.  It must be at least NA.
+.fi
+.PP
+.br
+\fISCALE\fP 
+.PP
+.nf
+          SCALE is REAL
+          The scale factor that B must be multiplied by to insure
+          that overflow does not occur when computing X.  Thus,
+          (ca A - w D) X  will be SCALE*B, not B (ignoring
+          perturbations of A.)  It will be at most 1.
+.fi
+.PP
+.br
+\fIXNORM\fP 
+.PP
+.nf
+          XNORM is REAL
+          The infinity-norm of X, when X is regarded as an NA x NW
+          real matrix.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          An error flag.  It will be set to zero if no error occurs,
+          a negative number if an argument is in error, or a positive
+          number if  ca A - w D  had to be perturbed.
+          The possible values are:
+          = 0: No error occurred, and (ca A - w D) did not have to be
+                 perturbed.
+          = 1: (ca A - w D) had to be perturbed to make its smallest
+               (or only) singular value greater than SMIN.
+          NOTE: In the interests of speed, this routine does not
+                check the inputs for errors.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 220 of file slaln2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

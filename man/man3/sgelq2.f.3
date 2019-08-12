@@ -1,0 +1,144 @@
+.TH "sgelq2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sgelq2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsgelq2\fP (M, \fBN\fP, A, \fBLDA\fP, TAU, WORK, INFO)"
+.br
+.RI "\fBSGELQ2\fP computes the LQ factorization of a general rectangular matrix using an unblocked algorithm\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sgelq2 (integer M, integer N, real, dimension( lda, * ) A, integer LDA, real, dimension( * ) TAU, real, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBSGELQ2\fP computes the LQ factorization of a general rectangular matrix using an unblocked algorithm\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SGELQ2 computes an LQ factorization of a real m by n matrix A:
+ A = L * Q.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA,N)
+          On entry, the m by n matrix A.
+          On exit, the elements on and below the diagonal of the array
+          contain the m by min(m,n) lower trapezoidal matrix L (L is
+          lower triangular if m <= n); the elements above the diagonal,
+          with the array TAU, represent the orthogonal matrix Q as a
+          product of elementary reflectors (see Further Details).
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is REAL array, dimension (min(M,N))
+          The scalar factors of the elementary reflectors (see Further
+          Details).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (M)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The matrix Q is represented as a product of elementary reflectors
+
+     Q = H(k) . . . H(2) H(1), where k = min(m,n).
+
+  Each H(i) has the form
+
+     H(i) = I - tau * v * v**T
+
+  where tau is a real scalar, and v is a real vector with
+  v(1:i-1) = 0 and v(i) = 1; v(i+1:n) is stored on exit in A(i,i+1:n),
+  and tau in TAU(i).
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file sgelq2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

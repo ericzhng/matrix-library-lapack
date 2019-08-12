@@ -1,0 +1,131 @@
+.TH "sgesc2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sgesc2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsgesc2\fP (\fBN\fP, A, \fBLDA\fP, RHS, IPIV, JPIV, SCALE)"
+.br
+.RI "\fBSGESC2\fP solves a system of linear equations using the LU factorization with complete pivoting computed by sgetc2\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sgesc2 (integer N, real, dimension( lda, * ) A, integer LDA, real, dimension( * ) RHS, integer, dimension( * ) IPIV, integer, dimension( * ) JPIV, real SCALE)"
+
+.PP
+\fBSGESC2\fP solves a system of linear equations using the LU factorization with complete pivoting computed by sgetc2\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SGESC2 solves a system of linear equations
+
+           A * X = scale* RHS
+
+ with a general N-by-N matrix A using the LU factorization with
+ complete pivoting computed by SGETC2.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA,N)
+          On entry, the  LU part of the factorization of the n-by-n
+          matrix A computed by SGETC2:  A = P * L * U * Q
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1, N).
+.fi
+.PP
+.br
+\fIRHS\fP 
+.PP
+.nf
+          RHS is REAL array, dimension (N).
+          On entry, the right hand side vector b.
+          On exit, the solution vector X.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N).
+          The pivot indices; for 1 <= i <= N, row i of the
+          matrix has been interchanged with row IPIV(i).
+.fi
+.PP
+.br
+\fIJPIV\fP 
+.PP
+.nf
+          JPIV is INTEGER array, dimension (N).
+          The pivot indices; for 1 <= j <= N, column j of the
+          matrix has been interchanged with column JPIV(j).
+.fi
+.PP
+.br
+\fISCALE\fP 
+.PP
+.nf
+          SCALE is REAL
+           On exit, SCALE contains the scale factor. SCALE is chosen
+           0 <= SCALE <= 1 to prevent owerflow in the solution.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Bo Kagstrom and Peter Poromaa, Department of Computing Science, Umea University, S-901 87 Umea, Sweden\&. 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file sgesc2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

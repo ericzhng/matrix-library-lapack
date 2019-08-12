@@ -1,0 +1,77 @@
+.TH "cladiv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cladiv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "complex function \fBcladiv\fP (X, Y)"
+.br
+.RI "\fBCLADIV\fP performs complex division in real arithmetic, avoiding unnecessary overflow\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "complex function cladiv (complex X, complex Y)"
+
+.PP
+\fBCLADIV\fP performs complex division in real arithmetic, avoiding unnecessary overflow\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLADIV := X / Y, where X and Y are complex.  The computation of X / Y
+ will not overflow on an intermediary step unless the results
+ overflows.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is COMPLEX
+          The complex scalars X and Y.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 66 of file cladiv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

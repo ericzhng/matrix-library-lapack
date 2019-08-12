@@ -1,0 +1,225 @@
+.TH "dgbbrd.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dgbbrd.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdgbbrd\fP (VECT, M, \fBN\fP, NCC, KL, KU, AB, LDAB, D, E, Q, LDQ, PT, LDPT, C, LDC, WORK, INFO)"
+.br
+.RI "\fBDGBBRD\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dgbbrd (character VECT, integer M, integer N, integer NCC, integer KL, integer KU, double precision, dimension( ldab, * ) AB, integer LDAB, double precision, dimension( * ) D, double precision, dimension( * ) E, double precision, dimension( ldq, * ) Q, integer LDQ, double precision, dimension( ldpt, * ) PT, integer LDPT, double precision, dimension( ldc, * ) C, integer LDC, double precision, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBDGBBRD\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DGBBRD reduces a real general m-by-n band matrix A to upper
+ bidiagonal form B by an orthogonal transformation: Q**T * A * P = B.
+
+ The routine computes B, and optionally forms Q or P**T, or computes
+ Q**T*C for a given matrix C.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIVECT\fP 
+.PP
+.nf
+          VECT is CHARACTER*1
+          Specifies whether or not the matrices Q and P**T are to be
+          formed.
+          = 'N': do not form Q or P**T;
+          = 'Q': form Q only;
+          = 'P': form P**T only;
+          = 'B': form both.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fINCC\fP 
+.PP
+.nf
+          NCC is INTEGER
+          The number of columns of the matrix C.  NCC >= 0.
+.fi
+.PP
+.br
+\fIKL\fP 
+.PP
+.nf
+          KL is INTEGER
+          The number of subdiagonals of the matrix A. KL >= 0.
+.fi
+.PP
+.br
+\fIKU\fP 
+.PP
+.nf
+          KU is INTEGER
+          The number of superdiagonals of the matrix A. KU >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is DOUBLE PRECISION array, dimension (LDAB,N)
+          On entry, the m-by-n band matrix A, stored in rows 1 to
+          KL+KU+1. The j-th column of A is stored in the j-th column of
+          the array AB as follows:
+          AB(ku+1+i-j,j) = A(i,j) for max(1,j-ku)<=i<=min(m,j+kl).
+          On exit, A is overwritten by values generated during the
+          reduction.
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+          The leading dimension of the array A. LDAB >= KL+KU+1.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (min(M,N))
+          The diagonal elements of the bidiagonal matrix B.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (min(M,N)-1)
+          The superdiagonal elements of the bidiagonal matrix B.
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is DOUBLE PRECISION array, dimension (LDQ,M)
+          If VECT = 'Q' or 'B', the m-by-m orthogonal matrix Q.
+          If VECT = 'N' or 'P', the array Q is not referenced.
+.fi
+.PP
+.br
+\fILDQ\fP 
+.PP
+.nf
+          LDQ is INTEGER
+          The leading dimension of the array Q.
+          LDQ >= max(1,M) if VECT = 'Q' or 'B'; LDQ >= 1 otherwise.
+.fi
+.PP
+.br
+\fIPT\fP 
+.PP
+.nf
+          PT is DOUBLE PRECISION array, dimension (LDPT,N)
+          If VECT = 'P' or 'B', the n-by-n orthogonal matrix P'.
+          If VECT = 'N' or 'Q', the array PT is not referenced.
+.fi
+.PP
+.br
+\fILDPT\fP 
+.PP
+.nf
+          LDPT is INTEGER
+          The leading dimension of the array PT.
+          LDPT >= max(1,N) if VECT = 'P' or 'B'; LDPT >= 1 otherwise.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION array, dimension (LDC,NCC)
+          On entry, an m-by-ncc matrix C.
+          On exit, C is overwritten by Q**T*C.
+          C is not referenced if NCC = 0.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the array C.
+          LDC >= max(1,M) if NCC > 0; LDC >= 1 if NCC = 0.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (2*max(M,N))
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 189 of file dgbbrd\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

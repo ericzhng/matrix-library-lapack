@@ -1,0 +1,87 @@
+.TH "slaisnan.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaisnan.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "logical function \fBslaisnan\fP (SIN1, SIN2)"
+.br
+.RI "\fBSLAISNAN\fP tests input for NaN by comparing two arguments for inequality\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "logical function slaisnan (real, intent(in) SIN1, real, intent(in) SIN2)"
+
+.PP
+\fBSLAISNAN\fP tests input for NaN by comparing two arguments for inequality\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ This routine is not for general use.  It exists solely to avoid
+ over-optimization in SISNAN.
+
+ SLAISNAN checks for NaNs by comparing its two arguments for
+ inequality.  NaN is the only floating-point value where NaN != NaN
+ returns .TRUE.  To check for NaNs, pass the same variable as both
+ arguments.
+
+ A compiler must assume that the two arguments are
+ not the same variable, and the test will not be optimized away.
+ Interprocedural or whole-program optimization may delete this
+ test.  The ISNAN functions will be replaced by the correct
+ Fortran 03 intrinsic once the intrinsic is widely available.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIN1\fP 
+.PP
+.nf
+          SIN1 is REAL
+.fi
+.PP
+.br
+\fISIN2\fP 
+.PP
+.nf
+          SIN2 is REAL
+          Two numbers to compare for inequality.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file slaisnan\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

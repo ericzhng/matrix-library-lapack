@@ -1,0 +1,199 @@
+.TH "dgemlqt.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dgemlqt.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdgemlqt\fP (SIDE, TRANS, M, \fBN\fP, K, MB, V, LDV, T, LDT, C, LDC, WORK, INFO)"
+.br
+.RI "\fBDGEMLQT\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dgemlqt (character SIDE, character TRANS, integer M, integer N, integer K, integer MB, double precision, dimension( ldv, * ) V, integer LDV, double precision, dimension( ldt, * ) T, integer LDT, double precision, dimension( ldc, * ) C, integer LDC, double precision, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBDGEMLQT\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DGEMLQT overwrites the general real M-by-N matrix C with
+
+                 SIDE = 'L'     SIDE = 'R'
+ TRANS = 'N':      Q C            C Q
+ TRANS = 'T':   Q**T C            C Q**T
+
+ where Q is a real orthogonal matrix defined as the product of K
+ elementary reflectors:
+
+       Q = H(1) H(2) . . . H(K) = I - V T V**T
+
+ generated using the compact WY representation as returned by DGELQT.
+
+ Q is of order M if SIDE = 'L' and of order N  if SIDE = 'R'.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'L': apply Q or Q**T from the Left;
+          = 'R': apply Q or Q**T from the Right.
+.fi
+.PP
+.br
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+          = 'N':  No transpose, apply Q;
+          = 'C':  Transpose, apply Q**T.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix C. M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix C. N >= 0.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The number of elementary reflectors whose product defines
+          the matrix Q.
+          If SIDE = 'L', M >= K >= 0;
+          if SIDE = 'R', N >= K >= 0.
+.fi
+.PP
+.br
+\fIMB\fP 
+.PP
+.nf
+          MB is INTEGER
+          The block size used for the storage of T.  K >= MB >= 1.
+          This must be the same value of MB used to generate T
+          in DGELQT.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is DOUBLE PRECISION array, dimension
+                               (LDV,M) if SIDE = 'L',
+                               (LDV,N) if SIDE = 'R'
+          The i-th row must contain the vector which defines the
+          elementary reflector H(i), for i = 1,2,...,k, as returned by
+          DGELQT in the first K rows of its array argument A.
+.fi
+.PP
+.br
+\fILDV\fP 
+.PP
+.nf
+          LDV is INTEGER
+          The leading dimension of the array V. LDV >= max(1,K).
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is DOUBLE PRECISION array, dimension (LDT,K)
+          The upper triangular factors of the block reflectors
+          as returned by DGELQT, stored as a MB-by-K matrix.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T.  LDT >= MB.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION array, dimension (LDC,N)
+          On entry, the M-by-N matrix C.
+          On exit, C is overwritten by Q C, Q**T C, C Q**T or C Q.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the array C. LDC >= max(1,M).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array. The dimension of
+          WORK is N*MB if SIDE = 'L', or  M*MB if SIDE = 'R'.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+
+.PP
+Definition at line 170 of file dgemlqt\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

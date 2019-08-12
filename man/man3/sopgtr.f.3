@@ -1,0 +1,135 @@
+.TH "sopgtr.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sopgtr.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsopgtr\fP (UPLO, \fBN\fP, AP, TAU, Q, LDQ, WORK, INFO)"
+.br
+.RI "\fBSOPGTR\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sopgtr (character UPLO, integer N, real, dimension( * ) AP, real, dimension( * ) TAU, real, dimension( ldq, * ) Q, integer LDQ, real, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBSOPGTR\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SOPGTR generates a real orthogonal matrix Q which is defined as the
+ product of n-1 elementary reflectors H(i) of order n, as returned by
+ SSPTRD using packed storage:
+
+ if UPLO = 'U', Q = H(n-1) . . . H(2) H(1),
+
+ if UPLO = 'L', Q = H(1) H(2) . . . H(n-1).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U': Upper triangular packed storage used in previous
+                 call to SSPTRD;
+          = 'L': Lower triangular packed storage used in previous
+                 call to SSPTRD.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix Q. N >= 0.
+.fi
+.PP
+.br
+\fIAP\fP 
+.PP
+.nf
+          AP is REAL array, dimension (N*(N+1)/2)
+          The vectors which define the elementary reflectors, as
+          returned by SSPTRD.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is REAL array, dimension (N-1)
+          TAU(i) must contain the scalar factor of the elementary
+          reflector H(i), as returned by SSPTRD.
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is REAL array, dimension (LDQ,N)
+          The N-by-N orthogonal matrix Q.
+.fi
+.PP
+.br
+\fILDQ\fP 
+.PP
+.nf
+          LDQ is INTEGER
+          The leading dimension of the array Q. LDQ >= max(1,N).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (N-1)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file sopgtr\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,153 @@
+.TH "zgebak.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zgebak.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzgebak\fP (JOB, SIDE, \fBN\fP, ILO, IHI, SCALE, M, V, LDV, INFO)"
+.br
+.RI "\fBZGEBAK\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zgebak (character JOB, character SIDE, integer N, integer ILO, integer IHI, double precision, dimension( * ) SCALE, integer M, complex*16, dimension( ldv, * ) V, integer LDV, integer INFO)"
+
+.PP
+\fBZGEBAK\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZGEBAK forms the right or left eigenvectors of a complex general
+ matrix by backward transformation on the computed eigenvectors of the
+ balanced matrix output by ZGEBAL.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOB\fP 
+.PP
+.nf
+          JOB is CHARACTER*1
+          Specifies the type of backward transformation required:
+          = 'N', do nothing, return immediately;
+          = 'P', do backward transformation for permutation only;
+          = 'S', do backward transformation for scaling only;
+          = 'B', do backward transformations for both permutation and
+                 scaling.
+          JOB must be the same as the argument JOB supplied to ZGEBAL.
+.fi
+.PP
+.br
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'R':  V contains right eigenvectors;
+          = 'L':  V contains left eigenvectors.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of rows of the matrix V.  N >= 0.
+.fi
+.PP
+.br
+\fIILO\fP 
+.PP
+.nf
+          ILO is INTEGER
+.fi
+.PP
+.br
+\fIIHI\fP 
+.PP
+.nf
+          IHI is INTEGER
+          The integers ILO and IHI determined by ZGEBAL.
+          1 <= ILO <= IHI <= N, if N > 0; ILO=1 and IHI=0, if N=0.
+.fi
+.PP
+.br
+\fISCALE\fP 
+.PP
+.nf
+          SCALE is DOUBLE PRECISION array, dimension (N)
+          Details of the permutation and scaling factors, as returned
+          by ZGEBAL.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of columns of the matrix V.  M >= 0.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX*16 array, dimension (LDV,M)
+          On entry, the matrix of right or left eigenvectors to be
+          transformed, as returned by ZHSEIN or ZTREVC.
+          On exit, V is overwritten by the transformed eigenvectors.
+.fi
+.PP
+.br
+\fILDV\fP 
+.PP
+.nf
+          LDV is INTEGER
+          The leading dimension of the array V. LDV >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 133 of file zgebak\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

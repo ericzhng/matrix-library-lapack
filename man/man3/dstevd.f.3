@@ -1,0 +1,187 @@
+.TH "dstevd.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dstevd.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdstevd\fP (JOBZ, \fBN\fP, D, E, Z, LDZ, WORK, LWORK, IWORK, LIWORK, INFO)"
+.br
+.RI "\fB DSTEVD computes the eigenvalues and, optionally, the left and/or right eigenvectors for OTHER matrices\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dstevd (character JOBZ, integer N, double precision, dimension( * ) D, double precision, dimension( * ) E, double precision, dimension( ldz, * ) Z, integer LDZ, double precision, dimension( * ) WORK, integer LWORK, integer, dimension( * ) IWORK, integer LIWORK, integer INFO)"
+
+.PP
+\fB DSTEVD computes the eigenvalues and, optionally, the left and/or right eigenvectors for OTHER matrices\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DSTEVD computes all eigenvalues and, optionally, eigenvectors of a
+ real symmetric tridiagonal matrix. If eigenvectors are desired, it
+ uses a divide and conquer algorithm.
+
+ The divide and conquer algorithm makes very mild assumptions about
+ floating point arithmetic. It will work on machines with a guard
+ digit in add/subtract, or on those binary machines without guard
+ digits which subtract like the Cray X-MP, Cray Y-MP, Cray C-90, or
+ Cray-2. It could conceivably fail on hexadecimal or decimal machines
+ without guard digits, but we know of none.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOBZ\fP 
+.PP
+.nf
+          JOBZ is CHARACTER*1
+          = 'N':  Compute eigenvalues only;
+          = 'V':  Compute eigenvalues and eigenvectors.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix.  N >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          On entry, the n diagonal elements of the tridiagonal matrix
+          A.
+          On exit, if INFO = 0, the eigenvalues in ascending order.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (N-1)
+          On entry, the (n-1) subdiagonal elements of the tridiagonal
+          matrix A, stored in elements 1 to N-1 of E.
+          On exit, the contents of E are destroyed.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension (LDZ, N)
+          If JOBZ = 'V', then if INFO = 0, Z contains the orthonormal
+          eigenvectors of the matrix A, with the i-th column of Z
+          holding the eigenvector associated with D(i).
+          If JOBZ = 'N', then Z is not referenced.
+.fi
+.PP
+.br
+\fILDZ\fP 
+.PP
+.nf
+          LDZ is INTEGER
+          The leading dimension of the array Z.  LDZ >= 1, and if
+          JOBZ = 'V', LDZ >= max(1,N).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array,
+                                         dimension (LWORK)
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.
+          If JOBZ  = 'N' or N <= 1 then LWORK must be at least 1.
+          If JOBZ  = 'V' and N > 1 then LWORK must be at least
+                         ( 1 + 4*N + N**2 ).
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal sizes of the WORK and IWORK
+          arrays, returns these values as the first entries of the WORK
+          and IWORK arrays, and no error message related to LWORK or
+          LIWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (MAX(1,LIWORK))
+          On exit, if INFO = 0, IWORK(1) returns the optimal LIWORK.
+.fi
+.PP
+.br
+\fILIWORK\fP 
+.PP
+.nf
+          LIWORK is INTEGER
+          The dimension of the array IWORK.
+          If JOBZ  = 'N' or N <= 1 then LIWORK must be at least 1.
+          If JOBZ  = 'V' and N > 1 then LIWORK must be at least 3+5*N.
+
+          If LIWORK = -1, then a workspace query is assumed; the
+          routine only calculates the optimal sizes of the WORK and
+          IWORK arrays, returns these values as the first entries of
+          the WORK and IWORK arrays, and no error message related to
+          LWORK or LIWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+          > 0:  if INFO = i, the algorithm failed to converge; i
+                off-diagonal elements of E did not converge to zero.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 165 of file dstevd\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

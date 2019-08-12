@@ -1,0 +1,206 @@
+.TH "zgeev.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zgeev.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzgeev\fP (JOBVL, JOBVR, \fBN\fP, A, \fBLDA\fP, W, VL, LDVL, VR, LDVR, WORK, LWORK, RWORK, INFO)"
+.br
+.RI "\fB ZGEEV computes the eigenvalues and, optionally, the left and/or right eigenvectors for GE matrices\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zgeev (character JOBVL, character JOBVR, integer N, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( * ) W, complex*16, dimension( ldvl, * ) VL, integer LDVL, complex*16, dimension( ldvr, * ) VR, integer LDVR, complex*16, dimension( * ) WORK, integer LWORK, double precision, dimension( * ) RWORK, integer INFO)"
+
+.PP
+\fB ZGEEV computes the eigenvalues and, optionally, the left and/or right eigenvectors for GE matrices\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZGEEV computes for an N-by-N complex nonsymmetric matrix A, the
+ eigenvalues and, optionally, the left and/or right eigenvectors.
+
+ The right eigenvector v(j) of A satisfies
+                  A * v(j) = lambda(j) * v(j)
+ where lambda(j) is its eigenvalue.
+ The left eigenvector u(j) of A satisfies
+               u(j)**H * A = lambda(j) * u(j)**H
+ where u(j)**H denotes the conjugate transpose of u(j).
+
+ The computed eigenvectors are normalized to have Euclidean norm
+ equal to 1 and largest component real.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOBVL\fP 
+.PP
+.nf
+          JOBVL is CHARACTER*1
+          = 'N': left eigenvectors of A are not computed;
+          = 'V': left eigenvectors of are computed.
+.fi
+.PP
+.br
+\fIJOBVR\fP 
+.PP
+.nf
+          JOBVR is CHARACTER*1
+          = 'N': right eigenvectors of A are not computed;
+          = 'V': right eigenvectors of A are computed.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A. N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, the N-by-N matrix A.
+          On exit, A has been overwritten.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is COMPLEX*16 array, dimension (N)
+          W contains the computed eigenvalues.
+.fi
+.PP
+.br
+\fIVL\fP 
+.PP
+.nf
+          VL is COMPLEX*16 array, dimension (LDVL,N)
+          If JOBVL = 'V', the left eigenvectors u(j) are stored one
+          after another in the columns of VL, in the same order
+          as their eigenvalues.
+          If JOBVL = 'N', VL is not referenced.
+          u(j) = VL(:,j), the j-th column of VL.
+.fi
+.PP
+.br
+\fILDVL\fP 
+.PP
+.nf
+          LDVL is INTEGER
+          The leading dimension of the array VL.  LDVL >= 1; if
+          JOBVL = 'V', LDVL >= N.
+.fi
+.PP
+.br
+\fIVR\fP 
+.PP
+.nf
+          VR is COMPLEX*16 array, dimension (LDVR,N)
+          If JOBVR = 'V', the right eigenvectors v(j) are stored one
+          after another in the columns of VR, in the same order
+          as their eigenvalues.
+          If JOBVR = 'N', VR is not referenced.
+          v(j) = VR(:,j), the j-th column of VR.
+.fi
+.PP
+.br
+\fILDVR\fP 
+.PP
+.nf
+          LDVR is INTEGER
+          The leading dimension of the array VR.  LDVR >= 1; if
+          JOBVR = 'V', LDVR >= N.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.  LWORK >= max(1,2*N).
+          For good performance, LWORK must generally be larger.
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array, and no error
+          message related to LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is DOUBLE PRECISION array, dimension (2*N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+          > 0:  if INFO = i, the QR algorithm failed to compute all the
+                eigenvalues, and no eigenvectors have been computed;
+                elements and i+1:N of W contain eigenvalues which have
+                converged.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+
+.PP
+Definition at line 181 of file zgeev\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

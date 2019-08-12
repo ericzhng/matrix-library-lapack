@@ -1,0 +1,179 @@
+.TH "dlasd4.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlasd4.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlasd4\fP (\fBN\fP, I, D, Z, DELTA, RHO, SIGMA, WORK, INFO)"
+.br
+.RI "\fBDLASD4\fP computes the square root of the i-th updated eigenvalue of a positive symmetric rank-one modification to a positive diagonal matrix\&. Used by dbdsdc\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlasd4 (integer N, integer I, double precision, dimension( * ) D, double precision, dimension( * ) Z, double precision, dimension( * ) DELTA, double precision RHO, double precision SIGMA, double precision, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBDLASD4\fP computes the square root of the i-th updated eigenvalue of a positive symmetric rank-one modification to a positive diagonal matrix\&. Used by dbdsdc\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ This subroutine computes the square root of the I-th updated
+ eigenvalue of a positive symmetric rank-one modification to
+ a positive diagonal matrix whose entries are given as the squares
+ of the corresponding entries in the array d, and that
+
+        0 <= D(i) < D(j)  for  i < j
+
+ and that RHO > 0. This is arranged by the calling routine, and is
+ no loss in generality.  The rank-one modified system is thus
+
+        diag( D ) * diag( D ) +  RHO * Z * Z_transpose.
+
+ where we assume the Euclidean norm of Z is 1.
+
+ The method consists of approximating the rational functions in the
+ secular equation by simpler interpolating rational functions.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         The length of all arrays.
+.fi
+.PP
+.br
+\fII\fP 
+.PP
+.nf
+          I is INTEGER
+         The index of the eigenvalue to be computed.  1 <= I <= N.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension ( N )
+         The original eigenvalues.  It is assumed that they are in
+         order, 0 <= D(I) < D(J)  for I < J.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension ( N )
+         The components of the updating vector.
+.fi
+.PP
+.br
+\fIDELTA\fP 
+.PP
+.nf
+          DELTA is DOUBLE PRECISION array, dimension ( N )
+         If N .ne. 1, DELTA contains (D(j) - sigma_I) in its  j-th
+         component.  If N = 1, then DELTA(1) = 1.  The vector DELTA
+         contains the information necessary to construct the
+         (singular) eigenvectors.
+.fi
+.PP
+.br
+\fIRHO\fP 
+.PP
+.nf
+          RHO is DOUBLE PRECISION
+         The scalar in the symmetric updating formula.
+.fi
+.PP
+.br
+\fISIGMA\fP 
+.PP
+.nf
+          SIGMA is DOUBLE PRECISION
+         The computed sigma_I, the I-th updated eigenvalue.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension ( N )
+         If N .ne. 1, WORK contains (D(j) + sigma_I) in its  j-th
+         component.  If N = 1, then WORK( 1 ) = 1.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+         = 0:  successful exit
+         > 0:  if INFO = 1, the updating process failed.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBInternal Parameters: \fP
+.RS 4
+
+.PP
+.nf
+  Logical variable ORGATI (origin-at-i?) is used for distinguishing
+  whether D(i) or D(i+1) is treated as the origin.
+
+            ORGATI = .true.    origin at i
+            ORGATI = .false.   origin at i+1
+
+  Logical variable SWTCH3 (switch-for-3-poles?) is for noting
+  if we are working with THREE poles!
+
+  MAXIT is the maximum number of iterations allowed for each
+  eigenvalue.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ren-Cang Li, Computer Science Division, University of California at Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 155 of file dlasd4\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

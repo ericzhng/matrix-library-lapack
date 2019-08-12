@@ -1,0 +1,101 @@
+.TH "slasrt.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slasrt.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslasrt\fP (ID, \fBN\fP, D, INFO)"
+.br
+.RI "\fBSLASRT\fP sorts numbers in increasing or decreasing order\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slasrt (character ID, integer N, real, dimension( * ) D, integer INFO)"
+
+.PP
+\fBSLASRT\fP sorts numbers in increasing or decreasing order\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Sort the numbers in D in increasing order (if ID = 'I') or
+ in decreasing order (if ID = 'D' ).
+
+ Use Quick Sort, reverting to Insertion sort on arrays of
+ size <= 20. Dimension of STACK limits N to about 2**32.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIID\fP 
+.PP
+.nf
+          ID is CHARACTER*1
+          = 'I': sort D in increasing order;
+          = 'D': sort D in decreasing order.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The length of the array D.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+          On entry, the array to be sorted.
+          On exit, D has been sorted into increasing order
+          (D(1) <= ... <= D(N) ) or into decreasing order
+          (D(1) >= ... >= D(N) ), depending on ID.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file slasrt\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

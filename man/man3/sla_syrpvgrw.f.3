@@ -1,0 +1,141 @@
+.TH "sla_syrpvgrw.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sla_syrpvgrw.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "real function \fBsla_syrpvgrw\fP (UPLO, \fBN\fP, INFO, A, \fBLDA\fP, AF, LDAF, IPIV, WORK)"
+.br
+.RI "\fBSLA_SYRPVGRW\fP computes the reciprocal pivot growth factor norm(A)/norm(U) for a symmetric indefinite matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "real function sla_syrpvgrw (character*1 UPLO, integer N, integer INFO, real, dimension( lda, * ) A, integer LDA, real, dimension( ldaf, * ) AF, integer LDAF, integer, dimension( * ) IPIV, real, dimension( * ) WORK)"
+
+.PP
+\fBSLA_SYRPVGRW\fP computes the reciprocal pivot growth factor norm(A)/norm(U) for a symmetric indefinite matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLA_SYRPVGRW computes the reciprocal pivot growth factor
+ norm(A)/norm(U). The "max absolute element" norm is used. If this is
+ much less than 1, the stability of the LU factorization of the
+ (equilibrated) matrix A could be poor. This also means that the
+ solution X, estimated condition numbers, and error bounds could be
+ unreliable.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+       = 'U':  Upper triangle of A is stored;
+       = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+     The number of linear equations, i.e., the order of the
+     matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+     The value of INFO returned from SSYTRF, .i.e., the pivot in
+     column INFO is exactly 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA,N)
+     On entry, the N-by-N matrix A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+     The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIAF\fP 
+.PP
+.nf
+          AF is REAL array, dimension (LDAF,N)
+     The block diagonal matrix D and the multipliers used to
+     obtain the factor U or L as computed by SSYTRF.
+.fi
+.PP
+.br
+\fILDAF\fP 
+.PP
+.nf
+          LDAF is INTEGER
+     The leading dimension of the array AF.  LDAF >= max(1,N).
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+     Details of the interchanges and the block structure of D
+     as determined by SSYTRF.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (2*N)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 124 of file sla_syrpvgrw\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,314 @@
+.TH "dtgsy2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dtgsy2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdtgsy2\fP (TRANS, IJOB, M, \fBN\fP, A, \fBLDA\fP, B, \fBLDB\fP, C, LDC, D, LDD, E, LDE, F, LDF, SCALE, RDSUM, RDSCAL, IWORK, PQ, INFO)"
+.br
+.RI "\fBDTGSY2\fP solves the generalized Sylvester equation (unblocked algorithm)\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dtgsy2 (character TRANS, integer IJOB, integer M, integer N, double precision, dimension( lda, * ) A, integer LDA, double precision, dimension( ldb, * ) B, integer LDB, double precision, dimension( ldc, * ) C, integer LDC, double precision, dimension( ldd, * ) D, integer LDD, double precision, dimension( lde, * ) E, integer LDE, double precision, dimension( ldf, * ) F, integer LDF, double precision SCALE, double precision RDSUM, double precision RDSCAL, integer, dimension( * ) IWORK, integer PQ, integer INFO)"
+
+.PP
+\fBDTGSY2\fP solves the generalized Sylvester equation (unblocked algorithm)\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DTGSY2 solves the generalized Sylvester equation:
+
+             A * R - L * B = scale * C                (1)
+             D * R - L * E = scale * F,
+
+ using Level 1 and 2 BLAS. where R and L are unknown M-by-N matrices,
+ (A, D), (B, E) and (C, F) are given matrix pairs of size M-by-M,
+ N-by-N and M-by-N, respectively, with real entries. (A, D) and (B, E)
+ must be in generalized Schur canonical form, i.e. A, B are upper
+ quasi triangular and D, E are upper triangular. The solution (R, L)
+ overwrites (C, F). 0 <= SCALE <= 1 is an output scaling factor
+ chosen to avoid overflow.
+
+ In matrix notation solving equation (1) corresponds to solve
+ Z*x = scale*b, where Z is defined as
+
+        Z = [ kron(In, A)  -kron(B**T, Im) ]             (2)
+            [ kron(In, D)  -kron(E**T, Im) ],
+
+ Ik is the identity matrix of size k and X**T is the transpose of X.
+ kron(X, Y) is the Kronecker product between the matrices X and Y.
+ In the process of solving (1), we solve a number of such systems
+ where Dim(In), Dim(In) = 1 or 2.
+
+ If TRANS = 'T', solve the transposed system Z**T*y = scale*b for y,
+ which is equivalent to solve for R and L in
+
+             A**T * R  + D**T * L   = scale * C           (3)
+             R  * B**T + L  * E**T  = scale * -F
+
+ This case is used to compute an estimate of Dif[(A, D), (B, E)] =
+ sigma_min(Z) using reverse communicaton with DLACON.
+
+ DTGSY2 also (IJOB >= 1) contributes to the computation in DTGSYL
+ of an upper bound on the separation between to matrix pairs. Then
+ the input (A, D), (B, E) are sub-pencils of the matrix pair in
+ DTGSYL. See DTGSYL for details.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+          = 'N', solve the generalized Sylvester equation (1).
+          = 'T': solve the 'transposed' system (3).
+.fi
+.PP
+.br
+\fIIJOB\fP 
+.PP
+.nf
+          IJOB is INTEGER
+          Specifies what kind of functionality to be performed.
+          = 0: solve (1) only.
+          = 1: A contribution from this subsystem to a Frobenius
+               norm-based estimate of the separation between two matrix
+               pairs is computed. (look ahead strategy is used).
+          = 2: A contribution from this subsystem to a Frobenius
+               norm-based estimate of the separation between two matrix
+               pairs is computed. (DGECON on sub-systems is used.)
+          Not referenced if TRANS = 'T'.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          On entry, M specifies the order of A and D, and the row
+          dimension of C, F, R and L.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          On entry, N specifies the order of B and E, and the column
+          dimension of C, F, R and L.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA, M)
+          On entry, A contains an upper quasi triangular matrix.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the matrix A. LDA >= max(1, M).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB, N)
+          On entry, B contains an upper quasi triangular matrix.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the matrix B. LDB >= max(1, N).
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION array, dimension (LDC, N)
+          On entry, C contains the right-hand-side of the first matrix
+          equation in (1).
+          On exit, if IJOB = 0, C has been overwritten by the
+          solution R.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the matrix C. LDC >= max(1, M).
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (LDD, M)
+          On entry, D contains an upper triangular matrix.
+.fi
+.PP
+.br
+\fILDD\fP 
+.PP
+.nf
+          LDD is INTEGER
+          The leading dimension of the matrix D. LDD >= max(1, M).
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is DOUBLE PRECISION array, dimension (LDE, N)
+          On entry, E contains an upper triangular matrix.
+.fi
+.PP
+.br
+\fILDE\fP 
+.PP
+.nf
+          LDE is INTEGER
+          The leading dimension of the matrix E. LDE >= max(1, N).
+.fi
+.PP
+.br
+\fIF\fP 
+.PP
+.nf
+          F is DOUBLE PRECISION array, dimension (LDF, N)
+          On entry, F contains the right-hand-side of the second matrix
+          equation in (1).
+          On exit, if IJOB = 0, F has been overwritten by the
+          solution L.
+.fi
+.PP
+.br
+\fILDF\fP 
+.PP
+.nf
+          LDF is INTEGER
+          The leading dimension of the matrix F. LDF >= max(1, M).
+.fi
+.PP
+.br
+\fISCALE\fP 
+.PP
+.nf
+          SCALE is DOUBLE PRECISION
+          On exit, 0 <= SCALE <= 1. If 0 < SCALE < 1, the solutions
+          R and L (C and F on entry) will hold the solutions to a
+          slightly perturbed system but the input matrices A, B, D and
+          E have not been changed. If SCALE = 0, R and L will hold the
+          solutions to the homogeneous system with C = F = 0. Normally,
+          SCALE = 1.
+.fi
+.PP
+.br
+\fIRDSUM\fP 
+.PP
+.nf
+          RDSUM is DOUBLE PRECISION
+          On entry, the sum of squares of computed contributions to
+          the Dif-estimate under computation by DTGSYL, where the
+          scaling factor RDSCAL (see below) has been factored out.
+          On exit, the corresponding sum of squares updated with the
+          contributions from the current sub-system.
+          If TRANS = 'T' RDSUM is not touched.
+          NOTE: RDSUM only makes sense when DTGSY2 is called by DTGSYL.
+.fi
+.PP
+.br
+\fIRDSCAL\fP 
+.PP
+.nf
+          RDSCAL is DOUBLE PRECISION
+          On entry, scaling factor used to prevent overflow in RDSUM.
+          On exit, RDSCAL is updated w.r.t. the current contributions
+          in RDSUM.
+          If TRANS = 'T', RDSCAL is not touched.
+          NOTE: RDSCAL only makes sense when DTGSY2 is called by
+                DTGSYL.
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (M+N+2)
+.fi
+.PP
+.br
+\fIPQ\fP 
+.PP
+.nf
+          PQ is INTEGER
+          On exit, the number of subsystems (of size 2-by-2, 4-by-4 and
+          8-by-8) solved by this routine.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          On exit, if INFO is set to
+            =0: Successful exit
+            <0: If INFO = -i, the i-th argument had an illegal value.
+            >0: The matrix pairs (A, D) and (B, E) have common or very
+                close eigenvalues.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Bo Kagstrom and Peter Poromaa, Department of Computing Science, Umea University, S-901 87 Umea, Sweden\&. 
+.RE
+.PP
+
+.PP
+Definition at line 276 of file dtgsy2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

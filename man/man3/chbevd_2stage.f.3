@@ -1,0 +1,289 @@
+.TH "chbevd_2stage.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+chbevd_2stage.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBchbevd_2stage\fP (JOBZ, UPLO, \fBN\fP, KD, AB, LDAB, W, Z, LDZ, WORK, LWORK, RWORK, LRWORK, IWORK, LIWORK, INFO)"
+.br
+.RI "\fB CHBEVD_2STAGE computes the eigenvalues and, optionally, the left and/or right eigenvectors for OTHER matrices\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine chbevd_2stage (character JOBZ, character UPLO, integer N, integer KD, complex, dimension( ldab, * ) AB, integer LDAB, real, dimension( * ) W, complex, dimension( ldz, * ) Z, integer LDZ, complex, dimension( * ) WORK, integer LWORK, real, dimension( * ) RWORK, integer LRWORK, integer, dimension( * ) IWORK, integer LIWORK, integer INFO)"
+
+.PP
+\fB CHBEVD_2STAGE computes the eigenvalues and, optionally, the left and/or right eigenvectors for OTHER matrices\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CHBEVD_2STAGE computes all the eigenvalues and, optionally, eigenvectors of
+ a complex Hermitian band matrix A using the 2stage technique for
+ the reduction to tridiagonal.  If eigenvectors are desired, it
+ uses a divide and conquer algorithm.
+
+ The divide and conquer algorithm makes very mild assumptions about
+ floating point arithmetic. It will work on machines with a guard
+ digit in add/subtract, or on those binary machines without guard
+ digits which subtract like the Cray X-MP, Cray Y-MP, Cray C-90, or
+ Cray-2. It could conceivably fail on hexadecimal or decimal machines
+ without guard digits, but we know of none.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOBZ\fP 
+.PP
+.nf
+          JOBZ is CHARACTER*1
+          = 'N':  Compute eigenvalues only;
+          = 'V':  Compute eigenvalues and eigenvectors.
+                  Not available in this release.
+.fi
+.PP
+.br
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangle of A is stored;
+          = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIKD\fP 
+.PP
+.nf
+          KD is INTEGER
+          The number of superdiagonals of the matrix A if UPLO = 'U',
+          or the number of subdiagonals if UPLO = 'L'.  KD >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is COMPLEX array, dimension (LDAB, N)
+          On entry, the upper or lower triangle of the Hermitian band
+          matrix A, stored in the first KD+1 rows of the array.  The
+          j-th column of A is stored in the j-th column of the array AB
+          as follows:
+          if UPLO = 'U', AB(kd+1+i-j,j) = A(i,j) for max(1,j-kd)<=i<=j;
+          if UPLO = 'L', AB(1+i-j,j)    = A(i,j) for j<=i<=min(n,j+kd).
+
+          On exit, AB is overwritten by values generated during the
+          reduction to tridiagonal form.  If UPLO = 'U', the first
+          superdiagonal and the diagonal of the tridiagonal matrix T
+          are returned in rows KD and KD+1 of AB, and if UPLO = 'L',
+          the diagonal and first subdiagonal of T are returned in the
+          first two rows of AB.
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+          The leading dimension of the array AB.  LDAB >= KD + 1.
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is REAL array, dimension (N)
+          If INFO = 0, the eigenvalues in ascending order.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is COMPLEX array, dimension (LDZ, N)
+          If JOBZ = 'V', then if INFO = 0, Z contains the orthonormal
+          eigenvectors of the matrix A, with the i-th column of Z
+          holding the eigenvector associated with W(i).
+          If JOBZ = 'N', then Z is not referenced.
+.fi
+.PP
+.br
+\fILDZ\fP 
+.PP
+.nf
+          LDZ is INTEGER
+          The leading dimension of the array Z.  LDZ >= 1, and if
+          JOBZ = 'V', LDZ >= max(1,N).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The length of the array WORK. LWORK >= 1, when N <= 1;
+          otherwise  
+          If JOBZ = 'N' and N > 1, LWORK must be queried.
+                                   LWORK = MAX(1, dimension) where
+                                   dimension = (2KD+1)*N + KD*NTHREADS
+                                   where KD is the size of the band.
+                                   NTHREADS is the number of threads used when
+                                   openMP compilation is enabled, otherwise =1.
+          If JOBZ = 'V' and N > 1, LWORK must be queried. Not yet available.
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal sizes of the WORK, RWORK and
+          IWORK arrays, returns these values as the first entries of
+          the WORK, RWORK and IWORK arrays, and no error message
+          related to LWORK or LRWORK or LIWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is REAL array,
+                                         dimension (LRWORK)
+          On exit, if INFO = 0, RWORK(1) returns the optimal LRWORK.
+.fi
+.PP
+.br
+\fILRWORK\fP 
+.PP
+.nf
+          LRWORK is INTEGER
+          The dimension of array RWORK.
+          If N <= 1,               LRWORK must be at least 1.
+          If JOBZ = 'N' and N > 1, LRWORK must be at least N.
+          If JOBZ = 'V' and N > 1, LRWORK must be at least
+                        1 + 5*N + 2*N**2.
+
+          If LRWORK = -1, then a workspace query is assumed; the
+          routine only calculates the optimal sizes of the WORK, RWORK
+          and IWORK arrays, returns these values as the first entries
+          of the WORK, RWORK and IWORK arrays, and no error message
+          related to LWORK or LRWORK or LIWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (MAX(1,LIWORK))
+          On exit, if INFO = 0, IWORK(1) returns the optimal LIWORK.
+.fi
+.PP
+.br
+\fILIWORK\fP 
+.PP
+.nf
+          LIWORK is INTEGER
+          The dimension of array IWORK.
+          If JOBZ = 'N' or N <= 1, LIWORK must be at least 1.
+          If JOBZ = 'V' and N > 1, LIWORK must be at least 3 + 5*N .
+
+          If LIWORK = -1, then a workspace query is assumed; the
+          routine only calculates the optimal sizes of the WORK, RWORK
+          and IWORK arrays, returns these values as the first entries
+          of the WORK, RWORK and IWORK arrays, and no error message
+          related to LWORK or LRWORK or LIWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+          > 0:  if INFO = i, the algorithm failed to converge; i
+                off-diagonal elements of an intermediate tridiagonal
+                form did not converge to zero.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  All details about the 2stage techniques are available in:
+
+  Azzam Haidar, Hatem Ltaief, and Jack Dongarra.
+  Parallel reduction to condensed forms for symmetric eigenvalue problems
+  using aggregated fine-grained and memory-aware kernels. In Proceedings
+  of 2011 International Conference for High Performance Computing,
+  Networking, Storage and Analysis (SC '11), New York, NY, USA,
+  Article 8 , 11 pages.
+  http://doi.acm.org/10.1145/2063384.2063394
+
+  A. Haidar, J. Kurzak, P. Luszczek, 2013.
+  An improved parallel singular value algorithm and its implementation 
+  for multicore hardware, In Proceedings of 2013 International Conference
+  for High Performance Computing, Networking, Storage and Analysis (SC '13).
+  Denver, Colorado, USA, 2013.
+  Article 90, 12 pages.
+  http://doi.acm.org/10.1145/2503210.2503292
+
+  A. Haidar, R. Solca, S. Tomov, T. Schulthess and J. Dongarra.
+  A novel hybrid CPU-GPU generalized eigensolver for electronic structure 
+  calculations based on fine-grained memory aware tasks.
+  International Journal of High Performance Computing Applications.
+  Volume 28 Issue 2, Pages 196-209, May 2014.
+  http://hpc.sagepub.com/content/28/2/196 
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 262 of file chbevd_2stage\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

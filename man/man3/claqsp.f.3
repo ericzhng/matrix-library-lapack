@@ -1,0 +1,147 @@
+.TH "claqsp.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+claqsp.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclaqsp\fP (UPLO, \fBN\fP, AP, S, SCOND, AMAX, EQUED)"
+.br
+.RI "\fBCLAQSP\fP scales a symmetric/Hermitian matrix in packed storage, using scaling factors computed by sppequ\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine claqsp (character UPLO, integer N, complex, dimension( * ) AP, real, dimension( * ) S, real SCOND, real AMAX, character EQUED)"
+
+.PP
+\fBCLAQSP\fP scales a symmetric/Hermitian matrix in packed storage, using scaling factors computed by sppequ\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLAQSP equilibrates a symmetric matrix A using the scaling factors
+ in the vector S.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the upper or lower triangular part of the
+          symmetric matrix A is stored.
+          = 'U':  Upper triangular
+          = 'L':  Lower triangular
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIAP\fP 
+.PP
+.nf
+          AP is COMPLEX array, dimension (N*(N+1)/2)
+          On entry, the upper or lower triangle of the symmetric matrix
+          A, packed columnwise in a linear array.  The j-th column of A
+          is stored in the array AP as follows:
+          if UPLO = 'U', AP(i + (j-1)*j/2) = A(i,j) for 1<=i<=j;
+          if UPLO = 'L', AP(i + (j-1)*(2n-j)/2) = A(i,j) for j<=i<=n.
+
+          On exit, the equilibrated matrix:  diag(S) * A * diag(S), in
+          the same storage format as A.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is REAL array, dimension (N)
+          The scale factors for A.
+.fi
+.PP
+.br
+\fISCOND\fP 
+.PP
+.nf
+          SCOND is REAL
+          Ratio of the smallest S(i) to the largest S(i).
+.fi
+.PP
+.br
+\fIAMAX\fP 
+.PP
+.nf
+          AMAX is REAL
+          Absolute value of largest matrix entry.
+.fi
+.PP
+.br
+\fIEQUED\fP 
+.PP
+.nf
+          EQUED is CHARACTER*1
+          Specifies whether or not equilibration was done.
+          = 'N':  No equilibration.
+          = 'Y':  Equilibration was done, i.e., A has been replaced by
+                  diag(S) * A * diag(S).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBInternal Parameters: \fP
+.RS 4
+
+.PP
+.nf
+  THRESH is a threshold value used to decide if scaling should be done
+  based on the ratio of the scaling factors.  If SCOND < THRESH,
+  scaling is done.
+
+  LARGE and SMALL are threshold values used to decide if scaling should
+  be done based on the absolute size of the largest matrix element.
+  If AMAX > LARGE or AMAX < SMALL, scaling is done.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 128 of file claqsp\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

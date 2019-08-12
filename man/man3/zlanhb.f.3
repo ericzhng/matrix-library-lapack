@@ -1,0 +1,152 @@
+.TH "zlanhb.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlanhb.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "double precision function \fBzlanhb\fP (NORM, UPLO, \fBN\fP, K, AB, LDAB, WORK)"
+.br
+.RI "\fBZLANHB\fP returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a Hermitian band matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "double precision function zlanhb (character NORM, character UPLO, integer N, integer K, complex*16, dimension( ldab, * ) AB, integer LDAB, double precision, dimension( * ) WORK)"
+
+.PP
+\fBZLANHB\fP returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a Hermitian band matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLANHB  returns the value of the one norm,  or the Frobenius norm, or
+ the  infinity norm,  or the element of  largest absolute value  of an
+ n by n hermitian band matrix A,  with k super-diagonals.
+.fi
+.PP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+ZLANHB 
+.PP
+.nf
+    ZLANHB = ( max(abs(A(i,j))), NORM = 'M' or 'm'
+             (
+             ( norm1(A),         NORM = '1', 'O' or 'o'
+             (
+             ( normI(A),         NORM = 'I' or 'i'
+             (
+             ( normF(A),         NORM = 'F', 'f', 'E' or 'e'
+
+ where  norm1  denotes the  one norm of a matrix (maximum column sum),
+ normI  denotes the  infinity norm  of a matrix  (maximum row sum) and
+ normF  denotes the  Frobenius norm of a matrix (square root of sum of
+ squares).  Note that  max(abs(A(i,j)))  is not a consistent matrix norm.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fINORM\fP 
+.PP
+.nf
+          NORM is CHARACTER*1
+          Specifies the value to be returned in ZLANHB as described
+          above.
+.fi
+.PP
+.br
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          Specifies whether the upper or lower triangular part of the
+          band matrix A is supplied.
+          = 'U':  Upper triangular
+          = 'L':  Lower triangular
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.  When N = 0, ZLANHB is
+          set to zero.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The number of super-diagonals or sub-diagonals of the
+          band matrix A.  K >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is COMPLEX*16 array, dimension (LDAB,N)
+          The upper or lower triangle of the hermitian band matrix A,
+          stored in the first K+1 rows of AB.  The j-th column of A is
+          stored in the j-th column of the array AB as follows:
+          if UPLO = 'U', AB(k+1+i-j,j) = A(i,j) for max(1,j-k)<=i<=j;
+          if UPLO = 'L', AB(1+i-j,j)   = A(i,j) for j<=i<=min(n,j+k).
+          Note that the imaginary parts of the diagonal elements need
+          not be set and are assumed to be zero.
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+          The leading dimension of the array AB.  LDAB >= K+1.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (MAX(1,LWORK)),
+          where LWORK >= N when NORM = 'I' or '1' or 'O'; otherwise,
+          WORK is not referenced.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 134 of file zlanhb\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

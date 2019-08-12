@@ -1,0 +1,153 @@
+.TH "cla_porcond_c.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cla_porcond_c.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "real function \fBcla_porcond_c\fP (UPLO, \fBN\fP, A, \fBLDA\fP, AF, LDAF, C, CAPPLY, INFO, WORK, RWORK)"
+.br
+.RI "\fBCLA_PORCOND_C\fP computes the infinity norm condition number of op(A)*inv(diag(c)) for Hermitian positive-definite matrices\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "real function cla_porcond_c (character UPLO, integer N, complex, dimension( lda, * ) A, integer LDA, complex, dimension( ldaf, * ) AF, integer LDAF, real, dimension( * ) C, logical CAPPLY, integer INFO, complex, dimension( * ) WORK, real, dimension( * ) RWORK)"
+
+.PP
+\fBCLA_PORCOND_C\fP computes the infinity norm condition number of op(A)*inv(diag(c)) for Hermitian positive-definite matrices\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    CLA_PORCOND_C Computes the infinity norm condition number of
+    op(A) * inv(diag(C)) where C is a REAL vector
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+       = 'U':  Upper triangle of A is stored;
+       = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+     The number of linear equations, i.e., the order of the
+     matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+     On entry, the N-by-N matrix A
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+     The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIAF\fP 
+.PP
+.nf
+          AF is COMPLEX array, dimension (LDAF,N)
+     The triangular factor U or L from the Cholesky factorization
+     A = U**H*U or A = L*L**H, as computed by CPOTRF.
+.fi
+.PP
+.br
+\fILDAF\fP 
+.PP
+.nf
+          LDAF is INTEGER
+     The leading dimension of the array AF.  LDAF >= max(1,N).
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is REAL array, dimension (N)
+     The vector C in the formula op(A) * inv(diag(C)).
+.fi
+.PP
+.br
+\fICAPPLY\fP 
+.PP
+.nf
+          CAPPLY is LOGICAL
+     If .TRUE. then access the vector C in the formula above.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+       = 0:  Successful exit.
+     i > 0:  The ith argument is invalid.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (2*N).
+     Workspace.
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is REAL array, dimension (N).
+     Workspace.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+
+.PP
+Definition at line 132 of file cla_porcond_c\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,132 @@
+.TH "zptts2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zptts2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzptts2\fP (IUPLO, \fBN\fP, \fBNRHS\fP, D, E, B, \fBLDB\fP)"
+.br
+.RI "\fBZPTTS2\fP solves a tridiagonal system of the form AX=B using the L D LH factorization computed by spttrf\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zptts2 (integer IUPLO, integer N, integer NRHS, double precision, dimension( * ) D, complex*16, dimension( * ) E, complex*16, dimension( ldb, * ) B, integer LDB)"
+
+.PP
+\fBZPTTS2\fP solves a tridiagonal system of the form AX=B using the L D LH factorization computed by spttrf\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZPTTS2 solves a tridiagonal system of the form
+    A * X = B
+ using the factorization A = U**H *D*U or A = L*D*L**H computed by ZPTTRF.
+ D is a diagonal matrix specified in the vector D, U (or L) is a unit
+ bidiagonal matrix whose superdiagonal (subdiagonal) is specified in
+ the vector E, and X and B are N by NRHS matrices.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIIUPLO\fP 
+.PP
+.nf
+          IUPLO is INTEGER
+          Specifies the form of the factorization and whether the
+          vector E is the superdiagonal of the upper bidiagonal factor
+          U or the subdiagonal of the lower bidiagonal factor L.
+          = 1:  A = U**H *D*U, E is the superdiagonal of U
+          = 0:  A = L*D*L**H, E is the subdiagonal of L
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the tridiagonal matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrix B.  NRHS >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (N)
+          The n diagonal elements of the diagonal matrix D from the
+          factorization A = U**H *D*U or A = L*D*L**H.
+.fi
+.PP
+.br
+\fIE\fP 
+.PP
+.nf
+          E is COMPLEX*16 array, dimension (N-1)
+          If IUPLO = 1, the (n-1) superdiagonal elements of the unit
+          bidiagonal factor U from the factorization A = U**H*D*U.
+          If IUPLO = 0, the (n-1) subdiagonal elements of the unit
+          bidiagonal factor L from the factorization A = L*D*L**H.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX*16 array, dimension (LDB,NRHS)
+          On entry, the right hand side vectors B for the system of
+          linear equations.
+          On exit, the solution vectors, X.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+
+.PP
+Definition at line 115 of file zptts2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

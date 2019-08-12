@@ -1,0 +1,316 @@
+.TH "zlals0.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlals0.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlals0\fP (ICOMPQ, NL, NR, SQRE, \fBNRHS\fP, B, \fBLDB\fP, BX, LDBX, PERM, GIVPTR, GIVCOL, LDGCOL, GIVNUM, LDGNUM, POLES, DIFL, DIFR, Z, K, C, S, RWORK, INFO)"
+.br
+.RI "\fBZLALS0\fP applies back multiplying factors in solving the least squares problem using divide and conquer SVD approach\&. Used by sgelsd\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlals0 (integer ICOMPQ, integer NL, integer NR, integer SQRE, integer NRHS, complex*16, dimension( ldb, * ) B, integer LDB, complex*16, dimension( ldbx, * ) BX, integer LDBX, integer, dimension( * ) PERM, integer GIVPTR, integer, dimension( ldgcol, * ) GIVCOL, integer LDGCOL, double precision, dimension( ldgnum, * ) GIVNUM, integer LDGNUM, double precision, dimension( ldgnum, * ) POLES, double precision, dimension( * ) DIFL, double precision, dimension( ldgnum, * ) DIFR, double precision, dimension( * ) Z, integer K, double precision C, double precision S, double precision, dimension( * ) RWORK, integer INFO)"
+
+.PP
+\fBZLALS0\fP applies back multiplying factors in solving the least squares problem using divide and conquer SVD approach\&. Used by sgelsd\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLALS0 applies back the multiplying factors of either the left or the
+ right singular vector matrix of a diagonal matrix appended by a row
+ to the right hand side matrix B in solving the least squares problem
+ using the divide-and-conquer SVD approach.
+
+ For the left singular vector matrix, three types of orthogonal
+ matrices are involved:
+
+ (1L) Givens rotations: the number of such rotations is GIVPTR; the
+      pairs of columns/rows they were applied to are stored in GIVCOL;
+      and the C- and S-values of these rotations are stored in GIVNUM.
+
+ (2L) Permutation. The (NL+1)-st row of B is to be moved to the first
+      row, and for J=2:N, PERM(J)-th row of B is to be moved to the
+      J-th row.
+
+ (3L) The left singular vector matrix of the remaining matrix.
+
+ For the right singular vector matrix, four types of orthogonal
+ matrices are involved:
+
+ (1R) The right singular vector matrix of the remaining matrix.
+
+ (2R) If SQRE = 1, one extra Givens rotation to generate the right
+      null space.
+
+ (3R) The inverse transformation of (2L).
+
+ (4R) The inverse transformation of (1L).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIICOMPQ\fP 
+.PP
+.nf
+          ICOMPQ is INTEGER
+         Specifies whether singular vectors are to be computed in
+         factored form:
+         = 0: Left singular vector matrix.
+         = 1: Right singular vector matrix.
+.fi
+.PP
+.br
+\fINL\fP 
+.PP
+.nf
+          NL is INTEGER
+         The row dimension of the upper block. NL >= 1.
+.fi
+.PP
+.br
+\fINR\fP 
+.PP
+.nf
+          NR is INTEGER
+         The row dimension of the lower block. NR >= 1.
+.fi
+.PP
+.br
+\fISQRE\fP 
+.PP
+.nf
+          SQRE is INTEGER
+         = 0: the lower block is an NR-by-NR square matrix.
+         = 1: the lower block is an NR-by-(NR+1) rectangular matrix.
+
+         The bidiagonal matrix has row dimension N = NL + NR + 1,
+         and column dimension M = N + SQRE.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+         The number of columns of B and BX. NRHS must be at least 1.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX*16 array, dimension ( LDB, NRHS )
+         On input, B contains the right hand sides of the least
+         squares problem in rows 1 through M. On output, B contains
+         the solution X in rows 1 through N.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+         The leading dimension of B. LDB must be at least
+         max(1,MAX( M, N ) ).
+.fi
+.PP
+.br
+\fIBX\fP 
+.PP
+.nf
+          BX is COMPLEX*16 array, dimension ( LDBX, NRHS )
+.fi
+.PP
+.br
+\fILDBX\fP 
+.PP
+.nf
+          LDBX is INTEGER
+         The leading dimension of BX.
+.fi
+.PP
+.br
+\fIPERM\fP 
+.PP
+.nf
+          PERM is INTEGER array, dimension ( N )
+         The permutations (from deflation and sorting) applied
+         to the two blocks.
+.fi
+.PP
+.br
+\fIGIVPTR\fP 
+.PP
+.nf
+          GIVPTR is INTEGER
+         The number of Givens rotations which took place in this
+         subproblem.
+.fi
+.PP
+.br
+\fIGIVCOL\fP 
+.PP
+.nf
+          GIVCOL is INTEGER array, dimension ( LDGCOL, 2 )
+         Each pair of numbers indicates a pair of rows/columns
+         involved in a Givens rotation.
+.fi
+.PP
+.br
+\fILDGCOL\fP 
+.PP
+.nf
+          LDGCOL is INTEGER
+         The leading dimension of GIVCOL, must be at least N.
+.fi
+.PP
+.br
+\fIGIVNUM\fP 
+.PP
+.nf
+          GIVNUM is DOUBLE PRECISION array, dimension ( LDGNUM, 2 )
+         Each number indicates the C or S value used in the
+         corresponding Givens rotation.
+.fi
+.PP
+.br
+\fILDGNUM\fP 
+.PP
+.nf
+          LDGNUM is INTEGER
+         The leading dimension of arrays DIFR, POLES and
+         GIVNUM, must be at least K.
+.fi
+.PP
+.br
+\fIPOLES\fP 
+.PP
+.nf
+          POLES is DOUBLE PRECISION array, dimension ( LDGNUM, 2 )
+         On entry, POLES(1:K, 1) contains the new singular
+         values obtained from solving the secular equation, and
+         POLES(1:K, 2) is an array containing the poles in the secular
+         equation.
+.fi
+.PP
+.br
+\fIDIFL\fP 
+.PP
+.nf
+          DIFL is DOUBLE PRECISION array, dimension ( K ).
+         On entry, DIFL(I) is the distance between I-th updated
+         (undeflated) singular value and the I-th (undeflated) old
+         singular value.
+.fi
+.PP
+.br
+\fIDIFR\fP 
+.PP
+.nf
+          DIFR is DOUBLE PRECISION array, dimension ( LDGNUM, 2 ).
+         On entry, DIFR(I, 1) contains the distances between I-th
+         updated (undeflated) singular value and the I+1-th
+         (undeflated) old singular value. And DIFR(I, 2) is the
+         normalizing factor for the I-th right singular vector.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension ( K )
+         Contain the components of the deflation-adjusted updating row
+         vector.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+         Contains the dimension of the non-deflated matrix,
+         This is the order of the related secular equation. 1 <= K <=N.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION
+         C contains garbage if SQRE =0 and the C-value of a Givens
+         rotation related to the right null space if SQRE = 1.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is DOUBLE PRECISION
+         S contains garbage if SQRE =0 and the S-value of a Givens
+         rotation related to the right null space if SQRE = 1.
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is DOUBLE PRECISION array, dimension
+         ( K*(1+NRHS) + 2*NRHS )
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit.
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Ming Gu and Ren-Cang Li, Computer Science Division, University of California at Berkeley, USA 
+.br
+ Osni Marques, LBNL/NERSC, USA 
+.br
+ 
+.RE
+.PP
+
+.PP
+Definition at line 272 of file zlals0\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,97 @@
+.TH "zdrscl.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zdrscl.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzdrscl\fP (\fBN\fP, SA, SX, INCX)"
+.br
+.RI "\fBZDRSCL\fP multiplies a vector by the reciprocal of a real scalar\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zdrscl (integer N, double precision SA, complex*16, dimension( * ) SX, integer INCX)"
+
+.PP
+\fBZDRSCL\fP multiplies a vector by the reciprocal of a real scalar\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZDRSCL multiplies an n-element complex vector x by the real scalar
+ 1/a.  This is done without overflow or underflow as long as
+ the final result x/a does not overflow or underflow.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of components of the vector x.
+.fi
+.PP
+.br
+\fISA\fP 
+.PP
+.nf
+          SA is DOUBLE PRECISION
+          The scalar a which is used to divide each component of x.
+          SA must be >= 0, or the subroutine will divide by zero.
+.fi
+.PP
+.br
+\fISX\fP 
+.PP
+.nf
+          SX is COMPLEX*16 array, dimension
+                         (1+(N-1)*abs(INCX))
+          The n-element vector x.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between successive values of the vector SX.
+          > 0:  SX(1) = X(1) and SX(1+(i-1)*INCX) = x(i),     1< i<= n
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 86 of file zdrscl\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

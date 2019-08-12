@@ -1,0 +1,62 @@
+.TH "ilauplo.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ilauplo.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "integer function \fBilauplo\fP (UPLO)"
+.br
+.RI "\fBILAUPLO\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "integer function ilauplo (character UPLO)"
+
+.PP
+\fBILAUPLO\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ This subroutine translated from a character string specifying a
+ upper- or lower-triangular matrix to the relevant BLAST-specified
+ integer constant.
+
+ ILAUPLO returns an INTEGER.  If ILAUPLO < 0, then the input is not
+ a character indicating an upper- or lower-triangular matrix.
+ Otherwise ILAUPLO returns the constant value corresponding to UPLO.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 60 of file ilauplo\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,102 @@
+.TH "xerbla_array.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+xerbla_array.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBxerbla_array\fP (SRNAME_ARRAY, SRNAME_LEN, INFO)"
+.br
+.RI "\fBXERBLA_ARRAY\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine xerbla_array (character(1), dimension(srname_len) SRNAME_ARRAY, integer SRNAME_LEN, integer INFO)"
+
+.PP
+\fBXERBLA_ARRAY\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ XERBLA_ARRAY assists other languages in calling XERBLA, the LAPACK
+ and BLAS error handler.  Rather than taking a Fortran string argument
+ as the function's name, XERBLA_ARRAY takes an array of single
+ characters along with the array's length.  XERBLA_ARRAY then copies
+ up to 32 characters of that array into a Fortran string and passes
+ that to XERBLA.  If called with a non-positive SRNAME_LEN,
+ XERBLA_ARRAY will call XERBLA with a string of all blank characters.
+
+ Say some macro or other device makes XERBLA_ARRAY available to C99
+ by a name lapack_xerbla and with a common Fortran calling convention.
+ Then a C99 program could invoke XERBLA via:
+    {
+      int flen = strlen(__func__);
+      lapack_xerbla(__func__, &flen, &info);
+    }
+
+ Providing XERBLA_ARRAY is not necessary for intercepting LAPACK
+ errors.  XERBLA_ARRAY calls XERBLA.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISRNAME_ARRAY\fP 
+.PP
+.nf
+          SRNAME_ARRAY is CHARACTER(1) array, dimension (SRNAME_LEN)
+          The name of the routine which called XERBLA_ARRAY.
+.fi
+.PP
+.br
+\fISRNAME_LEN\fP 
+.PP
+.nf
+          SRNAME_LEN is INTEGER
+          The length of the name in SRNAME_ARRAY.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          The position of the invalid parameter in the parameter list
+          of the calling routine.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 92 of file SRC/xerbla_array\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

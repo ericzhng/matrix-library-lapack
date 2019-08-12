@@ -1,0 +1,456 @@
+.TH "utils Directory Reference" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+utils Directory Reference
+.SH SYNOPSIS
+.br
+.PP
+.SS "Files"
+
+.in +1c
+.ti -1c
+.RI "file \fBlapacke_c_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cge_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cge_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgg_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgg_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cgt_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_che_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_che_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chs_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_chs_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpf_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpf_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpo_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpo_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cpt_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_cst_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csy_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_csy_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctf_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctf_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctr_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ctr_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_d_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dge_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dge_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgg_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgg_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dgt_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dhs_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dhs_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpf_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpf_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpo_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpo_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dpt_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dst_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsy_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dsy_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtf_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtf_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtr_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_dtr_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_lsame\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_make_complex_double\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_make_complex_float\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_s_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sge_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sge_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgg_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgg_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sgt_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_shs_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_shs_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spf_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spf_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spo_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spo_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_spt_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_sst_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssy_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ssy_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stf_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stf_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_stp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_str_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_str_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_xerbla\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_z_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zge_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zge_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgg_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgg_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zgt_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhe_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhe_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhs_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zhs_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpf_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpf_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpo_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpo_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zpt_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zst_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsy_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_zsy_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztb_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztb_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztf_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztf_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztp_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztp_trans\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztr_nancheck\&.c\fP"
+.br
+.ti -1c
+.RI "file \fBlapacke_ztr_trans\&.c\fP"
+.br
+.in -1c

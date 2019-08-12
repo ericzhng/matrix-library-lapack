@@ -1,0 +1,127 @@
+.TH "zdrot.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zdrot.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzdrot\fP (\fBN\fP, CX, INCX, CY, INCY, C, S)"
+.br
+.RI "\fBZDROT\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zdrot (integer N, complex*16, dimension( * ) CX, integer INCX, complex*16, dimension( * ) CY, integer INCY, double precision C, double precision S)"
+
+.PP
+\fBZDROT\fP 
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Applies a plane rotation, where the cos and sin (c and s) are real
+ and the vectors cx and cy are complex.
+ jack dongarra, linpack, 3/11/78.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+           On entry, N specifies the order of the vectors cx and cy.
+           N must be at least zero.
+.fi
+.PP
+.br
+\fICX\fP 
+.PP
+.nf
+          CX is COMPLEX*16 array, dimension at least
+           ( 1 + ( N - 1 )*abs( INCX ) ).
+           Before entry, the incremented array CX must contain the n
+           element vector cx. On exit, CX is overwritten by the updated
+           vector cx.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+           On entry, INCX specifies the increment for the elements of
+           CX. INCX must not be zero.
+.fi
+.PP
+.br
+\fICY\fP 
+.PP
+.nf
+          CY is COMPLEX*16 array, dimension at least
+           ( 1 + ( N - 1 )*abs( INCY ) ).
+           Before entry, the incremented array CY must contain the n
+           element vector cy. On exit, CY is overwritten by the updated
+           vector cy.
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+           On entry, INCY specifies the increment for the elements of
+           CY. INCY must not be zero.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION
+           On entry, C specifies the cosine, cos.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is DOUBLE PRECISION
+           On entry, S specifies the sine, sin.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 100 of file zdrot\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

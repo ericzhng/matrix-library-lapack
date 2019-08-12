@@ -1,0 +1,200 @@
+.TH "zlaqps.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zlaqps.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzlaqps\fP (M, \fBN\fP, OFFSET, NB, KB, A, \fBLDA\fP, JPVT, TAU, VN1, VN2, AUXV, F, LDF)"
+.br
+.RI "\fBZLAQPS\fP computes a step of QR factorization with column pivoting of a real m-by-n matrix A by using BLAS level 3\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zlaqps (integer M, integer N, integer OFFSET, integer NB, integer KB, complex*16, dimension( lda, * ) A, integer LDA, integer, dimension( * ) JPVT, complex*16, dimension( * ) TAU, double precision, dimension( * ) VN1, double precision, dimension( * ) VN2, complex*16, dimension( * ) AUXV, complex*16, dimension( ldf, * ) F, integer LDF)"
+
+.PP
+\fBZLAQPS\fP computes a step of QR factorization with column pivoting of a real m-by-n matrix A by using BLAS level 3\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLAQPS computes a step of QR factorization with column pivoting
+ of a complex M-by-N matrix A by using Blas-3.  It tries to factorize
+ NB columns from A starting from the row OFFSET+1, and updates all
+ of the matrix with Blas-3 xGEMM.
+
+ In some cases, due to catastrophic cancellations, it cannot
+ factorize NB columns.  Hence, the actual number of factorized
+ columns is returned in KB.
+
+ Block A(1:OFFSET,1:N) is accordingly pivoted, but not factorized.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A. M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A. N >= 0
+.fi
+.PP
+.br
+\fIOFFSET\fP 
+.PP
+.nf
+          OFFSET is INTEGER
+          The number of rows of A that have been factorized in
+          previous steps.
+.fi
+.PP
+.br
+\fINB\fP 
+.PP
+.nf
+          NB is INTEGER
+          The number of columns to factorize.
+.fi
+.PP
+.br
+\fIKB\fP 
+.PP
+.nf
+          KB is INTEGER
+          The number of columns actually factorized.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, the M-by-N matrix A.
+          On exit, block A(OFFSET+1:M,1:KB) is the triangular
+          factor obtained and block A(1:OFFSET,1:N) has been
+          accordingly pivoted, but no factorized.
+          The rest of the matrix, block A(OFFSET+1:M,KB+1:N) has
+          been updated.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A. LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIJPVT\fP 
+.PP
+.nf
+          JPVT is INTEGER array, dimension (N)
+          JPVT(I) = K <==> Column K of the full matrix A has been
+          permuted into position I in AP.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is COMPLEX*16 array, dimension (KB)
+          The scalar factors of the elementary reflectors.
+.fi
+.PP
+.br
+\fIVN1\fP 
+.PP
+.nf
+          VN1 is DOUBLE PRECISION array, dimension (N)
+          The vector with the partial column norms.
+.fi
+.PP
+.br
+\fIVN2\fP 
+.PP
+.nf
+          VN2 is DOUBLE PRECISION array, dimension (N)
+          The vector with the exact column norms.
+.fi
+.PP
+.br
+\fIAUXV\fP 
+.PP
+.nf
+          AUXV is COMPLEX*16 array, dimension (NB)
+          Auxiliar vector.
+.fi
+.PP
+.br
+\fIF\fP 
+.PP
+.nf
+          F is COMPLEX*16 array, dimension (LDF,NB)
+          Matrix F**H = L * Y**H * A.
+.fi
+.PP
+.br
+\fILDF\fP 
+.PP
+.nf
+          LDF is INTEGER
+          The leading dimension of the array F. LDF >= max(1,N).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+G\&. Quintana-Orti, Depto\&. de Informatica, Universidad Jaime I, Spain X\&. Sun, Computer Science Dept\&., Duke University, USA 
+.br
+ Partial column norm updating strategy modified on April 2011 Z\&. Drmac and Z\&. Bujanovic, Dept\&. of Mathematics, University of Zagreb, Croatia\&. 
+.RE
+.PP
+\fBReferences: \fP
+.RS 4
+LAPACK Working Note 176  
+.RE
+.PP
+
+.PP
+Definition at line 179 of file zlaqps\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

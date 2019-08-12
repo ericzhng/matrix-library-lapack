@@ -1,0 +1,112 @@
+.TH "lapacke_config.h" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+lapacke_config.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <complex\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBlapack_int\fP   int"
+.br
+.ti -1c
+.RI "#define \fBlapack_logical\fP   \fBlapack_int\fP"
+.br
+.ti -1c
+.RI "#define \fBlapack_complex_float\fP   float _Complex"
+.br
+.ti -1c
+.RI "#define \fBlapack_complex_double\fP   double _Complex"
+.br
+.ti -1c
+.RI "#define \fBlapack_complex_float_real\fP(z)   (creal(z))"
+.br
+.ti -1c
+.RI "#define \fBlapack_complex_float_imag\fP(z)   (cimag(z))"
+.br
+.ti -1c
+.RI "#define \fBlapack_complex_double_real\fP(z)   (creal(z))"
+.br
+.ti -1c
+.RI "#define \fBlapack_complex_double_imag\fP(z)   (cimag(z))"
+.br
+.ti -1c
+.RI "#define \fBLAPACK_malloc\fP(size)   malloc( size )"
+.br
+.ti -1c
+.RI "#define \fBLAPACK_free\fP(p)   free( p )"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBlapack_complex_float\fP \fBlapack_make_complex_float\fP (float re, float im)"
+.br
+.ti -1c
+.RI "\fBlapack_complex_double\fP \fBlapack_make_complex_double\fP (double re, double im)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define lapack_complex_double   double _Complex"
+
+.PP
+Definition at line 94 of file lapacke_config\&.h\&.
+.SS "#define lapack_complex_double_imag(z)   (cimag(z))"
+
+.PP
+Definition at line 98 of file lapacke_config\&.h\&.
+.SS "#define lapack_complex_double_real(z)   (creal(z))"
+
+.PP
+Definition at line 97 of file lapacke_config\&.h\&.
+.SS "#define lapack_complex_float   float _Complex"
+
+.PP
+Definition at line 93 of file lapacke_config\&.h\&.
+.SS "#define lapack_complex_float_imag(z)   (cimag(z))"
+
+.PP
+Definition at line 96 of file lapacke_config\&.h\&.
+.SS "#define lapack_complex_float_real(z)   (creal(z))"
+
+.PP
+Definition at line 95 of file lapacke_config\&.h\&.
+.SS "#define LAPACK_free(p)   free( p )"
+
+.PP
+Definition at line 112 of file lapacke_config\&.h\&.
+.SS "#define lapack_int   int"
+
+.PP
+Definition at line 50 of file lapacke_config\&.h\&.
+.SS "#define lapack_logical   \fBlapack_int\fP"
+
+.PP
+Definition at line 55 of file lapacke_config\&.h\&.
+.SS "#define LAPACK_malloc(size)   malloc( size )"
+
+.PP
+Definition at line 108 of file lapacke_config\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBlapack_complex_double\fP lapack_make_complex_double (double re, double im)"
+
+.PP
+Definition at line 37 of file lapacke_make_complex_double\&.c\&.
+.SS "\fBlapack_complex_float\fP lapack_make_complex_float (float re, float im)"
+
+.PP
+Definition at line 37 of file lapacke_make_complex_float\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

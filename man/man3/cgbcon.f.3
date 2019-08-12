@@ -1,0 +1,171 @@
+.TH "cgbcon.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cgbcon.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcgbcon\fP (NORM, \fBN\fP, KL, KU, AB, LDAB, IPIV, ANORM, RCOND, WORK, RWORK, INFO)"
+.br
+.RI "\fBCGBCON\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cgbcon (character NORM, integer N, integer KL, integer KU, complex, dimension( ldab, * ) AB, integer LDAB, integer, dimension( * ) IPIV, real ANORM, real RCOND, complex, dimension( * ) WORK, real, dimension( * ) RWORK, integer INFO)"
+
+.PP
+\fBCGBCON\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CGBCON estimates the reciprocal of the condition number of a complex
+ general band matrix A, in either the 1-norm or the infinity-norm,
+ using the LU factorization computed by CGBTRF.
+
+ An estimate is obtained for norm(inv(A)), and the reciprocal of the
+ condition number is computed as
+    RCOND = 1 / ( norm(A) * norm(inv(A)) ).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fINORM\fP 
+.PP
+.nf
+          NORM is CHARACTER*1
+          Specifies whether the 1-norm condition number or the
+          infinity-norm condition number is required:
+          = '1' or 'O':  1-norm;
+          = 'I':         Infinity-norm.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIKL\fP 
+.PP
+.nf
+          KL is INTEGER
+          The number of subdiagonals within the band of A.  KL >= 0.
+.fi
+.PP
+.br
+\fIKU\fP 
+.PP
+.nf
+          KU is INTEGER
+          The number of superdiagonals within the band of A.  KU >= 0.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is COMPLEX array, dimension (LDAB,N)
+          Details of the LU factorization of the band matrix A, as
+          computed by CGBTRF.  U is stored as an upper triangular band
+          matrix with KL+KU superdiagonals in rows 1 to KL+KU+1, and
+          the multipliers used during the factorization are stored in
+          rows KL+KU+2 to 2*KL+KU+1.
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+          The leading dimension of the array AB.  LDAB >= 2*KL+KU+1.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          The pivot indices; for 1 <= i <= N, row i of the matrix was
+          interchanged with row IPIV(i).
+.fi
+.PP
+.br
+\fIANORM\fP 
+.PP
+.nf
+          ANORM is REAL
+          If NORM = '1' or 'O', the 1-norm of the original matrix A.
+          If NORM = 'I', the infinity-norm of the original matrix A.
+.fi
+.PP
+.br
+\fIRCOND\fP 
+.PP
+.nf
+          RCOND is REAL
+          The reciprocal of the condition number of the matrix A,
+          computed as RCOND = 1/(norm(A) * norm(inv(A))).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (2*N)
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is REAL array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file cgbcon\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

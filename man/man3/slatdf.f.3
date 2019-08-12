@@ -1,0 +1,191 @@
+.TH "slatdf.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slatdf.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslatdf\fP (IJOB, \fBN\fP, Z, LDZ, RHS, RDSUM, RDSCAL, IPIV, JPIV)"
+.br
+.RI "\fBSLATDF\fP uses the LU factorization of the n-by-n matrix computed by sgetc2 and computes a contribution to the reciprocal Dif-estimate\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slatdf (integer IJOB, integer N, real, dimension( ldz, * ) Z, integer LDZ, real, dimension( * ) RHS, real RDSUM, real RDSCAL, integer, dimension( * ) IPIV, integer, dimension( * ) JPIV)"
+
+.PP
+\fBSLATDF\fP uses the LU factorization of the n-by-n matrix computed by sgetc2 and computes a contribution to the reciprocal Dif-estimate\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLATDF uses the LU factorization of the n-by-n matrix Z computed by
+ SGETC2 and computes a contribution to the reciprocal Dif-estimate
+ by solving Z * x = b for x, and choosing the r.h.s. b such that
+ the norm of x is as large as possible. On entry RHS = b holds the
+ contribution from earlier solved sub-systems, and on return RHS = x.
+
+ The factorization of Z returned by SGETC2 has the form Z = P*L*U*Q,
+ where P and Q are permutation matrices. L is lower triangular with
+ unit diagonal elements and U is upper triangular.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIIJOB\fP 
+.PP
+.nf
+          IJOB is INTEGER
+          IJOB = 2: First compute an approximative null-vector e
+              of Z using SGECON, e is normalized and solve for
+              Zx = +-e - f with the sign giving the greater value
+              of 2-norm(x). About 5 times as expensive as Default.
+          IJOB .ne. 2: Local look ahead strategy where all entries of
+              the r.h.s. b is chosen as either +1 or -1 (Default).
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix Z.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is REAL array, dimension (LDZ, N)
+          On entry, the LU part of the factorization of the n-by-n
+          matrix Z computed by SGETC2:  Z = P * L * U * Q
+.fi
+.PP
+.br
+\fILDZ\fP 
+.PP
+.nf
+          LDZ is INTEGER
+          The leading dimension of the array Z.  LDA >= max(1, N).
+.fi
+.PP
+.br
+\fIRHS\fP 
+.PP
+.nf
+          RHS is REAL array, dimension N.
+          On entry, RHS contains contributions from other subsystems.
+          On exit, RHS contains the solution of the subsystem with
+          entries acoording to the value of IJOB (see above).
+.fi
+.PP
+.br
+\fIRDSUM\fP 
+.PP
+.nf
+          RDSUM is REAL
+          On entry, the sum of squares of computed contributions to
+          the Dif-estimate under computation by STGSYL, where the
+          scaling factor RDSCAL (see below) has been factored out.
+          On exit, the corresponding sum of squares updated with the
+          contributions from the current sub-system.
+          If TRANS = 'T' RDSUM is not touched.
+          NOTE: RDSUM only makes sense when STGSY2 is called by STGSYL.
+.fi
+.PP
+.br
+\fIRDSCAL\fP 
+.PP
+.nf
+          RDSCAL is REAL
+          On entry, scaling factor used to prevent overflow in RDSUM.
+          On exit, RDSCAL is updated w.r.t. the current contributions
+          in RDSUM.
+          If TRANS = 'T', RDSCAL is not touched.
+          NOTE: RDSCAL only makes sense when STGSY2 is called by
+                STGSYL.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N).
+          The pivot indices; for 1 <= i <= N, row i of the
+          matrix has been interchanged with row IPIV(i).
+.fi
+.PP
+.br
+\fIJPIV\fP 
+.PP
+.nf
+          JPIV is INTEGER array, dimension (N).
+          The pivot indices; for 1 <= j <= N, column j of the
+          matrix has been interchanged with column JPIV(j).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+This routine is a further developed implementation of algorithm BSOLVE in [1] using complete pivoting in the LU factorization\&. 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Bo Kagstrom and Peter Poromaa, Department of Computing Science, Umea University, S-901 87 Umea, Sweden\&. 
+.RE
+.PP
+\fBReferences: \fP
+.RS 4
+
+.PP
+.nf
+  [1] Bo Kagstrom and Lars Westin,
+      Generalized Schur Methods with Condition Estimators for
+      Solving the Generalized Sylvester Equation, IEEE Transactions
+      on Automatic Control, Vol. 34, No. 7, July 1989, pp 745-751.
+
+  [2] Peter Poromaa,
+      On Efficient and Robust Estimators for the Separation
+      between two Regular Matrix Pairs with Applications in
+      Condition Estimation. Report IMINF-95.05, Departement of
+      Computing Science, Umea University, S-901 87 Umea, Sweden, 1995.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 173 of file slatdf\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,317 @@
+.TH "dgges3.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dgges3.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdgges3\fP (JOBVSL, JOBVSR, SORT, SELCTG, \fBN\fP, A, \fBLDA\fP, B, \fBLDB\fP, SDIM, ALPHAR, ALPHAI, BETA, VSL, LDVSL, VSR, LDVSR, WORK, LWORK, BWORK, INFO)"
+.br
+.RI "\fB DGGES3 computes the eigenvalues, the Schur form, and, optionally, the matrix of Schur vectors for GE matrices (blocked algorithm)\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dgges3 (character JOBVSL, character JOBVSR, character SORT, external SELCTG, integer N, double precision, dimension( lda, * ) A, integer LDA, double precision, dimension( ldb, * ) B, integer LDB, integer SDIM, double precision, dimension( * ) ALPHAR, double precision, dimension( * ) ALPHAI, double precision, dimension( * ) BETA, double precision, dimension( ldvsl, * ) VSL, integer LDVSL, double precision, dimension( ldvsr, * ) VSR, integer LDVSR, double precision, dimension( * ) WORK, integer LWORK, logical, dimension( * ) BWORK, integer INFO)"
+
+.PP
+\fB DGGES3 computes the eigenvalues, the Schur form, and, optionally, the matrix of Schur vectors for GE matrices (blocked algorithm)\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DGGES3 computes for a pair of N-by-N real nonsymmetric matrices (A,B),
+ the generalized eigenvalues, the generalized real Schur form (S,T),
+ optionally, the left and/or right matrices of Schur vectors (VSL and
+ VSR). This gives the generalized Schur factorization
+
+          (A,B) = ( (VSL)*S*(VSR)**T, (VSL)*T*(VSR)**T )
+
+ Optionally, it also orders the eigenvalues so that a selected cluster
+ of eigenvalues appears in the leading diagonal blocks of the upper
+ quasi-triangular matrix S and the upper triangular matrix T.The
+ leading columns of VSL and VSR then form an orthonormal basis for the
+ corresponding left and right eigenspaces (deflating subspaces).
+
+ (If only the generalized eigenvalues are needed, use the driver
+ DGGEV instead, which is faster.)
+
+ A generalized eigenvalue for a pair of matrices (A,B) is a scalar w
+ or a ratio alpha/beta = w, such that  A - w*B is singular.  It is
+ usually represented as the pair (alpha,beta), as there is a
+ reasonable interpretation for beta=0 or both being zero.
+
+ A pair of matrices (S,T) is in generalized real Schur form if T is
+ upper triangular with non-negative diagonal and S is block upper
+ triangular with 1-by-1 and 2-by-2 blocks.  1-by-1 blocks correspond
+ to real generalized eigenvalues, while 2-by-2 blocks of S will be
+ "standardized" by making the corresponding elements of T have the
+ form:
+         [  a  0  ]
+         [  0  b  ]
+
+ and the pair of corresponding 2-by-2 blocks in S and T will have a
+ complex conjugate pair of generalized eigenvalues.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOBVSL\fP 
+.PP
+.nf
+          JOBVSL is CHARACTER*1
+          = 'N':  do not compute the left Schur vectors;
+          = 'V':  compute the left Schur vectors.
+.fi
+.PP
+.br
+\fIJOBVSR\fP 
+.PP
+.nf
+          JOBVSR is CHARACTER*1
+          = 'N':  do not compute the right Schur vectors;
+          = 'V':  compute the right Schur vectors.
+.fi
+.PP
+.br
+\fISORT\fP 
+.PP
+.nf
+          SORT is CHARACTER*1
+          Specifies whether or not to order the eigenvalues on the
+          diagonal of the generalized Schur form.
+          = 'N':  Eigenvalues are not ordered;
+          = 'S':  Eigenvalues are ordered (see SELCTG);
+.fi
+.PP
+.br
+\fISELCTG\fP 
+.PP
+.nf
+          SELCTG is a LOGICAL FUNCTION of three DOUBLE PRECISION arguments
+          SELCTG must be declared EXTERNAL in the calling subroutine.
+          If SORT = 'N', SELCTG is not referenced.
+          If SORT = 'S', SELCTG is used to select eigenvalues to sort
+          to the top left of the Schur form.
+          An eigenvalue (ALPHAR(j)+ALPHAI(j))/BETA(j) is selected if
+          SELCTG(ALPHAR(j),ALPHAI(j),BETA(j)) is true; i.e. if either
+          one of a complex conjugate pair of eigenvalues is selected,
+          then both complex eigenvalues are selected.
+
+          Note that in the ill-conditioned case, a selected complex
+          eigenvalue may no longer satisfy SELCTG(ALPHAR(j),ALPHAI(j),
+          BETA(j)) = .TRUE. after ordering. INFO is to be set to N+2
+          in this case.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrices A, B, VSL, and VSR.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA, N)
+          On entry, the first of the pair of matrices.
+          On exit, A has been overwritten by its generalized Schur
+          form S.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB, N)
+          On entry, the second of the pair of matrices.
+          On exit, B has been overwritten by its generalized Schur
+          form T.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fISDIM\fP 
+.PP
+.nf
+          SDIM is INTEGER
+          If SORT = 'N', SDIM = 0.
+          If SORT = 'S', SDIM = number of eigenvalues (after sorting)
+          for which SELCTG is true.  (Complex conjugate pairs for which
+          SELCTG is true for either eigenvalue count as 2.)
+.fi
+.PP
+.br
+\fIALPHAR\fP 
+.PP
+.nf
+          ALPHAR is DOUBLE PRECISION array, dimension (N)
+.fi
+.PP
+.br
+\fIALPHAI\fP 
+.PP
+.nf
+          ALPHAI is DOUBLE PRECISION array, dimension (N)
+.fi
+.PP
+.br
+\fIBETA\fP 
+.PP
+.nf
+          BETA is DOUBLE PRECISION array, dimension (N)
+          On exit, (ALPHAR(j) + ALPHAI(j)*i)/BETA(j), j=1,...,N, will
+          be the generalized eigenvalues.  ALPHAR(j) + ALPHAI(j)*i,
+          and  BETA(j),j=1,...,N are the diagonals of the complex Schur
+          form (S,T) that would result if the 2-by-2 diagonal blocks of
+          the real Schur form of (A,B) were further reduced to
+          triangular form using 2-by-2 complex unitary transformations.
+          If ALPHAI(j) is zero, then the j-th eigenvalue is real; if
+          positive, then the j-th and (j+1)-st eigenvalues are a
+          complex conjugate pair, with ALPHAI(j+1) negative.
+
+          Note: the quotients ALPHAR(j)/BETA(j) and ALPHAI(j)/BETA(j)
+          may easily over- or underflow, and BETA(j) may even be zero.
+          Thus, the user should avoid naively computing the ratio.
+          However, ALPHAR and ALPHAI will be always less than and
+          usually comparable with norm(A) in magnitude, and BETA always
+          less than and usually comparable with norm(B).
+.fi
+.PP
+.br
+\fIVSL\fP 
+.PP
+.nf
+          VSL is DOUBLE PRECISION array, dimension (LDVSL,N)
+          If JOBVSL = 'V', VSL will contain the left Schur vectors.
+          Not referenced if JOBVSL = 'N'.
+.fi
+.PP
+.br
+\fILDVSL\fP 
+.PP
+.nf
+          LDVSL is INTEGER
+          The leading dimension of the matrix VSL. LDVSL >=1, and
+          if JOBVSL = 'V', LDVSL >= N.
+.fi
+.PP
+.br
+\fIVSR\fP 
+.PP
+.nf
+          VSR is DOUBLE PRECISION array, dimension (LDVSR,N)
+          If JOBVSR = 'V', VSR will contain the right Schur vectors.
+          Not referenced if JOBVSR = 'N'.
+.fi
+.PP
+.br
+\fILDVSR\fP 
+.PP
+.nf
+          LDVSR is INTEGER
+          The leading dimension of the matrix VSR. LDVSR >= 1, and
+          if JOBVSR = 'V', LDVSR >= N.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array, and no error
+          message related to LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIBWORK\fP 
+.PP
+.nf
+          BWORK is LOGICAL array, dimension (N)
+          Not referenced if SORT = 'N'.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value.
+          = 1,...,N:
+                The QZ iteration failed.  (A,B) are not in Schur
+                form, but ALPHAR(j), ALPHAI(j), and BETA(j) should
+                be correct for j=INFO+1,...,N.
+          > N:  =N+1: other than QZ iteration failed in DHGEQZ.
+                =N+2: after reordering, roundoff changed values of
+                      some complex eigenvalues so that leading
+                      eigenvalues in the Generalized Schur form no
+                      longer satisfy SELCTG=.TRUE.  This could also
+                      be caused due to scaling.
+                =N+3: reordering failed in DTGSEN.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+January 2015 
+.RE
+.PP
+
+.PP
+Definition at line 284 of file dgges3\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

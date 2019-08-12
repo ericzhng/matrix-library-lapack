@@ -1,0 +1,205 @@
+.TH "ctgex2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ctgex2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBctgex2\fP (WANTQ, WANTZ, \fBN\fP, A, \fBLDA\fP, B, \fBLDB\fP, Q, LDQ, Z, LDZ, J1, INFO)"
+.br
+.RI "\fBCTGEX2\fP swaps adjacent diagonal blocks in an upper (quasi) triangular matrix pair by an unitary equivalence transformation\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine ctgex2 (logical WANTQ, logical WANTZ, integer N, complex, dimension( lda, * ) A, integer LDA, complex, dimension( ldb, * ) B, integer LDB, complex, dimension( ldq, * ) Q, integer LDQ, complex, dimension( ldz, * ) Z, integer LDZ, integer J1, integer INFO)"
+
+.PP
+\fBCTGEX2\fP swaps adjacent diagonal blocks in an upper (quasi) triangular matrix pair by an unitary equivalence transformation\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CTGEX2 swaps adjacent diagonal 1 by 1 blocks (A11,B11) and (A22,B22)
+ in an upper triangular matrix pair (A, B) by an unitary equivalence
+ transformation.
+
+ (A, B) must be in generalized Schur canonical form, that is, A and
+ B are both upper triangular.
+
+ Optionally, the matrices Q and Z of generalized Schur vectors are
+ updated.
+
+        Q(in) * A(in) * Z(in)**H = Q(out) * A(out) * Z(out)**H
+        Q(in) * B(in) * Z(in)**H = Q(out) * B(out) * Z(out)**H
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIWANTQ\fP 
+.PP
+.nf
+          WANTQ is LOGICAL
+          .TRUE. : update the left transformation matrix Q;
+          .FALSE.: do not update Q.
+.fi
+.PP
+.br
+\fIWANTZ\fP 
+.PP
+.nf
+          WANTZ is LOGICAL
+          .TRUE. : update the right transformation matrix Z;
+          .FALSE.: do not update Z.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrices A and B. N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX array, dimension (LDA,N)
+          On entry, the matrix A in the pair (A, B).
+          On exit, the updated matrix A.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A. LDA >= max(1,N).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX array, dimension (LDB,N)
+          On entry, the matrix B in the pair (A, B).
+          On exit, the updated matrix B.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B. LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIQ\fP 
+.PP
+.nf
+          Q is COMPLEX array, dimension (LDQ,N)
+          If WANTQ = .TRUE, on entry, the unitary matrix Q. On exit,
+          the updated matrix Q.
+          Not referenced if WANTQ = .FALSE..
+.fi
+.PP
+.br
+\fILDQ\fP 
+.PP
+.nf
+          LDQ is INTEGER
+          The leading dimension of the array Q. LDQ >= 1;
+          If WANTQ = .TRUE., LDQ >= N.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is COMPLEX array, dimension (LDZ,N)
+          If WANTZ = .TRUE, on entry, the unitary matrix Z. On exit,
+          the updated matrix Z.
+          Not referenced if WANTZ = .FALSE..
+.fi
+.PP
+.br
+\fILDZ\fP 
+.PP
+.nf
+          LDZ is INTEGER
+          The leading dimension of the array Z. LDZ >= 1;
+          If WANTZ = .TRUE., LDZ >= N.
+.fi
+.PP
+.br
+\fIJ1\fP 
+.PP
+.nf
+          J1 is INTEGER
+          The index to the first block (A11, B11).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+           =0:  Successful exit.
+           =1:  The transformed matrix pair (A, B) would be too far
+                from generalized Schur form; the problem is ill-
+                conditioned.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+In the current code both weak and strong stability tests are performed\&. The user can omit the strong stability test by changing the internal logical parameter WANDS to \&.FALSE\&.\&. See ref\&. [2] for details\&. 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Bo Kagstrom and Peter Poromaa, Department of Computing Science, Umea University, S-901 87 Umea, Sweden\&. 
+.RE
+.PP
+\fBReferences: \fP
+.RS 4
+[1] B\&. Kagstrom; A Direct Method for Reordering Eigenvalues in the Generalized Real Schur Form of a Regular Matrix Pair (A, B), in M\&.S\&. Moonen et al (eds), Linear Algebra for Large Scale and Real-Time Applications, Kluwer Academic Publ\&. 1993, pp 195-218\&. 
+.br
+ [2] B\&. Kagstrom and P\&. Poromaa; Computing Eigenspaces with Specified Eigenvalues of a Regular Matrix Pair (A, B) and Condition Estimation: Theory, Algorithms and Software, Report UMINF-94\&.04, Department of Computing Science, Umea University, S-901 87 Umea, Sweden, 1994\&. Also as LAPACK Working Note 87\&. To appear in Numerical Algorithms, 1996\&. 
+.RE
+.PP
+
+.PP
+Definition at line 192 of file ctgex2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,109 @@
+.TH "slaruv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaruv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslaruv\fP (ISEED, \fBN\fP, X)"
+.br
+.RI "\fBSLARUV\fP returns a vector of n random real numbers from a uniform distribution\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slaruv (integer, dimension( 4 ) ISEED, integer N, real, dimension( n ) X)"
+
+.PP
+\fBSLARUV\fP returns a vector of n random real numbers from a uniform distribution\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLARUV returns a vector of n random real numbers from a uniform (0,1)
+ distribution (n <= 128).
+
+ This is an auxiliary routine called by SLARNV and CLARNV.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIISEED\fP 
+.PP
+.nf
+          ISEED is INTEGER array, dimension (4)
+          On entry, the seed of the random number generator; the array
+          elements must be between 0 and 4095, and ISEED(4) must be
+          odd.
+          On exit, the seed is updated.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of random numbers to be generated. N <= 128.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is REAL array, dimension (N)
+          The generated random numbers.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  This routine uses a multiplicative congruential method with modulus
+  2**48 and multiplier 33952834046453 (see G.S.Fishman,
+  'Multiplicative congruential random number generators with modulus
+  2**b: an exhaustive analysis for b = 32 and a partial analysis for
+  b = 48', Math. Comp. 189, pp 331-344, 1990).
+
+  48-bit integers are stored in 4 integer array elements with 12 bits
+  per element. Hence the routine is portable across machines with
+  integers of 32 bits or more.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file slaruv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

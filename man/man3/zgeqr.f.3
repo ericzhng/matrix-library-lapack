@@ -1,0 +1,166 @@
+.TH "zgeqr.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zgeqr.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzgeqr\fP (M, \fBN\fP, A, \fBLDA\fP, T, TSIZE, WORK, LWORK, INFO)"
+.br
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zgeqr (integer M, integer N, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( * ) T, integer TSIZE, complex*16, dimension( * ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fBPurpose:\fP
+.RS 4
+ZGEQR computes a QR factorization of an M-by-N matrix A\&.  
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, the M-by-N matrix A.
+          On exit, the elements on and above the diagonal of the array
+          contain the min(M,N)-by-N upper trapezoidal matrix R
+          (R is upper triangular if M >= N);
+          the elements below the diagonal are used to store part of the 
+          data structure to represent Q.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is COMPLEX*16 array, dimension (MAX(5,TSIZE))
+          On exit, if INFO = 0, T(1) returns optimal (or either minimal 
+          or optimal, if query is assumed) TSIZE. See TSIZE for details.
+          Remaining T contains part of the data structure used to represent Q.
+          If one wants to apply or construct Q, then one needs to keep T 
+          (in addition to A) and pass it to further subroutines.
+.fi
+.PP
+.br
+\fITSIZE\fP 
+.PP
+.nf
+          TSIZE is INTEGER
+          If TSIZE >= 5, the dimension of the array T.
+          If TSIZE = -1 or -2, then a workspace query is assumed. The routine
+          only calculates the sizes of the T and WORK arrays, returns these
+          values as the first entries of the T and WORK arrays, and no error
+          message related to T or WORK is issued by XERBLA.
+          If TSIZE = -1, the routine calculates optimal size of T for the 
+          optimum performance and returns this value in T(1).
+          If TSIZE = -2, the routine calculates minimal size of T and 
+          returns this value in T(1).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          (workspace) COMPLEX*16 array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) contains optimal (or either minimal
+          or optimal, if query was assumed) LWORK.
+          See LWORK for details.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.
+          If LWORK = -1 or -2, then a workspace query is assumed. The routine
+          only calculates the sizes of the T and WORK arrays, returns these
+          values as the first entries of the T and WORK arrays, and no error
+          message related to T or WORK is issued by XERBLA.
+          If LWORK = -1, the routine calculates optimal size of WORK for the
+          optimal performance and returns this value in WORK(1).
+          If LWORK = -2, the routine calculates minimal size of WORK and 
+          returns this value in WORK(1).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBFurther Details\fP
+.RS 4
+
+.RE
+.PP
+The goal of the interface is to give maximum freedom to the developers for creating any QR factorization algorithm they wish\&. The triangular (trapezoidal) R has to be stored in the upper part of A\&. The lower part of A and the array T can be used to store any relevant information for applying or constructing the Q factor\&. The WORK array can safely be discarded after exit\&.
+.PP
+Caution: One should not expect the sizes of T and WORK to be the same from one LAPACK implementation to the other, or even from one execution to the other\&. A workspace query (for T and WORK) is needed at each execution\&. However, for a given execution, the size of T and WORK are fixed and will not change from one query to the next\&.
+.PP
+\fBFurther Details particular to this LAPACK implementation:\fP
+.RS 4
+
+.RE
+.PP
+These details are particular for this LAPACK implementation\&. Users should not take them for granted\&. These details may change in the future, and are unlikely not true for another LAPACK implementation\&. These details are relevant if one wants to try to understand the code\&. They are not part of the interface\&.
+.PP
+In this version,
+.PP
+T(2): row block size (MB) T(3): column block size (NB) T(6:TSIZE): data structure needed for Q, computed by ZLATSQR or ZGEQRT
+.PP
+Depending on the matrix dimensions M and N, and row and column block sizes MB and NB returned by ILAENV, ZGEQR will use either ZLATSQR (if the matrix is tall-and-skinny) or ZGEQRT to compute the QR factorization\&.
+.PP
+Definition at line 162 of file zgeqr\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

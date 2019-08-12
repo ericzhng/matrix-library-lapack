@@ -1,0 +1,302 @@
+.TH "strsna.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+strsna.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBstrsna\fP (JOB, HOWMNY, SELECT, \fBN\fP, T, LDT, VL, LDVL, VR, LDVR, S, SEP, MM, M, WORK, LDWORK, IWORK, INFO)"
+.br
+.RI "\fBSTRSNA\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine strsna (character JOB, character HOWMNY, logical, dimension( * ) SELECT, integer N, real, dimension( ldt, * ) T, integer LDT, real, dimension( ldvl, * ) VL, integer LDVL, real, dimension( ldvr, * ) VR, integer LDVR, real, dimension( * ) S, real, dimension( * ) SEP, integer MM, integer M, real, dimension( ldwork, * ) WORK, integer LDWORK, integer, dimension( * ) IWORK, integer INFO)"
+
+.PP
+\fBSTRSNA\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ STRSNA estimates reciprocal condition numbers for specified
+ eigenvalues and/or right eigenvectors of a real upper
+ quasi-triangular matrix T (or of any matrix Q*T*Q**T with Q
+ orthogonal).
+
+ T must be in Schur canonical form (as returned by SHSEQR), that is,
+ block upper triangular with 1-by-1 and 2-by-2 diagonal blocks; each
+ 2-by-2 diagonal block has its diagonal elements equal and its
+ off-diagonal elements of opposite sign.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOB\fP 
+.PP
+.nf
+          JOB is CHARACTER*1
+          Specifies whether condition numbers are required for
+          eigenvalues (S) or eigenvectors (SEP):
+          = 'E': for eigenvalues only (S);
+          = 'V': for eigenvectors only (SEP);
+          = 'B': for both eigenvalues and eigenvectors (S and SEP).
+.fi
+.PP
+.br
+\fIHOWMNY\fP 
+.PP
+.nf
+          HOWMNY is CHARACTER*1
+          = 'A': compute condition numbers for all eigenpairs;
+          = 'S': compute condition numbers for selected eigenpairs
+                 specified by the array SELECT.
+.fi
+.PP
+.br
+\fISELECT\fP 
+.PP
+.nf
+          SELECT is LOGICAL array, dimension (N)
+          If HOWMNY = 'S', SELECT specifies the eigenpairs for which
+          condition numbers are required. To select condition numbers
+          for the eigenpair corresponding to a real eigenvalue w(j),
+          SELECT(j) must be set to .TRUE.. To select condition numbers
+          corresponding to a complex conjugate pair of eigenvalues w(j)
+          and w(j+1), either SELECT(j) or SELECT(j+1) or both, must be
+          set to .TRUE..
+          If HOWMNY = 'A', SELECT is not referenced.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix T. N >= 0.
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is REAL array, dimension (LDT,N)
+          The upper quasi-triangular matrix T, in Schur canonical form.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T. LDT >= max(1,N).
+.fi
+.PP
+.br
+\fIVL\fP 
+.PP
+.nf
+          VL is REAL array, dimension (LDVL,M)
+          If JOB = 'E' or 'B', VL must contain left eigenvectors of T
+          (or of any Q*T*Q**T with Q orthogonal), corresponding to the
+          eigenpairs specified by HOWMNY and SELECT. The eigenvectors
+          must be stored in consecutive columns of VL, as returned by
+          SHSEIN or STREVC.
+          If JOB = 'V', VL is not referenced.
+.fi
+.PP
+.br
+\fILDVL\fP 
+.PP
+.nf
+          LDVL is INTEGER
+          The leading dimension of the array VL.
+          LDVL >= 1; and if JOB = 'E' or 'B', LDVL >= N.
+.fi
+.PP
+.br
+\fIVR\fP 
+.PP
+.nf
+          VR is REAL array, dimension (LDVR,M)
+          If JOB = 'E' or 'B', VR must contain right eigenvectors of T
+          (or of any Q*T*Q**T with Q orthogonal), corresponding to the
+          eigenpairs specified by HOWMNY and SELECT. The eigenvectors
+          must be stored in consecutive columns of VR, as returned by
+          SHSEIN or STREVC.
+          If JOB = 'V', VR is not referenced.
+.fi
+.PP
+.br
+\fILDVR\fP 
+.PP
+.nf
+          LDVR is INTEGER
+          The leading dimension of the array VR.
+          LDVR >= 1; and if JOB = 'E' or 'B', LDVR >= N.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is REAL array, dimension (MM)
+          If JOB = 'E' or 'B', the reciprocal condition numbers of the
+          selected eigenvalues, stored in consecutive elements of the
+          array. For a complex conjugate pair of eigenvalues two
+          consecutive elements of S are set to the same value. Thus
+          S(j), SEP(j), and the j-th columns of VL and VR all
+          correspond to the same eigenpair (but not in general the
+          j-th eigenpair, unless all eigenpairs are selected).
+          If JOB = 'V', S is not referenced.
+.fi
+.PP
+.br
+\fISEP\fP 
+.PP
+.nf
+          SEP is REAL array, dimension (MM)
+          If JOB = 'V' or 'B', the estimated reciprocal condition
+          numbers of the selected eigenvectors, stored in consecutive
+          elements of the array. For a complex eigenvector two
+          consecutive elements of SEP are set to the same value. If
+          the eigenvalues cannot be reordered to compute SEP(j), SEP(j)
+          is set to 0; this can only occur when the true value would be
+          very small anyway.
+          If JOB = 'E', SEP is not referenced.
+.fi
+.PP
+.br
+\fIMM\fP 
+.PP
+.nf
+          MM is INTEGER
+          The number of elements in the arrays S (if JOB = 'E' or 'B')
+           and/or SEP (if JOB = 'V' or 'B'). MM >= M.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of elements of the arrays S and/or SEP actually
+          used to store the estimated condition numbers.
+          If HOWMNY = 'A', M is set to N.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (LDWORK,N+6)
+          If JOB = 'E', WORK is not referenced.
+.fi
+.PP
+.br
+\fILDWORK\fP 
+.PP
+.nf
+          LDWORK is INTEGER
+          The leading dimension of the array WORK.
+          LDWORK >= 1; and if JOB = 'V' or 'B', LDWORK >= N.
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (2*(N-1))
+          If JOB = 'E', IWORK is not referenced.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The reciprocal of the condition number of an eigenvalue lambda is
+  defined as
+
+          S(lambda) = |v**T*u| / (norm(u)*norm(v))
+
+  where u and v are the right and left eigenvectors of T corresponding
+  to lambda; v**T denotes the transpose of v, and norm(u)
+  denotes the Euclidean norm. These reciprocal condition numbers always
+  lie between zero (very badly conditioned) and one (very well
+  conditioned). If n = 1, S(lambda) is defined to be 1.
+
+  An approximate error bound for a computed eigenvalue W(i) is given by
+
+                      EPS * norm(T) / S(i)
+
+  where EPS is the machine precision.
+
+  The reciprocal of the condition number of the right eigenvector u
+  corresponding to lambda is defined as follows. Suppose
+
+              T = ( lambda  c  )
+                  (   0    T22 )
+
+  Then the reciprocal condition number is
+
+          SEP( lambda, T22 ) = sigma-min( T22 - lambda*I )
+
+  where sigma-min denotes the smallest singular value. We approximate
+  the smallest singular value by the reciprocal of an estimate of the
+  one-norm of the inverse of T22 - lambda*I. If n = 1, SEP(1) is
+  defined to be abs(T(1,1)).
+
+  An approximate error bound for a computed right eigenvector VR(i)
+  is given by
+
+                      EPS * norm(T) / SEP(i)
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 267 of file strsna\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

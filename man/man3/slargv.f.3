@@ -1,0 +1,124 @@
+.TH "slargv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slargv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslargv\fP (\fBN\fP, X, INCX, Y, INCY, C, INCC)"
+.br
+.RI "\fBSLARGV\fP generates a vector of plane rotations with real cosines and real sines\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slargv (integer N, real, dimension( * ) X, integer INCX, real, dimension( * ) Y, integer INCY, real, dimension( * ) C, integer INCC)"
+
+.PP
+\fBSLARGV\fP generates a vector of plane rotations with real cosines and real sines\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLARGV generates a vector of real plane rotations, determined by
+ elements of the real vectors x and y. For i = 1,2,...,n
+
+    (  c(i)  s(i) ) ( x(i) ) = ( a(i) )
+    ( -s(i)  c(i) ) ( y(i) ) = (   0  )
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of plane rotations to be generated.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is REAL array,
+                         dimension (1+(N-1)*INCX)
+          On entry, the vector x.
+          On exit, x(i) is overwritten by a(i), for i = 1,...,n.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          The increment between elements of X. INCX > 0.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is REAL array,
+                         dimension (1+(N-1)*INCY)
+          On entry, the vector y.
+          On exit, the sines of the plane rotations.
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+          The increment between elements of Y. INCY > 0.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is REAL array, dimension (1+(N-1)*INCC)
+          The cosines of the plane rotations.
+.fi
+.PP
+.br
+\fIINCC\fP 
+.PP
+.nf
+          INCC is INTEGER
+          The increment between elements of C. INCC > 0.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file slargv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

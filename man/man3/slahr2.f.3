@@ -1,0 +1,208 @@
+.TH "slahr2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slahr2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslahr2\fP (\fBN\fP, K, NB, A, \fBLDA\fP, TAU, T, LDT, Y, LDY)"
+.br
+.RI "\fBSLAHR2\fP reduces the specified number of first columns of a general rectangular matrix A so that elements below the specified subdiagonal are zero, and returns auxiliary matrices which are needed to apply the transformation to the unreduced part of A\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slahr2 (integer N, integer K, integer NB, real, dimension( lda, * ) A, integer LDA, real, dimension( nb ) TAU, real, dimension( ldt, nb ) T, integer LDT, real, dimension( ldy, nb ) Y, integer LDY)"
+
+.PP
+\fBSLAHR2\fP reduces the specified number of first columns of a general rectangular matrix A so that elements below the specified subdiagonal are zero, and returns auxiliary matrices which are needed to apply the transformation to the unreduced part of A\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLAHR2 reduces the first NB columns of A real general n-BY-(n-k+1)
+ matrix A so that elements below the k-th subdiagonal are zero. The
+ reduction is performed by an orthogonal similarity transformation
+ Q**T * A * Q. The routine returns the matrices V and T which determine
+ Q as a block reflector I - V*T*V**T, and also the matrix Y = A * V * T.
+
+ This is an auxiliary routine called by SGEHRD.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The offset for the reduction. Elements below the k-th
+          subdiagonal in the first NB columns are reduced to zero.
+          K < N.
+.fi
+.PP
+.br
+\fINB\fP 
+.PP
+.nf
+          NB is INTEGER
+          The number of columns to be reduced.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA,N-K+1)
+          On entry, the n-by-(n-k+1) general matrix A.
+          On exit, the elements on and above the k-th subdiagonal in
+          the first NB columns are overwritten with the corresponding
+          elements of the reduced matrix; the elements below the k-th
+          subdiagonal, with the array TAU, represent the matrix Q as a
+          product of elementary reflectors. The other columns of A are
+          unchanged. See Further Details.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,N).
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is REAL array, dimension (NB)
+          The scalar factors of the elementary reflectors. See Further
+          Details.
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is REAL array, dimension (LDT,NB)
+          The upper triangular matrix T.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T.  LDT >= NB.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is REAL array, dimension (LDY,NB)
+          The n-by-nb matrix Y.
+.fi
+.PP
+.br
+\fILDY\fP 
+.PP
+.nf
+          LDY is INTEGER
+          The leading dimension of the array Y. LDY >= N.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The matrix Q is represented as a product of nb elementary reflectors
+
+     Q = H(1) H(2) . . . H(nb).
+
+  Each H(i) has the form
+
+     H(i) = I - tau * v * v**T
+
+  where tau is a real scalar, and v is a real vector with
+  v(1:i+k-1) = 0, v(i+k) = 1; v(i+k+1:n) is stored on exit in
+  A(i+k+1:n,i), and tau in TAU(i).
+
+  The elements of the vectors v together form the (n-k+1)-by-nb matrix
+  V which is needed, with T and Y, to apply the transformation to the
+  unreduced part of the matrix, using an update of the form:
+  A := (I - V*T*V**T) * (A - Y*V**T).
+
+  The contents of A on exit are illustrated by the following example
+  with n = 7, k = 3 and nb = 2:
+
+     ( a   a   a   a   a )
+     ( a   a   a   a   a )
+     ( a   a   a   a   a )
+     ( h   h   a   a   a )
+     ( v1  h   a   a   a )
+     ( v1  v2  a   a   a )
+     ( v1  v2  a   a   a )
+
+  where a denotes an element of the original matrix A, h denotes a
+  modified element of the upper Hessenberg matrix H, and vi denotes an
+  element of the vector defining H(i).
+
+  This subroutine is a slight modification of LAPACK-3.0's DLAHRD
+  incorporating improvements proposed by Quintana-Orti and Van de
+  Gejin. Note that the entries of A(1:K,2:NB) differ from those
+  returned by the original LAPACK-3.0's DLAHRD routine. (This
+  subroutine is not backward compatible with LAPACK-3.0's DLAHRD.)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBReferences: \fP
+.RS 4
+Gregorio Quintana-Orti and Robert van de Geijn, 'Improving the
+  performance of reduction to Hessenberg form,' ACM Transactions on Mathematical Software, 32(2):180-194, June 2006\&. 
+.RE
+.PP
+
+.PP
+Definition at line 183 of file slahr2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

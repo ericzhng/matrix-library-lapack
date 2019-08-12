@@ -1,0 +1,174 @@
+.TH "dlarz.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlarz.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlarz\fP (SIDE, M, \fBN\fP, L, V, INCV, TAU, C, LDC, WORK)"
+.br
+.RI "\fBDLARZ\fP applies an elementary reflector (as returned by stzrzf) to a general matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlarz (character SIDE, integer M, integer N, integer L, double precision, dimension( * ) V, integer INCV, double precision TAU, double precision, dimension( ldc, * ) C, integer LDC, double precision, dimension( * ) WORK)"
+
+.PP
+\fBDLARZ\fP applies an elementary reflector (as returned by stzrzf) to a general matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLARZ applies a real elementary reflector H to a real M-by-N
+ matrix C, from either the left or the right. H is represented in the
+ form
+
+       H = I - tau * v * v**T
+
+ where tau is a real scalar and v is a real vector.
+
+ If tau = 0, then H is taken to be the unit matrix.
+
+
+ H is a product of k elementary reflectors as returned by DTZRZF.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'L': form  H * C
+          = 'R': form  C * H
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix C.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix C.
+.fi
+.PP
+.br
+\fIL\fP 
+.PP
+.nf
+          L is INTEGER
+          The number of entries of the vector V containing
+          the meaningful part of the Householder vectors.
+          If SIDE = 'L', M >= L >= 0, if SIDE = 'R', N >= L >= 0.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is DOUBLE PRECISION array, dimension (1+(L-1)*abs(INCV))
+          The vector v in the representation of H as returned by
+          DTZRZF. V is not used if TAU = 0.
+.fi
+.PP
+.br
+\fIINCV\fP 
+.PP
+.nf
+          INCV is INTEGER
+          The increment between elements of v. INCV <> 0.
+.fi
+.PP
+.br
+\fITAU\fP 
+.PP
+.nf
+          TAU is DOUBLE PRECISION
+          The value tau in the representation of H.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is DOUBLE PRECISION array, dimension (LDC,N)
+          On entry, the M-by-N matrix C.
+          On exit, C is overwritten by the matrix H * C if SIDE = 'L',
+          or C * H if SIDE = 'R'.
+.fi
+.PP
+.br
+\fILDC\fP 
+.PP
+.nf
+          LDC is INTEGER
+          The leading dimension of the array C. LDC >= max(1,M).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension
+                         (N) if SIDE = 'L'
+                      or (M) if SIDE = 'R'
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+A\&. Petitet, Computer Science Dept\&., Univ\&. of Tenn\&., Knoxville, USA 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+ 
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 147 of file dlarz\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

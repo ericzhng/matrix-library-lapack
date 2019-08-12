@@ -1,0 +1,171 @@
+.TH "sgtcon.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sgtcon.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsgtcon\fP (NORM, \fBN\fP, DL, D, DU, DU2, IPIV, ANORM, RCOND, WORK, IWORK, INFO)"
+.br
+.RI "\fBSGTCON\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine sgtcon (character NORM, integer N, real, dimension( * ) DL, real, dimension( * ) D, real, dimension( * ) DU, real, dimension( * ) DU2, integer, dimension( * ) IPIV, real ANORM, real RCOND, real, dimension( * ) WORK, integer, dimension( * ) IWORK, integer INFO)"
+
+.PP
+\fBSGTCON\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SGTCON estimates the reciprocal of the condition number of a real
+ tridiagonal matrix A using the LU factorization as computed by
+ SGTTRF.
+
+ An estimate is obtained for norm(inv(A)), and the reciprocal of the
+ condition number is computed as RCOND = 1 / (ANORM * norm(inv(A))).
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fINORM\fP 
+.PP
+.nf
+          NORM is CHARACTER*1
+          Specifies whether the 1-norm condition number or the
+          infinity-norm condition number is required:
+          = '1' or 'O':  1-norm;
+          = 'I':         Infinity-norm.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fIDL\fP 
+.PP
+.nf
+          DL is REAL array, dimension (N-1)
+          The (n-1) multipliers that define the matrix L from the
+          LU factorization of A as computed by SGTTRF.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+          The n diagonal elements of the upper triangular matrix U from
+          the LU factorization of A.
+.fi
+.PP
+.br
+\fIDU\fP 
+.PP
+.nf
+          DU is REAL array, dimension (N-1)
+          The (n-1) elements of the first superdiagonal of U.
+.fi
+.PP
+.br
+\fIDU2\fP 
+.PP
+.nf
+          DU2 is REAL array, dimension (N-2)
+          The (n-2) elements of the second superdiagonal of U.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          The pivot indices; for 1 <= i <= n, row i of the matrix was
+          interchanged with row IPIV(i).  IPIV(i) will always be either
+          i or i+1; IPIV(i) = i indicates a row interchange was not
+          required.
+.fi
+.PP
+.br
+\fIANORM\fP 
+.PP
+.nf
+          ANORM is REAL
+          If NORM = '1' or 'O', the 1-norm of the original matrix A.
+          If NORM = 'I', the infinity-norm of the original matrix A.
+.fi
+.PP
+.br
+\fIRCOND\fP 
+.PP
+.nf
+          RCOND is REAL
+          The reciprocal of the condition number of the matrix A,
+          computed as RCOND = 1/(ANORM * AINVNM), where AINVNM is an
+          estimate of the 1-norm of inv(A) computed in this routine.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (2*N)
+.fi
+.PP
+.br
+\fIIWORK\fP 
+.PP
+.nf
+          IWORK is INTEGER array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 148 of file sgtcon\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

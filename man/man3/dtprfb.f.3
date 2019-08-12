@@ -1,0 +1,291 @@
+.TH "dtprfb.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dtprfb.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdtprfb\fP (SIDE, TRANS, DIRECT, STOREV, M, \fBN\fP, K, L, V, LDV, T, LDT, A, \fBLDA\fP, B, \fBLDB\fP, WORK, LDWORK)"
+.br
+.RI "\fBDTPRFB\fP applies a real or complex 'triangular-pentagonal' blocked reflector to a real or complex matrix, which is composed of two blocks\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dtprfb (character SIDE, character TRANS, character DIRECT, character STOREV, integer M, integer N, integer K, integer L, double precision, dimension( ldv, * ) V, integer LDV, double precision, dimension( ldt, * ) T, integer LDT, double precision, dimension( lda, * ) A, integer LDA, double precision, dimension( ldb, * ) B, integer LDB, double precision, dimension( ldwork, * ) WORK, integer LDWORK)"
+
+.PP
+\fBDTPRFB\fP applies a real or complex 'triangular-pentagonal' blocked reflector to a real or complex matrix, which is composed of two blocks\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DTPRFB applies a real "triangular-pentagonal" block reflector H or its
+ transpose H**T to a real matrix C, which is composed of two
+ blocks A and B, either from the left or right.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISIDE\fP 
+.PP
+.nf
+          SIDE is CHARACTER*1
+          = 'L': apply H or H**T from the Left
+          = 'R': apply H or H**T from the Right
+.fi
+.PP
+.br
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is CHARACTER*1
+          = 'N': apply H (No transpose)
+          = 'T': apply H**T (Transpose)
+.fi
+.PP
+.br
+\fIDIRECT\fP 
+.PP
+.nf
+          DIRECT is CHARACTER*1
+          Indicates how H is formed from a product of elementary
+          reflectors
+          = 'F': H = H(1) H(2) . . . H(k) (Forward)
+          = 'B': H = H(k) . . . H(2) H(1) (Backward)
+.fi
+.PP
+.br
+\fISTOREV\fP 
+.PP
+.nf
+          STOREV is CHARACTER*1
+          Indicates how the vectors which define the elementary
+          reflectors are stored:
+          = 'C': Columns
+          = 'R': Rows
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix B.
+          M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix B.
+          N >= 0.
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER
+          The order of the matrix T, i.e. the number of elementary
+          reflectors whose product defines the block reflector.
+          K >= 0.
+.fi
+.PP
+.br
+\fIL\fP 
+.PP
+.nf
+          L is INTEGER
+          The order of the trapezoidal part of V.
+          K >= L >= 0.  See Further Details.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is DOUBLE PRECISION array, dimension
+                                (LDV,K) if STOREV = 'C'
+                                (LDV,M) if STOREV = 'R' and SIDE = 'L'
+                                (LDV,N) if STOREV = 'R' and SIDE = 'R'
+          The pentagonal matrix V, which contains the elementary reflectors
+          H(1), H(2), ..., H(K).  See Further Details.
+.fi
+.PP
+.br
+\fILDV\fP 
+.PP
+.nf
+          LDV is INTEGER
+          The leading dimension of the array V.
+          If STOREV = 'C' and SIDE = 'L', LDV >= max(1,M);
+          if STOREV = 'C' and SIDE = 'R', LDV >= max(1,N);
+          if STOREV = 'R', LDV >= K.
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is DOUBLE PRECISION array, dimension (LDT,K)
+          The triangular K-by-K matrix T in the representation of the
+          block reflector.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the array T.
+          LDT >= K.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension
+          (LDA,N) if SIDE = 'L' or (LDA,K) if SIDE = 'R'
+          On entry, the K-by-N or M-by-K matrix A.
+          On exit, A is overwritten by the corresponding block of
+          H*C or H**T*C or C*H or C*H**T.  See Further Details.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.
+          If SIDE = 'L', LDC >= max(1,K);
+          If SIDE = 'R', LDC >= max(1,M).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB,N)
+          On entry, the M-by-N matrix B.
+          On exit, B is overwritten by the corresponding block of
+          H*C or H**T*C or C*H or C*H**T.  See Further Details.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.
+          LDB >= max(1,M).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension
+          (LDWORK,N) if SIDE = 'L',
+          (LDWORK,K) if SIDE = 'R'.
+.fi
+.PP
+.br
+\fILDWORK\fP 
+.PP
+.nf
+          LDWORK is INTEGER
+          The leading dimension of the array WORK.
+          If SIDE = 'L', LDWORK >= K;
+          if SIDE = 'R', LDWORK >= M.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  The matrix C is a composite matrix formed from blocks A and B.
+  The block B is of size M-by-N; if SIDE = 'R', A is of size M-by-K,
+  and if SIDE = 'L', A is of size K-by-N.
+
+  If SIDE = 'R' and DIRECT = 'F', C = [A B].
+
+  If SIDE = 'L' and DIRECT = 'F', C = [A]
+                                      [B].
+
+  If SIDE = 'R' and DIRECT = 'B', C = [B A].
+
+  If SIDE = 'L' and DIRECT = 'B', C = [B]
+                                      [A].
+
+  The pentagonal matrix V is composed of a rectangular block V1 and a
+  trapezoidal block V2.  The size of the trapezoidal block is determined by
+  the parameter L, where 0<=L<=K.  If L=K, the V2 block of V is triangular;
+  if L=0, there is no trapezoidal block, thus V = V1 is rectangular.
+
+  If DIRECT = 'F' and STOREV = 'C':  V = [V1]
+                                         [V2]
+     - V2 is upper trapezoidal (first L rows of K-by-K upper triangular)
+
+  If DIRECT = 'F' and STOREV = 'R':  V = [V1 V2]
+
+     - V2 is lower trapezoidal (first L columns of K-by-K lower triangular)
+
+  If DIRECT = 'B' and STOREV = 'C':  V = [V2]
+                                         [V1]
+     - V2 is lower trapezoidal (last L rows of K-by-K lower triangular)
+
+  If DIRECT = 'B' and STOREV = 'R':  V = [V2 V1]
+
+     - V2 is upper trapezoidal (last L columns of K-by-K upper triangular)
+
+  If STOREV = 'C' and SIDE = 'L', V is M-by-K with V2 L-by-K.
+
+  If STOREV = 'C' and SIDE = 'R', V is N-by-K with V2 L-by-K.
+
+  If STOREV = 'R' and SIDE = 'L', V is K-by-M with V2 K-by-L.
+
+  If STOREV = 'R' and SIDE = 'R', V is K-by-N with V2 K-by-L.
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 253 of file dtprfb\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

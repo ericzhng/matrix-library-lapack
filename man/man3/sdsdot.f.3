@@ -1,0 +1,153 @@
+.TH "sdsdot.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sdsdot.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "real function \fBsdsdot\fP (\fBN\fP, SB, SX, INCX, SY, INCY)"
+.br
+.RI "\fBSDSDOT\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "real function sdsdot (integer N, real SB, real, dimension(*) SX, integer INCX, real, dimension(*) SY, integer INCY)"
+
+.PP
+\fBSDSDOT\fP 
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          number of elements in input vector(s)
+.fi
+.PP
+.br
+\fISB\fP 
+.PP
+.nf
+          SB is REAL
+          single precision scalar to be added to inner product
+.fi
+.PP
+.br
+\fISX\fP 
+.PP
+.nf
+          SX is REAL array, dimension ( 1 + ( N - 1 )*abs( INCX ) )
+          single precision vector with N elements
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+          storage spacing between elements of SX
+.fi
+.PP
+.br
+\fISY\fP 
+.PP
+.nf
+          SY is REAL array, dimension ( 1 + ( N - 1 )*abs( INCX ) )
+          single precision vector with N elements
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+          storage spacing between elements of SY
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Lawson, C\&. L\&., (JPL), Hanson, R\&. J\&., (SNLA), 
+.PP
+Kincaid, D\&. R\&., (U\&. of Texas), Krogh, F\&. T\&., (JPL) 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+    REFERENCES
+
+    C. L. Lawson, R. J. Hanson, D. R. Kincaid and F. T.
+    Krogh, Basic linear algebra subprograms for Fortran
+    usage, Algorithm No. 539, Transactions on Mathematical
+    Software 5, 3 (September 1979), pp. 308-323.
+
+    REVISION HISTORY  (YYMMDD)
+
+    791001  DATE WRITTEN
+    890531  Changed all specific intrinsics to generic.  (WRB)
+    890831  Modified array declarations.  (WRB)
+    890831  REVISION DATE from Version 3.2
+    891214  Prologue converted to Version 4.0 format.  (BAB)
+    920310  Corrected definition of LX in DESCRIPTION.  (WRB)
+    920501  Reformatted the REFERENCES section.  (WRB)
+    070118  Reformat to LAPACK coding style
+.fi
+.PP
+ 
+.RE
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ 
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+November 2017 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file sdsdot\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

@@ -1,0 +1,231 @@
+.TH "slarrf.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slarrf.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslarrf\fP (\fBN\fP, D, L, LD, CLSTRT, CLEND, W, WGAP, WERR, SPDIAM, CLGAPL, CLGAPR, PIVMIN, SIGMA, DPLUS, LPLUS, WORK, INFO)"
+.br
+.RI "\fBSLARRF\fP finds a new relatively robust representation such that at least one of the eigenvalues is relatively isolated\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slarrf (integer N, real, dimension( * ) D, real, dimension( * ) L, real, dimension( * ) LD, integer CLSTRT, integer CLEND, real, dimension( * ) W, real, dimension( * ) WGAP, real, dimension( * ) WERR, real SPDIAM, real CLGAPL, real CLGAPR, real PIVMIN, real SIGMA, real, dimension( * ) DPLUS, real, dimension( * ) LPLUS, real, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBSLARRF\fP finds a new relatively robust representation such that at least one of the eigenvalues is relatively isolated\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ Given the initial representation L D L^T and its cluster of close
+ eigenvalues (in a relative measure), W( CLSTRT ), W( CLSTRT+1 ), ...
+ W( CLEND ), SLARRF finds a new relatively robust representation
+ L D L^T - SIGMA I = L(+) D(+) L(+)^T such that at least one of the
+ eigenvalues of L(+) D(+) L(+)^T is relatively isolated.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix (subblock, if the matrix split).
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is REAL array, dimension (N)
+          The N diagonal elements of the diagonal matrix D.
+.fi
+.PP
+.br
+\fIL\fP 
+.PP
+.nf
+          L is REAL array, dimension (N-1)
+          The (N-1) subdiagonal elements of the unit bidiagonal
+          matrix L.
+.fi
+.PP
+.br
+\fILD\fP 
+.PP
+.nf
+          LD is REAL array, dimension (N-1)
+          The (N-1) elements L(i)*D(i).
+.fi
+.PP
+.br
+\fICLSTRT\fP 
+.PP
+.nf
+          CLSTRT is INTEGER
+          The index of the first eigenvalue in the cluster.
+.fi
+.PP
+.br
+\fICLEND\fP 
+.PP
+.nf
+          CLEND is INTEGER
+          The index of the last eigenvalue in the cluster.
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is REAL array, dimension
+          dimension is >=  (CLEND-CLSTRT+1)
+          The eigenvalue APPROXIMATIONS of L D L^T in ascending order.
+          W( CLSTRT ) through W( CLEND ) form the cluster of relatively
+          close eigenalues.
+.fi
+.PP
+.br
+\fIWGAP\fP 
+.PP
+.nf
+          WGAP is REAL array, dimension
+          dimension is >=  (CLEND-CLSTRT+1)
+          The separation from the right neighbor eigenvalue in W.
+.fi
+.PP
+.br
+\fIWERR\fP 
+.PP
+.nf
+          WERR is REAL array, dimension
+          dimension is >=  (CLEND-CLSTRT+1)
+          WERR contain the semiwidth of the uncertainty
+          interval of the corresponding eigenvalue APPROXIMATION in W
+.fi
+.PP
+.br
+\fISPDIAM\fP 
+.PP
+.nf
+          SPDIAM is REAL
+          estimate of the spectral diameter obtained from the
+          Gerschgorin intervals
+.fi
+.PP
+.br
+\fICLGAPL\fP 
+.PP
+.nf
+          CLGAPL is REAL
+.fi
+.PP
+.br
+\fICLGAPR\fP 
+.PP
+.nf
+          CLGAPR is REAL
+          absolute gap on each end of the cluster.
+          Set by the calling routine to protect against shifts too close
+          to eigenvalues outside the cluster.
+.fi
+.PP
+.br
+\fIPIVMIN\fP 
+.PP
+.nf
+          PIVMIN is REAL
+          The minimum pivot allowed in the Sturm sequence.
+.fi
+.PP
+.br
+\fISIGMA\fP 
+.PP
+.nf
+          SIGMA is REAL
+          The shift used to form L(+) D(+) L(+)^T.
+.fi
+.PP
+.br
+\fIDPLUS\fP 
+.PP
+.nf
+          DPLUS is REAL array, dimension (N)
+          The N diagonal elements of the diagonal matrix D(+).
+.fi
+.PP
+.br
+\fILPLUS\fP 
+.PP
+.nf
+          LPLUS is REAL array, dimension (N-1)
+          The first (N-1) elements of LPLUS contain the subdiagonal
+          elements of the unit bidiagonal matrix L(+).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (2*N)
+          Workspace.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          Signals processing OK (=0) or failure (=1)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Beresford Parlett, University of California, Berkeley, USA 
+.br
+ Jim Demmel, University of California, Berkeley, USA 
+.br
+ Inderjit Dhillon, University of Texas, Austin, USA 
+.br
+ Osni Marques, LBNL/NERSC, USA 
+.br
+ Christof Voemel, University of California, Berkeley, USA 
+.RE
+.PP
+
+.PP
+Definition at line 195 of file slarrf\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

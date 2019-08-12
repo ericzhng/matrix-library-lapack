@@ -1,0 +1,241 @@
+.TH "dlahqr.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlahqr.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlahqr\fP (WANTT, WANTZ, \fBN\fP, ILO, IHI, H, LDH, WR, WI, ILOZ, IHIZ, Z, LDZ, INFO)"
+.br
+.RI "\fBDLAHQR\fP computes the eigenvalues and Schur factorization of an upper Hessenberg matrix, using the double-shift/single-shift QR algorithm\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlahqr (logical WANTT, logical WANTZ, integer N, integer ILO, integer IHI, double precision, dimension( ldh, * ) H, integer LDH, double precision, dimension( * ) WR, double precision, dimension( * ) WI, integer ILOZ, integer IHIZ, double precision, dimension( ldz, * ) Z, integer LDZ, integer INFO)"
+
+.PP
+\fBDLAHQR\fP computes the eigenvalues and Schur factorization of an upper Hessenberg matrix, using the double-shift/single-shift QR algorithm\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+    DLAHQR is an auxiliary routine called by DHSEQR to update the
+    eigenvalues and Schur decomposition already computed by DHSEQR, by
+    dealing with the Hessenberg submatrix in rows and columns ILO to
+    IHI.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIWANTT\fP 
+.PP
+.nf
+          WANTT is LOGICAL
+          = .TRUE. : the full Schur form T is required;
+          = .FALSE.: only eigenvalues are required.
+.fi
+.PP
+.br
+\fIWANTZ\fP 
+.PP
+.nf
+          WANTZ is LOGICAL
+          = .TRUE. : the matrix of Schur vectors Z is required;
+          = .FALSE.: Schur vectors are not required.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix H.  N >= 0.
+.fi
+.PP
+.br
+\fIILO\fP 
+.PP
+.nf
+          ILO is INTEGER
+.fi
+.PP
+.br
+\fIIHI\fP 
+.PP
+.nf
+          IHI is INTEGER
+          It is assumed that H is already upper quasi-triangular in
+          rows and columns IHI+1:N, and that H(ILO,ILO-1) = 0 (unless
+          ILO = 1). DLAHQR works primarily with the Hessenberg
+          submatrix in rows and columns ILO to IHI, but applies
+          transformations to all of H if WANTT is .TRUE..
+          1 <= ILO <= max(1,IHI); IHI <= N.
+.fi
+.PP
+.br
+\fIH\fP 
+.PP
+.nf
+          H is DOUBLE PRECISION array, dimension (LDH,N)
+          On entry, the upper Hessenberg matrix H.
+          On exit, if INFO is zero and if WANTT is .TRUE., H is upper
+          quasi-triangular in rows and columns ILO:IHI, with any
+          2-by-2 diagonal blocks in standard form. If INFO is zero
+          and WANTT is .FALSE., the contents of H are unspecified on
+          exit.  The output state of H if INFO is nonzero is given
+          below under the description of INFO.
+.fi
+.PP
+.br
+\fILDH\fP 
+.PP
+.nf
+          LDH is INTEGER
+          The leading dimension of the array H. LDH >= max(1,N).
+.fi
+.PP
+.br
+\fIWR\fP 
+.PP
+.nf
+          WR is DOUBLE PRECISION array, dimension (N)
+.fi
+.PP
+.br
+\fIWI\fP 
+.PP
+.nf
+          WI is DOUBLE PRECISION array, dimension (N)
+          The real and imaginary parts, respectively, of the computed
+          eigenvalues ILO to IHI are stored in the corresponding
+          elements of WR and WI. If two eigenvalues are computed as a
+          complex conjugate pair, they are stored in consecutive
+          elements of WR and WI, say the i-th and (i+1)th, with
+          WI(i) > 0 and WI(i+1) < 0. If WANTT is .TRUE., the
+          eigenvalues are stored in the same order as on the diagonal
+          of the Schur form returned in H, with WR(i) = H(i,i), and, if
+          H(i:i+1,i:i+1) is a 2-by-2 diagonal block,
+          WI(i) = sqrt(H(i+1,i)*H(i,i+1)) and WI(i+1) = -WI(i).
+.fi
+.PP
+.br
+\fIILOZ\fP 
+.PP
+.nf
+          ILOZ is INTEGER
+.fi
+.PP
+.br
+\fIIHIZ\fP 
+.PP
+.nf
+          IHIZ is INTEGER
+          Specify the rows of Z to which transformations must be
+          applied if WANTZ is .TRUE..
+          1 <= ILOZ <= ILO; IHI <= IHIZ <= N.
+.fi
+.PP
+.br
+\fIZ\fP 
+.PP
+.nf
+          Z is DOUBLE PRECISION array, dimension (LDZ,N)
+          If WANTZ is .TRUE., on entry Z must contain the current
+          matrix Z of transformations accumulated by DHSEQR, and on
+          exit Z has been updated; transformations are applied only to
+          the submatrix Z(ILOZ:IHIZ,ILO:IHI).
+          If WANTZ is .FALSE., Z is not referenced.
+.fi
+.PP
+.br
+\fILDZ\fP 
+.PP
+.nf
+          LDZ is INTEGER
+          The leading dimension of the array Z. LDZ >= max(1,N).
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+           =   0: successful exit
+          .GT. 0: If INFO = i, DLAHQR failed to compute all the
+                  eigenvalues ILO to IHI in a total of 30 iterations
+                  per eigenvalue; elements i+1:ihi of WR and WI
+                  contain those eigenvalues which have been
+                  successfully computed.
+
+                  If INFO .GT. 0 and WANTT is .FALSE., then on exit,
+                  the remaining unconverged eigenvalues are the
+                  eigenvalues of the upper Hessenberg matrix rows
+                  and columns ILO thorugh INFO of the final, output
+                  value of H.
+
+                  If INFO .GT. 0 and WANTT is .TRUE., then on exit
+          (*)       (initial value of H)*U  = U*(final value of H)
+                  where U is an orthognal matrix.    The final
+                  value of H is upper Hessenberg and triangular in
+                  rows and columns INFO+1 through IHI.
+
+                  If INFO .GT. 0 and WANTZ is .TRUE., then on exit
+                      (final value of Z)  = (initial value of Z)*U
+                  where U is the orthogonal matrix in (*)
+                  (regardless of the value of WANTT.)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+     02-96 Based on modifications by
+     David Day, Sandia National Laboratory, USA
+
+     12-04 Further modifications by
+     Ralph Byers, University of Kansas, USA
+     This is a modified version of DLAHQR from LAPACK version 3.0.
+     It is (1) more robust against overflow and underflow and
+     (2) adopts the more conservative Ahues & Tisseur stopping
+     criterion (LAWN 122, 1997).
+.fi
+.PP
+ 
+.RE
+.PP
+
+.PP
+Definition at line 209 of file dlahqr\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

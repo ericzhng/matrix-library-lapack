@@ -1,0 +1,214 @@
+.TH "zla_gbamv.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zla_gbamv.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzla_gbamv\fP (TRANS, M, \fBN\fP, KL, KU, ALPHA, AB, LDAB, X, INCX, BETA, Y, INCY)"
+.br
+.RI "\fBZLA_GBAMV\fP performs a matrix-vector operation to calculate error bounds\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zla_gbamv (integer TRANS, integer M, integer N, integer KL, integer KU, double precision ALPHA, complex*16, dimension( ldab, * ) AB, integer LDAB, complex*16, dimension( * ) X, integer INCX, double precision BETA, double precision, dimension( * ) Y, integer INCY)"
+
+.PP
+\fBZLA_GBAMV\fP performs a matrix-vector operation to calculate error bounds\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZLA_GBAMV  performs one of the matrix-vector operations
+
+         y := alpha*abs(A)*abs(x) + beta*abs(y),
+    or   y := alpha*abs(A)**T*abs(x) + beta*abs(y),
+
+ where alpha and beta are scalars, x and y are vectors and A is an
+ m by n matrix.
+
+ This function is primarily used in calculating error bounds.
+ To protect against underflow during evaluation, components in
+ the resulting vector are perturbed away from zero by (N+1)
+ times the underflow threshold.  To prevent unnecessarily large
+ errors for block-structure embedded in general matrices,
+ "symbolically" zero components are not perturbed.  A zero
+ entry is considered "symbolic" if all multiplications involved
+ in computing that entry have at least one zero multiplicand.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fITRANS\fP 
+.PP
+.nf
+          TRANS is INTEGER
+           On entry, TRANS specifies the operation to be performed as
+           follows:
+
+             BLAS_NO_TRANS      y := alpha*abs(A)*abs(x) + beta*abs(y)
+             BLAS_TRANS         y := alpha*abs(A**T)*abs(x) + beta*abs(y)
+             BLAS_CONJ_TRANS    y := alpha*abs(A**T)*abs(x) + beta*abs(y)
+
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+           On entry, M specifies the number of rows of the matrix A.
+           M must be at least zero.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+           On entry, N specifies the number of columns of the matrix A.
+           N must be at least zero.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIKL\fP 
+.PP
+.nf
+          KL is INTEGER
+           The number of subdiagonals within the band of A.  KL >= 0.
+.fi
+.PP
+.br
+\fIKU\fP 
+.PP
+.nf
+          KU is INTEGER
+           The number of superdiagonals within the band of A.  KU >= 0.
+.fi
+.PP
+.br
+\fIALPHA\fP 
+.PP
+.nf
+          ALPHA is DOUBLE PRECISION
+           On entry, ALPHA specifies the scalar alpha.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIAB\fP 
+.PP
+.nf
+          AB is COMPLEX*16 array, dimension ( LDAB, n )
+           Before entry, the leading m by n part of the array AB must
+           contain the matrix of coefficients.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fILDAB\fP 
+.PP
+.nf
+          LDAB is INTEGER
+           On entry, LDAB specifies the first dimension of AB as declared
+           in the calling (sub) program. LDAB must be at least
+           max( 1, m ).
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX*16 array, dimension
+           ( 1 + ( n - 1 )*abs( INCX ) ) when TRANS = 'N' or 'n'
+           and at least
+           ( 1 + ( m - 1 )*abs( INCX ) ) otherwise.
+           Before entry, the incremented array X must contain the
+           vector x.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIINCX\fP 
+.PP
+.nf
+          INCX is INTEGER
+           On entry, INCX specifies the increment for the elements of
+           X. INCX must not be zero.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIBETA\fP 
+.PP
+.nf
+          BETA is DOUBLE PRECISION
+           On entry, BETA specifies the scalar beta. When BETA is
+           supplied as zero then Y need not be set on input.
+           Unchanged on exit.
+.fi
+.PP
+.br
+\fIY\fP 
+.PP
+.nf
+          Y is DOUBLE PRECISION array, dimension
+           ( 1 + ( m - 1 )*abs( INCY ) ) when TRANS = 'N' or 'n'
+           and at least
+           ( 1 + ( n - 1 )*abs( INCY ) ) otherwise.
+           Before entry with BETA non-zero, the incremented array Y
+           must contain the vector y. On exit, Y is overwritten by the
+           updated vector y.
+.fi
+.PP
+.br
+\fIINCY\fP 
+.PP
+.nf
+          INCY is INTEGER
+           On entry, INCY specifies the increment for the elements of
+           Y. INCY must not be zero.
+           Unchanged on exit.
+
+  Level 2 Blas routine.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2017 
+.RE
+.PP
+
+.PP
+Definition at line 188 of file zla_gbamv\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

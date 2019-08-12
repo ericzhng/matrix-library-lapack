@@ -1,0 +1,235 @@
+.TH "dgelsy.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dgelsy.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdgelsy\fP (M, \fBN\fP, \fBNRHS\fP, A, \fBLDA\fP, B, \fBLDB\fP, JPVT, RCOND, RANK, WORK, LWORK, INFO)"
+.br
+.RI "\fB DGELSY solves overdetermined or underdetermined systems for GE matrices\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dgelsy (integer M, integer N, integer NRHS, double precision, dimension( lda, * ) A, integer LDA, double precision, dimension( ldb, * ) B, integer LDB, integer, dimension( * ) JPVT, double precision RCOND, integer RANK, double precision, dimension( * ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fB DGELSY solves overdetermined or underdetermined systems for GE matrices\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DGELSY computes the minimum-norm solution to a real linear least
+ squares problem:
+     minimize || A * X - B ||
+ using a complete orthogonal factorization of A.  A is an M-by-N
+ matrix which may be rank-deficient.
+
+ Several right hand side vectors b and solution vectors x can be
+ handled in a single call; they are stored as the columns of the
+ M-by-NRHS right hand side matrix B and the N-by-NRHS solution
+ matrix X.
+
+ The routine first computes a QR factorization with column pivoting:
+     A * P = Q * [ R11 R12 ]
+                 [  0  R22 ]
+ with R11 defined as the largest leading submatrix whose estimated
+ condition number is less than 1/RCOND.  The order of R11, RANK,
+ is the effective rank of A.
+
+ Then, R22 is considered to be negligible, and R12 is annihilated
+ by orthogonal transformations from the right, arriving at the
+ complete orthogonal factorization:
+    A * P = Q * [ T11 0 ] * Z
+                [  0  0 ]
+ The minimum-norm solution is then
+    X = P * Z**T [ inv(T11)*Q1**T*B ]
+                 [        0         ]
+ where Q1 consists of the first RANK columns of Q.
+
+ This routine is basically identical to the original xGELSX except
+ three differences:
+   o The call to the subroutine xGEQPF has been substituted by the
+     the call to the subroutine xGEQP3. This subroutine is a Blas-3
+     version of the QR factorization with column pivoting.
+   o Matrix B (the right hand side) is updated with Blas-3.
+   o The permutation of matrix B (the right hand side) is faster and
+     more simple.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of
+          columns of matrices B and X. NRHS >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, the M-by-N matrix A.
+          On exit, A has been overwritten by details of its
+          complete orthogonal factorization.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is DOUBLE PRECISION array, dimension (LDB,NRHS)
+          On entry, the M-by-NRHS right hand side matrix B.
+          On exit, the N-by-NRHS solution matrix X.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B. LDB >= max(1,M,N).
+.fi
+.PP
+.br
+\fIJPVT\fP 
+.PP
+.nf
+          JPVT is INTEGER array, dimension (N)
+          On entry, if JPVT(i) .ne. 0, the i-th column of A is permuted
+          to the front of AP, otherwise column i is a free column.
+          On exit, if JPVT(i) = k, then the i-th column of AP
+          was the k-th column of A.
+.fi
+.PP
+.br
+\fIRCOND\fP 
+.PP
+.nf
+          RCOND is DOUBLE PRECISION
+          RCOND is used to determine the effective rank of A, which
+          is defined as the order of the largest leading triangular
+          submatrix R11 in the QR factorization with pivoting of A,
+          whose estimated condition number < 1/RCOND.
+.fi
+.PP
+.br
+\fIRANK\fP 
+.PP
+.nf
+          RANK is INTEGER
+          The effective rank of A, i.e., the order of the submatrix
+          R11.  This is the same as the order of the submatrix T11
+          in the complete orthogonal factorization of A.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is DOUBLE PRECISION array, dimension (MAX(1,LWORK))
+          On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          The dimension of the array WORK.
+          The unblocked strategy requires that:
+             LWORK >= MAX( MN+3*N+1, 2*MN+NRHS ),
+          where MN = min( M, N ).
+          The block algorithm requires that:
+             LWORK >= MAX( MN+2*N+NB*(N+1), 2*MN+NB*NRHS ),
+          where NB is an upper bound on the blocksize returned
+          by ILAENV for the routines DGEQP3, DTZRZF, STZRQF, DORMQR,
+          and DORMRZ.
+
+          If LWORK = -1, then a workspace query is assumed; the routine
+          only calculates the optimal size of the WORK array, returns
+          this value as the first entry of the WORK array, and no error
+          message related to LWORK is issued by XERBLA.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0: successful exit
+          < 0: If INFO = -i, the i-th argument had an illegal value.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+A\&. Petitet, Computer Science Dept\&., Univ\&. of Tenn\&., Knoxville, USA 
+.br
+ E\&. Quintana-Orti, Depto\&. de Informatica, Universidad Jaime I, Spain 
+.br
+ G\&. Quintana-Orti, Depto\&. de Informatica, Universidad Jaime I, Spain 
+.br
+.RE
+.PP
+
+.PP
+Definition at line 206 of file dgelsy\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

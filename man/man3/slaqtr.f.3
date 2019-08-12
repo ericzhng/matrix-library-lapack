@@ -1,0 +1,189 @@
+.TH "slaqtr.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slaqtr.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslaqtr\fP (LTRAN, LREAL, \fBN\fP, T, LDT, B, W, SCALE, X, WORK, INFO)"
+.br
+.RI "\fBSLAQTR\fP solves a real quasi-triangular system of equations, or a complex quasi-triangular system of special form, in real arithmetic\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slaqtr (logical LTRAN, logical LREAL, integer N, real, dimension( ldt, * ) T, integer LDT, real, dimension( * ) B, real W, real SCALE, real, dimension( * ) X, real, dimension( * ) WORK, integer INFO)"
+
+.PP
+\fBSLAQTR\fP solves a real quasi-triangular system of equations, or a complex quasi-triangular system of special form, in real arithmetic\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLAQTR solves the real quasi-triangular system
+
+              op(T)*p = scale*c,               if LREAL = .TRUE.
+
+ or the complex quasi-triangular systems
+
+            op(T + iB)*(p+iq) = scale*(c+id),  if LREAL = .FALSE.
+
+ in real arithmetic, where T is upper quasi-triangular.
+ If LREAL = .FALSE., then the first diagonal block of T must be
+ 1 by 1, B is the specially structured matrix
+
+                B = [ b(1) b(2) ... b(n) ]
+                    [       w            ]
+                    [           w        ]
+                    [              .     ]
+                    [                 w  ]
+
+ op(A) = A or A**T, A**T denotes the transpose of
+ matrix A.
+
+ On input, X = [ c ].  On output, X = [ p ].
+               [ d ]                  [ q ]
+
+ This subroutine is designed for the condition number estimation
+ in routine STRSNA.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fILTRAN\fP 
+.PP
+.nf
+          LTRAN is LOGICAL
+          On entry, LTRAN specifies the option of conjugate transpose:
+             = .FALSE.,    op(T+i*B) = T+i*B,
+             = .TRUE.,     op(T+i*B) = (T+i*B)**T.
+.fi
+.PP
+.br
+\fILREAL\fP 
+.PP
+.nf
+          LREAL is LOGICAL
+          On entry, LREAL specifies the input matrix structure:
+             = .FALSE.,    the input is complex
+             = .TRUE.,     the input is real
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          On entry, N specifies the order of T+i*B. N >= 0.
+.fi
+.PP
+.br
+\fIT\fP 
+.PP
+.nf
+          T is REAL array, dimension (LDT,N)
+          On entry, T contains a matrix in Schur canonical form.
+          If LREAL = .FALSE., then the first diagonal block of T must
+          be 1 by 1.
+.fi
+.PP
+.br
+\fILDT\fP 
+.PP
+.nf
+          LDT is INTEGER
+          The leading dimension of the matrix T. LDT >= max(1,N).
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is REAL array, dimension (N)
+          On entry, B contains the elements to form the matrix
+          B as described above.
+          If LREAL = .TRUE., B is not referenced.
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is REAL
+          On entry, W is the diagonal element of the matrix B.
+          If LREAL = .TRUE., W is not referenced.
+.fi
+.PP
+.br
+\fISCALE\fP 
+.PP
+.nf
+          SCALE is REAL
+          On exit, SCALE is the scale factor.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is REAL array, dimension (2*N)
+          On entry, X contains the right hand side of the system.
+          On exit, X is overwritten by the solution.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is REAL array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          On exit, INFO is set to
+             0: successful exit.
+               1: the some diagonal 1 by 1 block has been perturbed by
+                  a small number SMIN to keep nonsingularity.
+               2: the some diagonal 2 by 2 block has been perturbed by
+                  a small number in SLALN2 to keep nonsingularity.
+          NOTE: In the interests of speed, this routine does not
+                check the inputs for errors.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 167 of file slaqtr\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

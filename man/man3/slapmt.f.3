@@ -1,0 +1,120 @@
+.TH "slapmt.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slapmt.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslapmt\fP (FORWRD, M, \fBN\fP, X, LDX, K)"
+.br
+.RI "\fBSLAPMT\fP performs a forward or backward permutation of the columns of a matrix\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slapmt (logical FORWRD, integer M, integer N, real, dimension( ldx, * ) X, integer LDX, integer, dimension( * ) K)"
+
+.PP
+\fBSLAPMT\fP performs a forward or backward permutation of the columns of a matrix\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLAPMT rearranges the columns of the M by N matrix X as specified
+ by the permutation K(1),K(2),...,K(N) of the integers 1,...,N.
+ If FORWRD = .TRUE.,  forward permutation:
+
+      X(*,K(J)) is moved X(*,J) for J = 1,2,...,N.
+
+ If FORWRD = .FALSE., backward permutation:
+
+      X(*,J) is moved to X(*,K(J)) for J = 1,2,...,N.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIFORWRD\fP 
+.PP
+.nf
+          FORWRD is LOGICAL
+          = .TRUE., forward permutation
+          = .FALSE., backward permutation
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the matrix X. M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the matrix X. N >= 0.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is REAL array, dimension (LDX,N)
+          On entry, the M by N matrix X.
+          On exit, X contains the permuted matrix X.
+.fi
+.PP
+.br
+\fILDX\fP 
+.PP
+.nf
+          LDX is INTEGER
+          The leading dimension of the array X, LDX >= MAX(1,M).
+.fi
+.PP
+.br
+\fIK\fP 
+.PP
+.nf
+          K is INTEGER array, dimension (N)
+          On entry, K contains the permutation vector. K is used as
+          internal workspace, but reset to its original value on
+          output.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file slapmt\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

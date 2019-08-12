@@ -1,0 +1,180 @@
+.TH "slagv2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slagv2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslagv2\fP (A, \fBLDA\fP, B, \fBLDB\fP, ALPHAR, ALPHAI, BETA, CSL, SNL, CSR, SNR)"
+.br
+.RI "\fBSLAGV2\fP computes the Generalized Schur factorization of a real 2-by-2 matrix pencil (A,B) where B is upper triangular\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slagv2 (real, dimension( lda, * ) A, integer LDA, real, dimension( ldb, * ) B, integer LDB, real, dimension( 2 ) ALPHAR, real, dimension( 2 ) ALPHAI, real, dimension( 2 ) BETA, real CSL, real SNL, real CSR, real SNR)"
+
+.PP
+\fBSLAGV2\fP computes the Generalized Schur factorization of a real 2-by-2 matrix pencil (A,B) where B is upper triangular\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLAGV2 computes the Generalized Schur factorization of a real 2-by-2
+ matrix pencil (A,B) where B is upper triangular. This routine
+ computes orthogonal (rotation) matrices given by CSL, SNL and CSR,
+ SNR such that
+
+ 1) if the pencil (A,B) has two real eigenvalues (include 0/0 or 1/0
+    types), then
+
+    [ a11 a12 ] := [  CSL  SNL ] [ a11 a12 ] [  CSR -SNR ]
+    [  0  a22 ]    [ -SNL  CSL ] [ a21 a22 ] [  SNR  CSR ]
+
+    [ b11 b12 ] := [  CSL  SNL ] [ b11 b12 ] [  CSR -SNR ]
+    [  0  b22 ]    [ -SNL  CSL ] [  0  b22 ] [  SNR  CSR ],
+
+ 2) if the pencil (A,B) has a pair of complex conjugate eigenvalues,
+    then
+
+    [ a11 a12 ] := [  CSL  SNL ] [ a11 a12 ] [  CSR -SNR ]
+    [ a21 a22 ]    [ -SNL  CSL ] [ a21 a22 ] [  SNR  CSR ]
+
+    [ b11  0  ] := [  CSL  SNL ] [ b11 b12 ] [  CSR -SNR ]
+    [  0  b22 ]    [ -SNL  CSL ] [  0  b22 ] [  SNR  CSR ]
+
+    where b11 >= b22 > 0.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP 
+.PP
+.nf
+          A is REAL array, dimension (LDA, 2)
+          On entry, the 2 x 2 matrix A.
+          On exit, A is overwritten by the ``A-part'' of the
+          generalized Schur form.
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          THe leading dimension of the array A.  LDA >= 2.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is REAL array, dimension (LDB, 2)
+          On entry, the upper triangular 2 x 2 matrix B.
+          On exit, B is overwritten by the ``B-part'' of the
+          generalized Schur form.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          THe leading dimension of the array B.  LDB >= 2.
+.fi
+.PP
+.br
+\fIALPHAR\fP 
+.PP
+.nf
+          ALPHAR is REAL array, dimension (2)
+.fi
+.PP
+.br
+\fIALPHAI\fP 
+.PP
+.nf
+          ALPHAI is REAL array, dimension (2)
+.fi
+.PP
+.br
+\fIBETA\fP 
+.PP
+.nf
+          BETA is REAL array, dimension (2)
+          (ALPHAR(k)+i*ALPHAI(k))/BETA(k) are the eigenvalues of the
+          pencil (A,B), k=1,2, i = sqrt(-1).  Note that BETA(k) may
+          be zero.
+.fi
+.PP
+.br
+\fICSL\fP 
+.PP
+.nf
+          CSL is REAL
+          The cosine of the left rotation matrix.
+.fi
+.PP
+.br
+\fISNL\fP 
+.PP
+.nf
+          SNL is REAL
+          The sine of the left rotation matrix.
+.fi
+.PP
+.br
+\fICSR\fP 
+.PP
+.nf
+          CSR is REAL
+          The cosine of the right rotation matrix.
+.fi
+.PP
+.br
+\fISNR\fP 
+.PP
+.nf
+          SNR is REAL
+          The sine of the right rotation matrix.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Mark Fahey, Department of Mathematics, Univ\&. of Kentucky, USA 
+.RE
+.PP
+
+.PP
+Definition at line 159 of file slagv2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

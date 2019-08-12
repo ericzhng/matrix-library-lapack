@@ -1,0 +1,214 @@
+.TH "csprfs.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+csprfs.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcsprfs\fP (UPLO, \fBN\fP, \fBNRHS\fP, AP, AFP, IPIV, B, \fBLDB\fP, X, LDX, FERR, BERR, WORK, RWORK, INFO)"
+.br
+.RI "\fBCSPRFS\fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine csprfs (character UPLO, integer N, integer NRHS, complex, dimension( * ) AP, complex, dimension( * ) AFP, integer, dimension( * ) IPIV, complex, dimension( ldb, * ) B, integer LDB, complex, dimension( ldx, * ) X, integer LDX, real, dimension( * ) FERR, real, dimension( * ) BERR, complex, dimension( * ) WORK, real, dimension( * ) RWORK, integer INFO)"
+
+.PP
+\fBCSPRFS\fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CSPRFS improves the computed solution to a system of linear
+ equations when the coefficient matrix is symmetric indefinite
+ and packed, and provides error bounds and backward error estimates
+ for the solution.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUPLO\fP 
+.PP
+.nf
+          UPLO is CHARACTER*1
+          = 'U':  Upper triangle of A is stored;
+          = 'L':  Lower triangle of A is stored.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The order of the matrix A.  N >= 0.
+.fi
+.PP
+.br
+\fINRHS\fP 
+.PP
+.nf
+          NRHS is INTEGER
+          The number of right hand sides, i.e., the number of columns
+          of the matrices B and X.  NRHS >= 0.
+.fi
+.PP
+.br
+\fIAP\fP 
+.PP
+.nf
+          AP is COMPLEX array, dimension (N*(N+1)/2)
+          The upper or lower triangle of the symmetric matrix A, packed
+          columnwise in a linear array.  The j-th column of A is stored
+          in the array AP as follows:
+          if UPLO = 'U', AP(i + (j-1)*j/2) = A(i,j) for 1<=i<=j;
+          if UPLO = 'L', AP(i + (j-1)*(2*n-j)/2) = A(i,j) for j<=i<=n.
+.fi
+.PP
+.br
+\fIAFP\fP 
+.PP
+.nf
+          AFP is COMPLEX array, dimension (N*(N+1)/2)
+          The factored form of the matrix A.  AFP contains the block
+          diagonal matrix D and the multipliers used to obtain the
+          factor U or L from the factorization A = U*D*U**T or
+          A = L*D*L**T as computed by CSPTRF, stored as a packed
+          triangular matrix.
+.fi
+.PP
+.br
+\fIIPIV\fP 
+.PP
+.nf
+          IPIV is INTEGER array, dimension (N)
+          Details of the interchanges and the block structure of D
+          as determined by CSPTRF.
+.fi
+.PP
+.br
+\fIB\fP 
+.PP
+.nf
+          B is COMPLEX array, dimension (LDB,NRHS)
+          The right hand side matrix B.
+.fi
+.PP
+.br
+\fILDB\fP 
+.PP
+.nf
+          LDB is INTEGER
+          The leading dimension of the array B.  LDB >= max(1,N).
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX array, dimension (LDX,NRHS)
+          On entry, the solution matrix X, as computed by CSPTRS.
+          On exit, the improved solution matrix X.
+.fi
+.PP
+.br
+\fILDX\fP 
+.PP
+.nf
+          LDX is INTEGER
+          The leading dimension of the array X.  LDX >= max(1,N).
+.fi
+.PP
+.br
+\fIFERR\fP 
+.PP
+.nf
+          FERR is REAL array, dimension (NRHS)
+          The estimated forward error bound for each solution vector
+          X(j) (the j-th column of the solution matrix X).
+          If XTRUE is the true solution corresponding to X(j), FERR(j)
+          is an estimated upper bound for the magnitude of the largest
+          element in (X(j) - XTRUE) divided by the magnitude of the
+          largest element in X(j).  The estimate is as reliable as
+          the estimate for RCOND, and is almost always a slight
+          overestimate of the true error.
+.fi
+.PP
+.br
+\fIBERR\fP 
+.PP
+.nf
+          BERR is REAL array, dimension (NRHS)
+          The componentwise relative backward error of each solution
+          vector X(j) (i.e., the smallest relative change in
+          any element of A or B that makes X(j) an exact solution).
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX array, dimension (2*N)
+.fi
+.PP
+.br
+\fIRWORK\fP 
+.PP
+.nf
+          RWORK is REAL array, dimension (N)
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0:  successful exit
+          < 0:  if INFO = -i, the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBInternal Parameters: \fP
+.RS 4
+
+.PP
+.nf
+  ITMAX is the maximum number of steps of iterative refinement.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 182 of file csprfs\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

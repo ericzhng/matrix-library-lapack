@@ -1,0 +1,106 @@
+.TH "dlarscl2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+dlarscl2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBdlarscl2\fP (M, \fBN\fP, D, X, LDX)"
+.br
+.RI "\fBDLARSCL2\fP performs reciprocal diagonal scaling on a vector\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine dlarscl2 (integer M, integer N, double precision, dimension( * ) D, double precision, dimension( ldx, * ) X, integer LDX)"
+
+.PP
+\fBDLARSCL2\fP performs reciprocal diagonal scaling on a vector\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ DLARSCL2 performs a reciprocal diagonal scaling on an vector:
+   x <-- inv(D) * x
+ where the diagonal matrix D is stored as a vector.
+
+ Eventually to be replaced by BLAS_dge_diag_scale in the new BLAS
+ standard.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+     The number of rows of D and X. M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+     The number of columns of X. N >= 0.
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is DOUBLE PRECISION array, dimension (M)
+     Diagonal matrix D, stored as a vector of length M.
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is DOUBLE PRECISION array, dimension (LDX,N)
+     On entry, the vector X to be scaled by D.
+     On exit, the scaled vector.
+.fi
+.PP
+.br
+\fILDX\fP 
+.PP
+.nf
+          LDX is INTEGER
+     The leading dimension of the vector X. LDX >= M.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016 
+.RE
+.PP
+
+.PP
+Definition at line 92 of file dlarscl2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

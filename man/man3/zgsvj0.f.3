@@ -1,0 +1,248 @@
+.TH "zgsvj0.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+zgsvj0.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBzgsvj0\fP (JOBV, M, \fBN\fP, A, \fBLDA\fP, D, SVA, MV, V, LDV, EPS, SFMIN, TOL, NSWEEP, WORK, LWORK, INFO)"
+.br
+.RI "\fB ZGSVJ0 pre-processor for the routine zgesvj\&. \fP "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine zgsvj0 (character*1 JOBV, integer M, integer N, complex*16, dimension( lda, * ) A, integer LDA, complex*16, dimension( n ) D, double precision, dimension( n ) SVA, integer MV, complex*16, dimension( ldv, * ) V, integer LDV, double precision EPS, double precision SFMIN, double precision TOL, integer NSWEEP, complex*16, dimension( lwork ) WORK, integer LWORK, integer INFO)"
+
+.PP
+\fB ZGSVJ0 pre-processor for the routine zgesvj\&. \fP  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ ZGSVJ0 is called from ZGESVJ as a pre-processor and that is its main
+ purpose. It applies Jacobi rotations in the same way as ZGESVJ does, but
+ it does not check convergence (stopping criterion). Few tuning
+ parameters (marked by [TP]) are available for the implementer.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOBV\fP 
+.PP
+.nf
+          JOBV is CHARACTER*1
+          Specifies whether the output from this procedure is used
+          to compute the matrix V:
+          = 'V': the product of the Jacobi rotations is accumulated
+                 by postmulyiplying the N-by-N array V.
+                (See the description of V.)
+          = 'A': the product of the Jacobi rotations is accumulated
+                 by postmulyiplying the MV-by-N array V.
+                (See the descriptions of MV and V.)
+          = 'N': the Jacobi rotations are not accumulated.
+.fi
+.PP
+.br
+\fIM\fP 
+.PP
+.nf
+          M is INTEGER
+          The number of rows of the input matrix A.  M >= 0.
+.fi
+.PP
+.br
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+          The number of columns of the input matrix A.
+          M >= N >= 0.
+.fi
+.PP
+.br
+\fIA\fP 
+.PP
+.nf
+          A is COMPLEX*16 array, dimension (LDA,N)
+          On entry, M-by-N matrix A, such that A*diag(D) represents
+          the input matrix.
+          On exit,
+          A_onexit * diag(D_onexit) represents the input matrix A*diag(D)
+          post-multiplied by a sequence of Jacobi rotations, where the
+          rotation threshold and the total number of sweeps are given in
+          TOL and NSWEEP, respectively.
+          (See the descriptions of D, TOL and NSWEEP.)
+.fi
+.PP
+.br
+\fILDA\fP 
+.PP
+.nf
+          LDA is INTEGER
+          The leading dimension of the array A.  LDA >= max(1,M).
+.fi
+.PP
+.br
+\fID\fP 
+.PP
+.nf
+          D is COMPLEX*16 array, dimension (N)
+          The array D accumulates the scaling factors from the complex scaled
+          Jacobi rotations.
+          On entry, A*diag(D) represents the input matrix.
+          On exit, A_onexit*diag(D_onexit) represents the input matrix
+          post-multiplied by a sequence of Jacobi rotations, where the
+          rotation threshold and the total number of sweeps are given in
+          TOL and NSWEEP, respectively.
+          (See the descriptions of A, TOL and NSWEEP.)
+.fi
+.PP
+.br
+\fISVA\fP 
+.PP
+.nf
+          SVA is DOUBLE PRECISION array, dimension (N)
+          On entry, SVA contains the Euclidean norms of the columns of
+          the matrix A*diag(D).
+          On exit, SVA contains the Euclidean norms of the columns of
+          the matrix A_onexit*diag(D_onexit).
+.fi
+.PP
+.br
+\fIMV\fP 
+.PP
+.nf
+          MV is INTEGER
+          If JOBV .EQ. 'A', then MV rows of V are post-multipled by a
+                           sequence of Jacobi rotations.
+          If JOBV = 'N',   then MV is not referenced.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is COMPLEX*16 array, dimension (LDV,N)
+          If JOBV .EQ. 'V' then N rows of V are post-multipled by a
+                           sequence of Jacobi rotations.
+          If JOBV .EQ. 'A' then MV rows of V are post-multipled by a
+                           sequence of Jacobi rotations.
+          If JOBV = 'N',   then V is not referenced.
+.fi
+.PP
+.br
+\fILDV\fP 
+.PP
+.nf
+          LDV is INTEGER
+          The leading dimension of the array V,  LDV >= 1.
+          If JOBV = 'V', LDV .GE. N.
+          If JOBV = 'A', LDV .GE. MV.
+.fi
+.PP
+.br
+\fIEPS\fP 
+.PP
+.nf
+          EPS is DOUBLE PRECISION
+          EPS = DLAMCH('Epsilon')
+.fi
+.PP
+.br
+\fISFMIN\fP 
+.PP
+.nf
+          SFMIN is DOUBLE PRECISION
+          SFMIN = DLAMCH('Safe Minimum')
+.fi
+.PP
+.br
+\fITOL\fP 
+.PP
+.nf
+          TOL is DOUBLE PRECISION
+          TOL is the threshold for Jacobi rotations. For a pair
+          A(:,p), A(:,q) of pivot columns, the Jacobi rotation is
+          applied only if ABS(COS(angle(A(:,p),A(:,q)))) .GT. TOL.
+.fi
+.PP
+.br
+\fINSWEEP\fP 
+.PP
+.nf
+          NSWEEP is INTEGER
+          NSWEEP is the number of sweeps of Jacobi rotations to be
+          performed.
+.fi
+.PP
+.br
+\fIWORK\fP 
+.PP
+.nf
+          WORK is COMPLEX*16 array, dimension (LWORK)
+.fi
+.PP
+.br
+\fILWORK\fP 
+.PP
+.nf
+          LWORK is INTEGER
+          LWORK is the dimension of WORK. LWORK .GE. M.
+.fi
+.PP
+.br
+\fIINFO\fP 
+.PP
+.nf
+          INFO is INTEGER
+          = 0 : successful exit.
+          < 0 : if INFO = -i, then the i-th argument had an illegal value
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+June 2016
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+ZGSVJ0 is used just to enable ZGESVJ to call a simplified version of itself to work on a submatrix of the original matrix\&.
+.RE
+.PP
+Contributor: Zlatko Drmac (Zagreb, Croatia)
+.PP
+\fBBugs, Examples and Comments: \fP
+.RS 4
+Please report all bugs and send interesting test examples and comments to drmac@math.hr\&. Thank you\&. 
+.RE
+.PP
+
+.PP
+Definition at line 220 of file zgsvj0\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

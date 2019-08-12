@@ -1,0 +1,157 @@
+.TH "claic1.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+claic1.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBclaic1\fP (JOB, J, X, SEST, W, GAMMA, SESTPR, S, C)"
+.br
+.RI "\fBCLAIC1\fP applies one step of incremental condition estimation\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine claic1 (integer JOB, integer J, complex, dimension( j ) X, real SEST, complex, dimension( j ) W, complex GAMMA, real SESTPR, complex S, complex C)"
+
+.PP
+\fBCLAIC1\fP applies one step of incremental condition estimation\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ CLAIC1 applies one step of incremental condition estimation in
+ its simplest version:
+
+ Let x, twonorm(x) = 1, be an approximate singular vector of an j-by-j
+ lower triangular matrix L, such that
+          twonorm(L*x) = sest
+ Then CLAIC1 computes sestpr, s, c such that
+ the vector
+                 [ s*x ]
+          xhat = [  c  ]
+ is an approximate singular vector of
+                 [ L      0  ]
+          Lhat = [ w**H gamma ]
+ in the sense that
+          twonorm(Lhat*xhat) = sestpr.
+
+ Depending on JOB, an estimate for the largest or smallest singular
+ value is computed.
+
+ Note that [s c]**H and sestpr**2 is an eigenpair of the system
+
+     diag(sest*sest, 0) + [alpha  gamma] * [ conjg(alpha) ]
+                                           [ conjg(gamma) ]
+
+ where  alpha =  x**H*w.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIJOB\fP 
+.PP
+.nf
+          JOB is INTEGER
+          = 1: an estimate for the largest singular value is computed.
+          = 2: an estimate for the smallest singular value is computed.
+.fi
+.PP
+.br
+\fIJ\fP 
+.PP
+.nf
+          J is INTEGER
+          Length of X and W
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is COMPLEX array, dimension (J)
+          The j-vector x.
+.fi
+.PP
+.br
+\fISEST\fP 
+.PP
+.nf
+          SEST is REAL
+          Estimated singular value of j by j matrix L
+.fi
+.PP
+.br
+\fIW\fP 
+.PP
+.nf
+          W is COMPLEX array, dimension (J)
+          The j-vector w.
+.fi
+.PP
+.br
+\fIGAMMA\fP 
+.PP
+.nf
+          GAMMA is COMPLEX
+          The diagonal element gamma.
+.fi
+.PP
+.br
+\fISESTPR\fP 
+.PP
+.nf
+          SESTPR is REAL
+          Estimated singular value of (j+1) by (j+1) matrix Lhat.
+.fi
+.PP
+.br
+\fIS\fP 
+.PP
+.nf
+          S is COMPLEX
+          Sine needed in forming xhat.
+.fi
+.PP
+.br
+\fIC\fP 
+.PP
+.nf
+          C is COMPLEX
+          Cosine needed in forming xhat.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 137 of file claic1\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

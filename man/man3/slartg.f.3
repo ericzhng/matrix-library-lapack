@@ -1,0 +1,116 @@
+.TH "slartg.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slartg.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslartg\fP (F, G, CS, SN, R)"
+.br
+.RI "\fBSLARTG\fP generates a plane rotation with real cosine and real sine\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slartg (real F, real G, real CS, real SN, real R)"
+
+.PP
+\fBSLARTG\fP generates a plane rotation with real cosine and real sine\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLARTG generate a plane rotation so that
+
+    [  CS  SN  ]  .  [ F ]  =  [ R ]   where CS**2 + SN**2 = 1.
+    [ -SN  CS  ]     [ G ]     [ 0 ]
+
+ This is a slower, more accurate version of the BLAS1 routine SROTG,
+ with the following other differences:
+    F and G are unchanged on return.
+    If G=0, then CS=1 and SN=0.
+    If F=0 and (G .ne. 0), then CS=0 and SN=1 without doing any
+       floating point operations (saves work in SBDSQR when
+       there are zeros on the diagonal).
+
+ If F exceeds G in magnitude, CS will be positive.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIF\fP 
+.PP
+.nf
+          F is REAL
+          The first component of vector to be rotated.
+.fi
+.PP
+.br
+\fIG\fP 
+.PP
+.nf
+          G is REAL
+          The second component of vector to be rotated.
+.fi
+.PP
+.br
+\fICS\fP 
+.PP
+.nf
+          CS is REAL
+          The cosine of the rotation.
+.fi
+.PP
+.br
+\fISN\fP 
+.PP
+.nf
+          SN is REAL
+          The sine of the rotation.
+.fi
+.PP
+.br
+\fIR\fP 
+.PP
+.nf
+          R is REAL
+          The nonzero component of the rotated vector.
+
+  This version has a few statements commented out for thread safety
+  (machine parameters are computed on each entry). 10 feb 03, SJH.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file slartg\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.

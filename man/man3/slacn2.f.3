@@ -1,0 +1,156 @@
+.TH "slacn2.f" 3 "Tue Nov 14 2017" "Version 3.8.0" "LAPACK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slacn2.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBslacn2\fP (\fBN\fP, V, X, ISGN, EST, KASE, ISAVE)"
+.br
+.RI "\fBSLACN2\fP estimates the 1-norm of a square matrix, using reverse communication for evaluating matrix-vector products\&. "
+.in -1c
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine slacn2 (integer N, real, dimension( * ) V, real, dimension( * ) X, integer, dimension( * ) ISGN, real EST, integer KASE, integer, dimension( 3 ) ISAVE)"
+
+.PP
+\fBSLACN2\fP estimates the 1-norm of a square matrix, using reverse communication for evaluating matrix-vector products\&.  
+.PP
+\fBPurpose: \fP
+.RS 4
+
+.PP
+.nf
+ SLACN2 estimates the 1-norm of a square, real matrix A.
+ Reverse communication is used for evaluating matrix-vector products.
+.fi
+.PP
+ 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIN\fP 
+.PP
+.nf
+          N is INTEGER
+         The order of the matrix.  N >= 1.
+.fi
+.PP
+.br
+\fIV\fP 
+.PP
+.nf
+          V is REAL array, dimension (N)
+         On the final return, V = A*W,  where  EST = norm(V)/norm(W)
+         (W is not returned).
+.fi
+.PP
+.br
+\fIX\fP 
+.PP
+.nf
+          X is REAL array, dimension (N)
+         On an intermediate return, X should be overwritten by
+               A * X,   if KASE=1,
+               A**T * X,  if KASE=2,
+         and SLACN2 must be re-called with all the other parameters
+         unchanged.
+.fi
+.PP
+.br
+\fIISGN\fP 
+.PP
+.nf
+          ISGN is INTEGER array, dimension (N)
+.fi
+.PP
+.br
+\fIEST\fP 
+.PP
+.nf
+          EST is REAL
+         On entry with KASE = 1 or 2 and ISAVE(1) = 3, EST should be
+         unchanged from the previous call to SLACN2.
+         On exit, EST is an estimate (a lower bound) for norm(A).
+.fi
+.PP
+.br
+\fIKASE\fP 
+.PP
+.nf
+          KASE is INTEGER
+         On the initial call to SLACN2, KASE should be 0.
+         On an intermediate return, KASE will be 1 or 2, indicating
+         whether X should be overwritten by A * X  or A**T * X.
+         On the final return from SLACN2, KASE will again be 0.
+.fi
+.PP
+.br
+\fIISAVE\fP 
+.PP
+.nf
+          ISAVE is INTEGER array, dimension (3)
+         ISAVE is used to save variables between calls to SLACN2
+.fi
+.PP
+ 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Univ\&. of Tennessee 
+.PP
+Univ\&. of California Berkeley 
+.PP
+Univ\&. of Colorado Denver 
+.PP
+NAG Ltd\&. 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2016 
+.RE
+.PP
+\fBFurther Details: \fP
+.RS 4
+
+.PP
+.nf
+  Originally named SONEST, dated March 16, 1988.
+
+  This is a thread safe version of SLACON, which uses the array ISAVE
+  in place of a SAVE statement, as follows:
+
+     SLACON     SLACN2
+      JUMP     ISAVE(1)
+      J        ISAVE(2)
+      ITER     ISAVE(3)
+.fi
+.PP
+ 
+.RE
+.PP
+\fBContributors: \fP
+.RS 4
+Nick Higham, University of Manchester 
+.RE
+.PP
+\fBReferences: \fP
+.RS 4
+N\&.J\&. Higham, 'FORTRAN codes for estimating the one-norm of
+  a real or complex matrix, with applications to condition estimation', ACM Trans\&. Math\&. Soft\&., vol\&. 14, no\&. 4, pp\&. 381-396, December 1988\&. 
+.RE
+.PP
+
+.PP
+Definition at line 138 of file slacn2\&.f\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for LAPACK from the source code\&.
