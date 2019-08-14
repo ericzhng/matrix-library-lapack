@@ -26,6 +26,13 @@ LAPACK.
 
 ## Installation
 
+To install:
+make install
+
+Before that:
+make
+make man1
+
 ## User Guide
 
 ## LAPACKE
