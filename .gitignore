@@ -5,7 +5,7 @@
 INSTALL/test*
 
 # local make.inc
-make.inc
+# make.inc
 
 # BLAS testing
 BLAS/TESTING/*.out
@@ -35,3 +35,7 @@ LAPACKE/example/xexample*
 # SED
 SRC/*-e
 LAPACKE/src/*-e
+
+DOCS/man
+*.so.*
+*.a

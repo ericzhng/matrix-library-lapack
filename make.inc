@@ -9,7 +9,7 @@ SHELL = /bin/sh
 #  CC is the C compiler, normally invoked with options CFLAGS.
 #
 CC     = gcc
-CFLAGS = -O3
+CFLAGS = -O3 -m64 -fPIC
 
 #  Modify the FORTRAN and OPTS definitions to refer to the compiler
 #  and desired compiler options for your machine.  NOOPT refers to
@@ -20,15 +20,15 @@ CFLAGS = -O3
 #  should not compile LAPACK with flags such as -ffpe-trap=overflow.
 #
 FORTRAN = gfortran
-OPTS    = -O2 -frecursive
+OPTS    = -O3 -frecursive -m64 -fPIC
 DRVOPTS = $(OPTS)
-NOOPT   = -O0 -frecursive
+NOOPT   = -O0 -frecursive -m64 -fPIC
 
 #  Define LOADER and LOADOPTS to refer to the loader and desired
 #  load options for your machine.
 #
 LOADER   = gfortran
-LOADOPTS =
+LOADOPTS = -m64 -fPIC
 
 #  The archiver and the flag(s) to use when building an archive
 #  (library).  If your system has no ranlib, set RANLIB = echo.
@@ -59,7 +59,7 @@ TIMER = INT_ETIME
 #  Uncomment the following line to include deprecated routines in
 #  the LAPACK library.
 #
-#BUILD_DEPRECATED = Yes
+BUILD_DEPRECATED = Yes
 
 #  LAPACKE has the interface to some routines from tmglib.
 #  If LAPACKE_WITH_TMG is defined, add those routines to LAPACKE.
@@ -78,8 +78,14 @@ TIMER = INT_ETIME
 #  machine-specific, optimized BLAS library should be used whenever
 #  possible.)
 #
-BLASLIB      = ../../librefblas.a
+BLASLIB      = ../../libblas.a
 CBLASLIB     = ../../libcblas.a
 LAPACKLIB    = liblapack.a
 TMGLIB       = libtmglib.a
 LAPACKELIB   = liblapacke.a
+
+BLASLIB_SO      = libblas.so.3.8.0
+CBLASLIB_SO     = libcblas.so.3.8.0
+LAPACKLIB_SO    = liblapack.so.3.8.0
+TMGLIB_SO       = libtmglib.so.3.8.0
+LAPACKELIB_SO   = liblapacke.so.3.8.0

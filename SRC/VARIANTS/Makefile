@@ -30,7 +30,7 @@ LUREC = lu/REC/cgetrf.o lu/REC/dgetrf.o lu/REC/sgetrf.o lu/REC/zgetrf.o
 QRLL = qr/LL/cgeqrf.o qr/LL/dgeqrf.o qr/LL/sgeqrf.o qr/LL/zgeqrf.o qr/LL/sceil.o
 
 
-all: cholrl.a choltop.a lucr.a lull.a lurec.a qrll.a
+all: cholrl.a choltop.a lucr.a lull.a lurec.a qrll.a $(all_SO)
 
 cholrl.a: $(CHOLRL)
 	$(ARCH) $(ARCHFLAGS) $@ $^
@@ -55,6 +55,26 @@ lurec.a: $(LUREC)
 qrll.a: $(QRLL)
 	$(ARCH) $(ARCHFLAGS) $@ $^
 	$(RANLIB) $@
+
+all_SO: cholrl.so choltop.so lucr.so lull.so lurec.so qrll.so
+
+cholrl.so: $(CHOLRL)
+	$(LOADER) -shared $(LOADOPTS) -o $@ $^
+
+choltop.so: $(CHOLTOP)
+	$(LOADER) -shared $(LOADOPTS) -o $@ $^
+
+lucr.so: $(LUCR)
+	$(LOADER) -shared $(LOADOPTS) -o $@ $^
+
+lull.so: $(LULL)
+	$(LOADER) -shared $(LOADOPTS) -o $@ $^
+
+lurec.so: $(LUREC)
+	$(LOADER) -shared $(LOADOPTS) -o $@ $^
+
+qrll.so: $(QRLL)
+	$(LOADER) -shared $(LOADOPTS) -o $@ $^
 
 clean: cleanobj cleanlib
 cleanobj:
