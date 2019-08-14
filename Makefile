@@ -163,8 +163,9 @@ install:
 	mkdir -p $(PREFIX)/lib64/VARIANTS
 	mkdir -p $(PREFIX)/share
 	
-	cp lib*.so.* $(PREFIX)/lib64
-	cp lib*.a  $(PREFIX)/lib64
+	rm *.so
+	rm *.so.3
+	rm *.so.3.8
 	
 	ln -s $(BLASLIB_SO) libblas.so
 	ln -s $(BLASLIB_SO) libblas.so.3
@@ -186,8 +187,14 @@ install:
 	ln -s $(LAPACKELIB_SO) liblapacke.so.3
 	ln -s $(LAPACKELIB_SO) liblapacke.so.3.8
 	
-	cp -r LAPACKE/include/*.h $(PREFIX)/include/lapacke
-	cp -r LAPACKE/include/lapacke_mangling_with_flags.h.in $(PREFIX)/include/lapacke/lapacke_mangling_with_flags.h
+	cp lib*.so.* $(PREFIX)/lib64
+	cp lib*.a  $(PREFIX)/lib64
 	
 	cp -r SRC/VARIANTS/*.a $(PREFIX)/lib64/VARIANTS
 	cp -r SRC/VARIANTS/*.so $(PREFIX)/lib64/VARIANTS
+
+	cp -r LAPACKE/include/*.h $(PREFIX)/include/lapacke
+	cp -r LAPACKE/include/lapacke_mangling_with_flags.h.in $(PREFIX)/include/lapacke/lapacke_mangling_with_flags.h
+	
+	cp -r man $(PREFIX)/share
+	
