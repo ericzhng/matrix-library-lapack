@@ -37,5 +37,6 @@ SRC/*-e
 LAPACKE/src/*-e
 
 DOCS/man
+*.so
 *.so.*
 *.a
