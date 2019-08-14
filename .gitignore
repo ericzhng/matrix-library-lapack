@@ -1,5 +1,6 @@
 # ignore objects and archives, anywhere in the tree.
 *.[oa]
+*.[so]
 
 # test in INSTALL
 INSTALL/test*
@@ -40,3 +41,6 @@ DOCS/man
 *.so
 *.so.*
 *.a
+
+SRC/VARIANTS/*.a
+SRC/VARIANTS/*.so
