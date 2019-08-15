@@ -15,11 +15,8 @@ The distribution contains:
 
 ## Installation
 
-First you need to compile the code and its docs to be installed. Type the following:
-`make`
-`make man1`
+First you need to compile the code and its docs to be installed. Type `make` or `make man1` to compile.
 
 Make sure gcc/gfortran is installed through `sudo apt install gfortran build-essential`. To compile docs, install doxygen through `sudo apt install doxygen`.
 
-To install lapack, simply type:
-`sudo make install PREFIX=/opt/apps/lapack/3.8.0`
+To install lapack, simply type `sudo make install PREFIX=/opt/apps/lapack/3.8.0` to copy all necessary files to destination.
