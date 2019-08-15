@@ -163,29 +163,25 @@ install:
 	mkdir -p $(PREFIX)/lib64/VARIANTS
 	mkdir -p $(PREFIX)/share
 	
-	rm *.so
-	rm *.so.3
-	rm *.so.3.8
-	
-	ln -s $(BLASLIB_SO) libblas.so
-	ln -s $(BLASLIB_SO) libblas.so.3
-	ln -s $(BLASLIB_SO) libblas.so.3.8
+	ln -fs $(BLASLIB_SO) libblas.so
+	ln -fs $(BLASLIB_SO) libblas.so.3
+	ln -fs $(BLASLIB_SO) libblas.so.3.8
 
-	ln -s $(CBLASLIB_SO) libcblas.so 
-	ln -s $(CBLASLIB_SO) libcblas.so.3 
-	ln -s $(CBLASLIB_SO) libcblas.so.3.8 
+	ln -fs $(CBLASLIB_SO) libcblas.so 
+	ln -fs $(CBLASLIB_SO) libcblas.so.3 
+	ln -fs $(CBLASLIB_SO) libcblas.so.3.8 
 
-	ln -s $(TMGLIB_SO) libtmglib.so 
-	ln -s $(TMGLIB_SO) libtmglib.so.3
-	ln -s $(TMGLIB_SO) libtmglib.so.3.8
+	ln -fs $(TMGLIB_SO) libtmglib.so 
+	ln -fs $(TMGLIB_SO) libtmglib.so.3
+	ln -fs $(TMGLIB_SO) libtmglib.so.3.8
 
-	ln -s $(LAPACKLIB_SO) liblapack.so
-	ln -s $(LAPACKLIB_SO) liblapack.so.3
-	ln -s $(LAPACKLIB_SO) liblapack.so.3.8
+	ln -fs $(LAPACKLIB_SO) liblapack.so
+	ln -fs $(LAPACKLIB_SO) liblapack.so.3
+	ln -fs $(LAPACKLIB_SO) liblapack.so.3.8
 
-	ln -s $(LAPACKELIB_SO) liblapacke.so
-	ln -s $(LAPACKELIB_SO) liblapacke.so.3
-	ln -s $(LAPACKELIB_SO) liblapacke.so.3.8
+	ln -fs $(LAPACKELIB_SO) liblapacke.so
+	ln -fs $(LAPACKELIB_SO) liblapacke.so.3
+	ln -fs $(LAPACKELIB_SO) liblapacke.so.3.8
 	
 	cp lib*.so.* $(PREFIX)/lib64
 	cp lib*.a  $(PREFIX)/lib64
@@ -196,5 +192,4 @@ install:
 	cp -r LAPACKE/include/*.h $(PREFIX)/include/lapacke
 	cp -r LAPACKE/include/lapacke_mangling_with_flags.h.in $(PREFIX)/include/lapacke/lapacke_mangling_with_flags.h
 	
-	cp -r man $(PREFIX)/share
-	
+	cp -r DOCS/man $(PREFIX)/share

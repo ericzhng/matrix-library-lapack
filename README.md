@@ -27,7 +27,7 @@ LAPACK.
 ## Installation
 
 To install:
-make install PREFIX=/opt/apps/lapack/3.8.0
+make install
 
 Before that:
 make
