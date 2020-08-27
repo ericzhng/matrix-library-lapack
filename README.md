@@ -1,6 +1,6 @@
-# Matrix Library
+# Matrix Library (LAPACK)
 
-You can find more details in the website [here](https://ericzhng.github.io/docs-matrix-library/).
+You can find more details in [this website here](https://ericzhng.github.io/docs-matrix-library/). This repository is only for LAPACK.
 
 ## Introduction
 
@@ -15,8 +15,10 @@ The distribution contains:
 
 ## Installation
 
-First you need to compile the code and its docs to be installed. Type `make` or `make man1` to compile.
+First you need to compile the code and its docs to be installed. Type `make all` or `make man` to compile.
 
 Make sure gcc/gfortran is installed through `sudo apt install gfortran build-essential`. To compile docs, install doxygen through `sudo apt install doxygen`.
 
-To install lapack, simply type `sudo make install PREFIX=/opt/apps/lapack/3.8.0` to copy all necessary files to destination.
+To install LAPACK, simply type `make install PREFIX=/opt/apps/lapack/3.8.0` to copy all necessary files to destination. The specified directory can be changed to anywhere you want to install LAPACK to. If it is system directories, use `sudo` ahead.
+
+Both the static and dynamic libraries are built and can be linked. Some external tests will be provided to show how to use LAPACK libraries directly.

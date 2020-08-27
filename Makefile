@@ -4,7 +4,7 @@
 #  April 2012
 #
 
-PREFIX ?= /home/ericzhng/lapack/3.8.0
+PREFIX ?= $(HOME)/matrix-library/lapack/3.8.0
 
 include make.inc
 
@@ -99,7 +99,7 @@ html:
 	@echo "Online version available at http://www.netlib.org/lapack/explore-html/"
 	@echo "=================="
 
-man1:
+man:
 	@echo "LAPACK MAN PAGES GENERATION with Doxygen"
 	doxygen DOCS/Doxyfile_man
 	@echo "=================="

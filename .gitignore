@@ -38,6 +38,7 @@ SRC/*-e
 LAPACKE/src/*-e
 
 DOCS/man
+DOCS/explore-html
 *.so
 *.so.*
 *.a
